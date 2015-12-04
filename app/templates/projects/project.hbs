@@ -1,0 +1,34 @@
+
+Projects/project page
+<div>
+
+<h1>{{model.name}}</h1>
+<ul class="nav nav-tabs" >
+  <li>{{#link-to 'projects.project.enquiry-form' }}
+    <button class="btn btn-success"> Enquiry Form</button>
+    {{/link-to}}
+  </li>
+  <li>{{#link-to 'projects.project.quotation-form' }}
+    <button class="btn btn-success"> Quotation Form</button>
+    {{/link-to}}
+  </li>
+  <li>{{#link-to 'projects.project.customer' }}
+    <button class="btn btn-success"> Customer Form</button>
+    {{/link-to}}
+  </li>
+  <li>{{#link-to 'projects.project.agent' }}
+    <button class="btn btn-success"> Agent Form</button>
+    {{/link-to}}
+  </li>
+  <li>{{#link-to 'projects.project.job' }}
+    <button class="btn btn-success"> Job Details</button>
+    {{/link-to}}
+  </li>
+
+
+</ul>
+<!-- Tab panes -->
+<div class="tab-content">
+{{outlet}}
+</div>
+</div>

@@ -1,0 +1,11 @@
+
+<div class="">
+  {{#link-to 'customers.new'}}
+  <button type="button" class="btn btn-success">New Customer </button>
+  {{/link-to}}
+
+  {{customer-form customer=model on-toggle=(action "onToggle") on-delete=(action "deleteData")}}
+
+
+  {{liquid-outlet}}
+</div>

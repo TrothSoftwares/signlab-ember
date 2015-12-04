@@ -1,0 +1,25 @@
+From Customers page
+
+
+<div class="col-md-4">
+  <div class="list-group">
+
+    <div class="list-group-item">
+
+      <!-- {{input type="text" class="new-band form-control" placeholder="New band" value=name}} -->
+      <!-- <button class="btn btn-primary btn-sm new-band-button" disabled={{isAddButtonDisabled}}  {{action "createBand"}}>Add</button> -->
+
+    </div>
+    {{#each model as |customer|}}
+    {{#link-to "customers.customer" customer class="list-group-item "}}
+    {{customer.name}}
+    <span class="pointer glyphicon"></span>
+    {{/link-to}}
+    {{/each}}
+  </div>
+</div>
+<div class="col-md-8">
+  <div class="list-group">
+    {{liquid-outlet}}
+  </div>
+</div>

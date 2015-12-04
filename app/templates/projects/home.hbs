@@ -1,0 +1,43 @@
+From Projects page
+
+
+<div class="col-md-4">
+  <div class="list-group">
+
+    <div class="list-group-item">
+
+      <!-- {{input type="text" class="new-band form-control" placeholder="New band" value=name}} -->
+      <!-- <button class="btn btn-primary btn-sm new-band-button" disabled={{isAddButtonDisabled}}  {{action "createBand"}}>Add</button> -->
+
+    </div>
+    {{#each model as |project|}}
+    {{#link-to "projects.project" project class="list-group-item "}}
+    {{project.name}}
+    <span class="pointer glyphicon"></span>
+    {{/link-to}}
+    {{/each}}
+  </div>
+</div>
+<div class="col-md-8">
+  <div class="list-group">
+    <div class=" col-md-8 well-sm  ">
+            <h3> Create New Project </h3>
+            <table class="table">
+                    <tr>
+                            <td><label for="" class="">Project Name</label></td>
+                            <td>{{input type="text" class="form-control "  placeholder="Project Name" value=name}}</td>
+                    </tr>
+ 
+                    <tr>
+                            <button type="button" class="btn btn-success "  {{action "createProject"}} >
+                                    Create Project
+                            </button>
+                    </tr>
+
+            </table>
+
+
+    </div>
+    {{liquid-outlet}}
+  </div>
+</div>

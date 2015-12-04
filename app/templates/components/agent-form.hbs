@@ -1,0 +1,84 @@
+<div class="col-md-12">
+        
+
+
+
+
+        <div class="col-md-8 ">
+                {{#liquid-if enableEditAgent class="customer-info"  }}
+                <div class=" col-md-10 well-sm  ">
+                        <table class="table">
+                                <tr>
+                                        <td><label for="" class="">Agent Name</label></td>
+                                        <td>{{input type="text" class="form-control "  placeholder="Agent Name" value=agent.name}}</td>
+                                </tr>
+
+                                <tr>
+                                        <td><label for="" class="">Agent Contact Name</label></td>
+                                        <td>{{input type="text" class="form-control "  placeholder="Agent contact name" value=agent.contactname}}</td>
+                                </tr>
+                                <tr>
+                                        <td><label for="" class="">Agent Contact No.</label></td>
+                                        <td>{{input type="text" class="form-control "  placeholder="Agent contact No" value=agent.contactno}}</td>
+                                </tr>
+                                <tr>
+                                        <td><label for="" class="">Other Contact No.</label></td>
+                                        <td>{{input type="text" class="form-control"  placeholder="Other Contact No" value=agent.othcontactno}}</td>
+                                </tr>
+                                <tr>
+                                        <td><label for="" class="">Other Reference Details</label></td>
+                                        <td>{{input type="text" class="form-control"  placeholder="Other Contact No" value=agent.othrefdetails}}</td>
+                                </tr>
+                        </table>
+                </div>
+                {{else}}
+                <div class=" col-md-10 well-sm">
+                        <table>
+                                <tr>
+
+                                        <td><label for="" class=" ">Agent Name</label> </td>
+                                        <td><label for="" class="">{{agent.name}}</label></td>
+                                </tr>
+                                <tr>
+
+                                        <td><label for="" class="">Agent Contact Name</label></td>
+                                        <td><label class="" for="">{{agent.contactname}}</label></td>
+                                </tr>
+                                <tr>
+                                        <td><label for="" class="">Agent Contact No.</label></td>
+                                        <td><label class="" for="">{{agent.contactno}}</label></td>
+
+                                </tr>
+                                <tr>
+                                        <td><label for="" class="">Other Contact Number</label></td>
+                                        <td><label class="" for=""> {{agent.othcontactno}}</label></td>
+                                </tr>
+                                <tr>
+                                        <td><label for="" class="">Other Contact No.</label></td>
+                                        <td><label class="" for=""> {{agent.othrefdetails}}</label></td>
+                                </tr>
+                        </table>
+
+                </div>
+                {{/liquid-if}}
+        </div>
+        <div class="col-md-4">
+                {{#if enableEditAgent }}
+                <button type="button" class="btn btn-default "  {{action "editAgent"}} >
+                        <span class="glyphicon glyphicon-floppy-save"></span>
+                </button>
+                {{else}}
+                <button type="button" class="btn btn-default"  {{action "editAgent"}} >
+                        <span class="glyphicon glyphicon-pencil"></span>
+                </button>
+                {{/if}}
+                <br><br>
+                {{#if agent.name}}
+                <button type="button" class="btn btn-default"  {{action "deleteData"}} >
+                        <span class="glyphicon glyphicon-trash"></span>
+                </button>
+                {{/if}}
+        </div>
+
+</div>
+{{yield}}

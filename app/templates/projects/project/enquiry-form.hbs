@@ -1,0 +1,320 @@
+
+projects/project(slug)/enquiry-form page
+<h3>{{project.name}}</h3>
+
+<form>
+    <div class="col-md-8">
+
+<h1>{{project.customer.name}}</h1>
+
+
+<!-- {{customer-form customer=model.customer on-toggle=(action "onToggle") on-delete=(action "deleteData")}} -->
+
+{{customer.name}}
+
+{{ember-select-guru value=customer  options=customers onSelect=(action "onSelectCustomer") }}
+
+
+<br>
+
+{{ember-select-guru value=agent  options=agents onSelect=(action "onSelectAgent") }}
+<!-- {{agent-form agent=model.agent}} -->
+
+
+
+
+    <div class="form-group">
+      <label for="" class="col-md-4">Enquiry Date</label>
+      <input type="text" class="form-control col-md-8"  placeholder="Enquiry Date">
+    </div>
+    <div class="form-group">
+      <label for="" class="col-md-4">Enquiry No.</label>
+      <input type="text" class="form-control col-md-8"  placeholder="Enquiry No.">
+    </div>
+    <div class="form-group">
+      <label for="" class="col-md-4">Site Location</label>
+      <input type="text" class="form-control col-md-8"  placeholder="Site Location">
+    </div>
+    <div class="form-group">
+      <label for="" class="col-md-4">Email address</label>
+      <input type="text" class="form-control col-md-8"  placeholder="Email Address">
+    </div>
+
+
+    <div class="col-md-12  well well-lg">
+
+      <h3> Work Spots</h3>
+      <div class=" col-md-2">
+        <label for="" >Add Items</label>
+      </div>
+
+      <div class="checkbox col-md-2">
+        <label>
+          <input type="checkbox" >Production
+        </label>
+      </div>
+      <div class="checkbox col-md-2">
+        <label>
+          <input type="checkbox">Sample
+        </label>
+      </div>
+      <div class="checkbox col-md-2">
+        <label>
+          <input type="checkbox">Civil
+        </label>
+      </div>
+      <div class="checkbox col-md-2">
+        <label>
+          <input type="checkbox">Installation
+        </label>
+      </div>
+      <div class="checkbox col-md-2">
+        <label>
+          <input type="checkbox">Maintenance
+        </label>
+      </div>
+      <div class="checkbox col-md-2">
+        <label>
+          <input type="checkbox">Others
+        </label>
+      </div>
+
+<br><br>
+    </div>
+
+
+
+
+
+<div class="col-md-12 well well-sm">
+
+
+    <button class="btn btn-primary " type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      Button with data-target
+    </button>
+<br><br>
+
+
+    <div class="collapse" id="collapseExample">
+
+
+        <div class="checkbox col-md-2">
+          <label>
+            <input type="checkbox">Al. Light box
+          </label>
+        </div>
+        <div class="checkbox col-md-2">
+          <label>
+            <input type="checkbox">3D Fab. letter
+          </label>
+        </div>
+        <div class="checkbox col-md-2">
+          <label>
+            <input type="checkbox">Uni-pole
+          </label>
+        </div>
+
+        <div class="checkbox col-md-2">
+          <label>
+            <input type="checkbox">Identity Sign
+          </label>
+        </div>
+        <div class="checkbox col-md-2">
+          <label>
+            <input type="checkbox">Custom Sign
+          </label>
+        </div>
+        <div class="checkbox col-md-2">
+          <label>
+            <input type="checkbox">Light box
+          </label>
+        </div>
+        <div class="checkbox col-md-2">
+          <label>
+            <input type="checkbox">Marketing Fence
+          </label>
+        </div>
+        <div class="checkbox col-md-2">
+          <label>
+            <input type="checkbox">Suspension Sign
+          </label>
+        </div>
+        <div class="checkbox col-md-2">
+          <label>
+            <input type="checkbox">Exhibit
+          </label>
+        </div>
+        <div class="checkbox col-md-2">
+          <label>
+            <input type="checkbox"> Vinyl Crafting
+          </label>
+        </div>
+        <div class="checkbox col-md-2">
+          <label>
+            <input type="checkbox"> Flex Sign
+          </label>
+        </div>
+        <div class="checkbox col-md-2">
+          <label>
+            <input type="checkbox"> Elect. Maint.
+          </label>
+        </div>
+        <div class="checkbox col-md-2">
+          <label>
+            <input type="checkbox"> Traffic Sign
+          </label>
+        </div>
+        <div class="checkbox col-md-2">
+          <label>
+            <input type="checkbox"> sign Structure
+          </label>
+        </div>
+        <div class="checkbox col-md-2">
+          <label>
+            <input type="checkbox"> CNC/Plotter Work
+          </label>
+        </div>
+        <div class="checkbox col-md-2">
+          <label>
+            <input type="checkbox"> Corporate Sign
+          </label>
+        </div>
+        <div class="checkbox col-md-2">
+          <label>
+            <input type="checkbox"> Pylon
+          </label>
+        </div>
+        <div class="checkbox col-md-2">
+          <label>
+            <input type="checkbox"> Safety sign
+          </label>
+        </div>
+        <div class="checkbox col-md-2">
+          <label>
+            <input type="checkbox"> Totem
+          </label>
+        </div>
+        <div class="checkbox col-md-2">
+          <label>
+            <input type="checkbox"> LED Panel Sign
+          </label>
+        </div>
+        <div class="checkbox col-md-2">
+          <label>
+            <input type="checkbox"> Site Project Sign
+          </label>
+        </div>
+        <div class="checkbox col-md-2">
+          <label>
+            <input type="checkbox"> Display Stand
+          </label>
+        </div>
+        <div class="checkbox col-md-2">
+          <label>
+            <input type="checkbox"> Acrylic Stand
+          </label>
+        </div>
+        <div class="checkbox col-md-2">
+          <label>
+            <input type="checkbox"> ACP Background
+          </label>
+        </div>
+
+        <div class="checkbox col-md-2">
+          <label>
+            <input type="checkbox"> Other (outdoor)
+          </label>
+        </div>
+        <div class="checkbox col-md-2">
+          <label>
+            <input type="checkbox"> Flex Replace
+          </label>
+        </div>
+        <div class="checkbox col-md-2">
+          <label>
+            <input type="checkbox"> Direction Sign
+          </label>
+        </div>
+        <div class="checkbox col-md-2">
+          <label>
+            <input type="checkbox"> Sign Shifting
+          </label>
+        </div>
+        <div class="checkbox col-md-2">
+          <label>
+            <input type="checkbox"> Height Sign
+          </label>
+        </div>
+        <div class="checkbox col-md-2">
+          <label>
+            <input type="checkbox"> Other (indoor)
+          </label>
+        </div>
+
+        <div class="checkbox col-md-2">
+          <label>
+            <input type="checkbox">  3D Cut letter
+          </label>
+        </div>
+        <div class="checkbox col-md-2">
+          <label>
+            <input type="checkbox">  Al. Profile Sign
+          </label>
+        </div>
+        <div class="checkbox col-md-2">
+          <label>
+            <input type="checkbox">  Mopi
+          </label>
+        </div>
+        <div class="checkbox col-md-2">
+          <label>
+            <input type="checkbox">  Push through
+          </label>
+        </div>
+        <div class="checkbox col-md-2">
+          <label>
+            <input type="checkbox">  Clip frame
+          </label>
+        </div>
+        <div class="checkbox col-md-2">
+          <label>
+            <input type="checkbox">  Hoarding Sign
+          </label>
+        </div>
+        <div class="checkbox col-md-2">
+          <label>
+            <input type="checkbox"> ACP Box
+          </label>
+        </div>
+        <div class="checkbox col-md-2">
+          <label>
+            <input type="checkbox"> Promotion Sign
+          </label>
+        </div>
+        <div class="checkbox col-md-2">
+          <label>
+            <input type="checkbox"> Banner Sign
+          </label>
+        </div>
+        <div class="checkbox col-md-2">
+          <label>
+            <input type="checkbox"> Sign Cleaning
+          </label>
+        </div>
+        <div class="checkbox col-md-2">
+          <label>
+            <input type="checkbox"> Category Sign
+          </label>
+        </div>
+        <div class="checkbox col-md-2">
+          <label>
+            <input type="checkbox"> Flag Sign
+          </label>
+        </div>
+
+    </div>
+    </div>
+  </div>
+</form>
+
+{{outlet}}

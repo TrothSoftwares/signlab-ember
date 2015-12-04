@@ -1,0 +1,86 @@
+<div class="col-md-12">
+        
+
+
+
+
+        <div class="col-md-8 ">
+                {{#liquid-if enableEditCustomer class="customer-info"  }}
+                <div class=" col-md-10 well-sm  ">
+                        <table class="table">
+                                <tr>
+                                        <td><label for="" class="">Client Name</label></td>
+                                        <td>{{input type="text" class="form-control "  placeholder="Client Name" value=customer.name}}</td>
+                                </tr>
+
+                                <tr>
+                                        <td><label for="" class="">Client Contact Name</label></td>
+                                        <td>{{input type="text" class="form-control "  placeholder="Client contact name" value=customer.contactname}}</td>
+                                </tr>
+                                <tr>
+                                        <td><label for="" class="">Client Contact No.</label></td>
+                                        <td>{{input type="text" class="form-control "  placeholder="Client contact No" value=customer.contactno}}</td>
+                                </tr>
+                                <tr>
+                                        <td><label for="" class="">Other Contact No.</label></td>
+                                        <td>{{input type="text" class="form-control"  placeholder="Other Contact No" value=customer.othcontactno}}</td>
+                                </tr>
+                                <tr>
+                                        <td><label for="" class="">Other Reference Details</label></td>
+                                        <td>{{input type="text" class="form-control"  placeholder="Other Contact No" value=customer.othrefdetails}}</td>
+                                </tr>
+                        </table>
+                </div>
+                {{else}}
+                <div class=" col-md-10 well-sm">
+                        <table>
+                                <tr>
+
+                                        <td><label for="" class=" ">Client Name</label> </td>
+                                        <td><label for="" class="">{{customer.name}}</label></td>
+                                </tr>
+                                <tr>
+
+                                        <td><label for="" class="">Client Contact Name</label></td>
+                                        <td><label class="" for="">{{customer.contactname}}</label></td>
+                                </tr>
+                                <tr>
+                                        <td><label for="" class="">Client Contact No.</label></td>
+                                        <td><label class="" for="">{{customer.contactno}}</label></td>
+
+                                </tr>
+                                <tr>
+                                        <td><label for="" class="">Other Contact Number</label></td>
+                                        <td><label class="" for=""> {{customer.othcontactno}}</label></td>
+                                </tr>
+                                <tr>
+                                        <td><label for="" class="">Other Contact No.</label></td>
+                                        <td><label class="" for=""> {{customer.othrefdetails}}</label></td>
+                                </tr>
+                        </table>
+
+                </div>
+                {{/liquid-if}}
+        </div>
+        <div class="col-md-4">
+                {{#if enableEditCustomer }}
+                <button type="button" class="btn btn-default "  {{action "editCustomer"}} >
+                        <span class="glyphicon glyphicon-floppy-save"></span>
+                </button>
+                {{else}}
+                <button type="button" class="btn btn-default"  {{action "editCustomer"}} >
+                        <span class="glyphicon glyphicon-pencil"></span>
+                </button>
+                {{/if}}
+                <br><br>
+                {{#if customer.name}}
+                <button type="button" class="btn btn-default"  {{action "deleteData"}} >
+                        <span class="glyphicon glyphicon-trash"></span>
+                </button>
+                {{/if}}
+
+
+        </div>
+
+</div>
+{{yield}}

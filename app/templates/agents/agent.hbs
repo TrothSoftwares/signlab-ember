@@ -1,0 +1,10 @@
+
+<div class="">
+  {{#link-to 'agents.new'}}
+  <button type="button" class="btn btn-success">New Agent </button>
+  {{/link-to}}
+  {{agent-form agent=model on-toggle=(action "onToggle") on-delete=(action "deleteData") }}
+
+
+  {{outlet}}
+</div>
