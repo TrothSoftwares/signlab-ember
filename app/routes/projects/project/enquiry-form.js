@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   model: function() {
-// return this.modelFor('projects.project');
+ // return this.modelFor('projects.project');
 return Ember.RSVP.hash({
      project: this.modelFor('projects.project'),
      customers: this.store.findAll('customer'),
@@ -19,6 +19,45 @@ setupController(controller, models) {
 
    // or, more concisely:
    // controller.setProperties(models);
+ },
+
+ actions: {
+   saveProject:function(){
+
+
+
+    var controller= this.get('controller');
+      // project = controller.get('project');
+       let project = this.store.peekRecord('project', 1);
+      // customer = controller.get('customer');
+      //project.get('customer').pushObject(customer);
+let customer = this.store.peekRecord('customer', 67);
+console.log("--------------------------");
+         project.set('customer', customer );
+         console.log("--------------------------");
+         //project.set('customer',customer);
+        return project.save();
+
+  //    return project.save();
+      // var  projectmodel = this.modelFor('projects.project');
+
+      // let project = this.store.peekRecord('project', 1);
+      // console.log("--------------------------");
+      // project.set('customer', customer);
+      // project.save().then(function(){
+      //   console.log("---------SAVED------------");
+      // });
+
+      //  var newproject = this.store.createRecord({project: project });
+      //  newproject.save().then(function(){
+      //    console.log('---------------------  SAVED --------------------');
+      //   });
+
+
+
+
+
+   }
  }
 
 

@@ -3,13 +3,9 @@
 <div class="col-md-12">
 
 
-{{routeName}}
 
-  <ul>
-    {{#each projects as |project|}}
-    <li>{{project.name}} by {{project.place}} )</li>
-    {{/each}}
-  </ul>
+
+
 
 {{#link-to  'application' }}
 <h2 id="title" class="text-center">Signlab - Home</h2>
@@ -23,8 +19,11 @@
   </ul>
   <!-- Tab panes -->
   <div class="tab-content">
-{{liquid-outlet}}
+{{outlet}}
   </div>
 </div>
 
 </div>
+
+
+ 

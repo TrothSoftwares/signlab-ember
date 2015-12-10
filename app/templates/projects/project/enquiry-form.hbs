@@ -1,44 +1,113 @@
 
+
+<button {{action 'toggleHello'}} id="hello-world" class="btn btn-primary btn-embossed">
+ Hello, World!
+</button>
+
+{{#if showHello}}
+ {{#liquid-tether
+   to="hello-world"
+   target="#hello-world"
+   attachment="middle left"
+   target-attachment="middle right"
+ }}
+   <div id="hello-world-popover" class="popover right">
+     <div class="arrow"></div>
+     <div class="popover-title">
+       Hello!
+     </div>
+   </div>
+ {{/liquid-tether}}
+{{/if}}
+
+
+
 projects/project(slug)/enquiry-form page
-<h3>{{project.name}}</h3>
+<div class="col-md-8"><h3>
+{{input type="text" class="form-control "  placeholder="Project Name" value=project.name}}
+</h3></div>
+
+<div class="col-md-4">
+  <button type="button" class="btn btn-default "  {{action "saveProject"}} >
+    <span class="glyphicon glyphicon-floppy-save"></span>
+  </button>
+</div>
 
 <form>
-    <div class="col-md-8">
+  <div class="col-md-8">
 
-<h1>{{project.customer.name}}</h1>
-
-
-<!-- {{customer-form customer=model.customer on-toggle=(action "onToggle") on-delete=(action "deleteData")}} -->
-
-{{customer.name}}
-
-{{ember-select-guru value=customer  options=customers onSelect=(action "onSelectCustomer") }}
+    <h1>{{project.customer.name}}</h1>
 
 
-<br>
+    <<table class="table">
+      <tr>
+        <td>
+          <label for="" class="">Customer</label>
+        </td>
+        <td>
+          {{ember-select-guru value=customer  options=customers onSelect=(action "onSelectCustomer") }}
 
-{{ember-select-guru value=agent  options=agents onSelect=(action "onSelectAgent") }}
-<!-- {{agent-form agent=model.agent}} -->
+        </td>
+      </tr>
+      <tr>
+
+        <td>
+          <label for="" class="">Agent</label>
+        </td>
+        <td>
+          {{ember-select-guru value=agent  options=agents onSelect=(action "onSelectAgent") }}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="" class="">Enquiry Date</label>
+        </td>
+        <td>
+          <input type="text" class="form-control"  placeholder="Enquiry Date">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="" class="">Enquiry No.</label>
+        </td>
+        <td>
+          <input type="text" class="form-control"  placeholder="Enquiry No.">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="" class="">Site Location</label>
+        </td>
+        <td>
+          <input type="text" class="form-control"  placeholder="Site Location">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="" >Email address</label>
+        </td>
+        <tr>
+          <input type="text" class="form-control"  placeholder="Email Address">
+
+        </tr>
+
+      </tr>
+    </table>
+
+    <!-- {{customer-form customer=model.customer on-toggle=(action "onToggle") on-delete=(action "deleteData")}} -->
 
 
 
 
-    <div class="form-group">
-      <label for="" class="col-md-4">Enquiry Date</label>
-      <input type="text" class="form-control col-md-8"  placeholder="Enquiry Date">
-    </div>
-    <div class="form-group">
-      <label for="" class="col-md-4">Enquiry No.</label>
-      <input type="text" class="form-control col-md-8"  placeholder="Enquiry No.">
-    </div>
-    <div class="form-group">
-      <label for="" class="col-md-4">Site Location</label>
-      <input type="text" class="form-control col-md-8"  placeholder="Site Location">
-    </div>
-    <div class="form-group">
-      <label for="" class="col-md-4">Email address</label>
-      <input type="text" class="form-control col-md-8"  placeholder="Email Address">
-    </div>
+
+
+
+
+    <!-- {{agent-form agent=model.agent}} -->
+
+
+
+
 
 
     <div class="col-md-12  well well-lg">
@@ -79,23 +148,23 @@ projects/project(slug)/enquiry-form page
         </label>
       </div>
 
-<br><br>
+      <br><br>
     </div>
 
 
 
 
 
-<div class="col-md-12 well well-sm">
+    <div class="col-md-12 well well-sm">
 
 
-    <button class="btn btn-primary " type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-      Button with data-target
-    </button>
-<br><br>
+      <button class="btn btn-primary " type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        Button with data-target
+      </button>
+      <br><br>
 
 
-    <div class="collapse" id="collapseExample">
+      <div class="collapse" id="collapseExample">
 
 
         <div class="checkbox col-md-2">
@@ -312,7 +381,7 @@ projects/project(slug)/enquiry-form page
           </label>
         </div>
 
-    </div>
+      </div>
     </div>
   </div>
 </form>

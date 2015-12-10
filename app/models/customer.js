@@ -9,6 +9,4 @@ othcontactno: DS.attr('string'),
 othrefdetails: DS.attr('string'),
 projects: DS.hasMany('project'),
 
-
-
 });

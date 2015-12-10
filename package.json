@@ -37,7 +37,8 @@
     "ember-disable-proxy-controllers": "^1.0.1",
     "ember-export-application-global": "^1.0.4",
     "ember-select-2": "1.3.0",
-    "ember-select-guru": "1.0.1",
-    "liquid-fire": "0.21.3"
+    "ember-select-guru": "1.1.2",
+    "liquid-fire": "0.21.3",
+    "liquid-tether": "0.1.9"
   }
 }

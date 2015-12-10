@@ -6,5 +6,4 @@ export default DS.JSONAPIAdapter.extend({
   shouldReloadRecord(store, snapshot) {
     return false;
   },
-
 });
