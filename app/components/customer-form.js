@@ -8,27 +8,31 @@ export default Ember.Component.extend({
 
     editCustomer :function(){
 // FIXME : Data is saving even when the name field is empty.. (Should be fixed at the agent-form too.)
-      if(this.get('customer.name') !== ''){
+      //if(this.get('customer.name') !== ''){
+
       this.toggleProperty('enableEditCustomer');
       if(this.get('type') === 'ind'){
         this.get('on-create')({
-          name :this.get('customer.name'),
-          contactname :this.get('customer.contactname'),
-          contactno :this.get('customer.contactno'),
-          othcontactno :this.get('customer.othcontactno'),
-          othrefdetails:this.get('customer.othrefdetails'),
+          name :this.get('name'),
+          contactname :this.get('contactname'),
+          contactno :this.get('contactno'),
+          othcontactno :this.get('othcontactno'),
+          othrefdetails:this.get('othrefdetails'),
+
         });
-        this.set('customer.name','');
-        this.set('customer.contactname','');
-        this.set('customer.contactno','');
-        this.set('customer.othcontactno','');
-        this.set('customer.othrefdetails','');
+
+        // this.set('customer.name','');
+        // this.set('customer.contactname','');
+        // this.set('customer.contactno','');
+        // this.set('customer.othcontactno','');
+        // this.set('customer.othrefdetails','');
+        
       }
 
       else{
         this.get('on-toggle')({});
       }
-    }
+  //  }
 
     },
 
