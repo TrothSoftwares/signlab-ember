@@ -2,18 +2,19 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 
-isShowingModal: false,
 
+showLongMessage: false,
 
 
   actions: {
-    toggleModal: function() {
-        this.toggleProperty('isShowingModal');
+    showLongMessagecall: function() {
+
+        this.toggleProperty('showLongMessage');
       },
 
       createCustomer: function(params) {
-        //      var controller = this.get('controller');
-      //  var controller = this;
+      //        var controller = this.get('controller');
+        var self = this;
         var customer = this.store.createRecord('customer', {
           name: params.name,
           contactname: params.contactname,
@@ -24,7 +25,17 @@ isShowingModal: false,
           // FIXME: fix project_id relationship ; 500 error comming in rails after save
         });
         customer.save().then(function(){
-        //  controller.transitionToRoute('customers.customer' , customer);
+
+          //controller.toggleProperty('showLongMessage');
+          self.send('onSelectCustomer',customer);
+          self.set('showLongMessage' ,false);
+          self.notifications.addNotification({
+            message: 'Customer Create successfully!' ,
+            type: 'success',
+            autoClear: true
+          });
+
+
         });
       },
 
@@ -43,7 +54,9 @@ isShowingModal: false,
     },
     onSelectCustomer(customer) {
       this.set('customer', customer);
+
     },
+
     onSelectAgent(agent) {
       this.set('agent', agent);
     },

@@ -29,24 +29,28 @@ projects/project(slug)/enquiry-form page
         <td>
           <div class="col-md-12">
 
-            <div class="col-md-8">
+            <div class="col-md-10">
           {{ember-select-guru value=customer  options=customers onSelect=(action "onSelectCustomer") }}
+
           </div>
-          <div class="col-md-4">
-          <button type="button" class="btn btn-default"  {{action "toggleModal"}} >
-                  <span class="glyphicon glyphicon-plus"></span>
+          <div class="col-md-2">
+          <button type="button" class="btn btn-default"  {{action "showLongMessagecall"}} >
+                  <span class="glyphicon {{if showLongMessage "glyphicon-minus" "glyphicon-plus"}} "></span>
           </button>
           </div>
           <div id="liquid-spacer-demo">
-  <label>{{input type="checkbox" checked=showLongMessage}} Show Long Message</label>
-  {{#liquid-spacer growDuration=250}}
-    {{#if showLongMessage}}
-      {{customer-form  type='ind' customer=model on-create=(action "createCustomer")}}
-    {{else}}
-      wwwww
-    {{/if}}
-  {{/liquid-spacer}}
-</div>
+             <div class="col-md-12">
+               {{#liquid-spacer growDuration=250}}
+               {{#if showLongMessage}}
+               {{customer-form  type='ind' customer=model on-create=(action "createCustomer")}}
+               
+
+               {{/if}}
+
+
+            {{/liquid-spacer}}
+            </div>
+          </div>
         </div>
 
 

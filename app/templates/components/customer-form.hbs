@@ -4,7 +4,7 @@
 
 
 
-        <div class="col-md-8 ">
+        <div class="col-md-10 ">
                 {{#liquid-if enableEditCustomer class="customer-info"  }}
                 <div class=" col-md-10 well-sm  ">
                         <table class="table">
@@ -36,12 +36,10 @@
                 <div class=" col-md-10 well-sm">
                         <table>
                                 <tr>
-
                                         <td><label for="" class=" ">Client Name</label> </td>
                                         <td><label for="" class="">{{name}}</label></td>
                                 </tr>
                                 <tr>
-
                                         <td><label for="" class="">Client Contact Name</label></td>
                                         <td><label class="" for="">{{contactname}}</label></td>
                                 </tr>
@@ -63,7 +61,7 @@
                 </div>
                 {{/liquid-if}}
         </div>
-        <div class="col-md-4">
+        <div class="col-md-2">
                 {{#if enableEditCustomer }}
                 <button type="button" class="btn btn-default "  {{action "editCustomer"}} >
                         <span class="glyphicon glyphicon-floppy-save"></span>

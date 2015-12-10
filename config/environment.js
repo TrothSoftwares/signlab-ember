@@ -18,6 +18,9 @@ module.exports = function(environment) {
 
 
 	},
+  'ember-cli-notifications': {
+    icons: 'bootstrap'
+  },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
