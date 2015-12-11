@@ -33,12 +33,13 @@ setupController(controller, models) {
        let project = this.store.peekRecord('project', 1);
       // customer = controller.get('customer');
       //project.get('customer').pushObject(customer);
-var customer = this.store.peekRecord('customer', 2);
-var agent = this.store.peekRecord('agent', 1);
+var customer = this.store.peekRecord('customer', 1);
+var agent = this.store.peekRecord('agent', 2);
       //var newproject = this.store.createRecord('project' , { name: 'Sasi project', customer: customer , agent:agent});
 
 console.log("--------------------------");
          project.set('customer', customer );
+         project.set('agent', agent );
          console.log("--------------------------");
          //project.set('customer',customer);
         // newproject.save();

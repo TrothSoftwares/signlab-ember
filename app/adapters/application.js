@@ -1,7 +1,7 @@
 import DS from 'ember-data';
 
 export default DS.JSONAPIAdapter.extend({
-  host: 'http://localhost:3001',
+  host: 'http://localhost:3000',
 
   shouldReloadRecord(store, snapshot) {
     return false;
@@ -11,10 +11,10 @@ export default DS.JSONAPIAdapter.extend({
     }
 });
 
-
-export default DS.JSONAPIAdapter.extend({
-  host: 'http://localhost:3001',
-});
+//
+// export default DS.JSONAPIAdapter.extend({
+//   host: 'http://localhost:3001',
+// });
 
 
 // import { ActiveModelSerializer } from 'active-model-adapter';

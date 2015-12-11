@@ -14,22 +14,26 @@ showLongMessage: false,
 
       createCustomer: function(params) {
       //        var controller = this.get('controller');
+
+      console.log('77777777777')
+
         var self = this;
+        var project = this.store.peekRecord('project', 1);
         var customer = this.store.createRecord('customer', {
           name: params.name,
           contactname: params.contactname,
           contactno: params.contactno,
           othcontactno: params.othcontactno,
           othrefdetails: params.othrefdetails,
-          project_id: 1,
           // FIXME: fix project_id relationship ; 500 error comming in rails after save
         });
+        console.log('8888888888888888888')
         customer.save().then(function(){
 
           //controller.toggleProperty('showLongMessage');
 
           //self.get('customers').pushObject(customer);
-        
+
 
           self.send('onSelectCustomer',customer);
 
