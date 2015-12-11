@@ -43,11 +43,7 @@ projects/project(slug)/enquiry-form page
                {{#liquid-spacer growDuration=250}}
                {{#if showLongMessage}}
                {{customer-form  type='ind' customer=model on-create=(action "createCustomer")}}
-               
-
                {{/if}}
-
-
             {{/liquid-spacer}}
             </div>
           </div>
@@ -71,7 +67,15 @@ projects/project(slug)/enquiry-form page
           <label for="" class="">Enquiry Date</label>
         </td>
         <td>
-          <input type="text" class="form-control"  placeholder="Enquiry Date">
+          <input type="text" class="form-control"  placeholder="Enquiry Date" value="{{project.enquiry}}">
+          <ul>
+
+ Length: {{project.enquiries.length}}
+  {{#each project.enquiries in enquirys}}
+  aaaaa
+    <li>Hello, {{enquirys.id}}!</li>
+  {{/each}}
+</ul>
         </td>
       </tr>
       <tr>

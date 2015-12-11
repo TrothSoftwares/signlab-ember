@@ -27,8 +27,14 @@ showLongMessage: false,
         customer.save().then(function(){
 
           //controller.toggleProperty('showLongMessage');
+
+          //self.get('customers').pushObject(customer);
+        
+
           self.send('onSelectCustomer',customer);
+
           self.set('showLongMessage' ,false);
+
           self.notifications.addNotification({
             message: 'Customer Create successfully!' ,
             type: 'success',
