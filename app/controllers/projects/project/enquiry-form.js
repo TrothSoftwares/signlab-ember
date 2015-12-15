@@ -4,9 +4,33 @@ export default Ember.Controller.extend({
 
 
 showLongMessage: false,
-
+stepOne: true,
+stepTwo: false,
+stepThree: false,
 
   actions: {
+
+
+    toStepTwo: function() {
+   this.set('stepOne', false);
+   this.set('stepTwo', true);
+ },
+
+    toStepThree: function() {
+   this.set('stepTwo', false);
+   this.set('stepThree', true);
+ },
+
+ toStepOne: function(){
+   this.set('stepThree', false);
+   this.set('stepOne', true);
+ },
+
+
+
+
+
+
     showLongMessagecall: function() {
 
         this.toggleProperty('showLongMessage');
@@ -15,7 +39,7 @@ showLongMessage: false,
       createCustomer: function(params) {
       //        var controller = this.get('controller');
 
-      console.log('77777777777')
+
 
         var self = this;
         var project = this.store.peekRecord('project', 1);
@@ -27,7 +51,7 @@ showLongMessage: false,
           othrefdetails: params.othrefdetails,
           // FIXME: fix project_id relationship ; 500 error comming in rails after save
         });
-        console.log('8888888888888888888')
+
         customer.save().then(function(){
 
           //controller.toggleProperty('showLongMessage');
@@ -63,12 +87,12 @@ showLongMessage: false,
       controller.transitionToRoute('customers.new');
     },
     onSelectCustomer(customer) {
-      this.set('customer', customer);
+      this.set('project.customer', customer);
 
     },
 
     onSelectAgent(agent) {
-      this.set('agent', agent);
+      this.set('project.agent', agent);
     },
 
 

@@ -1,9 +1,4 @@
 
-
-
-
-
-
 projects/project(slug)/enquiry-form page
 <div class="col-md-8"><h3>
 {{input type="text" class="form-control "  placeholder="Project Name" value=project.name}}
@@ -30,7 +25,7 @@ projects/project(slug)/enquiry-form page
           <div class="col-md-12">
 
             <div class="col-md-10">
-          {{ember-select-guru value=customer  options=customers onSelect=(action "onSelectCustomer") }}
+          {{ember-select-guru value=project.customer  options=customers onSelect=(action "onSelectCustomer") }}
 
           </div>
           <div class="col-md-2">
@@ -59,7 +54,7 @@ projects/project(slug)/enquiry-form page
           <label for="" class="">Agent</label>
         </td>
         <td>
-          {{ember-select-guru value=agent  options=agents onSelect=(action "onSelectAgent") }}
+          {{ember-select-guru value=project.agent  options=agents onSelect=(action "onSelectAgent") }}
         </td>
       </tr>
       <tr>
@@ -67,15 +62,11 @@ projects/project(slug)/enquiry-form page
           <label for="" class="">Enquiry Date</label>
         </td>
         <td>
-          <input type="text" class="form-control"  placeholder="Enquiry Date" value="{{project.enquiry}}">
-          <ul>
+          <!-- {{input type="text" class="form-control"  placeholder="Enquiry Date" value=currentEnquiry.date}} -->
+            {{bootstrap-datepicker value=project.enquiries.lastObject.date class="form-control" autoclose=true placeholder="Enquiry Date" format="dd MM, yyyy"}}
 
- Length: {{project.enquiries.length}}
-  {{#each project.enquiries in enquirys}}
-  aaaaa
-    <li>Hello, {{enquirys.id}}!</li>
-  {{/each}}
-</ul>
+
+
         </td>
       </tr>
       <tr>
@@ -83,27 +74,20 @@ projects/project(slug)/enquiry-form page
           <label for="" class="">Enquiry No.</label>
         </td>
         <td>
-          <input type="text" class="form-control"  placeholder="Enquiry No.">
+
+          {{input type="text" class="form-control"  placeholder="Enquiry No." value=project.enquiries.lastObject.no}}
         </td>
       </tr>
-      <tr>
+      <!-- <tr>
         <td>
           <label for="" class="">Site Location</label>
         </td>
         <td>
-          <input type="text" class="form-control"  placeholder="Site Location">
+      //FIXME :    Site location variable not showing value
+          {{input type="text" class="form-control"  placeholder="Site Location" value=project.location}}
         </td>
-      </tr>
-      <tr>
-        <td>
-          <label for="" >Email address</label>
-        </td>
-        <tr>
-          <input type="text" class="form-control"  placeholder="Email Address">
+      </tr> -->
 
-        </tr>
-
-      </tr>
     </table>
 
     <!-- {{customer-form customer=model.customer on-toggle=(action "onToggle") on-delete=(action "deleteData")}} -->
@@ -120,7 +104,8 @@ projects/project(slug)/enquiry-form page
 
 
 
-
+{{#if stepOne}}
+<button class="btn btn-primary" {{action "toStepTwo"}}>Next</button>
 
     <div class="col-md-12  well well-lg">
 
@@ -163,20 +148,20 @@ projects/project(slug)/enquiry-form page
       <br><br>
     </div>
 
+    {{/if}}
 
 
 
+{{#if stepTwo}}
+<button class="btn btn-primary" {{action "toStepThree"}}>Next</button>
 
     <div class="col-md-12 well well-sm">
 
 
-      <button class="btn btn-primary " type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-        Button with data-target
-      </button>
+
       <br><br>
 
 
-      <div class="collapse" id="collapseExample">
 
 
         <div class="checkbox col-md-2">
@@ -393,8 +378,15 @@ projects/project(slug)/enquiry-form page
           </label>
         </div>
 
-      </div>
+
     </div>
+{{/if}}
+{{#if stepThree}}
+<button class="btn btn-primary" {{action "toStepOne"}}>Go to first</button>
+Step Three
+{{/if}}
+
+
   </div>
 </form>
 

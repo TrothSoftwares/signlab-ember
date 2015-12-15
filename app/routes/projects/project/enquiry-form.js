@@ -3,13 +3,15 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   model: function() {
- // return this.modelFor('projects.project');
+
+// return this.store.findAll('customer');
 return Ember.RSVP.hash({
-     project: this.modelFor('projects.project'),
-     customers: this.store.findAll('customer'),
-     agents: this.store.findAll('agent'),
-
-
+      project: this.modelFor('projects.project'),
+      customers: this.store.findAll('customer'),
+      agents: this.store.findAll('agent'),
+      enquiries: this.store.findAll('enquiry'),
+      itemtypes: this.store.findAll('itemtype'),
+      jobtypes: this.store.findAll('jobtype')
    });
 },
 
@@ -18,49 +20,59 @@ setupController(controller, models) {
    controller.set('project', models.project);
    controller.set('customers', models.customers);
    controller.set('agents', models.agents);
+   controller.set('enquiries', models.enquiries);
+   controller.set('itemtypes', models.itemtypes);
+   controller.set('jobtypes', models.jobtypes);
+   var enqs = models.project.get('enquiries');
+   var count = enqs.get('length');
+   var currentEnquiry = enqs.objectAt(count-1);
+   controller.set('currentEnquiry',currentEnquiry);
 
-   // or, more concisely:
-   // controller.setProperties(models);
+
+
+
+
+
  },
 
  actions: {
    saveProject:function(){
 
-
+     var self = this;
 
     var controller= this.get('controller');
-      // project = controller.get('project');
-       let project = this.store.peekRecord('project', 1);
-      // customer = controller.get('customer');
-      //project.get('customer').pushObject(customer);
-var customer = this.store.peekRecord('customer', 1);
-var agent = this.store.peekRecord('agent', 2);
+      var  project = controller.get('project');
+      var customer = controller.get('project.customer');
+      var agent = controller.get('project.agent');
+      var currentEnquiry = project.get('enquiries');
+       currentEnquiry.forEach(function(curenq){
+         curenq.save();
+       });
       //var newproject = this.store.createRecord('project' , { name: 'Sasi project', customer: customer , agent:agent});
+      //project.set('enquiry',)
 
-console.log("--------------------------");
-         project.set('customer', customer );
-         project.set('agent', agent );
-         console.log("--------------------------");
-         //project.set('customer',customer);
-        // newproject.save();
+      project.set('customer', customer );
+      project.set('agent', agent );
+      var itemtype = this.store.peekRecord('itemtype', 1);
+      var jobtype = this.store.peekRecord('jobtype', 1);
+      var newitem = this.store.createRecord('item' ,
+      // { dimensions: 'test dimensions', description: 'test description', itemtype: itemtype , jobtype: jobtype });
 
-      return project.save();
-      // var  projectmodel = this.modelFor('projects.project');
+      { dimensions: 'test dimensions', description: 'test description' , project:  project , itemtype: itemtype , jobtype:jobtype});
 
-      // let project = this.store.peekRecord('project', 1);
-      // console.log("--------------------------");
-      // project.set('customer', customer);
-      // project.save().then(function(){
-      //   console.log("---------SAVED------------");
-      // });
-
-      //  var newproject = this.store.createRecord({project: project });
-      //  newproject.save().then(function(){
-      //    console.log('---------------------  SAVED --------------------');
-      //   });
+      newitem.save();
 
 
 
+
+      return project.save().then(function(){
+        self.notifications.addNotification({
+          message: 'Project Saved!' ,
+          type: 'success',
+          autoClear: true
+        });
+
+      });
 
 
    }
