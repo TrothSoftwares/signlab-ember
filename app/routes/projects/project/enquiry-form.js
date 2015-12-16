@@ -29,10 +29,6 @@ setupController(controller, models) {
    controller.set('currentEnquiry',currentEnquiry);
 
 
-
-
-
-
  },
 
  actions: {
@@ -54,11 +50,10 @@ setupController(controller, models) {
       project.set('customer', customer );
       project.set('agent', agent );
       var itemtype = this.store.peekRecord('itemtype', 1);
-      var jobtype = this.store.peekRecord('jobtype', 1);
+      var jobtypes = this.store.findAll('jobtype');
       var newitem = this.store.createRecord('item' ,
+      { dimensions: 'test dimensions', description: 'test description' , project:  project , itemtype: itemtype , jobtypes:jobtypes});
       // { dimensions: 'test dimensions', description: 'test description', itemtype: itemtype , jobtype: jobtype });
-
-      { dimensions: 'test dimensions', description: 'test description' , project:  project , itemtype: itemtype , jobtype:jobtype});
 
       newitem.save();
 

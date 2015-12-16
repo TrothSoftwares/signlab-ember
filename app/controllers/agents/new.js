@@ -7,7 +7,7 @@ export default Ember.Controller.extend({
 
     createAgent: function(params) {
 
-      
+
       var controller = this;
       var agent = this.store.createRecord('agent', {
         name: params.name,
@@ -24,5 +24,8 @@ export default Ember.Controller.extend({
         controller.transitionToRoute('agents.agent' , agent);
       });
     },
+    toggleHello() {
+     this.toggleProperty('showHello');
+   }
   }
 });
