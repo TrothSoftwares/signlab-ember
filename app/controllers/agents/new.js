@@ -24,8 +24,6 @@ export default Ember.Controller.extend({
         controller.transitionToRoute('agents.agent' , agent);
       });
     },
-    toggleHello() {
-     this.toggleProperty('showHello');
-   }
+    
   }
 });
