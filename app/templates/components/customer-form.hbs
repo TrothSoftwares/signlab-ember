@@ -1,79 +1,70 @@
-<div class="col-md-12">
+<div class="container-fluid">
+  <div class="row row-margin">
+    <div class="col-md-11">
+        {{#liquid-if enableEditCustomer class="customer-info"  }}
+
+                  <div class="row row-margin">
+
+                          <div class="col-md-4 col-xs-12"><label for="" class="labels">Client Name</label></div>
+                          <div class="col-md-8 col-xs-12">{{input type="text" class="form-control "  placeholder="Client Name" value=name}}</div>
+                  </div>
+
+                  <div class="row row-margin">
+                          <div class="col-md-4 col-xs-12"><label for="" class="labels">Client Contact Name</label></div>
+                          <div class="col-md-8 col-xs-12">{{input type="text" class="form-control "  placeholder="Client contact name" value=contactname}}</div>
+                  </div>
+                  <div class="row row-margin">
+                          <div class="col-md-4 col-xs-12"><label for="" class="labels">Client Contact No.</label></div>
+                          <div class="col-md-8 col-xs-12">{{input type="text" class="form-control "  placeholder="Client contact No" value=contactno}}</div>
+                  </div>
+                  <div class="row row-margin">
+                          <div class="col-md-4 col-xs-12"><label for="" class="labels">Other Contact No.</label></div>
+                          <div class="col-md-8 col-xs-12">{{input type="text" class="form-control"  placeholder="Other Contact No" value=othcontactno}}</div>
+                  </div>
+                  <div class="row row-margin">
+                          <div class="col-md-4 col-xs-12"><label for="" class="labels">Other Reference Details</label></div>
+                          <div class="col-md-8 col-xs-12">{{input type="text" class="form-control"  placeholder="Other Contact No" value=othrefdetails}}</div>
+                  </div>
+
+  {{else}}
+
+                  <div class="row row-margin">
+                          <div class="col-md-4 col-xs-12"><label for="" class=" ">Client Name</label> </div>
+                          <div class="col-md-8 col-xs-12"><label for="" class="labels">{{name}}</label></div>
+                  </div>
+                  <div class="row row-margin">
+                          <div class="col-md-4 col-xs-12"><label for="" class="labels">Client Contact Name</label></div>
+                          <div class="col-md-8 col-xs-12"><label class="" for="">{{contactname}}</label></div>
+                  </div>
+                  <div class="row row-margin">
+                          <div class="col-md-4 col-xs-12"><label for="" class="labels">Client Contact No.</label></div>
+                          <div class="col-md-8 col-xs-12"><label class="" for="">{{contactno}}</label></div>
+
+                  </div>
+                  <div class="row row-margin">
+                          <div class="col-md-4 col-xs-12"><label for="" class="labels">Other Contact Number</label></div>
+                          <div class="col-md-8 col-xs-12"><label class="" for=""> {{othcontactno}}</label></div>
+                  </div>
+                  <div class="row row-margin">
+                          <div class="col-md-4 col-xs-12"><label for="" class="labels">Other Contact No.</label></div>
+                          <div class="col-md-8 col-xs-12"><label class="" for=""> {{othrefdetails}}</label></div>
+                  </div>
 
 
-
-
-
-        <div class="col-md-10 ">
-                {{#liquid-if enableEditCustomer class="customer-info"  }}
-                <div class=" col-md-10 well-sm  ">
-                        <table class="table">
-                                <tr>
-
-                                        <td><label for="" class="">Client Name</label></td>
-                                        <td>{{input type="text" class="form-control "  placeholder="Client Name" value=name}}</td>
-                                </tr>
-
-                                <tr>
-                                        <td><label for="" class="">Client Contact Name</label></td>
-                                        <td>{{input type="text" class="form-control "  placeholder="Client contact name" value=contactname}}</td>
-                                </tr>
-                                <tr>
-                                        <td><label for="" class="">Client Contact No.</label></td>
-                                        <td>{{input type="text" class="form-control "  placeholder="Client contact No" value=contactno}}</td>
-                                </tr>
-                                <tr>
-                                        <td><label for="" class="">Other Contact No.</label></td>
-                                        <td>{{input type="text" class="form-control"  placeholder="Other Contact No" value=othcontactno}}</td>
-                                </tr>
-                                <tr>
-                                        <td><label for="" class="">Other Reference Details</label></td>
-                                        <td>{{input type="text" class="form-control"  placeholder="Other Contact No" value=othrefdetails}}</td>
-                                </tr>
-                        </table>
-                </div>
-                {{else}}
-                <div class=" col-md-10 well-sm">
-                        <table>
-                                <tr>
-                                        <td><label for="" class=" ">Client Name</label> </td>
-                                        <td><label for="" class="">{{name}}</label></td>
-                                </tr>
-                                <tr>
-                                        <td><label for="" class="">Client Contact Name</label></td>
-                                        <td><label class="" for="">{{contactname}}</label></td>
-                                </tr>
-                                <tr>
-                                        <td><label for="" class="">Client Contact No.</label></td>
-                                        <td><label class="" for="">{{contactno}}</label></td>
-
-                                </tr>
-                                <tr>
-                                        <td><label for="" class="">Other Contact Number</label></td>
-                                        <td><label class="" for=""> {{othcontactno}}</label></td>
-                                </tr>
-                                <tr>
-                                        <td><label for="" class="">Other Contact No.</label></td>
-                                        <td><label class="" for=""> {{othrefdetails}}</label></td>
-                                </tr>
-                        </table>
-
-                </div>
                 {{/liquid-if}}
         </div>
-        <div class="col-md-2">
+        <div class="col-md-1 "style="padding-top:10px">
                 {{#if enableEditCustomer }}
-                <button type="button" class="btn btn-default "  {{action "editCustomer"}} >
-                        <span class="glyphicon glyphicon-floppy-save"></span>
+                <button type="button" class="btn btn-default pull-right"  {{action "editCustomer"}} >
+                        <span class="glyphicon glyphicon-floppy-save "></span>
                 </button>
                 {{else}}
-                <button type="button" class="btn btn-default"  {{action "editCustomer"}} >
+                <button type="button" class="btn btn-default pull-right"  {{action "editCustomer"}} >
                         <span class="glyphicon glyphicon-pencil"></span>
                 </button>
-                {{/if}}
+
                 <br><br>
-                {{#if customer.name}}
-                <button type="button" class="btn btn-default"  {{action "deleteData"}} >
+                <button type="button" class="btn btn-default pull-right"  {{action "deleteData"}} >
                         <span class="glyphicon glyphicon-trash"></span>
                 </button>
                 {{/if}}
@@ -81,5 +72,6 @@
 
         </div>
 
+</div>
 </div>
 {{yield}}

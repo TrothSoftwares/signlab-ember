@@ -3,7 +3,9 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
 
 
-showLongMessage: false,
+showCustomerComponent: false,
+showAgentComponent: false,
+
 stepOne: true,
 stepTwo: false,
 stepThree: false,
@@ -31,11 +33,14 @@ stepThree: false,
 
 
 
-    showLongMessagecall: function() {
+    openCustomerComponent: function() {
 
-        this.toggleProperty('showLongMessage');
+        this.toggleProperty('showCustomerComponent');
       },
+    openAgentComponent: function() {
 
+        this.toggleProperty('showAgentComponent');
+      },
       createCustomer: function(params) {
       //        var controller = this.get('controller');
 
@@ -61,10 +66,10 @@ stepThree: false,
 
           self.send('onSelectCustomer',customer);
 
-          self.set('showLongMessage' ,false);
+          self.set('showCustomerComponent' ,false);
 
           self.notifications.addNotification({
-            message: 'Customer Create successfully!' ,
+            message: 'Customer Created successfully!' ,
             type: 'success',
             autoClear: true
           });
@@ -72,7 +77,32 @@ stepThree: false,
 
         });
       },
+      createAgent: function(params) {
+      //        var controller = this.get('controller');
 
+
+
+        var self = this;
+        var project = this.store.peekRecord('project', 1);
+        var agent = this.store.createRecord('agent', {
+          name: params.name,
+          contactname: params.contactname,
+          contactno: params.contactno,
+          othcontactno: params.othcontactno,
+          othrefdetails: params.othrefdetails,
+          // FIXME: fix project_id relationship ; 500 error comming in rails after save
+        });
+
+        agent.save().then(function(){
+          self.send('onSelectAgent',agent);
+          self.set('showAgentComponent' ,false);
+          self.notifications.addNotification({
+            message: 'Agent Created successfully!' ,
+            type: 'success',
+            autoClear: true
+          });
+        });
+      },
 
     onToggle:function(){
       //var model = this.get('model');

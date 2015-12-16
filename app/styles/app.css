@@ -45,3 +45,12 @@ td {
     padding-top: .5em !important;
     padding-bottom: .5em !important;
 }
+.row-margin
+{
+  margin-top: 10px;
+}
+
+.labels
+{
+  margin-top: 10px;
+}

@@ -26,7 +26,7 @@ export default Ember.Component.extend({
         // this.set('customer.contactno','');
         // this.set('customer.othcontactno','');
         // this.set('customer.othrefdetails','');
-        
+
       }
 
       else{
