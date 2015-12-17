@@ -64,9 +64,6 @@ projects/project(slug)/enquiry-form page
         <td>
           <!-- {{input type="text" class="form-control"  placeholder="Enquiry Date" value=currentEnquiry.date}} -->
             {{bootstrap-datepicker value=project.enquiries.lastObject.date class="form-control" autoclose=true placeholder="Enquiry Date" format="dd MM, yyyy"}}
-
-
-
         </td>
       </tr>
       <tr>
@@ -89,21 +86,8 @@ projects/project(slug)/enquiry-form page
       </tr> -->
 
     </table>
-
     <!-- {{customer-form customer=model.customer on-toggle=(action "onToggle") on-delete=(action "deleteData")}} -->
-
-
-
-
-
-
-
-
     <!-- {{agent-form agent=model.agent}} -->
-
-
-
-
 {{#if stepOne}}
 <button class="btn btn-primary" {{action "toStepTwo"}}>Next</button>
 

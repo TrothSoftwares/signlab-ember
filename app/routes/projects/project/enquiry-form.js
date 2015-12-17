@@ -11,7 +11,9 @@ return Ember.RSVP.hash({
       agents: this.store.findAll('agent'),
       enquiries: this.store.findAll('enquiry'),
       itemtypes: this.store.findAll('itemtype'),
-      jobtypes: this.store.findAll('jobtype')
+      jobtypes: this.store.findAll('jobtype'),
+      items: this.store.findAll('item')
+
    });
 },
 
@@ -50,12 +52,39 @@ setupController(controller, models) {
       project.set('customer', customer );
       project.set('agent', agent );
       var itemtype = this.store.peekRecord('itemtype', 1);
-      var jobtypes = this.store.findAll('jobtype');
-      var newitem = this.store.createRecord('item' ,
-      { dimensions: 'test dimensions', description: 'test description' , project:  project , itemtype: itemtype , jobtypes:jobtypes});
-      // { dimensions: 'test dimensions', description: 'test description', itemtype: itemtype , jobtype: jobtype });
 
+
+
+
+
+
+      var jobtypes = this.store.peekAll('jobtype');
+      console.log('!!!!!!!!!!!!!!!!!!!!11');
+      // console.log(JSON.stringify(jobtypesq));
+      // console.log(jobtypesq);
+      console.log('!!!!!!!!!!!!!!!!!!!!11');
+      var newitem = this.store.createRecord('item' ,
+      { dimensions: 'test dimensions', description: 'test description' , project:  project , itemtype: itemtype , jobtypes: jobtypes  });
+
+
+// console.log('++++++' + newitem.get('jobtypes').resolve());
+
+// newitem.get('jobtypes').then(function(jobtys){
+//   jobtys.pushObject(jobtypes);
+// });
+
+
+
+
+      //  newitem.get('jobtypes').pushObject(jobtypes);
       newitem.save();
+
+
+
+      // let item = this.store.peekRecord('item', 1);
+      // let jobtype = this.store.peekRecord('jobtype', 1);
+      // item.get('jobtypes').pushObject(jobtype);
+      // item.save();
 
 
 

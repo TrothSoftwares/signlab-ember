@@ -8,11 +8,6 @@ export default DS.JSONAPISerializer.extend({
       attr = result.data.attributes,
       rel = result.data.relationships;
 
-
-
-
-
-
       if(rel){
     return Object.keys(rel).reduce(function(acc, elem) {
 
@@ -38,6 +33,31 @@ return (rel,attr);
 
  }
 
+
+// serialize: function(record, options) {
+//     var json = {};
+//
+//     record.eachAttribute(function(name) {
+//       json[serverAttributeName(name)] = record.get(name);
+//     })
+//
+//     record.eachRelationship(function(name, relationship) {
+//       if (relationship.kind === 'hasMany' && name == ”jobtypes”) {
+//         json[serverHasManyName(name)] = record.get(name).mapBy('id'}
+//     });
+//
+//     return json;
+//   }
+// });
+//
+// function serverAttributeName(attribute) {
+//   return attribute.underscore().toUpperCase();
+// }
+//
+// function serverHasManyName(name) {
+//   return serverAttributeName(name.singularize()) + "_ids";
+// }
+//
 });
 
 
