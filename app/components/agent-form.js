@@ -8,19 +8,19 @@ export default Ember.Component.extend({
       this.toggleProperty('enableEditAgent');
       if(this.get('type') === 'ind'){
         // FIXME : Data is saving even when the name field is empty.. (Should be fixed at the agent-form too.)
-        if(this.get('agent.name') !== ''){
+        if(this.get('name') !== ''){
           this.get('on-create')({
-            name :this.get('agent.name'),
-            contactname :this.get('agent.contactname'),
-            contactno :this.get('agent.contactno'),
-            othcontactno :this.get('agent.othcontactno'),
-            othrefdetails:this.get('agent.othrefdetails'),
+            name :this.get('name'),
+            contactname :this.get('contactname'),
+            contactno :this.get('contactno'),
+            othcontactno :this.get('othcontactno'),
+            othrefdetails:this.get('othrefdetails'),
           });
-          this.set('agent.name','');
-          this.set('agent.contactname','');
-          this.set('agent.contactno','');
-          this.set('agent.othcontactno','');
-          this.set('agent.othrefdetails','');
+          this.set('name','');
+          this.set('contactname','');
+          this.set('contactno','');
+          this.set('othcontactno','');
+          this.set('othrefdetails','');
         }
       }
       else{
