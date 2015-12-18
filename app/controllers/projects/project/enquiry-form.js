@@ -125,6 +125,10 @@ stepThree: false,
       this.set('project.agent', agent);
     },
 
+    onSelectItemtypes(itemType){
+      this.set('project.itemtype', itemType);
+    }
+
 
   },
 

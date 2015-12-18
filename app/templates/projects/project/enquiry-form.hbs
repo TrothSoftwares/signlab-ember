@@ -1,473 +1,86 @@
-
 projects/project(slug)/enquiry-form page
 <div class="col-md-8"><h3>
-{{input type="text" class="form-control "  placeholder="Project Name" value=project.name}}
+  {{input type="text" class="form-control "  placeholder="Project Name" value=project.name}}
 </h3></div>
-
 <div class="col-md-4">
   <button type="button" class="btn btn-default "  {{action "saveProject"}} >
     <span class="glyphicon glyphicon-floppy-save"></span>
   </button>
 </div>
-
 <form>
   <div class="col-md-8">
-
     <h1>{{project.customer.name}}</h1>
-
-        <div class="row row-margin">
+    <div class="row row-margin">
+      <div class="col-md-2">
+        <label for="" class="labels">Customer</label>
+      </div>
+      <div class="col-md-9">
+        {{ember-select-guru value=project.customer  options=customers onSelect=(action "onSelectCustomer") }}
+      </div>
+      <div class="col-md-1">
+        <button type="button" class="btn btn-default pull-right"  {{action "openCustomerComponent"}} >
+          <span class="glyphicon {{if showCustomerComponent "glyphicon-minus" "glyphicon-plus"}} "></span>
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div id="liquid-spacer-demo">
+        <div class="col-md-10 pull-right " style="">
+          {{#liquid-spacer growDuration=250}}
+          {{#if showCustomerComponent}}
+          {{customer-form  type='ind'  on-create=(action "createCustomer")}}
+          {{/if}}
+          {{/liquid-spacer}}
+        </div>
+      </div>
+    </div>
+    <div class="row row-margin">
+      <div class="col-md-2">
+        <label for="" class="labels">Agent</label>
+      </div>
+      <div class="col-md-9">
+        {{ember-select-guru value=project.agent  options=agents onSelect=(action "onSelectAgent") }}
+      </div>
+      <div class="col-md-1">
+        <button type="button" class="btn btn-default pull-right"  {{action "openAgentComponent"}} >
+          <span class="glyphicon {{if showAgentComponent "glyphicon-minus" "glyphicon-plus"}} "></span>
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div id="liquid-spacer-demo">
+        <div class="col-md-10 pull-right " style="">
+          {{#liquid-spacer growDuration=250}}
+          {{#if showAgentComponent}}
+          {{agent-form  type='ind'  on-create=(action "createAgent")}}
+          {{/if}}
+          {{/liquid-spacer}}
+        </div>
+      </div>
+    </div>
+    <div class="row row-margin">
+      <div class="col-md-2">
+        <label for="" class="labels">Enquiry Date</label>
+      </div>
+      <div class="col-md-10">
+        {{bootstrap-datepicker value=project.enquiries.lastObject.date class="form-control" autoclose=true placeholder="Enquiry Date" format="dd MM, yyyy"}}        </div>
+      </div>
+      <div class="row row-margin">
         <div class="col-md-2">
-            <label for="" class="labels">Customer</label>
+          <label for="" class="labels">Enquiry No.</label>
         </div>
-
-              <div class="col-md-9">
-
-
-              {{ember-select-guru value=customer  options=customers onSelect=(action "onSelectCustomer") }}
-
-              </div>
-
-              <div class="col-md-1">
-              <button type="button" class="btn btn-default pull-right"  {{action "openCustomerComponent"}} >
-                      <span class="glyphicon {{if showCustomerComponent "glyphicon-minus" "glyphicon-plus"}} "></span>
-              </button>
-              </div>
-
-            </div>
-            <div class="row">
-
-              <div id="liquid-spacer-demo">
-                <div class="col-md-10 pull-right " style="">
-
-                   {{#liquid-spacer growDuration=250}}
-                   {{#if showCustomerComponent}}
-                   {{customer-form  type='ind'  on-create=(action "createCustomer")}}
-                   {{/if}}
-                {{/liquid-spacer}}
-                </div>
-              </div>
-              </div>
-
-
-
-
-            <div class="row row-margin">
-            <div class="col-md-2">
-                <label for="" class="labels">Agent</label>
-            </div>
-
-                  <div class="col-md-9">
-                        {{ember-select-guru value=agent  options=agents onSelect=(action "onSelectAgent") }}
-                  </div>
-                  <div class="col-md-1">
-                  <button type="button" class="btn btn-default pull-right"  {{action "openAgentComponent"}} >
-                          <span class="glyphicon {{if showAgentComponent "glyphicon-minus" "glyphicon-plus"}} "></span>
-                  </button>
-                  </div>
-
+        <div class="col-md-10">
+          <input type="text" class="form-control"  placeholder="Enquiry No.">
         </div>
-        <div class="row">
-
-          <div id="liquid-spacer-demo">
-            <div class="col-md-10 pull-right " style="">
-
-               {{#liquid-spacer growDuration=250}}
-               {{#if showAgentComponent}}
-               {{agent-form  type='ind'  on-create=(action "createAgent")}}
-               {{/if}}
-            {{/liquid-spacer}}
-            </div>
-          </div>
-          </div>
-
-          <div class="row row-margin">
-            <div class="col-md-2">
-                <label for="" class="labels">Enquiry Date</label>
-            </div>
-            <div class="col-md-10">
-                {{bootstrap-datepicker value=project.enquiries.lastObject.date class="form-control" autoclose=true placeholder="Enquiry Date" format="dd MM, yyyy"}}        </div>
-          </div>
-          <div class="row row-margin">
-            <div class="col-md-2">
-              <label for="" class="labels">Enquiry No.</label>
-            </div>
-            <div class="col-md-10">
-              <input type="text" class="form-control"  placeholder="Enquiry No.">
-            </div>
-          </div>
-          <!-- <div class="row row-margin">
-            <div class="col-md-2">
-              <label for="" class="labels">Site Location</label>
-            </div>
-            <div class="col-md-10">
-              <input type="text" class="form-control"  placeholder="Site Location">
-            </div>
-          </div>
-          <div class="row row-margin">
-            <div class="col-md-2">
-              <label for="" class="labels">Email address</label>
-            </div>
-            <div class="col-md-10">
-              <input type="text" class="form-control"  placeholder="Email Address">
-            </div>
-          </div> -->
-
-    <!-- <<table class="table">
-      <tr>
-        <td>
-          <label for="" class="">Customer</label>
-        </td>
-        <td>
-          <div class="col-md-12">
-
-            <div class="col-md-10">
-          {{ember-select-guru value=project.customer  options=customers onSelect=(action "onSelectCustomer") }}
-
-          </div>
-          <div class="col-md-2">
-          <button type="button" class="btn btn-default"  {{action "showLongMessagecall"}} >
-                  <span class="glyphicon {{if showLongMessage "glyphicon-minus" "glyphicon-plus"}} "></span>
-          </button>
-          </div>
-          <div id="liquid-spacer-demo">
-             <div class="col-md-12">
-               {{#liquid-spacer growDuration=250}}
-               {{#if showLongMessage}}
-               {{customer-form  type='ind' customer=model on-create=(action "createCustomer")}}
-               {{/if}}
-            {{/liquid-spacer}}
-            </div>
-          </div>
-        </div>
-
-
-
-        </td>
-      </tr>
-      <tr>
-
-        <td>
-          <label for="" class="">Agent</label>
-        </td>
-        <td>
-          {{ember-select-guru value=project.agent  options=agents onSelect=(action "onSelectAgent") }}
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label for="" class="">Enquiry Date</label>
-        </td>
-        <td>
-        // {{input type="text" class="form-control"  placeholder="Enquiry Date" value=currentEnquiry.date}}
-            {{bootstrap-datepicker value=project.enquiries.lastObject.date class="form-control" autoclose=true placeholder="Enquiry Date" format="dd MM, yyyy"}}
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label for="" class="">Enquiry No.</label>
-        </td>
-        <td>
-
-          {{input type="text" class="form-control"  placeholder="Enquiry No." value=project.enquiries.lastObject.no}}
-        </td>
-      </tr> -->
-      <!-- <tr>
-        <td>
-          <label for="" class="">Site Location</label>
-        </td>
-        <td>
-      //FIXME :    Site location variable not showing value
-          {{input type="text" class="form-control"  placeholder="Site Location" value=project.location}}
-        </td>
-      </tr> -->
-
-
-    <!-- </table> -->
-
-{{#if stepOne}}
-<button class="btn btn-primary" {{action "toStepTwo"}}>Next</button>
-
-    <div class="col-md-12  well well-lg">
-
-      <h3> Work Spots</h3>
-      <div class=" col-md-2">
-        <label for="" >Add Items</label>
       </div>
 
-      <div class="checkbox col-md-2">
-        <label>
-          <input type="checkbox" >Production
-        </label>
-      </div>
-      <div class="checkbox col-md-2">
-        <label>
-          <input type="checkbox">Sample
-        </label>
-      </div>
-      <div class="checkbox col-md-2">
-        <label>
-          <input type="checkbox">Civil
-        </label>
-      </div>
-      <div class="checkbox col-md-2">
-        <label>
-          <input type="checkbox">Installation
-        </label>
-      </div>
-      <div class="checkbox col-md-2">
-        <label>
-          <input type="checkbox">Maintenance
-        </label>
-      </div>
-      <div class="checkbox col-md-2">
-        <label>
-          <input type="checkbox">Others
-        </label>
-      </div>
 
-      <br><br>
-    </div>
-
-    {{/if}}
+<!-- //FIXME :    Site location variable not showing value -->
 
 
-
-{{#if stepTwo}}
-<button class="btn btn-primary" {{action "toStepThree"}}>Next</button>
-
-    <div class="col-md-12 well well-sm">
-
-
-
-      <br><br>
-
-
-
-
-        <div class="checkbox col-md-2">
-          <label>
-            <input type="checkbox">Al. Light box
-          </label>
-        </div>
-        <div class="checkbox col-md-2">
-          <label>
-            <input type="checkbox">3D Fab. letter
-          </label>
-        </div>
-        <div class="checkbox col-md-2">
-          <label>
-            <input type="checkbox">Uni-pole
-          </label>
-        </div>
-
-        <div class="checkbox col-md-2">
-          <label>
-            <input type="checkbox">Identity Sign
-          </label>
-        </div>
-        <div class="checkbox col-md-2">
-          <label>
-            <input type="checkbox">Custom Sign
-          </label>
-        </div>
-        <div class="checkbox col-md-2">
-          <label>
-            <input type="checkbox">Light box
-          </label>
-        </div>
-        <div class="checkbox col-md-2">
-          <label>
-            <input type="checkbox">Marketing Fence
-          </label>
-        </div>
-        <div class="checkbox col-md-2">
-          <label>
-            <input type="checkbox">Suspension Sign
-          </label>
-        </div>
-        <div class="checkbox col-md-2">
-          <label>
-            <input type="checkbox">Exhibit
-          </label>
-        </div>
-        <div class="checkbox col-md-2">
-          <label>
-            <input type="checkbox"> Vinyl Crafting
-          </label>
-        </div>
-        <div class="checkbox col-md-2">
-          <label>
-            <input type="checkbox"> Flex Sign
-          </label>
-        </div>
-        <div class="checkbox col-md-2">
-          <label>
-            <input type="checkbox"> Elect. Maint.
-          </label>
-        </div>
-        <div class="checkbox col-md-2">
-          <label>
-            <input type="checkbox"> Traffic Sign
-          </label>
-        </div>
-        <div class="checkbox col-md-2">
-          <label>
-            <input type="checkbox"> sign Structure
-          </label>
-        </div>
-        <div class="checkbox col-md-2">
-          <label>
-            <input type="checkbox"> CNC/Plotter Work
-          </label>
-        </div>
-        <div class="checkbox col-md-2">
-          <label>
-            <input type="checkbox"> Corporate Sign
-          </label>
-        </div>
-        <div class="checkbox col-md-2">
-          <label>
-            <input type="checkbox"> Pylon
-          </label>
-        </div>
-        <div class="checkbox col-md-2">
-          <label>
-            <input type="checkbox"> Safety sign
-          </label>
-        </div>
-        <div class="checkbox col-md-2">
-          <label>
-            <input type="checkbox"> Totem
-          </label>
-        </div>
-        <div class="checkbox col-md-2">
-          <label>
-            <input type="checkbox"> LED Panel Sign
-          </label>
-        </div>
-        <div class="checkbox col-md-2">
-          <label>
-            <input type="checkbox"> Site Project Sign
-          </label>
-        </div>
-        <div class="checkbox col-md-2">
-          <label>
-            <input type="checkbox"> Display Stand
-          </label>
-        </div>
-        <div class="checkbox col-md-2">
-          <label>
-            <input type="checkbox"> Acrylic Stand
-          </label>
-        </div>
-        <div class="checkbox col-md-2">
-          <label>
-            <input type="checkbox"> ACP Background
-          </label>
-        </div>
-
-        <div class="checkbox col-md-2">
-          <label>
-            <input type="checkbox"> Other (outdoor)
-          </label>
-        </div>
-        <div class="checkbox col-md-2">
-          <label>
-            <input type="checkbox"> Flex Replace
-          </label>
-        </div>
-        <div class="checkbox col-md-2">
-          <label>
-            <input type="checkbox"> Direction Sign
-          </label>
-        </div>
-        <div class="checkbox col-md-2">
-          <label>
-            <input type="checkbox"> Sign Shifting
-          </label>
-        </div>
-        <div class="checkbox col-md-2">
-          <label>
-            <input type="checkbox"> Height Sign
-          </label>
-        </div>
-        <div class="checkbox col-md-2">
-          <label>
-            <input type="checkbox"> Other (indoor)
-          </label>
-        </div>
-
-        <div class="checkbox col-md-2">
-          <label>
-            <input type="checkbox">  3D Cut letter
-          </label>
-        </div>
-        <div class="checkbox col-md-2">
-          <label>
-            <input type="checkbox">  Al. Profile Sign
-          </label>
-        </div>
-        <div class="checkbox col-md-2">
-          <label>
-            <input type="checkbox">  Mopi
-          </label>
-        </div>
-        <div class="checkbox col-md-2">
-          <label>
-            <input type="checkbox">  Push through
-          </label>
-        </div>
-        <div class="checkbox col-md-2">
-          <label>
-            <input type="checkbox">  Clip frame
-          </label>
-        </div>
-        <div class="checkbox col-md-2">
-          <label>
-            <input type="checkbox">  Hoarding Sign
-          </label>
-        </div>
-        <div class="checkbox col-md-2">
-          <label>
-            <input type="checkbox"> ACP Box
-          </label>
-        </div>
-        <div class="checkbox col-md-2">
-          <label>
-            <input type="checkbox"> Promotion Sign
-          </label>
-        </div>
-        <div class="checkbox col-md-2">
-          <label>
-            <input type="checkbox"> Banner Sign
-          </label>
-        </div>
-        <div class="checkbox col-md-2">
-          <label>
-            <input type="checkbox"> Sign Cleaning
-          </label>
-        </div>
-        <div class="checkbox col-md-2">
-          <label>
-            <input type="checkbox"> Category Sign
-          </label>
-        </div>
-        <div class="checkbox col-md-2">
-          <label>
-            <input type="checkbox"> Flag Sign
-          </label>
-        </div>
-
-
-    </div>
-{{/if}}
-{{#if stepThree}}
-<button class="btn btn-primary" {{action "toStepOne"}}>Go to first</button>
-Step Three
-{{/if}}
-
-
-  </div>
+<div class="col-md-12  well well-lg">
+  {{ember-select-guru value=project.itemtype  options=itemtypes onSelect=(action "onSelectItemtypes") }}
+</div>
+ </div>
 </form>
-
 {{outlet}}

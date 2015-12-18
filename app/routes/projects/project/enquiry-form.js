@@ -78,15 +78,10 @@ setupController(controller, models) {
 
       //  newitem.get('jobtypes').pushObject(jobtypes);
       newitem.save();
-
-
-
       // let item = this.store.peekRecord('item', 1);
       // let jobtype = this.store.peekRecord('jobtype', 1);
       // item.get('jobtypes').pushObject(jobtype);
       // item.save();
-
-
 
 
       return project.save().then(function(){
