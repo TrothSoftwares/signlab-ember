@@ -34,29 +34,6 @@ export default Ember.Controller.extend({
       this.toggleProperty('showAgentComponent');
     },
 
-    createAgent: function(params) {
-      //        var controller = this.get('controller');
-      var self = this;
-      var project = this.store.peekRecord('project', 1);
-      var agent = this.store.createRecord('agent', {
-        name: params.name,
-        contactname: params.contactname,
-        contactno: params.contactno,
-        othcontactno: params.othcontactno,
-        othrefdetails: params.othrefdetails,
-        // FIXME: fix project_id relationship ; 500 error comming in rails after save
-      });
-
-      agent.save().then(function(){
-        self.send('onSelectAgent',agent);
-        self.set('showAgentComponent' ,false);
-        self.notifications.addNotification({
-          message: 'Agent Created successfully!' ,
-          type: 'success',
-          autoClear: true
-        });
-      });
-    },
 
     onToggle:function(){
       if(this.model.get('hasDirtyAttributes')){
@@ -110,6 +87,36 @@ export default Ember.Controller.extend({
 
         controller.notifications.addNotification({
           message: 'Customer Created successfully!' ,
+          type: 'success',
+          autoClear: true
+        });
+      });
+    },
+
+
+    createAgent: function() {
+      var controller = this;
+      var agent = this.store.createRecord('agent', {
+        name :this.get('agentname'),
+        contactname :this.get('agentcontactname'),
+        contactno :this.get('agentcontactno'),
+        othcontactno :this.get('agentothcontactno'),
+        othrefdetails:this.get('agentothrefdetails'),
+      });
+      agent.save().then(function(){
+
+        controller.set('agentname','');
+        controller.set('agentcontactname','');
+        controller.set('agentcontactno','');
+        controller.set('agentothcontactno','');
+        controller.set('agentothrefdetails','');
+
+
+        controller.send('onSelectAgent',agent);
+        controller.set('showAgentComponent' ,false);
+
+        controller.notifications.addNotification({
+          message: 'agent Created successfully!' ,
           type: 'success',
           autoClear: true
         });
