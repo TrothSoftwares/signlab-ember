@@ -20,7 +20,7 @@ export default DS.JSONAPISerializer.extend({
 
         acc[elem + "_type"] = data.type[0].toUpperCase() + data.type.slice(1, -1);
       }
-      console.log(acc);
+
       return acc;
 
     }, attr);

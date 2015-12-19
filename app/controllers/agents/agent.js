@@ -2,19 +2,20 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 
-actions: {
-  onToggle:function(){
-//var model = this.get('model');
-if(this.model.get('hasDirtyAttributes')){
-  this.model.save();
-}
-  },
-  deleteData:function(){
-    var controller = this;
-    this.model.deleteRecord();
-    this.model.save();
-    controller.transitionToRoute('agents.new');
+  actions: {
+    editagent :function(){
+  // FIXME : Data is saving even when the name field is empty.. (Should be fixed at the agent-form too.)
+      this.toggleProperty('enableEditagent');
+      if(this.model.get('hasDirtyAttributes')){
+        this.model.save();
+      }
+    },
+
+    deleteData: function(){
+      this.model.deleteRecord();
+      this.model.save();
+      this.transitionToRoute('agents.new');
+    }
   }
-}
 
 });

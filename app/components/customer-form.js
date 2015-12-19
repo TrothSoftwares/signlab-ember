@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
 
-
+custcomp : '',
 
   actions: {
 
@@ -12,12 +12,15 @@ export default Ember.Component.extend({
 
       this.toggleProperty('enableEditCustomer');
       if(this.get('type') === 'ind'){
+
+
+
         this.get('on-create')({
-          name :this.get('name'),
-          contactname :this.get('contactname'),
-          contactno :this.get('contactno'),
-          othcontactno :this.get('othcontactno'),
-          othrefdetails:this.get('othrefdetails'),
+          name :this.get('custcomp.name'),
+          contactname :this.get('custcomp.contactname'),
+          contactno :this.get('custcomp.contactno'),
+          othcontactno :this.get('custcomp.othcontactno'),
+          othrefdetails:this.get('custcomp.othrefdetails'),
 
         });
 

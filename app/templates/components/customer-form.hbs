@@ -3,51 +3,53 @@
     <div class="col-md-11">
         {{#liquid-if enableEditCustomer class="customer-info"  }}
 
+
+
                   <div class="row row-margin">
 
                           <div class="col-md-4 col-xs-12"><label for="" class="labels">Client Name</label></div>
-                          <div class="col-md-8 col-xs-12">{{input type="text" class="form-control "  placeholder="Client Name" value=name}}</div>
+                          <div class="col-md-8 col-xs-12">{{input type="text" class="form-control "  placeholder="Client Name" value=custcomp.name}}</div>
                   </div>
 
                   <div class="row row-margin">
                           <div class="col-md-4 col-xs-12"><label for="" class="labels">Client Contact Name</label></div>
-                          <div class="col-md-8 col-xs-12">{{input type="text" class="form-control "  placeholder="Client contact name" value=contactname}}</div>
+                          <div class="col-md-8 col-xs-12">{{input type="text" class="form-control "  placeholder="Client contact name" value=custcomp.contactname}}</div>
                   </div>
                   <div class="row row-margin">
                           <div class="col-md-4 col-xs-12"><label for="" class="labels">Client Contact No.</label></div>
-                          <div class="col-md-8 col-xs-12">{{input type="text" class="form-control "  placeholder="Client contact No" value=contactno}}</div>
+                          <div class="col-md-8 col-xs-12">{{input type="text" class="form-control "  placeholder="Client contact No" value=custcomp.contactno}}</div>
                   </div>
                   <div class="row row-margin">
                           <div class="col-md-4 col-xs-12"><label for="" class="labels">Other Contact No.</label></div>
-                          <div class="col-md-8 col-xs-12">{{input type="text" class="form-control"  placeholder="Other Contact No" value=othcontactno}}</div>
+                          <div class="col-md-8 col-xs-12">{{input type="text" class="form-control"  placeholder="Other Contact No" value=custcomp.othcontactno}}</div>
                   </div>
                   <div class="row row-margin">
                           <div class="col-md-4 col-xs-12"><label for="" class="labels">Other Reference Details</label></div>
-                          <div class="col-md-8 col-xs-12">{{input type="text" class="form-control"  placeholder="Other Contact No" value=othrefdetails}}</div>
+                          <div class="col-md-8 col-xs-12">{{input type="text" class="form-control"  placeholder="Other Contact No" value=custcomp.othrefdetails}}</div>
                   </div>
 
   {{else}}
 
                   <div class="row row-margin">
                           <div class="col-md-4 col-xs-12"><label for="" class=" ">Client Name</label> </div>
-                          <div class="col-md-8 col-xs-12"><label for="" class="labels">{{name}}</label></div>
+                          <div class="col-md-8 col-xs-12"><label for="" class="labels">{{custcomp.name}}</label></div>
                   </div>
                   <div class="row row-margin">
                           <div class="col-md-4 col-xs-12"><label for="" class="labels">Client Contact Name</label></div>
-                          <div class="col-md-8 col-xs-12"><label class="" for="">{{contactname}}</label></div>
+                          <div class="col-md-8 col-xs-12"><label class="" for="">{{custcomp.contactname}}</label></div>
                   </div>
                   <div class="row row-margin">
                           <div class="col-md-4 col-xs-12"><label for="" class="labels">Client Contact No.</label></div>
-                          <div class="col-md-8 col-xs-12"><label class="" for="">{{contactno}}</label></div>
+                          <div class="col-md-8 col-xs-12"><label class="" for="">{{custcomp.contactno}}</label></div>
 
                   </div>
                   <div class="row row-margin">
                           <div class="col-md-4 col-xs-12"><label for="" class="labels">Other Contact Number</label></div>
-                          <div class="col-md-8 col-xs-12"><label class="" for=""> {{othcontactno}}</label></div>
+                          <div class="col-md-8 col-xs-12"><label class="" for=""> {{custcomp.othcontactno}}</label></div>
                   </div>
                   <div class="row row-margin">
                           <div class="col-md-4 col-xs-12"><label for="" class="labels">Other Contact No.</label></div>
-                          <div class="col-md-8 col-xs-12"><label class="" for=""> {{othrefdetails}}</label></div>
+                          <div class="col-md-8 col-xs-12"><label class="" for=""> {{custcomp.othrefdetails}}</label></div>
                   </div>
 
 
