@@ -28,7 +28,46 @@ projects/project(slug)/enquiry-form page
         <div class="col-md-10 pull-right " style="">
           {{#liquid-spacer growDuration=250}}
           {{#if showCustomerComponent}}
-          {{customer-form  type='ind'  on-create=(action "createCustomer")}}
+
+
+            <!--  Customer Form CODE -->
+
+
+              <div class="col-md-11">
+
+                                <div class="row row-margin">
+
+                                        <div class="col-md-4 col-xs-12"><label for="" class="labels">Client Name</label></div>
+                                        <div class="col-md-8 col-xs-12">{{input type="text" class="form-control "  placeholder="Client Name" value=custname}}</div>
+                                </div>
+
+                                <div class="row row-margin">
+                                        <div class="col-md-4 col-xs-12"><label for="" class="labels">Client Contact Name</label></div>
+                                        <div class="col-md-8 col-xs-12">{{input type="text" class="form-control "  placeholder="Client contact name" value=custcontactname}}</div>
+                                </div>
+                                <div class="row row-margin">
+                                        <div class="col-md-4 col-xs-12"><label for="" class="labels">Client Contact No.</label></div>
+                                        <div class="col-md-8 col-xs-12">{{input type="text" class="form-control "  placeholder="Client contact No" value=model.custcontactno}}</div>
+                                </div>
+                                <div class="row row-margin">
+                                        <div class="col-md-4 col-xs-12"><label for="" class="labels">Other Contact No.</label></div>
+                                        <div class="col-md-8 col-xs-12">{{input type="text" class="form-control"  placeholder="Other Contact No" value=custothcontactno}}</div>
+                                </div>
+                                <div class="row row-margin">
+                                        <div class="col-md-4 col-xs-12"><label for="" class="labels">Other Reference Details</label></div>
+                                        <div class="col-md-8 col-xs-12">{{input type="text" class="form-control"  placeholder="Other Contact No" value=custothrefdetails}}</div>
+                                </div>
+
+                                </div>
+                                <div class="col-md-1 "style="padding-top:10px">
+                                <button type="button" class="btn btn-default pull-right"  {{action "createCustomer"}} >
+                                        <span class="glyphicon glyphicon-floppy-save "></span>
+                                </button>
+                              </div>
+
+
+
+
           {{/if}}
           {{/liquid-spacer}}
         </div>
@@ -70,7 +109,7 @@ projects/project(slug)/enquiry-form page
           <label for="" class="labels">Enquiry No.</label>
         </div>
         <div class="col-md-10">
-          {{ input type="text" class="form-control"  placeholder="Enquiry No." value=project.enquiries.lastObject.no}} 
+          {{ input type="text" class="form-control"  placeholder="Enquiry No." value=project.enquiries.lastObject.no}}
         </div>
       </div>
 

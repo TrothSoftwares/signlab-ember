@@ -3,91 +3,62 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
 
 
-showCustomerComponent: false,
-showAgentComponent: false,
+  showCustomerComponent: false,
+  showAgentComponent: false,
 
-stepOne: true,
-stepTwo: false,
-stepThree: false,
+  stepOne: true,
+  stepTwo: false,
+  stepThree: false,
 
   actions: {
-toStepTwo: function() {
-   this.set('stepOne', false);
-   this.set('stepTwo', true);
- },
+    toStepTwo: function() {
+      this.set('stepOne', false);
+      this.set('stepTwo', true);
+    },
 
-toStepThree: function() {
-   this.set('stepTwo', false);
-   this.set('stepThree', true);
- },
+    toStepThree: function() {
+      this.set('stepTwo', false);
+      this.set('stepThree', true);
+    },
 
- toStepOne: function(){
-   this.set('stepThree', false);
-   this.set('stepOne', true);
- },
+    toStepOne: function(){
+      this.set('stepThree', false);
+      this.set('stepOne', true);
+    },
     openCustomerComponent: function() {
 
-        this.toggleProperty('showCustomerComponent');
-      },
+      this.toggleProperty('showCustomerComponent');
+    },
     openAgentComponent: function() {
 
-        this.toggleProperty('showAgentComponent');
-      },
-      createCustomer: function(params) {
+      this.toggleProperty('showAgentComponent');
+    },
 
-        
+    createAgent: function(params) {
       //        var controller = this.get('controller');
-      console.log('---------');
-      console.log(params.name);
-        var self = this;
-        var project = this.store.peekRecord('project', 1);
-        var customer = this.store.createRecord('customer', {
-          name: params.name,
-          contactname: params.contactname,
-          contactno: params.contactno,
-          othcontactno: params.othcontactno,
-          othrefdetails: params.othrefdetails,
-          // FIXME: fix project_id relationship ; 500 error comming in rails after save
-        });
+      var self = this;
+      var project = this.store.peekRecord('project', 1);
+      var agent = this.store.createRecord('agent', {
+        name: params.name,
+        contactname: params.contactname,
+        contactno: params.contactno,
+        othcontactno: params.othcontactno,
+        othrefdetails: params.othrefdetails,
+        // FIXME: fix project_id relationship ; 500 error comming in rails after save
+      });
 
-        customer.save().then(function(){
-          //controller.toggleProperty('showLongMessage');
-          //self.get('customers').pushObject(customer);
-          self.send('onSelectCustomer',customer);
-          self.set('showCustomerComponent' ,false);
-          self.notifications.addNotification({
-            message: 'Customer Created successfully!' ,
-            type: 'success',
-            autoClear: true
-          });
+      agent.save().then(function(){
+        self.send('onSelectAgent',agent);
+        self.set('showAgentComponent' ,false);
+        self.notifications.addNotification({
+          message: 'Agent Created successfully!' ,
+          type: 'success',
+          autoClear: true
         });
-      },
-      createAgent: function(params) {
-      //        var controller = this.get('controller');
-        var self = this;
-        var project = this.store.peekRecord('project', 1);
-        var agent = this.store.createRecord('agent', {
-          name: params.name,
-          contactname: params.contactname,
-          contactno: params.contactno,
-          othcontactno: params.othcontactno,
-          othrefdetails: params.othrefdetails,
-          // FIXME: fix project_id relationship ; 500 error comming in rails after save
-        });
-
-        agent.save().then(function(){
-          self.send('onSelectAgent',agent);
-          self.set('showAgentComponent' ,false);
-          self.notifications.addNotification({
-            message: 'Agent Created successfully!' ,
-            type: 'success',
-            autoClear: true
-          });
-        });
-      },
+      });
+    },
 
     onToggle:function(){
-      //var model = this.get('model');
       if(this.model.get('hasDirtyAttributes')){
         this.model.save();
       }
@@ -113,11 +84,37 @@ toStepThree: function() {
 
     onSelectJobtypes(index , jobType  ){
       this.get('project.items').objectAt(index).set('jobtype',jobType);
+    },
 
 
-    }
+    createCustomer: function() {
+      var controller = this;
+      var customer = this.store.createRecord('customer', {
+        name :this.get('custname'),
+        contactname :this.get('custcontactname'),
+        contactno :this.get('custcontactno'),
+        othcontactno :this.get('custothcontactno'),
+        othrefdetails:this.get('custothrefdetails'),
+      });
+      customer.save().then(function(){
+
+        controller.set('custname','');
+        controller.set('custcontactname','');
+        controller.set('custcontactno','');
+        controller.set('custothcontactno','');
+        controller.set('custothrefdetails','');
 
 
+        controller.send('onSelectCustomer',customer);
+        controller.set('showCustomerComponent' ,false);
+
+        controller.notifications.addNotification({
+          message: 'Customer Created successfully!' ,
+          type: 'success',
+          autoClear: true
+        });
+      });
+    },
   },
 
 });
