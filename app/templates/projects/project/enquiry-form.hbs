@@ -75,12 +75,53 @@ projects/project(slug)/enquiry-form page
       </div>
 
 
-<!-- //FIXME :    Site location variable not showing value -->
+      <!-- //FIXME :    Site location variable not showing value -->
 
 
-<div class="col-md-12  well well-lg">
-  {{ember-select-guru value=project.itemtype  options=itemtypes onSelect=(action "onSelectItemtypes") }}
-</div>
- </div>
-</form>
-{{outlet}}
+      <div class="col-md-12  well well-lg">
+        {{#each project.items as |item index|}}
+        <div class="col-md-12  well well-lg">
+          <h3> Item {{ incrementone index}}</h3>
+          <div class="row row-margin">
+            <div class="col-md-2">
+              <label for="" class="labels">Dimensions</label>
+            </div>
+            <div class="col-md-10">
+              {{ capitalize item.dimensions}}
+            </div>
+          </div>
+
+          <div class="row row-margin">
+            <div class="col-md-2">
+              <label for="" class="labels">Description</label>
+            </div>
+            <div class="col-md-10">
+              {{ capitalize item.description}}
+            </div>
+          </div>
+
+          <div class="row row-margin">
+            <div class="col-md-2">
+              <label for="" class="labels">Item Type</label>
+            </div>
+            <div class="col-md-10">
+              {{ember-select-guru value=item.itemtype  options=itemtypes onSelect=(action "onSelectItemtypes" index) }}
+            </div>
+          </div>
+          <div class="row row-margin">
+            <div class="col-md-2">
+              <label for="" class="labels">Job Type</label>
+            </div>
+            <div class="col-md-10">
+              {{ember-select-guru value=item.jobtype  options=jobtypes onSelect=(action "onSelectJobtypes" index) }}
+            </div>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+
+
+
+    </div>
+  </form>
+  {{outlet}}

@@ -30,6 +30,11 @@ setupController(controller, models) {
    var currentEnquiry = enqs.objectAt(count-1);
    controller.set('currentEnquiry',currentEnquiry);
 
+   console.log(JSON.stringify(models.project.items.itemtype));
+
+
+
+
 
  },
 
@@ -51,6 +56,12 @@ setupController(controller, models) {
 
       project.set('customer', customer );
       project.set('agent', agent );
+var currentItems = project.get('items');
+      currentItems.forEach(function(curitem){
+        curitem.save();
+      });
+
+
       var itemtype = this.store.peekRecord('itemtype', 1);
 
 
@@ -59,12 +70,13 @@ setupController(controller, models) {
 
 
       var jobtypes = this.store.peekAll('jobtype');
+
       console.log('!!!!!!!!!!!!!!!!!!!!11');
       // console.log(JSON.stringify(jobtypesq));
       // console.log(jobtypesq);
       console.log('!!!!!!!!!!!!!!!!!!!!11');
-      var newitem = this.store.createRecord('item' ,
-      { dimensions: 'test dimensions', description: 'test description' , project:  project , itemtype: itemtype , jobtypes: jobtypes  });
+      // var newitem = this.store.createRecord('item' ,
+      // { dimensions: 'test dimensions', description: 'test description' , project:  project , itemtype: itemtype , jobtypes: jobtypes  });
 
 
 // console.log('++++++' + newitem.get('jobtypes').resolve());
@@ -77,7 +89,7 @@ setupController(controller, models) {
 
 
       //  newitem.get('jobtypes').pushObject(jobtypes);
-      newitem.save();
+      // newitem.save();
       // let item = this.store.peekRecord('item', 1);
       // let jobtype = this.store.peekRecord('jobtype', 1);
       // item.get('jobtypes').pushObject(jobtype);

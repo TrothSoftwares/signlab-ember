@@ -11,14 +11,12 @@ stepTwo: false,
 stepThree: false,
 
   actions: {
-
-
-    toStepTwo: function() {
+toStepTwo: function() {
    this.set('stepOne', false);
    this.set('stepTwo', true);
  },
 
-    toStepThree: function() {
+toStepThree: function() {
    this.set('stepTwo', false);
    this.set('stepThree', true);
  },
@@ -27,12 +25,6 @@ stepThree: false,
    this.set('stepThree', false);
    this.set('stepOne', true);
  },
-
-
-
-
-
-
     openCustomerComponent: function() {
 
         this.toggleProperty('showCustomerComponent');
@@ -42,10 +34,11 @@ stepThree: false,
         this.toggleProperty('showAgentComponent');
       },
       createCustomer: function(params) {
+
+        
       //        var controller = this.get('controller');
-
-
-
+      console.log('---------');
+      console.log(params.name);
         var self = this;
         var project = this.store.peekRecord('project', 1);
         var customer = this.store.createRecord('customer', {
@@ -58,30 +51,19 @@ stepThree: false,
         });
 
         customer.save().then(function(){
-
           //controller.toggleProperty('showLongMessage');
-
           //self.get('customers').pushObject(customer);
-
-
           self.send('onSelectCustomer',customer);
-
           self.set('showCustomerComponent' ,false);
-
           self.notifications.addNotification({
             message: 'Customer Created successfully!' ,
             type: 'success',
             autoClear: true
           });
-
-
         });
       },
       createAgent: function(params) {
       //        var controller = this.get('controller');
-
-
-
         var self = this;
         var project = this.store.peekRecord('project', 1);
         var agent = this.store.createRecord('agent', {
@@ -125,8 +107,14 @@ stepThree: false,
       this.set('project.agent', agent);
     },
 
-    onSelectItemtypes(itemType){
-      this.set('project.itemtype', itemType);
+    onSelectItemtypes(index , itemType){
+      this.set('project.items').objectAt(index).set('itemtype', itemType);
+    },
+
+    onSelectJobtypes(index , jobType  ){
+      this.get('project.items').objectAt(index).set('jobtype',jobType);
+
+
     }
 
 
