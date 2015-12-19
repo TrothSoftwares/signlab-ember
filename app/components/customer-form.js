@@ -12,10 +12,7 @@ custcomp : '',
 
       this.toggleProperty('enableEditCustomer');
       if(this.get('type') === 'ind'){
-         console.log(this.get('name'));
 
-
-         console.log(this.get('name'));
 
 
         this.get('on-create')({
