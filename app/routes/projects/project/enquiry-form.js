@@ -19,12 +19,10 @@ export default Ember.Route.extend({
 
 
   setupController(controller, models) {
-    controller.set('project', models.project);
-    controller.set('customers', models.customers);
-    controller.set('agents', models.agents);
-    controller.set('enquiries', models.enquiries);
-    controller.set('itemtypes', models.itemtypes);
-    controller.set('jobtypes', models.jobtypes);
+    
+    controller.setProperties(models);
+
+
     var enqs = models.project.get('enquiries');
     var count = enqs.get('length');
     var currentEnquiry = enqs.objectAt(count-1);
@@ -35,7 +33,7 @@ export default Ember.Route.extend({
 
 
 
- 
+
 
 
 
