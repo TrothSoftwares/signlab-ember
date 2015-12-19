@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 
-enableEditCustomer: true,
+
   actions: {
       editCustomer: function() {
       var controller = this;

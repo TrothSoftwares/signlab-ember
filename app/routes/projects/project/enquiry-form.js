@@ -28,9 +28,11 @@ setupController(controller, models) {
    var enqs = models.project.get('enquiries');
    var count = enqs.get('length');
    var currentEnquiry = enqs.objectAt(count-1);
+
+   // FIXME: currentEnquiry is static here ^^ look above
    controller.set('currentEnquiry',currentEnquiry);
 
-   console.log(JSON.stringify(models.project.items.itemtype));
+
 
 
 
@@ -56,13 +58,17 @@ setupController(controller, models) {
 
       project.set('customer', customer );
       project.set('agent', agent );
-var currentItems = project.get('items');
+
+      var currentItems = project.get('items');
       currentItems.forEach(function(curitem){
         curitem.save();
       });
 
 
       var itemtype = this.store.peekRecord('itemtype', 1);
+
+      console.log("qqqqqqqqq");
+      console.log(JSON.stringify(itemtype));
 
 
 

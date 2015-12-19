@@ -4,7 +4,86 @@
   <button type="button" class="btn btn-success">New Customer </button>
   {{/link-to}}
 
-  {{customer-form custcomp=model on-toggle=(action "onToggle") on-delete=(action "deleteData")}}
+  <div class="container-fluid">
+    <div class="row row-margin">
+      <div class="col-md-11">
+          {{#liquid-if enableEditCustomer class="customer-info"  }}
+
+
+
+                    <div class="row row-margin">
+
+                            <div class="col-md-4 col-xs-12"><label for="" class="labels">Client Name</label></div>
+                            <div class="col-md-8 col-xs-12">{{input type="text" class="form-control "  placeholder="Client Name" value=model.name}}</div>
+                    </div>
+
+                    <div class="row row-margin">
+                            <div class="col-md-4 col-xs-12"><label for="" class="labels">Client Contact Name</label></div>
+                            <div class="col-md-8 col-xs-12">{{input type="text" class="form-control "  placeholder="Client contact name" value=model.contactname}}</div>
+                    </div>
+                    <div class="row row-margin">
+                            <div class="col-md-4 col-xs-12"><label for="" class="labels">Client Contact No.</label></div>
+                            <div class="col-md-8 col-xs-12">{{input type="text" class="form-control "  placeholder="Client contact No" value=model.contactno}}</div>
+                    </div>
+                    <div class="row row-margin">
+                            <div class="col-md-4 col-xs-12"><label for="" class="labels">Other Contact No.</label></div>
+                            <div class="col-md-8 col-xs-12">{{input type="text" class="form-control"  placeholder="Other Contact No" value=model.othcontactno}}</div>
+                    </div>
+                    <div class="row row-margin">
+                            <div class="col-md-4 col-xs-12"><label for="" class="labels">Other Reference Details</label></div>
+                            <div class="col-md-8 col-xs-12">{{input type="text" class="form-control"  placeholder="Other Contact No" value=model.othrefdetails}}</div>
+                    </div>
+
+    {{else}}
+
+                    <div class="row row-margin">
+                            <div class="col-md-4 col-xs-12"><label for="" class=" ">Client Name</label> </div>
+                            <div class="col-md-8 col-xs-12"><label for="" class="labels">{{model.name}}</label></div>
+                    </div>
+                    <div class="row row-margin">
+                            <div class="col-md-4 col-xs-12"><label for="" class="labels">Client Contact Name</label></div>
+                            <div class="col-md-8 col-xs-12"><label class="" for="">{{model.contactname}}</label></div>
+                    </div>
+                    <div class="row row-margin">
+                            <div class="col-md-4 col-xs-12"><label for="" class="labels">Client Contact No.</label></div>
+                            <div class="col-md-8 col-xs-12"><label class="" for="">{{model.contactno}}</label></div>
+
+                    </div>
+                    <div class="row row-margin">
+                            <div class="col-md-4 col-xs-12"><label for="" class="labels">Other Contact Number</label></div>
+                            <div class="col-md-8 col-xs-12"><label class="" for=""> {{model.othcontactno}}</label></div>
+                    </div>
+                    <div class="row row-margin">
+                            <div class="col-md-4 col-xs-12"><label for="" class="labels">Other Contact No.</label></div>
+                            <div class="col-md-8 col-xs-12"><label class="" for=""> {{model.othrefdetails}}</label></div>
+                    </div>
+
+
+                  {{/liquid-if}}
+          </div>
+          <div class="col-md-1 "style="padding-top:10px">
+                  {{#if enableEditCustomer }}
+                  <button type="button" class="btn btn-default pull-right"  {{action "editCustomer"}} >
+                          <span class="glyphicon glyphicon-floppy-save "></span>
+                  </button>
+                  {{else}}
+                  <button type="button" class="btn btn-default pull-right"  {{action "editCustomer"}} >
+                          <span class="glyphicon glyphicon-pencil"></span>
+                  </button>
+
+                  <br><br>
+                  <button type="button" class="btn btn-default pull-right"  {{action "deleteData"}} >
+                          <span class="glyphicon glyphicon-trash"></span>
+                  </button>
+                  {{/if}}
+
+
+          </div>
+
+  </div>
+  </div>
+  {{yield}}
+
 
   {{liquid-outlet}}
 </div>

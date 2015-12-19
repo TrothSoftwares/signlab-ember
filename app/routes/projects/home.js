@@ -2,32 +2,37 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   model: function() {
-return this.store.findAll('project');
+
+    // FIXME: This is added for just adding project with first customer and agent , This should be removed.
+    this.store.findAll('customer');
+    this.store.findAll('agent');
+    return this.store.findAll('project');
 },
 
-
 actions: {
-
   createProject: function(){
 
-    var route = this,
-        controller = this.get('controller');
+        var route = this;
+         var controller = this.get('controller');
 
-        if(controller.getProperties('name') !== ''){
 
-    var project = this.store.createRecord('project', controller.getProperties('name'));
+
+
+var customer = this.store.peekRecord('customer',1);
+ var agent = this.store.peekRecord('agent', 1);
+    var project = this.store.createRecord('project', {
+     name: controller.get('name'),
+     customer : customer,
+     agent : agent});
 
     project.save().then(function(){
       controller.set('name' , '');
       route.transitionTo('projects.project',project);
     });
   }
-  else{
-    alert("Project Name is Empty");
-  }
 
-},
-
-
+  // FIXME: CANNOT CREATE PROJECT
 }
+
+
 });
