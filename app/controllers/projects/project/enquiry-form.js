@@ -11,6 +11,25 @@ export default Ember.Controller.extend({
   stepThree: false,
 
   actions: {
+
+    AddNewItem: function(){
+
+
+      let itemtype = this.get('itemtypes').get('firstObject');
+      let jobtype = this.get('jobtypes').get('firstObject');
+      let project = this.get('project');
+      var newitem = this.store.createRecord('item', { dimensions: '', description: '', itemtype: itemtype , jobtype: jobtype, project: project });
+      newitem.save();
+      this.get('project.items').pushObject(newitem);
+    },
+
+    deleteItem: function(item){
+      item.deleteRecord();
+      item.save();
+    },
+
+
+
     toStepTwo: function() {
       this.set('stepOne', false);
       this.set('stepTwo', true);
@@ -56,7 +75,7 @@ export default Ember.Controller.extend({
     },
 
     onSelectItemtypes(index , itemType){
-      this.set('project.items').objectAt(index).set('itemtype', itemType);
+      this.get('project.items').objectAt(index).set('itemtype', itemType);
     },
 
     onSelectJobtypes(index , jobType  ){
@@ -122,6 +141,62 @@ export default Ember.Controller.extend({
         });
       });
     },
+
+
+    saveProject:function(){
+
+
+
+      var controller= this;
+      var  project = controller.get('project');
+      var customer = controller.get('project.customer');
+      var agent = controller.get('project.agent');
+      var currentEnquiry = project.get('enquiries');
+      currentEnquiry.forEach(function(curenq){
+        curenq.save();
+      });
+      //var newproject = this.store.createRecord('project' , { name: 'Sasi project', customer: customer , agent:agent});
+      //project.set('enquiry',)
+
+      project.set('customer', customer );
+      project.set('agent', agent );
+
+      var currentItems = project.get('items');
+      currentItems.forEach(function(curitem){
+        curitem.save();
+      });
+
+
+      var itemtype = this.store.peekRecord('itemtype', 1);
+
+      // var jobtypes = this.store.peekAll('jobtype');
+      // console.log(JSON.stringify(jobtypesq));
+      // console.log(jobtypesq);
+      // var newitem = this.store.createRecord('item' ,
+      // { dimensions: 'test dimensions', description: 'test description' , project:  project , itemtype: itemtype , jobtypes: jobtypes  });
+      // console.log('++++++' + newitem.get('jobtypes').resolve());
+      // newitem.get('jobtypes').then(function(jobtys){
+      //   jobtys.pushObject(jobtypes);
+      // });
+      //  newitem.get('jobtypes').pushObject(jobtypes);
+      // newitem.save();
+      // let item = this.store.peekRecord('item', 1);
+      // let jobtype = this.store.peekRecord('jobtype', 1);
+      // item.get('jobtypes').pushObject(jobtype);
+      // item.save();
+
+      return project.save().then(function(){
+        controller.notifications.addNotification({
+          message: 'Project Saved!' ,
+          type: 'success',
+          autoClear: true
+        });
+
+      });
+
+
+    }
+
   },
 
 });

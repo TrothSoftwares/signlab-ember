@@ -13,7 +13,16 @@ export default Ember.Controller.extend({
        customer : customer,
        agent : agent});
 
+       var enquiry = this.store.createRecord('enquiry', {
+        date: new Date(),
+        no: '',
+        project : project});
+
+
+
       project.save().then(function(){
+
+        enquiry.save();
         controller.set('name' , '');
         controller.transitionToRoute('projects.project',project);
       });
