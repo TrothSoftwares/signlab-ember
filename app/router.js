@@ -6,7 +6,7 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-//  this.route('home');
+  //  this.route('home');
 
 
 
@@ -31,6 +31,7 @@ Router.map(function() {
     this.route('agent', {path: ':id'});
     this.route('new');
   });
+  // this.route('login');
 });
 
 export default Router;

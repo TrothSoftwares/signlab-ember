@@ -18,6 +18,7 @@ module.exports = function(environment) {
 
 
 	},
+
   'ember-cli-notifications': {
     icons: 'bootstrap'
   },
@@ -33,6 +34,16 @@ module.exports = function(environment) {
       // when it is created
     }
   };
+  // ENV['simple-auth'] = {
+  // authorizer: 'simple-auth-authorizer:devise'
+  // };
+  //
+  // ENV['simple-auth-devise'] = {
+  // tokenAttributeName: 'token',
+  // identificationAttributeName: 'email'
+  // };
+
+
 
   if (environment === 'development') {
      ENV.APP.LOG_RESOLVER = false;
