@@ -5,12 +5,11 @@ From Agents page
   <div class="list-group">
 
     <div class="list-group-item">
-
-      <!-- {{input type="text" class="new-band form-control" placeholder="New band" value=name}} -->
-      <!-- <button class="btn btn-primary btn-sm new-band-button" disabled={{isAddButtonDisabled}}  {{action "createBand"}}>Add</button> -->
-
+        {{input type="text" placeholder="Search Agent" value=searchTerm class="form-control"}}
     </div>
-    {{#each model as |agent|}}
+
+
+    {{#each matchingAgents  as |agent|}}
     {{#link-to "agents.agent" agent class="list-group-item "}}
     {{agent.name}}
     <span class="pointer glyphicon"></span>

@@ -5,12 +5,11 @@ From Projects page
   <div class="list-group">
 
     <div class="list-group-item">
-
-      <!-- {{input type="text" class="new-band form-control" placeholder="New band" value=name}} -->
-      <!-- <button class="btn btn-primary btn-sm new-band-button" disabled={{isAddButtonDisabled}}  {{action "createBand"}}>Add</button> -->
-
+        {{input type="text" placeholder="Search Project" value=searchTerm class="form-control"}}
     </div>
-    {{#each model as |project|}}
+
+
+    {{#each matchingProjects as |project|}}
     {{#link-to "projects.project" project class="list-group-item "}}
     {{project.name}}
     <span class="pointer glyphicon"></span>
@@ -32,7 +31,7 @@ From Projects page
                             <button type="button" class="btn btn-success "  {{action "createProject"}} >
                                     Create Project
                             </button>
- 
+
                     </tr>
 
             </table>

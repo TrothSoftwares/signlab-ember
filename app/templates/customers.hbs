@@ -5,12 +5,11 @@ From Customers page
   <div class="list-group">
 
     <div class="list-group-item">
-
-      <!-- {{input type="text" class="new-band form-control" placeholder="New band" value=name}} -->
-      <!-- <button class="btn btn-primary btn-sm new-band-button" disabled={{isAddButtonDisabled}}  {{action "createBand"}}>Add</button> -->
-
+      {{input type="text" placeholder="Search Customer" value=searchTerm class="form-control"}}
     </div>
-    {{#each model as |customer|}}
+
+
+    {{#each matchingCustomers as |customer|}}
     {{#link-to "customers.customer" customer class="list-group-item "}}
     {{customer.name}}
     <span class="pointer glyphicon"></span>
