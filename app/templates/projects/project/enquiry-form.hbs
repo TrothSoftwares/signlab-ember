@@ -47,7 +47,7 @@ projects/project(slug)/enquiry-form page
                                 </div>
                                 <div class="row row-margin">
                                         <div class="col-md-4 col-xs-12"><label for="" class="labels">Client Contact No.</label></div>
-                                        <div class="col-md-8 col-xs-12">{{input type="text" class="form-control "  placeholder="Client contact No" value=model.custcontactno}}</div>
+                                        <div class="col-md-8 col-xs-12">{{input type="text" class="form-control "  placeholder="Client contact No" value=custcontactno}}</div>
                                 </div>
                                 <div class="row row-margin">
                                         <div class="col-md-4 col-xs-12"><label for="" class="labels">Other Contact No.</label></div>
@@ -91,7 +91,7 @@ projects/project(slug)/enquiry-form page
         <div class="col-md-10 pull-right " style="">
           {{#liquid-spacer growDuration=250}}
           {{#if showAgentComponent}}
-          
+
                       <!--  Agent Form CODE -->
 
 
@@ -109,7 +109,7 @@ projects/project(slug)/enquiry-form page
                                           </div>
                                           <div class="row row-margin">
                                                   <div class="col-md-4 col-xs-12"><label for="" class="labels">Agent Contact No.</label></div>
-                                                  <div class="col-md-8 col-xs-12">{{input type="text" class="form-control "  placeholder="Agent contact No" value=model.agentcontactno}}</div>
+                                                  <div class="col-md-8 col-xs-12">{{input type="text" class="form-control "  placeholder="Agent contact No" value=agentcontactno}}</div>
                                           </div>
                                           <div class="row row-margin">
                                                   <div class="col-md-4 col-xs-12"><label for="" class="labels">Other Contact No.</label></div>
@@ -160,14 +160,24 @@ projects/project(slug)/enquiry-form page
 
       <div class="col-md-12  well well-lg">
         {{#each project.items as |item index|}}
-        <div class="col-md-12  well well-lg">
+
+        <div class="col-md-12  well well-sm">
+          <div class="col-md-11">
           <h3> Item {{ incrementone index}}</h3>
+        </div>
+        <div class="col-md-1">
+          <button type="button" class="btn btn-default pull-right"  {{action "deleteItem" item}} >
+                  <span class="glyphicon glyphicon-trash "></span>
+          </button>
+          </div>
+
           <div class="row row-margin">
             <div class="col-md-2">
               <label for="" class="labels">Dimensions</label>
             </div>
             <div class="col-md-10">
-              {{ capitalize item.dimensions}}
+
+              {{ input type="text" class="form-control"  placeholder="Dimensions." value=item.dimensions}}
             </div>
           </div>
 
@@ -176,7 +186,7 @@ projects/project(slug)/enquiry-form page
               <label for="" class="labels">Description</label>
             </div>
             <div class="col-md-10">
-              {{ capitalize item.description}}
+              {{ input type="text" class="form-control"  placeholder="Description." value=item.description}}
             </div>
           </div>
 
@@ -198,6 +208,13 @@ projects/project(slug)/enquiry-form page
           </div>
         </div>
         {{/each}}
+
+
+                        <button type="button" class="btn btn-default pull-right"  {{action "AddNewItem"}} >
+                                 Add New Item <span class="glyphicon glyphicon-plus "></span>
+                        </button>
+
+
       </div>
 
 

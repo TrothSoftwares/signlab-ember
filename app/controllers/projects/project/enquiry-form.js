@@ -11,6 +11,25 @@ export default Ember.Controller.extend({
   stepThree: false,
 
   actions: {
+
+    AddNewItem: function(){
+
+
+      let itemtype = this.get('itemtypes').get('firstObject');
+      let jobtype = this.get('jobtypes').get('firstObject');
+      let project = this.get('project');
+      var newitem = this.store.createRecord('item', { dimensions: '', description: '', itemtype: itemtype , jobtype: jobtype, project: project });
+      newitem.save();
+      this.get('project.items').pushObject(newitem);
+    },
+
+    deleteItem: function(item){
+      item.deleteRecord();
+      item.save();
+    },
+
+
+
     toStepTwo: function() {
       this.set('stepOne', false);
       this.set('stepTwo', true);

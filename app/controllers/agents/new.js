@@ -4,6 +4,12 @@ export default Ember.Controller.extend({
 
 
   actions: {
+
+
+    
+
+
+
       editAgent: function() {
       var controller = this;
       var agent = this.store.createRecord('agent', {
