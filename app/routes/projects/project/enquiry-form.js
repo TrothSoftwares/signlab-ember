@@ -5,7 +5,7 @@ export default Ember.Route.extend({
   model: function() {
 
     // return this.store.findAll('customer');
-    return Ember.RSVP.hash({
+    return Ember.RSVP.hash({  // RSVP.hash for resolving multiple models, The setupController will only work until all promises resolved.
       project: this.modelFor('projects.project'),
       customers: this.store.findAll('customer'),
       agents: this.store.findAll('agent'),
@@ -19,8 +19,8 @@ export default Ember.Route.extend({
 
 
   setupController(controller, models) {
-    
-    controller.setProperties(models);
+
+    controller.setProperties(models); // For setting all models to access in seperate variable names
 
 
     var enqs = models.project.get('enquiries');
@@ -29,13 +29,8 @@ export default Ember.Route.extend({
 
     // FIXME: currentEnquiry is static here ^^ look above
     controller.set('currentEnquiry',currentEnquiry);
+
+ 
+
   },
-
-
-
-
-
-
-
-
 });

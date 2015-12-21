@@ -141,7 +141,7 @@ export default Ember.Controller.extend({
         });
 
 
-        var itemtype = this.store.peekRecord('itemtype', 1);
+        // var itemtype = this.store.peekRecord('itemtype', 1);
 
         // var jobtypes = this.store.peekAll('jobtype');
         // console.log(JSON.stringify(jobtypesq));
