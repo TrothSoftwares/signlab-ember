@@ -143,7 +143,8 @@ projects/project(slug)/enquiry-form page
         <label for="" class="labels">Enquiry Date</label>
       </div>
       <div class="col-md-10">
-        {{bootstrap-datepicker value=project.enquiries.lastObject.date class="form-control" autoclose=true placeholder="Enquiry Date" format="dd MM, yyyy"}}        </div>
+        {{bootstrap-datepicker value=project.enquiries.lastObject.date class="form-control" autoclose=true placeholder="Enquiry Date" format="dd MM, yyyy"}}       
+       </div>
       </div>
       <div class="row row-margin">
         <div class="col-md-2">
@@ -203,7 +204,7 @@ projects/project(slug)/enquiry-form page
               <label for="" class="labels">Job Type</label>
             </div>
 
-            
+
             <div class="col-md-10">
               {{ember-select-guru value=item.jobtype  options=jobtypes onSelect=(action "onSelectJobtypes" index) }}
             </div>

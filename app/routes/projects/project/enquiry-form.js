@@ -3,8 +3,6 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   model: function() {
-
-    // return this.store.findAll('customer');
     return Ember.RSVP.hash({  // RSVP.hash for resolving multiple models, The setupController will only work until all promises resolved.
       project: this.modelFor('projects.project'),
       customers: this.store.findAll('customer'),

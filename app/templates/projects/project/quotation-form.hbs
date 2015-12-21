@@ -9,31 +9,31 @@ projects/project(slug)/quotation-form page
 			<label for="">
 				Dated:
 			</label>
-			<input type="email" class="form-control" id="" />
+			{{bootstrap-datepicker value=project.quotation.date class="form-control" autoclose=true placeholder="Quotation Date" format="dd MM, yyyy"}}
 		</div>
-		<div class="form-group">
-			<label for="">
-				Ref
-			</label>
-			<input type="password" class="form-control" id="" />
-		</div>
+
 
 		<div class="form-group">
 			<label for="">
 				Addresse
-			</label>
-			<input type="password" class="form-control" id="" />
+			</label> <br>
+			<label>{{project.customer.name}}</label>
 		</div>
 
 		<div class="form-group">
 			<label for="">
-				Sub:
+				Subject:
 			</label>
-			<input type="password" class="form-control" id="" />
+			{{ input type="text" class="form-control"  placeholder="Subject." value=project.quotation.subject}}
 		</div>
+		<div class="form-group">
+			<label for="">
+				Body:
+			</label>
 		<p>
-			<strong> Dear Sir , </strong>. We are pleased to quote our lowest quotes for the sign boards Aliquam eget sapien sapien. Curabitur in metus urna. In hac habitasse platea dictumst. Phasellus eu sem sapien, sed vestibulum velit. Nam purus nibh, lacinia non faucibus et, pharetra in dolor. Sed iaculis posuere diam ut cursus. <em>Morbi commodo sodales nisi id sodales. Proin consectetur, nisi id commodo imperdiet, metus nunc consequat lectus, id bibendum diam velit et dui.</em> Proin massa magna, vulputate nec bibendum nec, posuere nec lacus. <small>Aliquam mi erat, aliquam vel luctus eu, pharetra quis elit. Nulla euismod ultrices massa, et feugiat ipsum consequat eu.</small>
+{{textarea value=project.quotation.body class="form-control"}}
 		</p>
+	</div>
 		<table class="table table-bordered table-hover">
 			<thead>
 				<tr>
@@ -55,29 +55,32 @@ projects/project(slug)/quotation-form page
 				</tr>
 			</thead>
 			<tbody>
+
+				{{#each project.items as |item index|}}
 				<tr>
 					<td>
-						1
+						{{incrementone index }}
 					</td>
 					<td>
-						Manufacturing and installation of the sign as  per your specification and approved art work<br>
-						<strong>Khaleej Mall</strong><br>
-						<strong>Banner Signs</strong><br>
-						<strong>Dimensions: 3000 cms x 600 cms = 220 m<sup>2</sup></strong><br>
-						<strong>Specification: </strong><br>
-						The sign frame shall be made with 80 mm x 40 mm square tube with 12 mm plywood facial sheet.
-					</td>
-					<td>
-						<strong>225.6 m <sup>2</sup> </strong>
+
+
+						<strong>Dimensions:</strong> {{item.dimensions}}<br>
+						<strong>Description: </strong>{{item.description}}<br>
 
 					</td>
 					<td>
-						<strong>SAR. 120 /-</strong>
+						{{ input type="text" class="form-control"  placeholder="Subject." value=item.unit}}
+
 					</td>
 					<td>
-						<strong>SAR.45,120 /-</strong>
+						{{ input type="text" class="form-control"  placeholder="Subject." value=item.rate}}
+					</td>
+					<td>
+						{{ input type="text" class="form-control"  placeholder="Subject." value=item.amount}}
 					</td>
 				</tr>
+
+				{{/each}}
 
 
 			</tbody>
@@ -96,7 +99,9 @@ projects/project(slug)/quotation-form page
 
 
 
-
+	<button type="button" class="btn btn-primary "  {{action "saveQuotation"}} >
+		<span class="glyphicon glyphicon-floppy-save"> SAVE QUOTATION</span>
+	</button>
 
 
 	</div>
