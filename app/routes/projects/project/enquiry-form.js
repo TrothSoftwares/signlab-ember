@@ -12,7 +12,8 @@ export default Ember.Route.extend({
       enquiries: this.store.findAll('enquiry'),
       itemtypes: this.store.findAll('itemtype'),
       jobtypes: this.store.findAll('jobtype'),
-      items: this.store.findAll('item')
+      items: this.store.findAll('item'),
+      quotations: this.store.findAll('quotation')
 
     });
   },
@@ -30,7 +31,7 @@ export default Ember.Route.extend({
     // FIXME: currentEnquiry is static here ^^ look above
     controller.set('currentEnquiry',currentEnquiry);
 
- 
+
 
   },
 });
