@@ -3,8 +3,6 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   model: function() {
-
-    // return this.store.findAll('customer');
     return Ember.RSVP.hash({  // RSVP.hash for resolving multiple models, The setupController will only work until all promises resolved.
       project: this.modelFor('projects.project'),
       customers: this.store.findAll('customer'),
@@ -12,7 +10,8 @@ export default Ember.Route.extend({
       enquiries: this.store.findAll('enquiry'),
       itemtypes: this.store.findAll('itemtype'),
       jobtypes: this.store.findAll('jobtype'),
-      items: this.store.findAll('item')
+      items: this.store.findAll('item'),
+      quotations: this.store.findAll('quotation')
 
     });
   },
@@ -30,7 +29,7 @@ export default Ember.Route.extend({
     // FIXME: currentEnquiry is static here ^^ look above
     controller.set('currentEnquiry',currentEnquiry);
 
- 
+
 
   },
 });
