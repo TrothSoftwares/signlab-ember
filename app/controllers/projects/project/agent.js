@@ -30,7 +30,7 @@ export default Ember.Controller.extend({
         controller.send('onSelectagent',agent);
         controller.set('showagentComponent' ,false);
         controller.notifications.addNotification({
-          message: 'agent Created successfully!' ,
+          message: 'Agent Created successfully!' ,
           type: 'success',
           autoClear: true
         });
