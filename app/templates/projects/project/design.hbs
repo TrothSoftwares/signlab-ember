@@ -1,1 +1,43 @@
+
+
+projects/project(slug)/Design page
+
+
+<div class="col-md-12 row">
+<button type="button" class="btn btn-default pull-right"  {{action "saveDesigndetails"}} >
+  <span class="glyphicon glyphicon-floppy-save"></span>
+</button>
+</div>
+
+<br><br><br><br>
+
+{{#each project.items as |item index|}}
+
+<div class=" well">
+  <div class="row">
+    <div class="col-md-6 border">
+      <h3>Item : {{incrementone index}}</h3>
+
+      <div class="row row-margin">
+        <div class="col-md-4 col-xs-12"><label for="" class="labels">Design Specifications</label></div>
+        <div class="col-md-8 col-xs-12">{{input type="text" class="form-control "  placeholder="Design Specification" value=item.designspecifications}}</div>
+      </div>
+
+      <div class="row row-margin">
+        <div class="col-md-4 col-xs-12"><label for="" class="labels">Design Notes</label></div>
+        <div class="col-md-8 col-xs-12">{{input type="text" class="form-control "  placeholder="Design Notes" value=item.designnotes}}
+        </div>
+      </div>
+
+
+      <div class="row row-margin">
+        <div class="col-md-4 col-xs-12"><label for="" class="labels">Upload Picture</label></div>
+        <div class="col-md-8 col-xs-12">{{input type="text" class="form-control"  placeholder="Upload Picture" value=customer.othcontactno}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{/each}}
+
 {{outlet}}
