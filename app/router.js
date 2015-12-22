@@ -18,6 +18,7 @@ Router.map(function() {
       this.route('customer');
       this.route('agent');
       this.route('job');
+      this.route('design');
     });
   });
 
