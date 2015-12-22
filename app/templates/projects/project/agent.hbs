@@ -1,3 +1,150 @@
 
 projects/project(slug)/agent page
+
+
+
+<div class="row row-margin">
+  <div class="col-md-2">
+    <label for="" class="labels">agent</label>
+  </div>
+  <div class="col-md-8">
+    {{ember-select-guru value=project.agent  options=agents onSelect=(action "onSelectagent") }}
+  </div>
+  <div class="col-md-1">
+    <button type="button" class="btn btn-default pull-right"  {{action "openagentComponent"}} >
+      <span class="glyphicon {{if showagentComponent "glyphicon-minus" "glyphicon-plus"}} "></span>
+    </button>
+  </div>
+  <div class="col-md-1">
+    <button type="button" class="btn btn-default "  {{action "saveProject"}} >
+      <span class="glyphicon glyphicon-floppy-save"></span>
+    </button>
+  </div>
+</div>
+
+
+<div class="row">
+  <div id="liquid-spacer-demo">
+    <div class="col-md-10 pull-right " style="">
+      {{#liquid-spacer growDuration=250}}
+      {{#if showagentComponent}}
+        <!--  agent Form CODE -->
+          <div class="col-md-11">
+
+                            <div class="row row-margin">
+
+                                    <div class="col-md-4 col-xs-12"><label for="" class="labels">Client Name</label></div>
+                                    <div class="col-md-8 col-xs-12">{{input type="text" class="form-control "  placeholder="Client Name" value=custname}}</div>
+                            </div>
+
+                            <div class="row row-margin">
+                                    <div class="col-md-4 col-xs-12"><label for="" class="labels">Client Contact Name</label></div>
+                                    <div class="col-md-8 col-xs-12">{{input type="text" class="form-control "  placeholder="Client contact name" value=custcontactname}}</div>
+                            </div>
+                            <div class="row row-margin">
+                                    <div class="col-md-4 col-xs-12"><label for="" class="labels">Client Contact No.</label></div>
+                                    <div class="col-md-8 col-xs-12">{{input type="text" class="form-control "  placeholder="Client contact No" value=custcontactno}}</div>
+                            </div>
+                            <div class="row row-margin">
+                                    <div class="col-md-4 col-xs-12"><label for="" class="labels">Other Contact No.</label></div>
+                                    <div class="col-md-8 col-xs-12">{{input type="text" class="form-control"  placeholder="Other Contact No" value=custothcontactno}}</div>
+                            </div>
+                            <div class="row row-margin">
+                                    <div class="col-md-4 col-xs-12"><label for="" class="labels">Other Reference Details</label></div>
+                                    <div class="col-md-8 col-xs-12">{{input type="text" class="form-control"  placeholder="Other Contact No" value=custothrefdetails}}</div>
+                            </div>
+
+                            </div>
+                            <div class="col-md-1 "style="padding-top:10px">
+                            <button type="button" class="btn btn-default pull-right"  {{action "createagent"}} >
+                                    <span class="glyphicon glyphicon-floppy-save "></span>
+                            </button>
+                          </div>
+
+
+
+
+      {{/if}}
+      {{/liquid-spacer}}
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row row-margin">
+    <div class="col-md-11">
+      {{#liquid-if enableEditagent class="customer-info"  }}
+
+
+
+      <div class="row row-margin">
+
+        <div class="col-md-4 col-xs-12"><label for="" class="labels">Client Name</label></div>
+        <div class="col-md-8 col-xs-12">{{input type="text" class="form-control "  placeholder="Client Name" value=project.agent.name}}</div>
+      </div>
+
+      <div class="row row-margin">
+        <div class="col-md-4 col-xs-12"><label for="" class="labels">Client Contact Name</label></div>
+        <div class="col-md-8 col-xs-12">{{input type="text" class="form-control "  placeholder="Client contact name" value=project.agent.contactname}}</div>
+      </div>
+      <div class="row row-margin">
+        <div class="col-md-4 col-xs-12"><label for="" class="labels">Client Contact No.</label></div>
+        <div class="col-md-8 col-xs-12">{{input type="text" class="form-control "  placeholder="Client contact No" value=project.agent.contactno}}</div>
+      </div>
+      <div class="row row-margin">
+        <div class="col-md-4 col-xs-12"><label for="" class="labels">Other Contact No.</label></div>
+        <div class="col-md-8 col-xs-12">{{input type="text" class="form-control"  placeholder="Other Contact No" value=project.agent.othcontactno}}</div>
+      </div>
+      <div class="row row-margin">
+        <div class="col-md-4 col-xs-12"><label for="" class="labels">Other Reference Details</label></div>
+        <div class="col-md-8 col-xs-12">{{input type="text" class="form-control"  placeholder="Other Contact No" value=project.agent.othrefdetails}}</div>
+      </div>
+
+      {{else}}
+
+      <div class="row row-margin">
+        <div class="col-md-4 col-xs-12"><label for="" class=" ">Client Name</label> </div>
+        <div class="col-md-8 col-xs-12"><label for="" class="labels">{{project.agent.name}}</label></div>
+      </div>
+      <div class="row row-margin">
+        <div class="col-md-4 col-xs-12"><label for="" class="labels">Client Contact Name</label></div>
+        <div class="col-md-8 col-xs-12"><label class="" for="">{{project.agent.contactname}}</label></div>
+      </div>
+      <div class="row row-margin">
+        <div class="col-md-4 col-xs-12"><label for="" class="labels">Client Contact No.</label></div>
+        <div class="col-md-8 col-xs-12"><label class="" for="">{{project.agent.contactno}}</label></div>
+
+      </div>
+      <div class="row row-margin">
+        <div class="col-md-4 col-xs-12"><label for="" class="labels">Other Contact Number</label></div>
+        <div class="col-md-8 col-xs-12"><label class="" for=""> {{project.agent.othcontactno}}</label></div>
+      </div>
+      <div class="row row-margin">
+        <div class="col-md-4 col-xs-12"><label for="" class="labels">Other Contact No.</label></div>
+        <div class="col-md-8 col-xs-12"><label class="" for=""> {{project.agent.othrefdetails}}</label></div>
+      </div>
+
+
+      {{/liquid-if}}
+    </div>
+    <div class="col-md-1 "style="padding-top:10px">
+      {{#if enableEditagent }}
+      <button type="button" class="btn btn-default pull-right"  {{action "editagent"}} >
+        <span class="glyphicon glyphicon-floppy-save "></span>
+      </button>
+      {{else}}
+      <button type="button" class="btn btn-default pull-right"  {{action "editagent"}} >
+        <span class="glyphicon glyphicon-pencil"></span>
+      </button>
+
+
+      {{/if}}
+
+
+    </div>
+
+  </div>
+</div>
+
+
 {{outlet}}
