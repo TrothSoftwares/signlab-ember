@@ -40,12 +40,7 @@ export default Ember.Controller.extend({
         this.toggleProperty('showAgentComponent');
       },
 
-      deleteData:function(){
-        var controller = this;
-        this.model.deleteRecord();
-        this.model.save();
-        controller.transitionToRoute('customers.new');
-      },
+      
 
       onSelectCustomer(customer) {
         this.set('project.customer', customer);
