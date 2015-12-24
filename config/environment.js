@@ -8,13 +8,13 @@ module.exports = function(environment) {
     locationType: 'auto',
 
     contentSecurityPolicy: {
-    'default-src': "'none'",
-    'script-src': "'self'",
-    'font-src': "'self'",
+    'default-src': "'none' *",
+    'script-src': "'self' *",
+    'font-src': "'self' *",
     'connect-src': "'self' *",
-    'img-src': "'self'",
-    'media-src': "'self'",
-	  'style-src': "'self' 'unsafe-inline'",
+    'img-src': "'self' data: *  ",
+    'media-src': "'self' *",
+	  'style-src': "'self' 'unsafe-inline' *",
 
 
 	},

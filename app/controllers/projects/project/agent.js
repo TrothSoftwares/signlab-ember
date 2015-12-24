@@ -15,18 +15,18 @@ export default Ember.Controller.extend({
     createagent: function() {
       var controller = this;
       var agent = this.store.createRecord('agent', {
-        name :this.get('custname'),
-        contactname :this.get('custcontactname'),
-        contactno :this.get('custcontactno'),
-        othcontactno :this.get('custothcontactno'),
-        othrefdetails:this.get('custothrefdetails'),
+        name :this.get('agentname'),
+        contactname :this.get('agentcontactname'),
+        contactno :this.get('agentcontactno'),
+        othcontactno :this.get('agentothcontactno'),
+        othrefdetails:this.get('agentothrefdetails'),
       });
       agent.save().then(function(){
-        controller.set('custname','');
-        controller.set('custcontactname','');
-        controller.set('custcontactno','');
-        controller.set('custothcontactno','');
-        controller.set('custothrefdetails','');
+        controller.set('agentname','');
+        controller.set('agentcontactname','');
+        controller.set('agentcontactno','');
+        controller.set('agentothcontactno','');
+        controller.set('agentothrefdetails','');
         controller.send('onSelectagent',agent);
         controller.set('showagentComponent' ,false);
         controller.notifications.addNotification({
@@ -47,7 +47,7 @@ export default Ember.Controller.extend({
           if(projectagent.get('hasDirtyAttributes')){
         projectagent.save().then(function(){
           controller.notifications.addNotification({
-            message: 'agent Updated successfully!' ,
+            message: 'Agent Updated successfully!' ,
             type: 'success',
             autoClear: true
           });
