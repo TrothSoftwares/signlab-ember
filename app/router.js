@@ -27,11 +27,12 @@ Router.map(function() {
   });
 
 
+  // this.route('login');
   this.route('agents', function() {
     this.route('agent', {path: ':id'});
     this.route('new');
   });
-  // this.route('login');
+  this.route('logins');
 });
 
 export default Router;
