@@ -95,7 +95,11 @@ projects/project(slug)/enquiry-form page
                       <!--  Agent Form CODE -->
 
 
+
                         <div class="col-md-11">
+
+              {{ember-select-guru value=project.customer  options=customers onSelect=(action "onSelectCustomer") }}
+
 
                                           <div class="row row-margin">
 
@@ -133,6 +137,16 @@ projects/project(slug)/enquiry-form page
 
 
 
+                  <div class="col-md-9">
+                        {{ember-select-guru value=project.agent  options=agents onSelect=(action "onSelectAgent") }}
+                  </div>
+                  <div class="col-md-1">
+                  <button type="button" class="btn btn-default pull-right"  {{action "openAgentComponent"}} >
+                          <span class="glyphicon {{if showAgentComponent "glyphicon-minus" "glyphicon-plus"}} "></span>
+                  </button>
+                  </div>
+
+
           {{/if}}
           {{/liquid-spacer}}
         </div>
@@ -143,7 +157,7 @@ projects/project(slug)/enquiry-form page
         <label for="" class="labels">Enquiry Date</label>
       </div>
       <div class="col-md-10">
-        {{bootstrap-datepicker value=project.enquiries.lastObject.date class="form-control" autoclose=true placeholder="Enquiry Date" format="dd MM, yyyy"}}       
+        {{bootstrap-datepicker value=project.enquiries.lastObject.date class="form-control" autoclose=true placeholder="Enquiry Date" format="dd MM, yyyy"}}
        </div>
       </div>
       <div class="row row-margin">
