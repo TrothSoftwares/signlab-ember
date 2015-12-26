@@ -33,8 +33,13 @@ export default Ember.Controller.extend({
           date: new Date(),
           no: '',
           project : project});
+
+          var quotation = this.store.createRecord('quotation', {
+            project : project});
+
           project.save().then(function(){
             enquiry.save();
+            quotation.save();
             controller.set('name' , '');
             controller.transitionToRoute('projects.project',project);
           });

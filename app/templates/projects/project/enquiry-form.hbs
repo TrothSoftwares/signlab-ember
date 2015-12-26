@@ -97,10 +97,6 @@ projects/project(slug)/enquiry-form page
 
 
                         <div class="col-md-11">
-
-              {{ember-select-guru value=project.customer  options=customers onSelect=(action "onSelectCustomer") }}
-
-
                                           <div class="row row-margin">
 
                                                   <div class="col-md-4 col-xs-12"><label for="" class="labels">Agent Name</label></div>
@@ -137,14 +133,7 @@ projects/project(slug)/enquiry-form page
 
 
 
-                  <div class="col-md-9">
-                        {{ember-select-guru value=project.agent  options=agents onSelect=(action "onSelectAgent") }}
-                  </div>
-                  <div class="col-md-1">
-                  <button type="button" class="btn btn-default pull-right"  {{action "openAgentComponent"}} >
-                          <span class="glyphicon {{if showAgentComponent "glyphicon-minus" "glyphicon-plus"}} "></span>
-                  </button>
-                  </div>
+                  
 
 
           {{/if}}
