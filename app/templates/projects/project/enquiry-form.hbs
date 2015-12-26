@@ -95,7 +95,9 @@ projects/project(slug)/enquiry-form page
                       <!--  Agent Form CODE -->
 
 
-                        <div class="col-md-11">
+
+              {{ember-select-guru value=project.customer  options=customers onSelect=(action "onSelectCustomer") }}
+
 
                                           <div class="row row-margin">
 
@@ -131,6 +133,16 @@ projects/project(slug)/enquiry-form page
 
 
 
+
+
+                  <div class="col-md-9">
+                        {{ember-select-guru value=project.agent  options=agents onSelect=(action "onSelectAgent") }}
+                  </div>
+                  <div class="col-md-1">
+                  <button type="button" class="btn btn-default pull-right"  {{action "openAgentComponent"}} >
+                          <span class="glyphicon {{if showAgentComponent "glyphicon-minus" "glyphicon-plus"}} "></span>
+                  </button>
+                  </div>
 
 
           {{/if}}
