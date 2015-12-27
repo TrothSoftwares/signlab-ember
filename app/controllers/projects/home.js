@@ -11,7 +11,7 @@ export default Ember.Controller.extend({
 
   matchingProjects: Ember.computed('model.@each.name','searchTerm', function() {
     var searchTerm = this.get('searchTerm').toLowerCase();
-    return this.get('model').filter(function(customer) {
+    return this.get('projects').filter(function(customer) {
       return customer.get('name').toLowerCase().indexOf(searchTerm) !== -1;
     });
   }),
@@ -21,25 +21,31 @@ export default Ember.Controller.extend({
   actions: {
     createProject: function(){
       var controller = this;
-      var customer = this.store.peekRecord('customer',1);
-      var agent = this.store.peekRecord('agent', 1);
+
+
+
+              var customer = this.get('customers').get('firstObject');
+              var agent = this.get('agents').get('firstObject');
+
 
       var project = this.store.createRecord('project', {
         name: this.get('name'),
         customer : customer,
         agent : agent});
 
-        var enquiry = this.store.createRecord('enquiry', {
-          date: new Date(),
-          no: '',
-          project : project});
-
-          var quotation = this.store.createRecord('quotation', {
-            project : project});
-
           project.save().then(function(){
+            var enquiry = controller.store.createRecord('enquiry', {
+              date: new Date(),
+              no: '',
+              project : project});
+
             enquiry.save();
+
+            var quotation = controller.store.createRecord('quotation', {
+              project : project});
+
             quotation.save();
+
             controller.set('name' , '');
             controller.transitionToRoute('projects.project',project);
           });
