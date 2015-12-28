@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import EmberUploader from 'ember-uploader';
+import ENV from '../../../config/environment';
 
 export default Ember.Controller.extend({
 
@@ -26,7 +27,8 @@ export default Ember.Controller.extend({
       newSiteImage.save().then(function(newSiteImage){
               var uploader = EmberUploader.Uploader.create({
                 // FIXME:  this url should be dymanic
-                url: 'http://localhost:3000/siteimages/'+newSiteImage.id,
+
+                url: ENV.APP.host + '/siteimages/'+newSiteImage.id,
                 type: 'PATCH',
                 paramNamespace: 'siteimage',
                 paramName: 'url',
@@ -44,7 +46,7 @@ export default Ember.Controller.extend({
       siteimage.save();
     }
 
-    
+
   },
 
 
