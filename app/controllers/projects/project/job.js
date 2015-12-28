@@ -25,7 +25,7 @@ export default Ember.Controller.extend({
       var newSiteImage = this.store.createRecord('siteimage',{description: 'test desc',item :item});
       newSiteImage.save().then(function(newSiteImage){
               var uploader = EmberUploader.Uploader.create({
-                // FIXME:  this url should be dymanic 
+                // FIXME:  this url should be dymanic
                 url: 'http://localhost:3000/siteimages/'+newSiteImage.id,
                 type: 'PATCH',
                 paramNamespace: 'siteimage',
@@ -44,7 +44,7 @@ export default Ember.Controller.extend({
       siteimage.save();
     }
 
-    // TODO : Download button and functionality is pending
+    
   },
 
 

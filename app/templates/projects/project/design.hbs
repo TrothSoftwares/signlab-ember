@@ -28,12 +28,39 @@ projects/project(slug)/Design page
         <div class="col-md-8 col-xs-12">{{input type="text" class="form-control "  placeholder="Design Notes" value=item.designnotes}}
         </div>
       </div>
+      <div class="row row-margin">
+        <div class="col-md-4 col-xs-12"><label for="" class="labels">Upload Picture</label></div>
+        <div class="col-md-8 col-xs-12">{{file-upload item=item designimages=item.designimages    on-upload=(action "uploadDesignimage")  }}</div>
+      </div>
 
 
       <div class="row row-margin">
-        <div class="col-md-4 col-xs-12"><label for="" class="labels">Upload Picture</label></div>
-        <div class="col-md-8 col-xs-12">{{input type="text" class="form-control"  placeholder="Upload Picture" value=customer.othcontactno}}</div>
+        <div class="col-md-4 col-xs-12"><label>Uploaded Files</label></div>
+        <div class="col-md-8 col-xs-12  ">
+          {{#each item.designimages as |designimage index|}}
+          <div class="col-xs-6 col-md-4 thumbnail   ">
+            {{#light-box href=designimage.fullurl data-lightbox="cats-group" data-title=designimage.description inlineImage=false}}
+            <img src="{{designimage.thumburl}}" >
+            {{/light-box}}
+            <div class="caption">
+              <p>{{designimage.description}}</p>
+              <p class="text-center">
+                <a href="{{designimage.fullurl}}" target="_blank">
+                <button type="button" class="btn btn-default"  >
+                  <span class="glyphicon glyphicon-download" ></span>
+                </button>
+                </a>
+                <button type="button" class="btn btn-default"   {{action "deleteDesignimage" designimage}} >
+                  <span class="glyphicon glyphicon-trash" ></span>
+                </button>
+              </p>
+            </div>
+          </div>
+          {{/each}}
+        </div>
       </div>
+
+
     </div>
   </div>
 </div>

@@ -13,6 +13,7 @@ export default DS.Model.extend({
   designspecifications: DS.attr('string'),
   designnotes: DS.attr('string'),
   siteimages: DS.hasMany('siteimage' ,{embedded: 'always', async:true}),
+  designimages: DS.hasMany('designimage' ,{embedded: 'always', async:true}),
   itemtype: DS.belongsTo('itemtype' , {async:true }),
   jobtype: DS.belongsTo('jobtype' ,{ async:true } ),
   project: DS.belongsTo('project' ,{ async:true})
