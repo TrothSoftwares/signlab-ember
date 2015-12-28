@@ -36,6 +36,8 @@
     "ember-cli-release": "0.2.8",
     "ember-cli-sri": "^1.1.0",
     "ember-cli-uglify": "^1.2.0",
+    "ember-cli-uploader": "^0.3.11",
+    "ember-cp-validations": "2.1.4",
     "ember-data": "2.1.0",
     "ember-disable-proxy-controllers": "^1.0.1",
     "ember-export-application-global": "^1.0.4",
@@ -43,5 +45,8 @@
     "ember-select-guru": "1.1.2",
     "liquid-fire": "0.21.3",
     "liquid-tether": "0.1.9"
+  },
+  "dependencies": {
+    "ember-cli-lightbox": "0.0.3"
   }
 }

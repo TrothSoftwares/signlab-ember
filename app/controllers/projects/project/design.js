@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import EmberUploader from 'ember-uploader';
 
 export default Ember.Controller.extend({
 
@@ -16,10 +17,31 @@ export default Ember.Controller.extend({
             autoClear: true
           });
         });
-
-
-
-
+    },
+    uploadDesignimage :function(params){
+// FIXME: description IS STATIC
+      let files = params.files,
+          item = params.item;
+      var newDesignImage = this.store.createRecord('designimage',{description: 'test desc',item :item});
+      newDesignImage.save().then(function(newDesignImage){
+              var uploader = EmberUploader.Uploader.create({
+                // FIXME:  this url should be dymanic
+                url: 'http://localhost:3000/designimages/'+newDesignImage.id,
+                type: 'PATCH',
+                paramNamespace: 'designimage',
+                paramName: 'url',
+              });
+              if (!Ember.isEmpty(files)) {
+                uploader.upload(files[0]).then(function(){
+                   newDesignImage.reload();
+                }
+                );
+              }
+      });
+    },
+    deleteDesignimage :function(designimage){
+      designimage.deleteRecord();
+      designimage.save();
     }
   }
 });
