@@ -23,7 +23,7 @@ export default Ember.Controller.extend({
 // FIXME: description IS STATIC
       let files = params.files,
           item = params.item;
-      var newDesignImage = this.store.createRecord('designimage',{description: 'test desc',item :item});
+      var newDesignImage = this.store.createRecord('designimage',{description: '',item :item});
       newDesignImage.save().then(function(newDesignImage){
               var uploader = EmberUploader.Uploader.create({
                 // FIXME:  this url should be dymanic

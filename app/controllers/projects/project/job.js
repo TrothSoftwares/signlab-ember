@@ -23,7 +23,7 @@ export default Ember.Controller.extend({
 
       let files = params.files,
           item = params.item;
-      var newSiteImage = this.store.createRecord('siteimage',{description: 'test desc',item :item});
+      var newSiteImage = this.store.createRecord('siteimage',{description: '',item :item});
       newSiteImage.save().then(function(newSiteImage){
               var uploader = EmberUploader.Uploader.create({
                 // FIXME:  this url should be dymanic
