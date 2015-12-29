@@ -8,7 +8,7 @@ export default Ember.Controller.extend({
     searchTerm: 's',
   },
   searchTerm: '',
-  
+
 
   matchingCustomers: Ember.computed('model.@each.name','searchTerm', function() {
     var searchTerm = this.get('searchTerm').toLowerCase();
