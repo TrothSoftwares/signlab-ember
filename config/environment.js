@@ -40,20 +40,31 @@ module.exports = function(environment) {
     routeAfterAuthentication: 'projects.home',
     routeIfAlreadyAuthenticated: 'projects.home'
   };
-  ENV['simple-auth-devise'] = {
-    tokenAttributeName: 'token',
-    identificationAttributeName: 'email',
+  ENV['simple-auth-token'] = {
+    // tokenAttributeName: 'token',
+    // identificationAttributeName: 'email',
+    // serverTokenEndpoint: 'http://localhost:3000/users/sign_in',
+    // authorizer: 'authorizer:devise'
     serverTokenEndpoint: 'http://localhost:3000/users/sign_in',
-    authorizer: 'authorizer:devise'
+    identificationField: 'username',
+    passwordField: 'password',
+    tokenPropertyName: 'token',
+    authorizationPrefix: 'Bearer ',
+    authorizationHeaderName: 'Authorization',
+    headers: {},
   };
 
   ENV['simple-auth'] = {
-    authorizer: 'simple-auth-authorizer:devise',
+    authorizer: 'simple-auth-authorizer:token',
+    crossOriginWhitelist: ['*']
 
   };
-  ENV['simple-auth'] = {
-  crossOriginWhitelist: ['*']
-};
+
+ENV['simple-auth-token'] = {
+    refreshAccessTokens: true,
+    timeFactor: 1,
+    refreshLeeway: 300 // Refresh the token 5 minutes (300s) before it expires.
+  };
 
 
 
