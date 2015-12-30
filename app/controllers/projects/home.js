@@ -14,7 +14,7 @@ export default Ember.Controller.extend({
     return this.get('projects').filter(function(customer) {
       return customer.get('name').toLowerCase().indexOf(searchTerm) !== -1;
     });
-  }),
+    }),
 
 
 
