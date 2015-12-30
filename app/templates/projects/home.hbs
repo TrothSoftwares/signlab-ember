@@ -5,7 +5,7 @@ From Projects page
   <div class="list-group">
 
     <div class="list-group-item">
-        {{input type="text" placeholder="Search Project" value=searchTerm class="form-control"}}
+        {{input type="text"  placeholder="Search Project" value=searchTerm class="form-control"}}
     </div>
 
 
@@ -21,20 +21,22 @@ From Projects page
   <div class="list-group">
     <div class=" col-md-8 well-sm  ">
             <h3> Create New Project </h3>
+            {{#validatable-form action="createProject" }}
             <table class="table">
                     <tr>
                             <td><label for="" class="">Project Name</label></td>
-                            <td>{{input type="text" class="form-control "  placeholder="Project Name" value=name}}</td>
+                            <td>{{input type="text" required=true class="form-control "  placeholder="Project Name" value=name}}</td>
                     </tr>
 
                     <tr>
-                            <button type="button" class="btn btn-success "  {{action "createProject"}} >
+                            <button type="submit"  class="btn btn-success "  >
                                     Create Project
                             </button>
 
                     </tr>
 
             </table>
+            {{/validatable-form}}
 
 
     </div>
