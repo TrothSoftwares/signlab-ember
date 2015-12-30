@@ -1,6 +1,14 @@
+import Ember from 'ember';
 import DS from 'ember-data';
+import {validator, buildValidations}from 'ember-cp-validations';
 
-export default DS.Model.extend({
+
+var Validations = buildValidations({
+  name: validator('presence', true),
+});
+
+
+export default DS.Model.extend(Validations,{
   name: DS.attr('string'),
   customer: DS.belongsTo('customer' , {async:true}),
   agent: DS.belongsTo('agent' , {async:true}),
