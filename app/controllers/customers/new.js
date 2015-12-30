@@ -1,22 +1,6 @@
 import Ember from 'ember';
-import EmberValidations from 'ember-validations';
 
-
-
-
-export default Ember.Controller.extend(EmberValidations,{
-  validations: {
-     'model.name': {
-       presence: true,
-       length: { minimum: 5 }
-     },
-
-   },
-
-
-
-
-
+export default Ember.Controller.extend({
   actions: {
       editCustomer: function() {
       var controller = this;
