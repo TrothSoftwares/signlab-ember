@@ -12,13 +12,9 @@ export default Ember.Controller.extend({
 
   matchingCustomers: Ember.computed('model.@each.name','searchTerm', function() {
     var searchTerm = this.get('searchTerm').toLowerCase();
-
-
     return this.get('model').filter(function(customer) {
-      // return customer
       return customer.get('name').toLowerCase().indexOf(searchTerm) !== -1;
     });
   }),
-
 
 });
