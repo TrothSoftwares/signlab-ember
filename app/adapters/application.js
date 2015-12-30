@@ -8,7 +8,13 @@ export default DS.JSONAPIAdapter.extend({
   },
   plurals: {
       enquiry: 'enquiries'
-    }
+    },
+    headers: {
+            'X-AUTHENTICATION-TOKEN': 'sFi7MJ5E-TwYg1FhjTT5'
+          }
+
+
+
 });
 
 //

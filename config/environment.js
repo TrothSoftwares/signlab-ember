@@ -15,8 +15,6 @@ module.exports = function(environment) {
       'img-src': "'self'",
       'media-src': "'self'",
       'style-src': "'self' 'unsafe-inline'",
-
-
     },
     host: 'http://localhost:3000',
 
@@ -36,48 +34,69 @@ module.exports = function(environment) {
     }
   };
 
+  ENV['simple-auth-devise'] = {
+     tokenAttributeName: 'token',
+     identificationAttributeName: 'email',
+     serverTokenEndpoint: ENV.host + '/users/sign_in',
+     authorizer: 'devise'
+   };
+
+   ENV['simple-auth'] = {
+     crossOriginWhitelist: ['*'],
+     authorizer: 'simple-auth-authorizer:devise'
+   };
+
+// const server = restify.createServer({ name: 'sellthru', version: "1.0.0" });
+// restify.CORS.ALLOW_HEADERS.push('authorization');
+// server
+// .use(restify.CORS({origins: ['http://localhost:4200']}))
+// .use(restify.fullResponse())
+// .use(restify.bodyParser())
+// .use(restify.queryParser())
+// .use(passport.initialize());
+
+//
+//   ENV['simple-auth'] = {
+//    authorizer: 'simple-auth-authorizer:token'
+//  };
+//  ENV['simple-auth-token'] = {
+//   refreshAccessTokens: true,
+//   timeFactor: 1,
+//   refreshLeeway: 300 // Refresh the token 5 minutes (300s) before it expires.
+// };
+// ENV['simple-auth-token'] = {
+//   serverTokenEndpoint: 'http://localhost:3000/users/sign_in',
+//   identificationField: 'email',
+//   passwordField: 'password',
+//   tokenPropertyName: 'token',
+//   authorizationPrefix: 'Bearer ',
+//   authorizationHeaderName: 'Authorization',
+//   headers: {},
+// };
+//
+//   ENV['ember-simple-auth'] = {
+//     routeAfterAuthentication: 'projects.home',
+//     routeIfAlreadyAuthenticated: 'projects.home'
+//   };
+//   ENV['ember-simple-auth-token'] = {
+//     serverTokenEndpoint: 'http://localhost:3000/users/sign_in',
+//     identificationField: 'username',
+//     passwordField: 'password',
+//     tokenPropertyName: 'token',
+//     authorizationPrefix: 'Bearer ',
+//     authorizationHeaderName: 'Authorization',
+//     headers: {},
+//     refreshAccessTokens: true,
+//     timeFactor: 1,
+//     refreshLeeway: 300 // Refresh the token 5 minutes (300s) before it expires.
+//   };
+//
   ENV['ember-simple-auth'] = {
-    routeAfterAuthentication: 'projects.home',
-    routeIfAlreadyAuthenticated: 'projects.home'
-  };
-  ENV['simple-auth-token'] = {
-    // tokenAttributeName: 'token',
-    // identificationAttributeName: 'email',
-    // serverTokenEndpoint: 'http://localhost:3000/users/sign_in',
-    // authorizer: 'authorizer:devise'
-    serverTokenEndpoint: 'http://localhost:3000/users/sign_in',
-    identificationField: 'username',
-    passwordField: 'password',
-    tokenPropertyName: 'token',
-    authorizationPrefix: 'Bearer ',
-    authorizationHeaderName: 'Authorization',
-    headers: {},
-  };
-
-  ENV['simple-auth'] = {
-    authorizer: 'simple-auth-authorizer:token',
-    crossOriginWhitelist: ['*']
+    // authorizer: 'authorizer:token',
+    // crossOriginWhitelist: ['*']
 
   };
-
-ENV['simple-auth-token'] = {
-    refreshAccessTokens: true,
-    timeFactor: 1,
-    refreshLeeway: 300 // Refresh the token 5 minutes (300s) before it expires.
-  };
-
-
-
-
-
-  // ENV['simple-auth'] = {
-  // authorizer: 'simple-auth-authorizer:devise'
-  // };
-  //
-  // ENV['simple-auth-devise'] = {
-  // tokenAttributeName: 'token',
-  // identificationAttributeName: 'email'
-  // };
+//
 
 
 
