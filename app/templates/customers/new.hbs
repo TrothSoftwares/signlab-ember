@@ -2,40 +2,45 @@
 <!-- {{customer-form type='ind' custcomp=model on-create=(action "createCustomer")}} -->
 <div class="container-fluid">
   <div class="row row-margin">
+                {{#validatable-form action="editCustomer" }}
+
     <div class="col-md-11">
 
 
                   <div class="row row-margin">
 
                           <div class="col-md-4 col-xs-12"><label for="" class="labels">Client Name</label></div>
+
                           <div class="col-md-8 col-xs-12">{{input type="text" class="form-control "  placeholder="Client Name"  required=true value=model.name}}</div>
+
                   </div>
 
                   <div class="row row-margin">
                           <div class="col-md-4 col-xs-12"><label for="" class="labels">Client Contact Name</label></div>
-                          <div class="col-md-8 col-xs-12">{{input type="text" class="form-control "  placeholder="Client contact name" value=model.contactname}}</div>
+                          <div class="col-md-8 col-xs-12">{{input type="text" required=true class="form-control "  placeholder="Client contact name" value=model.contactname}}</div>
                   </div>
                   <div class="row row-margin">
                           <div class="col-md-4 col-xs-12"><label for="" class="labels">Client Contact No.</label></div>
-                          <div class="col-md-8 col-xs-12">{{input type="text" class="form-control "  placeholder="Client contact No" value=model.contactno}}</div>
+                          <div class="col-md-8 col-xs-12">{{input type="text" required=true class="form-control "  placeholder="Client contact No" value=model.contactno}}</div>
                   </div>
                   <div class="row row-margin">
                           <div class="col-md-4 col-xs-12"><label for="" class="labels">Other Contact No.</label></div>
-                          <div class="col-md-8 col-xs-12">{{input type="text" class="form-control"  placeholder="Other Contact No" value=model.othcontactno}}</div>
+                          <div class="col-md-8 col-xs-12">{{input type="text" required=true class="form-control"  placeholder="Other Contact No" value=model.othcontactno}}</div>
                   </div>
                   <div class="row row-margin">
                           <div class="col-md-4 col-xs-12"><label for="" class="labels">Other Reference Details</label></div>
-                          <div class="col-md-8 col-xs-12">{{input type="text" class="form-control"  placeholder="Other Contact No" value=model.othrefdetails}}</div>
+                          <div class="col-md-8 col-xs-12">{{input type="text" required=true class="form-control"  placeholder="Other Contact No" value=model.othrefdetails}}</div>
                   </div>
 
 
         </div>
         <div class="col-md-1 "style="padding-top:10px">
 
-                <button type="button" class="btn btn-default pull-right"  {{action "editCustomer"}} >
+                <button type="submit" class="btn btn-default pull-right"   >
                         <span class="glyphicon glyphicon-floppy-save "></span>
                 </button>
         </div>
+            {{/validatable-form}}
 
 </div>
 </div>
