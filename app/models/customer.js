@@ -1,6 +1,14 @@
 import DS from 'ember-data';
+import {
+  validator, buildValidations
+}
+from 'ember-cp-validations';
 
-export default DS.Model.extend({
+var Validations = buildValidations({
+  name: validator('presence', true)
+});
+
+export default DS.Model.extend(Validations,{
 
 name: DS.attr('string'),
 contactname: DS.attr('string'),
