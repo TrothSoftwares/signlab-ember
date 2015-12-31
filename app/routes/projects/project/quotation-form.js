@@ -4,7 +4,7 @@ export default Ember.Route.extend({
   model: function() {
     return Ember.RSVP.hash({  // RSVP.hash for resolving multiple models, The setupController will only work until all promises resolved.
       project: this.modelFor('projects.project'),
-      
+
 
     });
   },
