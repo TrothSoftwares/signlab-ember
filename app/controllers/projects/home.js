@@ -47,7 +47,7 @@ export default Ember.Controller.extend({
             quotation.save();
 
             controller.set('name' , '');
-            controller.transitionToRoute('projects.project',project);
+            controller.transitionToRoute('projects.project.enquiry-form',project);
           });
         }
         // FIXME: CANNOT CREATE PROJECT
