@@ -20,10 +20,12 @@ export default Ember.Controller.extend({
         });
     },
     uploadDesignimage :function(params){
+      var self = this;
 // FIXME: description IS STATIC
       let files = params.files,
           item = params.item;
       var newDesignImage = this.store.createRecord('designimage',{description: '',item :item});
+      self.send('loading');
       newDesignImage.save().then(function(newDesignImage){
               var uploader = EmberUploader.Uploader.create({
                 // FIXME:  this url should be dymanic
@@ -38,6 +40,7 @@ export default Ember.Controller.extend({
                 }
                 );
               }
+              self.send('finished');
       });
     },
     deleteDesignimage :function(designimage){

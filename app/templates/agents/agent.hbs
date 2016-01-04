@@ -3,26 +3,23 @@
   {{#link-to 'agents.new'}}
   <button type="button" class="btn btn-success">New Agent </button>
   {{/link-to}}
+  {{#validatable-form action="editagent" }}
+
   <div class="container-fluid">
     <div class="row row-margin">
       <div class="col-md-11">
           {{#liquid-if enableEditagent class="customer-info"  }}
-
-
-
                     <div class="row row-margin">
-
                             <div class="col-md-4 col-xs-12"><label for="" class="labels">Agent Name</label></div>
-                            <div class="col-md-8 col-xs-12">{{input type="text" class="form-control "  placeholder="Agent Name" value=model.name}}</div>
+                            <div class="col-md-8 col-xs-12">{{input type="text" required=true class="form-control "  placeholder="Agent Name" value=model.name}}</div>
                     </div>
-
                     <div class="row row-margin">
                             <div class="col-md-4 col-xs-12"><label for="" class="labels">Agent Contact Name</label></div>
                             <div class="col-md-8 col-xs-12">{{input type="text" class="form-control "  placeholder="Agent contact name" value=model.contactname}}</div>
                     </div>
                     <div class="row row-margin">
                             <div class="col-md-4 col-xs-12"><label for="" class="labels">Agent Contact No.</label></div>
-                            <div class="col-md-8 col-xs-12">{{input type="text" class="form-control "  placeholder="Agent contact No" value=model.contactno}}</div>
+                            <div class="col-md-8 col-xs-12">{{input type="text" required=true  class="form-control "  placeholder="Agent contact No" value=model.contactno}}</div>
                     </div>
                     <div class="row row-margin">
                             <div class="col-md-4 col-xs-12"><label for="" class="labels">Other Contact No.</label></div>
@@ -46,7 +43,6 @@
                     <div class="row row-margin">
                             <div class="col-md-4 col-xs-12"><label for="" class="labels">Agent Contact No.</label></div>
                             <div class="col-md-8 col-xs-12"><label class="" for="">{{model.contactno}}</label></div>
-
                     </div>
                     <div class="row row-margin">
                             <div class="col-md-4 col-xs-12"><label for="" class="labels">Other Contact Number</label></div>
@@ -62,7 +58,7 @@
           </div>
           <div class="col-md-1 "style="padding-top:10px">
                   {{#if enableEditagent }}
-                  <button type="button" class="btn btn-default pull-right"  {{action "editagent"}} >
+                  <button type="submit" class="btn btn-default pull-right"   >
                           <span class="glyphicon glyphicon-floppy-save "></span>
                   </button>
                   {{else}}
@@ -75,12 +71,12 @@
                           <span class="glyphicon glyphicon-trash"></span>
                   </button>
                   {{/if}}
-
-
           </div>
 
   </div>
   </div>
+  {{/validatable-form}}
+
 
 
   {{outlet}}
