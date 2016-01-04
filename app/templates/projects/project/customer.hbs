@@ -25,6 +25,8 @@ projects/project(slug)/customer page
 
 <div class="row">
   <div id="liquid-spacer-demo">
+    {{#validatable-form action="createCustomer" }}
+
     <div class="col-md-10 pull-right " style="">
       {{#liquid-spacer growDuration=250}}
       {{#if showCustomerComponent}}
@@ -34,7 +36,7 @@ projects/project(slug)/customer page
                             <div class="row row-margin">
 
                                     <div class="col-md-4 col-xs-12"><label for="" class="labels">Client Name</label></div>
-                                    <div class="col-md-8 col-xs-12">{{input type="text" class="form-control "  placeholder="Client Name" value=custname}}</div>
+                                    <div class="col-md-8 col-xs-12">{{input type="text" required=true class="form-control "  placeholder="Client Name" value=custname}}</div>
                             </div>
 
                             <div class="row row-margin">
@@ -43,7 +45,7 @@ projects/project(slug)/customer page
                             </div>
                             <div class="row row-margin">
                                     <div class="col-md-4 col-xs-12"><label for="" class="labels">Client Contact No.</label></div>
-                                    <div class="col-md-8 col-xs-12">{{input type="text" class="form-control "  placeholder="Client contact No" value=custcontactno}}</div>
+                                    <div class="col-md-8 col-xs-12">{{input type="text" required=true class="form-control "  placeholder="Client contact No" value=custcontactno}}</div>
                             </div>
                             <div class="row row-margin">
                                     <div class="col-md-4 col-xs-12"><label for="" class="labels">Other Contact No.</label></div>
@@ -56,7 +58,7 @@ projects/project(slug)/customer page
 
                             </div>
                             <div class="col-md-1 "style="padding-top:10px">
-                            <button type="button" class="btn btn-default pull-right"  {{action "createCustomer"}} >
+                            <button type="submit" class="btn btn-default pull-right"   >
                                     <span class="glyphicon glyphicon-floppy-save "></span>
                             </button>
                           </div>
@@ -67,11 +69,16 @@ projects/project(slug)/customer page
       {{/if}}
       {{/liquid-spacer}}
     </div>
+    {{/validatable-form}}
+
   </div>
 </div>
 
 <div class="container-fluid">
+  {{#validatable-form action="editCustomer" }}
   <div class="row row-margin">
+
+
     <div class="col-md-11">
       {{#liquid-if enableEditCustomer class="customer-info"  }}
 
@@ -80,7 +87,7 @@ projects/project(slug)/customer page
       <div class="row row-margin">
 
         <div class="col-md-4 col-xs-12"><label for="" class="labels">Client Name</label></div>
-        <div class="col-md-8 col-xs-12">{{input type="text" class="form-control "  placeholder="Client Name" value=project.customer.name}}</div>
+        <div class="col-md-8 col-xs-12">{{input type="text" required=true class="form-control "  placeholder="Client Name" value=project.customer.name}}</div>
       </div>
 
       <div class="row row-margin">
@@ -89,7 +96,7 @@ projects/project(slug)/customer page
       </div>
       <div class="row row-margin">
         <div class="col-md-4 col-xs-12"><label for="" class="labels">Client Contact No.</label></div>
-        <div class="col-md-8 col-xs-12">{{input type="text" class="form-control "  placeholder="Client contact No" value=project.customer.contactno}}</div>
+        <div class="col-md-8 col-xs-12">{{input type="text" required=true class="form-control "  placeholder="Client contact No" value=project.customer.contactno}}</div>
       </div>
       <div class="row row-margin">
         <div class="col-md-4 col-xs-12"><label for="" class="labels">Other Contact No.</label></div>
@@ -129,7 +136,7 @@ projects/project(slug)/customer page
     </div>
     <div class="col-md-1 "style="padding-top:10px">
       {{#if enableEditCustomer }}
-      <button type="button" class="btn btn-default pull-right"  {{action "editCustomer"}} >
+      <button type="submit" class="btn btn-default pull-right" >
         <span class="glyphicon glyphicon-floppy-save "></span>
       </button>
       {{else}}
@@ -144,6 +151,7 @@ projects/project(slug)/customer page
     </div>
 
   </div>
+  {{/validatable-form}}
 </div>
 
 {{outlet}}

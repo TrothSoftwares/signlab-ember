@@ -20,10 +20,11 @@ export default Ember.Controller.extend({
         });
     },
     uploadSiteimage :function(params){
-
+      var self = this;
       let files = params.files,
           item = params.item;
       var newSiteImage = this.store.createRecord('siteimage',{description: '',item :item});
+      self.send('loading');
       newSiteImage.save().then(function(newSiteImage){
               var uploader = EmberUploader.Uploader.create({
                 // FIXME:  this url should be dymanic
@@ -39,6 +40,7 @@ export default Ember.Controller.extend({
                 }
                 );
               }
+              self.send('finished');
       });
     },
     deleteSiteimage :function(siteimage){

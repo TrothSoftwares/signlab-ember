@@ -25,45 +25,47 @@ projects/project(slug)/agent page
 
 <div class="row">
   <div id="liquid-spacer-demo">
+    {{#validatable-form action="createagent" }}
+
     <div class="col-md-10 pull-right " style="">
       {{#liquid-spacer growDuration=250}}
       {{#if showagentComponent}}
-        <!--  agent Form CODE -->
-          <div class="col-md-11">
+      <!--  agent Form CODE -->
+      <div class="col-md-11">
 
-                            <div class="row row-margin">
+        <div class="row row-margin">
 
-                                    <div class="col-md-4 col-xs-12"><label for="" class="labels">Agent Name</label></div>
+          <div class="col-md-4 col-xs-12"><label for="" class="labels">Agent Name</label></div>
 
-                                    <div class="col-md-8 col-xs-12">{{input type="text" class="form-control "  placeholder="Agent Name" value=agentname}}</div>
+          <div class="col-md-8 col-xs-12">{{input type="text" required=true class="form-control "  placeholder="Agent Name" value=agentname}}</div>
 
-                            </div>
+        </div>
 
-                            <div class="row row-margin">
-                                    <div class="col-md-4 col-xs-12"><label for="" class="labels">Agent Contact Name</label></div>
+        <div class="row row-margin">
+          <div class="col-md-4 col-xs-12"><label for="" class="labels">Agent Contact Name</label></div>
 
-                                    <div class="col-md-8 col-xs-12">{{input type="text" class="form-control "  placeholder="Agent contact name" value=agentcontactname}}</div>
-                            </div>
-                            <div class="row row-margin">
-                                    <div class="col-md-4 col-xs-12"><label for="" class="labels">Agent Contact No.</label></div>
-                                    <div class="col-md-8 col-xs-12">{{input type="text" class="form-control "  placeholder="Agent contact No" value=agentcontactno}}</div>
+          <div class="col-md-8 col-xs-12">{{input type="text" class="form-control "  placeholder="Agent contact name" value=agentcontactname}}</div>
+        </div>
+        <div class="row row-margin">
+          <div class="col-md-4 col-xs-12"><label for="" class="labels">Agent Contact No.</label></div>
+          <div class="col-md-8 col-xs-12">{{input type="text" required=true class="form-control "  placeholder="Agent contact No" value=agentcontactno}}</div>
 
-                            </div>
-                            <div class="row row-margin">
-                                    <div class="col-md-4 col-xs-12"><label for="" class="labels">Other Contact No.</label></div>
-                                    <div class="col-md-8 col-xs-12">{{input type="text" class="form-control"  placeholder="Other Contact No" value=agentothcontactno}}</div>
-                            </div>
-                            <div class="row row-margin">
-                                    <div class="col-md-4 col-xs-12"><label for="" class="labels">Other Reference Details</label></div>
-                                    <div class="col-md-8 col-xs-12">{{input type="text" class="form-control"  placeholder="Other Contact No" value=agentothrefdetails}}</div>
-                            </div>
+        </div>
+        <div class="row row-margin">
+          <div class="col-md-4 col-xs-12"><label for="" class="labels">Other Contact No.</label></div>
+          <div class="col-md-8 col-xs-12">{{input type="text" class="form-control"  placeholder="Other Contact No" value=agentothcontactno}}</div>
+        </div>
+        <div class="row row-margin">
+          <div class="col-md-4 col-xs-12"><label for="" class="labels">Other Reference Details</label></div>
+          <div class="col-md-8 col-xs-12">{{input type="text" class="form-control"  placeholder="Other Contact No" value=agentothrefdetails}}</div>
+        </div>
 
-                            </div>
-                            <div class="col-md-1 "style="padding-top:10px">
-                            <button type="button" class="btn btn-default pull-right"  {{action "createagent"}} >
-                                    <span class="glyphicon glyphicon-floppy-save "></span>
-                            </button>
-                          </div>
+      </div>
+      <div class="col-md-1 "style="padding-top:10px">
+        <button type="submit" class="btn btn-default pull-right" >
+          <span class="glyphicon glyphicon-floppy-save "></span>
+        </button>
+      </div>
 
 
 
@@ -71,20 +73,20 @@ projects/project(slug)/agent page
       {{/if}}
       {{/liquid-spacer}}
     </div>
+    {{/validatable-form}}
   </div>
 </div>
 
 <div class="container-fluid">
+  {{#validatable-form action="editagent" }}
+
   <div class="row row-margin">
     <div class="col-md-11">
       {{#liquid-if enableEditagent class="customer-info"  }}
 
-
-
       <div class="row row-margin">
-
         <div class="col-md-4 col-xs-12"><label for="" class="labels">Agent Name</label></div>
-        <div class="col-md-8 col-xs-12">{{input type="text" class="form-control "  placeholder="Agent Name" value=project.agent.name}}</div>
+        <div class="col-md-8 col-xs-12">{{input type="text" required=true class="form-control "  placeholder="Agent Name" value=project.agent.name}}</div>
       </div>
 
       <div class="row row-margin">
@@ -93,7 +95,7 @@ projects/project(slug)/agent page
       </div>
       <div class="row row-margin">
         <div class="col-md-4 col-xs-12"><label for="" class="labels">Agent Contact No.</label></div>
-        <div class="col-md-8 col-xs-12">{{input type="text" class="form-control "  placeholder="Agent contact No" value=project.agent.contactno}}</div>
+        <div class="col-md-8 col-xs-12">{{input type="text"   required=true class="form-control "  placeholder="Agent contact No" value=project.agent.contactno}}</div>
       </div>
       <div class="row row-margin">
         <div class="col-md-4 col-xs-12"><label for="" class="labels">Other Contact No.</label></div>
@@ -133,21 +135,17 @@ projects/project(slug)/agent page
     </div>
     <div class="col-md-1 "style="padding-top:10px">
       {{#if enableEditagent }}
-      <button type="button" class="btn btn-default pull-right"  {{action "editagent"}} >
+      <button type="submit" class="btn btn-default pull-right" >
         <span class="glyphicon glyphicon-floppy-save "></span>
       </button>
       {{else}}
       <button type="button" class="btn btn-default pull-right"  {{action "editagent"}} >
         <span class="glyphicon glyphicon-pencil"></span>
       </button>
-
-
       {{/if}}
-
-
     </div>
-
   </div>
+  {{/validatable-form}}
 </div>
 
 
