@@ -21,6 +21,15 @@ module.exports = function(environment) {
   'ember-cli-notifications': {
     icons: 'bootstrap'
   },
+  materializeDefaults: {
+     modalIsFooterFixed:  false,
+     buttonIconPosition:  'left',
+     loaderSize:          'big',
+     loaderMode:          'indeterminate',
+     modalContainerId:    'materialize-modal-root-element',
+     dropdownInDuration:  300,
+     dropdownOutDuration: 300
+   },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build

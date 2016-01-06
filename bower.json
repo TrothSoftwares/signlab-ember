@@ -16,10 +16,11 @@
     "select2": "3.5.2",
     "bootstrap-datepicker": "~1.5.0",
     "ember-uploader": "0.3.11",
-    "lightbox": "2.7.3"
+    "lightbox": "2.7.3",
+    "materialize": "~0.97.0"
   },
   "resolutions": {
-    "ember": "2.2.0"
+    "ember": "2.2.0",
+    "jquery": "1.11.3"
   }
-
 }
