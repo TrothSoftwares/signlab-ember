@@ -20,10 +20,13 @@ export default Ember.Controller.extend({
             autoClear: true
           });
         });
+    },
+    printQuotation :function(){
 
-
-
-
+      Ember.$.ajax({
+           url: "http://localhost:3000/getdoc",
+           type: "GET",
+       });
     }
   }
 
