@@ -1,6 +1,3 @@
-From Projects page
-
-
 <div class="col-md-4">
   <div class="list-group">
 
@@ -21,14 +18,12 @@ From Projects page
   <div class="list-group">
     <div class=" col-md-8 well-sm  ">
             <h3> Create New Project </h3>
-
             <table class="table">
                     <tr>
-                            <td><label for="" class="">Project Name</label></td>
                             <td>{{paper-input label="Project Name" required=true value=name icon="description"  required-errortext="Project Name is required."}}</td>
                     </tr>
                     <tr>
-                      {{#paper-button  primary=true raised=true disabled=isAddButtonDisabled  action="createProject" }}Create Project{{/paper-button}}
+                      {{paper-button  primary=true raised=true disabled=isCreateProjectButtonDisabled  action="createProject" label="Create Project"}}
                     </tr>
             </table>
 

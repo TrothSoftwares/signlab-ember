@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 
-  isAddButtonDisabled: Ember.computed('name', function() {
+  isCreateProjectButtonDisabled: Ember.computed('name', function() {
     return Ember.isEmpty(this.get('name'));
   }),
 

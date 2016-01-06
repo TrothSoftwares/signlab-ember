@@ -5,6 +5,13 @@ export default Ember.Controller.extend({
 
   showCustomerComponent: false,
   showAgentComponent: false,
+  isSaveProjectButtonDisabled: Ember.computed('project.name', function() {
+    return Ember.isEmpty(this.get('project.name'));
+  }),
+
+  isCreateCustomerButtonDisabled: Ember.computed('custname',  function() {
+     return Ember.isEmpty(this.get('custname'));
+  }),
 
 
 
