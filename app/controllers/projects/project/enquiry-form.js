@@ -13,6 +13,13 @@ export default Ember.Controller.extend({
      return Ember.isEmpty(this.get('custname'));
   }),
 
+  isCreateAgentButtonDisabled: Ember.computed('agentname',  function() {
+     return Ember.isEmpty(this.get('agentname'));
+  }),
+
+
+
+
 
 
   actions: {
