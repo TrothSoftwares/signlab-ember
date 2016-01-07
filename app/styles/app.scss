@@ -1,1 +1,92 @@
+@import 'ember-paper';
 
+
+
+
+
+
+html, body {
+  margin: 20px;
+}
+.page-header a h1 {
+  color: #555;
+}
+.list-wrapper {
+  margin-left: 0;
+  margin-right: 0;
+}
+.navbar-default .navbar-nav > li > a.active,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  color: #555555;
+  background-color: #e7e7e7;
+}
+
+
+.page-header a:hover {
+  text-decoration: none;
+}
+
+.nav-tabs > li > a.active,
+.nav-tabs > li > a.active:hover,
+.nav-tabs > li > a.active:focus {
+  color: #555;
+  cursor: default;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-bottom-color: transparent;
+}
+
+.btn-xlarge {
+  padding: 18px 28px;
+  font-size: 22px; //change this to your desired size
+  line-height: normal;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+}
+/* FOR CREATING SPACE BETWEEN TABLE SPACE */
+td {
+  padding-top: .5em !important;
+  padding-bottom: .5em !important;
+}
+.row-margin
+{
+  margin-top: 10px;
+}
+
+.labels
+{
+  margin-top: 10px;
+}
+
+
+/* FOR LOADING ANIMANTIONS */
+
+.loading-pane {
+  margin: 25px auto;
+}
+.loading-message {
+  text-align: center;
+  color: #aaa;
+}
+.error-pane {
+  margin: 25px auto;
+  background-color: rgba(255, 176, 176, 0.33);
+}
+.error-message {
+  text-align: center;
+  color: #e22626;
+  line-height: 100px;
+}
+.spinner {
+  background: url('/images/ajax-loader.gif') no-repeat;
+  height: 31px;
+  width: 31px;
+  margin: 0 auto;
+}
+
+.input-error{
+  display:none;
+}
+>>>>>>> ember-paper

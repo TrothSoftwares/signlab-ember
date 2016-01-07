@@ -1,201 +1,177 @@
-projects/project(slug)/enquiry-form page
-<div class="col-md-8"><h3>
-  {{input type="text" class="form-control "  placeholder="Project Name" value=project.name}}
-</h3></div>
-<div class="col-md-4">
-  <button type="button" class="btn btn-default "  {{action "saveProject"}} >
-    <span class="glyphicon glyphicon-floppy-save"></span>
-  </button>
+<div class="row">
+  <div class="col-md-10">
+    {{paper-input label="Project Name" required=true value=project.name icon="description"  required-errortext="Project Name is required."}}
+  </div>
+  <div class="col-md-2">
+    {{#paper-button primary=true   raised=true disabled=isSaveProjectButtonDisabled  action="saveProject" label="Save Project"}}
+    {{paper-icon icon="save"}}
+    {{/paper-button}}
+  </div>
 </div>
-<form>
-  <div class="col-md-8">
-    <h1>{{project.customer.name}}</h1>
-    <div class="row row-margin">
-      <div class="col-md-2">
-        <label for="" class="labels">Customer</label>
-      </div>
-      <div class="col-md-9">
-        {{ember-select-guru value=project.customer  options=customers onSelect=(action "onSelectCustomer") }}
-      </div>
-      <div class="col-md-1">
-        <button type="button" class="btn btn-default pull-right"  {{action "openCustomerComponent"}} >
-          <span class="glyphicon {{if showCustomerComponent "glyphicon-minus" "glyphicon-plus"}} "></span>
-        </button>
-      </div>
+
+
+<div class="col-md-12">
+  <div class="row row-margin">
+    <div class="col-md-2">
+      <label for="" class="labels">Customer</label>
     </div>
-    <div class="row">
-      <div id="liquid-spacer-demo">
-        <div class="col-md-10 pull-right " style="">
-          {{#liquid-spacer growDuration=250}}
-          {{#if showCustomerComponent}}
-          <div class="col-md-11">
-            <div class="row row-margin">
-              <div class="col-md-4 col-xs-12"><label for="" class="labels">Client Name</label></div>
-              <div class="col-md-8 col-xs-12">{{input type="text" required=true class="form-control "  placeholder="Client Name" value=custname}}</div>
-            </div>
-            <div class="row row-margin">
-              <div class="col-md-4 col-xs-12"><label for="" class="labels">Client Contact Name</label></div>
-              <div class="col-md-8 col-xs-12">{{input type="text" class="form-control "  placeholder="Client contact name" value=custcontactname}}</div>
-            </div>
-            <div class="row row-margin">
-              <div class="col-md-4 col-xs-12"><label for="" class="labels">Client Contact No.</label></div>
-              <div class="col-md-8 col-xs-12">{{input type="text"  required=true class="form-control "  placeholder="Client contact No" value=custcontactno}}</div>
-            </div>
-            <div class="row row-margin">
-              <div class="col-md-4 col-xs-12"><label for="" class="labels">Other Contact No.</label></div>
-              <div class="col-md-8 col-xs-12">{{input type="text" class="form-control"  placeholder="Other Contact No" value=custothcontactno}}</div>
-            </div>
-            <div class="row row-margin">
-              <div class="col-md-4 col-xs-12"><label for="" class="labels">Other Reference Details</label></div>
-              <div class="col-md-8 col-xs-12">{{input type="text" class="form-control"  placeholder="Other Contact No" value=custothrefdetails}}</div>
-            </div>
-
-          </div>
-          <div class="col-md-1 "style="padding-top:10px">
-            <button type="button" class="btn btn-default pull-right"  {{action "createCustomer"}} >
-              <span class="glyphicon glyphicon-floppy-save "></span>
-            </button>
-          </div>
-
-
-
-
-          {{/if}}
-          {{/liquid-spacer}}
-        </div>
-      </div>
+    <div class="col-md-9">
+      {{ember-select-guru value=project.customer  options=customers onSelect=(action "onSelectCustomer") }}
     </div>
-    <div class="row row-margin">
-      <div class="col-md-2">
-        <label for="" class="labels">Agent</label>
-      </div>
-      <div class="col-md-9">
-        {{ember-select-guru value=project.agent  options=agents onSelect=(action "onSelectAgent") }}
-      </div>
-      <div class="col-md-1">
-        <button type="button" class="btn btn-default pull-right"  {{action "openAgentComponent"}} >
-          <span class="glyphicon {{if showAgentComponent "glyphicon-minus" "glyphicon-plus"}} "></span>
-        </button>
-      </div>
-    </div>
-    <div class="row">
-      <div id="liquid-spacer-demo">
-        <div class="col-md-10 pull-right " style="">
-          {{#liquid-spacer growDuration=250}}
-          {{#if showAgentComponent}}
-
-          <!--  Agent Form CODE -->
-
-
-<!--  //FIXME: CANNOT STOP FORM FROM SUBMITTING IF NOT VALIDATED USING HTML-5 VALIDTIONS-->
-          <div class="col-md-11">
-            <div class="row row-margin">
-
-              <div class="col-md-4 col-xs-12"><label for="" class="labels">Agent Name</label></div>
-              <div class="col-md-8 col-xs-12">{{input type="text" required=true class="form-control "  placeholder="Agent Name" value=agentname}}</div>
-            </div>
-
-            <div class="row row-margin">
-              <div class="col-md-4 col-xs-12"><label for="" class="labels">Agent Contact Name</label></div>
-              <div class="col-md-8 col-xs-12">{{input type="text" class="form-control "  placeholder="Agent contact name" value=agentcontactname}}</div>
-            </div>
-            <div class="row row-margin">
-              <div class="col-md-4 col-xs-12"><label for="" class="labels">Agent Contact No.</label></div>
-              <div class="col-md-8 col-xs-12">{{input type="text" required=true class="form-control "  placeholder="Agent contact No" value=agentcontactno}}</div>
-            </div>
-            <div class="row row-margin">
-              <div class="col-md-4 col-xs-12"><label for="" class="labels">Other Contact No.</label></div>
-              <div class="col-md-8 col-xs-12">{{input type="text" class="form-control"  placeholder="Other Contact No" value=agentothcontactno}}</div>
-            </div>
-            <div class="row row-margin">
-              <div class="col-md-4 col-xs-12"><label for="" class="labels">Other Reference Details</label></div>
-              <div class="col-md-8 col-xs-12">{{input type="text" class="form-control"  placeholder="Other Contact No" value=agentothrefdetails}}</div>
-            </div>
-
-          </div>
-          <div class="col-md-1 "style="padding-top:10px">
-            <button type="button" class="btn btn-default pull-right"  {{action "createAgent"}} >
-              <span class="glyphicon glyphicon-floppy-save "></span>
-            </button>
-          </div>
-          {{/if}}
-          {{/liquid-spacer}}
-        </div>
-      </div>
-    </div>
-    <div class="row row-margin">
-      <div class="col-md-2">
-        <label for="" class="labels">Enquiry Date</label>
-      </div>
-      <div class="col-md-10">
-        {{bootstrap-datepicker value=project.enquiries.lastObject.date class="form-control" autoclose=true placeholder="Enquiry Date" format="dd MM, yyyy"}}
-      </div>
-    </div>
-    <div class="row row-margin">
-      <div class="col-md-2">
-        <label for="" class="labels">Enquiry No.</label>
-      </div>
-      <div class="col-md-10">
-        {{ input type="text" class="form-control"  placeholder="Enquiry No." value=project.enquiries.lastObject.no}}
-      </div>
-    </div>
-
-
-    <!-- //FIXME :    Site location variable not showing value -->
-
-
-    <div class="col-md-12  well well-lg">
-      {{#each project.items as |item index|}}
-
-      <div class="col-md-12  well well-sm">
-        <div class="col-md-11">
-          <h3> Item {{ incrementone index}}</h3>
-        </div>
-        <div class="col-md-1">
-          <button type="button" class="btn btn-default pull-right"  {{action "deleteItem" item}} >
-            <span class="glyphicon glyphicon-trash "></span>
-          </button>
-        </div>
-
-        <div class="row row-margin">
-          <div class="col-md-2">
-            <label for="" class="labels">Dimensions</label>
-          </div>
-          <div class="col-md-10">
-
-            {{ input type="text" class="form-control"  placeholder="Dimensions." value=item.dimensions}}
-          </div>
-        </div>
-        <div class="row row-margin">
-          <div class="col-md-2">
-            <label for="" class="labels">Description</label>
-          </div>
-          <div class="col-md-10">
-            {{ input type="text" class="form-control"  placeholder="Description." value=item.description}}
-          </div>
-        </div>
-        <div class="row row-margin">
-          <div class="col-md-2">
-            <label for="" class="labels">Item Type</label>
-          </div>
-          <div class="col-md-10">
-            {{ember-select-guru value=item.itemtype  options=itemtypes onSelect=(action "onSelectItemtypes" index) }}
-          </div>
-        </div>
-        <div class="row row-margin">
-          <div class="col-md-2">
-            <label for="" class="labels">Job Type</label>
-          </div>
-          <div class="col-md-10">
-            {{ember-select-guru value=item.jobtype  options=jobtypes onSelect=(action "onSelectJobtypes" index) }}
-          </div>
-        </div>
-      </div>
-      {{/each}}
-      <button type="button" class="btn btn-default pull-right"  {{action "AddNewItem"}} >
-        Add New Item <span class="glyphicon glyphicon-plus "></span>
-      </button>
+    <div class="col-md-1">
+      {{#paper-button primary=true   raised=true   action="openCustomerComponent"}}
+      <span class="glyphicon {{if showCustomerComponent "glyphicon-minus" "glyphicon-plus"}} "></span>
+      {{/paper-button}}
     </div>
   </div>
-</form>
+  <div class="row">
+    <div id="liquid-spacer-demo">
+      <div class="col-md-10 pull-right " style="">
+        {{#liquid-spacer growDuration=250}}
+        {{#if showCustomerComponent}}
+        {{#paper-card}}
+        {{#paper-card-content}}
+        <h3> Create New Customer</h3>
+        <div class="col-md-10">
+          <div class="row row-margin">
+            {{paper-input label="Customer Name" required=true value=custname icon="person"  required-errortext="Customer name is required."}}
+          </div>
+          <div class="row row-margin">
+            {{paper-input label="Customer contact Name"  value=custcontactname icon="person"}}
+          </div>
+          <div class="row row-margin">
+            {{paper-input label="Customer contact number"  value=custcontactno icon="phone"}}
+          </div>
+          <div class="row row-margin">
+            {{paper-input label="Other contact number"  value=custothcontactno icon="phone"}}
+          </div>
+          <div class="row row-margin">
+            {{paper-input label="Other reference details"  value=custothrefdetails icon="place"}}
+          </div>
+        </div>
+        <div class="col-md-2 "style="padding-top:10px">
+          {{#paper-button primary=true   raised=true disabled=isCreateCustomerButtonDisabled   action="createCustomer"}}
+          {{paper-icon icon="save"}}
+          {{/paper-button}}
+        </div>
+        {{/paper-card-content}}
+        {{/paper-card}}
+        {{/if}}
+        {{/liquid-spacer}}
+      </div>
+    </div>
+  </div>
+  <div class="row row-margin">
+    <div class="col-md-2">
+      <label for="" class="labels">Agent</label>
+    </div>
+    <div class="col-md-9">
+      {{ember-select-guru value=project.agent  options=agents onSelect=(action "onSelectAgent") }}
+    </div>
+    <div class="col-md-1">
+      {{#paper-button primary=true   raised=true   action="openAgentComponent"}}
+      <span class="glyphicon {{if showAgentComponent "glyphicon-minus" "glyphicon-plus"}} "></span>
+      {{/paper-button}}
+    </div>
+  </div>
+  <div class="row">
+    <div id="liquid-spacer-demo">
+      <div class="col-md-10 pull-right " style="">
+        {{#liquid-spacer growDuration=250}}
+        {{#if showAgentComponent}}
+        {{#paper-card}}
+        {{#paper-card-content}}
+        <h3> Create New Agent</h3>
+        <div class="col-md-10">
+          <div class="row row-margin">
+            {{paper-input label="Agent Name" required=true value=agentname icon="person"  required-errortext="Agent name is required."}}
+          </div>
+          <div class="row row-margin">
+            {{paper-input label="Agent contact Name"  value=agentcontactname icon="person"}}
+          </div>
+          <div class="row row-margin">
+            {{paper-input label="Agent contact number"  value=agentcontactno icon="phone"}}
+          </div>
+          <div class="row row-margin">
+            {{paper-input label="Other contact number"  value=agentothcontactno icon="phone"}}
+          </div>
+          <div class="row row-margin">
+            {{paper-input label="Other reference details"  value=agentothrefdetails icon="place"}}
+          </div>
+        </div>
+        <div class="col-md-2 "style="padding-top:10px">
+          {{#paper-button primary=true   raised=true disabled=isCreateAgentButtonDisabled   action="createAgent"}}
+          {{paper-icon icon="save"}}
+          {{/paper-button}}
+        </div>
+        {{/paper-card-content}}
+        {{/paper-card}}
+
+        {{/if}}
+        {{/liquid-spacer}}
+      </div>
+    </div>
+  </div>
+  <div class="row row-margin">
+    <div class="col-md-2">
+      <label for="" class="labels">Enquiry Date</label>
+    </div>
+    <div class="col-md-10">
+      {{bootstrap-datepicker value=project.enquiries.lastObject.date class="form-control" autoclose=true placeholder="Enquiry Date" format="dd MM, yyyy"}}
+    </div>
+  </div>
+  <div class="row row-margin">
+
+    <div class="col-md-12">
+      {{paper-input label="Enquiry No" value=project.enquiries.lastObject.no icon="view-list"  }}
+    </div>
+  </div>
+  <!-- //FIXME :    Site location variable not showing value -->
+
+  {{#paper-card}}
+  {{#paper-card-content}}
+    {{#each project.items as |item index|}}
+
+    {{#paper-card}}
+    <div class="md-actions" layout="row" layout-align="end center">
+      {{#paper-button  raised=true action="deleteItem" param=item }} {{paper-icon icon="delete"}}{{/paper-button}}
+    </div>
+    {{#paper-card-content}}
+        {{#paper-list}}
+             {{#paper-item class="md-3-line"}}
+             <h3> Item {{ incrementone index}}</h3>
+               <div class="md-list-item-text">
+                   {{paper-input label="Dimensions" value=item.dimensions icon="tune"  }}
+                   {{paper-input label="Description" value=item.description icon="assignment"  }}
+
+                   <div class="row row-margin">
+                     <div class="col-md-2">
+                       <label for="" class="labels">Item Type</label>
+                     </div>
+                     <div class="col-md-10">
+                       {{ember-select-guru value=item.itemtype  options=itemtypes onSelect=(action "onSelectItemtypes" index) }}
+                     </div>
+                   </div>
+
+                   <div class="row row-margin">
+                     <div class="col-md-2">
+                       <label for="" class="labels">Job Type</label>
+                     </div>
+                     <div class="col-md-10">
+                       {{ember-select-guru value=item.jobtype  options=jobtypes onSelect=(action "onSelectJobtypes" index) }}
+                     </div>
+                   </div>
+               </div>
+             {{/paper-item}}
+         {{/paper-list}}
+      {{/paper-card-content}}
+    {{/paper-card}}
+    {{/each}}
+    {{/paper-card-content}}
+    <div class="md-actions" layout="row" layout-align="end center">
+      {{#paper-button  raised=true action="AddNewItem"}}{{paper-icon icon="add"}}{{/paper-button}}
+    </div>
+  {{/paper-card}}
+</div>
+
 {{outlet}}

@@ -2,13 +2,11 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 
+  isEditAgentButtonDisabled: Ember.computed('model.name',  function() {
+     return Ember.isEmpty(this.get('model.name'));
+  }),
 
   actions: {
-
-
-    
-
-
 
       editAgent: function() {
       var controller = this;

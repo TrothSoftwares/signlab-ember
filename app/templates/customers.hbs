@@ -1,24 +1,28 @@
-From Customers page
-
-
 <div class="col-md-4">
-  <div class="list-group">
 
-    <div class="list-group-item">
-      {{input type="text" placeholder="Search Customer" value=searchTerm class="form-control"}}
-    </div>
-
-
+  {{#paper-card}}
+  {{#paper-card-content }}
+  {{paper-input  label="Search Customer" value=searchTerm icon="search"}}
+  {{#paper-list}}
     {{#each matchingCustomers as |customer|}}
-    {{#link-to "customers.customer" customer class="list-group-item "}}
-    {{customer.name}}
-    <span class="pointer glyphicon"></span>
-    {{/link-to}}
+      {{#paper-item class="md-3-line"}}
+      {{paper-icon primary=true raised=true icon="person"}}
+        <div class="md-list-item-text">
+          {{#link-to "customers.customer" customer class="list-group-item"}}
+          {{customer.name}}
+          {{/link-to}}
+        </div>
+      {{/paper-item}}
+       {{paper-divider}}
     {{/each}}
-  </div>
+  {{/paper-list}}
+{{/paper-card-content}}
+{{/paper-card}}
 </div>
 <div class="col-md-8">
-  <div class="list-group">
-    {{outlet}}
-  </div>
+  {{#paper-card}}
+    {{#paper-card-content}}
+      {{outlet}}
+    {{/paper-card-content}}
+  {{/paper-card}}
 </div>

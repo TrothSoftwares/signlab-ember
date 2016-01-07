@@ -1,6 +1,11 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+
+  isEditCustomerButtonDisabled: Ember.computed('model.name',  function() {
+     return Ember.isEmpty(this.get('model.name'));
+  }),
+
   actions: {
       editCustomer: function() {
       var controller = this;

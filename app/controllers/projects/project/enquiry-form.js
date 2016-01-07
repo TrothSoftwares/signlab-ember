@@ -5,10 +5,28 @@ export default Ember.Controller.extend({
 
   showCustomerComponent: false,
   showAgentComponent: false,
+  isSaveProjectButtonDisabled: Ember.computed('project.name', function() {
+    return Ember.isEmpty(this.get('project.name'));
+  }),
+
+  isCreateCustomerButtonDisabled: Ember.computed('custname',  function() {
+     return Ember.isEmpty(this.get('custname'));
+  }),
+
+  isCreateAgentButtonDisabled: Ember.computed('agentname',  function() {
+     return Ember.isEmpty(this.get('agentname'));
+  }),
+
+
+
 
 
 
   actions: {
+
+
+
+
 
     AddNewItem: function(){
 
@@ -27,6 +45,7 @@ export default Ember.Controller.extend({
       },
 
       deleteItem: function(item){
+        // console.log(item);
         item.deleteRecord();
         item.save();
       },

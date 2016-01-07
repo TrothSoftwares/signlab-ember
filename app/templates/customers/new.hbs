@@ -2,44 +2,33 @@
 <!-- {{customer-form type='ind' custcomp=model on-create=(action "createCustomer")}} -->
 <div class="container-fluid">
   <div class="row row-margin">
-                {{#validatable-form action="editCustomer" }}
-
-    <div class="col-md-11">
 
 
-                  <div class="row row-margin">
-                          <div class="col-md-4 col-xs-12"><label for="" class="labels">Client Name</label></div>
-                          <div class="col-md-8 col-xs-12">{{input type="text" class="form-control"    required=true   placeholder="Client Name" value=model.name}}</div>
-                  </div>
+    <div class="col-md-10">
+      <div class="row row-margin">
+        {{paper-input label="Customer Name" required=true value=model.name icon="person"  required-errortext="Customer name is required."}}
+      </div>
+      <div class="row row-margin">
+        {{paper-input label="Customer contact Name"  value=model.contactname icon="person"}}
+      </div>
+      <div class="row row-margin">
+        {{paper-input label="Customer contact number"  value=model.contactno icon="phone"}}
+      </div>
+      <div class="row row-margin">
+        {{paper-input label="Other contact number"  value=model.othcontactno icon="phone"}}
+      </div>
+      <div class="row row-margin">
+        {{paper-input label="Other reference details"  value=model.othrefdetails icon="place"}}
+      </div>
+    </div>
+    <div class="col-md-2" >
+      {{#paper-button primary=true   raised=true disabled=isEditCustomerButtonDisabled   action="editCustomer"}}
+      {{paper-icon icon="save"}}
+      {{/paper-button}}
+    </div>
 
-                  <div class="row row-margin">
-                          <div class="col-md-4 col-xs-12"><label for="" class="labels">Client Contact Name</label></div>
-                          <div class="col-md-8 col-xs-12">{{input type="text"  class="form-control "  placeholder="Client contact name" value=model.contactname}}</div>
-                  </div>
-                  <div class="row row-margin">
-                          <div class="col-md-4 col-xs-12"><label for="" class="labels">Client Contact No.</label></div>
-                          <div class="col-md-8 col-xs-12">{{input type="text" required=true class="form-control "  placeholder="Client contact No" value=model.contactno}}</div>
-                  </div>
-                  <div class="row row-margin">
-                          <div class="col-md-4 col-xs-12"><label for="" class="labels">Other Contact No.</label></div>
-                          <div class="col-md-8 col-xs-12">{{input type="text"  class="form-control"  placeholder="Other Contact No" value=model.othcontactno}}</div>
-                  </div>
-                  <div class="row row-margin">
-                          <div class="col-md-4 col-xs-12"><label for="" class="labels">Other Reference Details</label></div>
-                          <div class="col-md-8 col-xs-12">{{input type="text"  class="form-control"  placeholder="Other Contact No" value=model.othrefdetails}}</div>
-                  </div>
 
-
-        </div>
-        <div class="col-md-1 "style="padding-top:10px">
-
-                <button type="submit" class="btn btn-default pull-right"   >
-                        <span class="glyphicon glyphicon-floppy-save "></span>
-                </button>
-        </div>
-            {{/validatable-form}}
-
-</div>
+  </div>
 </div>
 {{yield}}
 
