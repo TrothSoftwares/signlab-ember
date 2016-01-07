@@ -3,7 +3,7 @@
   {{#link-to 'agents.new'}}
   <button type="button" class="btn btn-success">New Agent </button>
   {{/link-to}}
-  {{#validatable-form action="editagent" }}
+
 
   <div class="container-fluid">
     <div class="row row-margin">
@@ -58,7 +58,7 @@
           </div>
           <div class="col-md-1 "style="padding-top:10px">
                   {{#if enableEditagent }}
-                  <button type="submit" class="btn btn-default pull-right"   >
+                  <button type="button" class="btn btn-default pull-right"   {{action "editagent"}}>
                           <span class="glyphicon glyphicon-floppy-save "></span>
                   </button>
                   {{else}}
@@ -75,7 +75,7 @@
 
   </div>
   </div>
-  {{/validatable-form}}
+
 
 
 
