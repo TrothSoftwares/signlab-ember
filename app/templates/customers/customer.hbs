@@ -1,63 +1,74 @@
 
-<div class="">
-  {{#link-to 'customers.new'}}
-  <button type="button" class="btn btn-success">New Customer </button>
-  {{/link-to}}
-  
+
+
+  {{#paper-item raised=true }}
+  {{#link-to 'customers.new' class="list-group-item"}} New Customer {{/link-to}}
+  {{/paper-item}}
+
 
   <div class="container-fluid">
     <div class="row row-margin">
-      <div class="col-md-11">
+      <div class="col-md-10">
         {{#liquid-if enableEditCustomer class="customer-info"  }}
-
-
-
         <div class="row row-margin">
-
-          <div class="col-md-4 col-xs-12"><label for="" class="labels">Client Name</label></div>
-          <div class="col-md-8 col-xs-12">{{input type="text" class="form-control "  placeholder="Client Name" value=model.name}}</div>
-        </div>
-
-        <div class="row row-margin">
-          <div class="col-md-4 col-xs-12"><label for="" class="labels">Client Contact Name</label></div>
-          <div class="col-md-8 col-xs-12">{{input type="text" class="form-control "  placeholder="Client contact name" value=model.contactname}}</div>
+          {{paper-input label="Customer Name" required=true value=model.name icon="person"  required-errortext="Customer name is required."}}
         </div>
         <div class="row row-margin">
-          <div class="col-md-4 col-xs-12"><label for="" class="labels">Client Contact No.</label></div>
-          <div class="col-md-8 col-xs-12">{{input type="text" class="form-control "  placeholder="Client contact No" value=model.contactno}}</div>
+          {{paper-input label="Customer contact Name"  value=model.contactname icon="person"}}
         </div>
         <div class="row row-margin">
-          <div class="col-md-4 col-xs-12"><label for="" class="labels">Other Contact No.</label></div>
-          <div class="col-md-8 col-xs-12">{{input type="text" class="form-control"  placeholder="Other Contact No" value=model.othcontactno}}</div>
+          {{paper-input label="Customer contact number"  value=model.contactno icon="phone"}}
         </div>
         <div class="row row-margin">
-          <div class="col-md-4 col-xs-12"><label for="" class="labels">Other Reference Details</label></div>
-          <div class="col-md-8 col-xs-12">{{input type="text" class="form-control"  placeholder="Other Contact No" value=model.othrefdetails}}</div>
+          {{paper-input label="Other contact number"  value=model.othcontactno icon="phone"}}
+        </div>
+        <div class="row row-margin">
+          {{paper-input label="Other reference details"  value=model.othrefdetails icon="place"}}
         </div>
 
         {{else}}
+        {{#paper-list}}
 
-        <div class="row row-margin">
-          <div class="col-md-4 col-xs-12"><label for="" class=" ">Client Name</label> </div>
-          <div class="col-md-8 col-xs-12"><label for="" class="labels">{{model.name}}</label></div>
-        </div>
-        <div class="row row-margin">
-          <div class="col-md-4 col-xs-12"><label for="" class="labels">Client Contact Name</label></div>
-          <div class="col-md-8 col-xs-12"><label class="" for="">{{model.contactname}}</label></div>
-        </div>
-        <div class="row row-margin">
-          <div class="col-md-4 col-xs-12"><label for="" class="labels">Client Contact No.</label></div>
-          <div class="col-md-8 col-xs-12"><label class="" for="">{{model.contactno}}</label></div>
 
-        </div>
-        <div class="row row-margin">
-          <div class="col-md-4 col-xs-12"><label for="" class="labels">Other Contact Number</label></div>
-          <div class="col-md-8 col-xs-12"><label class="" for=""> {{model.othcontactno}}</label></div>
-        </div>
-        <div class="row row-margin">
-          <div class="col-md-4 col-xs-12"><label for="" class="labels">Other Contact No.</label></div>
-          <div class="col-md-8 col-xs-12"><label class="" for=""> {{model.othrefdetails}}</label></div>
-        </div>
+
+
+             {{#paper-item class="md-3-line"}}
+               {{paper-icon icon="person"}}
+               <div class="md-list-item-text">
+                <h3>Client Name</h3><p>{{model.name}}</p>
+               </div>
+             {{/paper-item}}
+
+
+             {{#paper-item class="md-3-line"}}
+               {{paper-icon icon="person"}}
+               <div class="md-list-item-text">
+                <h3>Client Contact Name</h3><p>{{model.contactname}}</p>
+               </div>
+             {{/paper-item}}
+
+             {{#paper-item class="md-3-line"}}
+               {{paper-icon icon="phone"}}
+               <div class="md-list-item-text">
+                 <h3>Client Contact No</h3><p>{{model.contactno}}</p>
+               </div>
+             {{/paper-item}}
+
+             {{#paper-item class="md-3-line"}}
+               {{paper-icon icon="phone"}}
+               <div class="md-list-item-text">
+                 <h3>Other Contact No</h3><p>{{model.othcontactno}}</p>
+               </div>
+             {{/paper-item}}
+
+             {{#paper-item class="md-3-line"}}
+               {{paper-icon icon="place"}}
+               <div class="md-list-item-text">
+                 <h3>Other Reference Details</h3><p>{{model.othrefdetails}}</p>
+               </div>
+             {{/paper-item}}
+
+         {{/paper-list}}
 
 
         {{/liquid-if}}
@@ -77,17 +88,7 @@
           <span class="glyphicon glyphicon-trash"></span>
         </button>
         {{/if}}
-
-
       </div>
 
     </div>
   </div>
-
-
-
-
-
-
-  {{liquid-outlet}}
-</div>

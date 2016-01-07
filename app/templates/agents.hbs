@@ -1,6 +1,6 @@
 
 <div class="col-md-4">
-  
+
   {{#paper-card}}
   {{#paper-card-content }}
   {{paper-input  label="Search Agent" value=searchTerm icon="search"}}
@@ -20,10 +20,15 @@
 {{/paper-card-content}}
 {{/paper-card}}
 
-
 </div>
+
+
 <div class="col-md-8">
-  <div class="list-group">
-    {{outlet}}
-  </div>
+
+  {{#paper-card}}
+    {{#paper-card-content}}
+      {{outlet}}
+    {{/paper-card-content}}
+  {{/paper-card}}
+
 </div>

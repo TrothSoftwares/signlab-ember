@@ -8,7 +8,7 @@
       {{#paper-item class="md-3-line"}}
       {{paper-icon primary=true raised=true icon="person"}}
         <div class="md-list-item-text">
-          {{#link-to "customers.customer" customer class="list-group-item "}}
+          {{#link-to "customers.customer" customer class="list-group-item"}}
           {{customer.name}}
           {{/link-to}}
         </div>
@@ -20,9 +20,9 @@
 {{/paper-card}}
 </div>
 <div class="col-md-8">
-    {{#paper-card}}
+  {{#paper-card}}
     {{#paper-card-content}}
-    {{outlet}}
+      {{outlet}}
     {{/paper-card-content}}
-    {{/paper-card}}
+  {{/paper-card}}
 </div>
