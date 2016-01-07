@@ -11,26 +11,39 @@
       <div class="col-md-10">
         {{#liquid-if enableEditCustomer class="customer-info"  }}
         <div class="row row-margin">
+
+        </div>
+        {{#paper-list}}
+        {{#paper-item class="md-3-line"}}
+          <div class="md-list-item-text">
           {{paper-input label="Customer Name" required=true value=model.name icon="person"  required-errortext="Customer name is required."}}
-        </div>
-        <div class="row row-margin">
+          </div>
+        {{/paper-item}}
+        {{#paper-item class="md-3-line"}}
+          <div class="md-list-item-text">
           {{paper-input label="Customer contact Name"  value=model.contactname icon="person"}}
-        </div>
-        <div class="row row-margin">
+          </div>
+        {{/paper-item}}
+        {{#paper-item class="md-3-line"}}
+          <div class="md-list-item-text">
           {{paper-input label="Customer contact number"  value=model.contactno icon="phone"}}
-        </div>
-        <div class="row row-margin">
-          {{paper-input label="Other contact number"  value=model.othcontactno icon="phone"}}
-        </div>
-        <div class="row row-margin">
-          {{paper-input label="Other reference details"  value=model.othrefdetails icon="place"}}
-        </div>
+          </div>
+        {{/paper-item}}
+        {{#paper-item class="md-3-line"}}
+          <div class="md-list-item-text">
+          {{paper-input label="Other Contact number"  value=model.othrefdetails icon="phone"}}
+          </div>
+        {{/paper-item}}
+        {{#paper-item class="md-3-line"}}
+          <div class="md-list-item-text">
+          {{paper-input label="Other Reference Details"  value=model.othrefdetails icon="place"}}
+          </div>
+        {{/paper-item}}
+        {{/paper-list}}
 
         {{else}}
+
         {{#paper-list}}
-
-
-
 
              {{#paper-item class="md-3-line"}}
                {{paper-icon icon="person"}}
@@ -75,18 +88,19 @@
       </div>
       <div class="col-md-1 "style="padding-top:10px">
         {{#if enableEditCustomer }}
-        <button type="button" class="btn btn-default pull-right"  {{action "editCustomer"}} >
-          <span class="glyphicon glyphicon-floppy-save "></span>
-        </button>
+        {{#paper-button primary=true   raised=true   action="editCustomer"}}
+        <span class="glyphicon {{if enableEditCustomer "glyphicon-floppy-save" "glyphicon-pencil"}} "></span>
+        {{/paper-button}}
         {{else}}
-        <button type="button" class="btn btn-default pull-right"  {{action "editCustomer"}} >
-          <span class="glyphicon glyphicon-pencil"></span>
-        </button>
+        {{#paper-button primary=true   raised=true   action="editCustomer"}}
+        <span class="glyphicon {{if enableEditCustomer "glyphicon-floppy-save" "glyphicon-pencil"}} "></span>
+        {{/paper-button}}
 
         <br><br>
-        <button type="button" class="btn btn-default pull-right"  {{action "deleteData"}} >
-          <span class="glyphicon glyphicon-trash"></span>
-        </button>
+        {{#paper-button primary=true   raised=true   action="deleteData"}}
+        {{paper-icon icon="delete"}}
+        {{/paper-button}}
+        
         {{/if}}
       </div>
 
