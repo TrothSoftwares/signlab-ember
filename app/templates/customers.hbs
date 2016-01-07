@@ -1,18 +1,5 @@
 <div class="col-md-4">
 
-  <!-- <div class="list-group">
-    <div class="list-group-item">
-      {{input type="text" placeholder="Search Customer" value=searchTerm class="form-control"}}
-    </div>
-    {{#each matchingCustomers as |customer|}}
-    {{#link-to "customers.customer" customer class="list-group-item "}}
-    {{customer.name}}
-    <span class="pointer glyphicon"></span>
-    {{/link-to}}
-    {{/each}}
-  </div> -->
-
-
   {{#paper-card}}
   {{#paper-card-content }}
   {{paper-input  label="Search Customer" value=searchTerm icon="search"}}
@@ -33,7 +20,9 @@
 {{/paper-card}}
 </div>
 <div class="col-md-8">
-  <div class="list-group">
+    {{#paper-card}}
+    {{#paper-card-content}}
     {{outlet}}
-  </div>
+    {{/paper-card-content}}
+    {{/paper-card}}
 </div>
