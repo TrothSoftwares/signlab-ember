@@ -121,18 +121,12 @@
     </div>
   </div>
   <div class="row row-margin">
-    <div class="col-md-2">
-      <label for="" class="labels">Enquiry No.</label>
-    </div>
+
     <div class="col-md-10">
-      {{ input type="text" class="form-control"  placeholder="Enquiry No." value=project.enquiries.lastObject.no}}
+      {{paper-input label="Enquiry No" value=project.enquiries.lastObject.no icon="view-list"  }}
     </div>
   </div>
-
-
   <!-- //FIXME :    Site location variable not showing value -->
-
-
   <div class="col-md-12  well well-lg">
     {{#each project.items as |item index|}}
 
