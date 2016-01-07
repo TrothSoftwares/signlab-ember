@@ -24,6 +24,10 @@ export default Ember.Controller.extend({
 
   actions: {
 
+
+
+
+
     AddNewItem: function(){
 
 
@@ -41,6 +45,7 @@ export default Ember.Controller.extend({
       },
 
       deleteItem: function(item){
+        // console.log(item);
         item.deleteRecord();
         item.save();
       },
