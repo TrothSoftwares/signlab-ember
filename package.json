@@ -36,7 +36,7 @@
     "ember-cli-preloader": "0.1.3",
     "ember-cli-qunit": "^1.0.4",
     "ember-cli-release": "0.2.8",
-    "ember-cli-sass": "5.2.0",
+    "ember-cli-sass": "^5.2.1",
     "ember-cli-sri": "^1.1.0",
     "ember-cli-uglify": "^1.2.0",
     "ember-cli-uploader": "^0.3.11",
