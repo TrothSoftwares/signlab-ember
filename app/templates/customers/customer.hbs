@@ -1,6 +1,3 @@
-
-
-
   {{#paper-item raised=true }}
   {{#link-to 'customers.new' class="list-group-item"}} New Customer {{/link-to}}
   {{/paper-item}}
@@ -10,9 +7,7 @@
     <div class="row row-margin">
       <div class="col-md-10">
         {{#liquid-if enableEditCustomer class="customer-info"  }}
-        <div class="row row-margin">
 
-        </div>
         {{#paper-list}}
         {{#paper-item class="md-3-line"}}
           <div class="md-list-item-text">
@@ -86,7 +81,7 @@
 
         {{/liquid-if}}
       </div>
-      <div class="col-md-1 "style="padding-top:10px">
+      <div class="col-md-2">
         {{#if enableEditCustomer }}
         {{#paper-button primary=true   raised=true   action="editCustomer"}}
         <span class="glyphicon {{if enableEditCustomer "glyphicon-floppy-save" "glyphicon-pencil"}} "></span>
@@ -100,7 +95,7 @@
         {{#paper-button primary=true   raised=true   action="deleteData"}}
         {{paper-icon icon="delete"}}
         {{/paper-button}}
-        
+
         {{/if}}
       </div>
 
