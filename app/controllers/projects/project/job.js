@@ -44,8 +44,16 @@ export default Ember.Controller.extend({
       });
     },
     deleteSiteimage :function(siteimage){
-      siteimage.deleteRecord();
-      siteimage.save();
+      var controller = this;
+      siteimage.destroyRecord().then(function () {
+      }).catch(function () {
+        siteimage.rollbackAttributes();
+        controller.notifications.addNotification({
+          message: 'Image cannot be deleted at this moment' ,
+          type: 'error',
+          autoClear: true
+        });
+      });
     }
 
 

@@ -45,8 +45,16 @@ export default Ember.Controller.extend({
       },
 
       deleteItem: function(item){
-        item.deleteRecord();
-        item.save();
+        var controller = this;
+        item.destroyRecord().then(function () {
+        }).catch(function () {
+          controller.notifications.addNotification({
+            message: 'Item cannot be deleted at this moment' ,
+            type: 'error',
+            autoClear: true
+          });
+          item.rollbackAttributes();
+        });
       },
 
       openCustomerComponent: function() {
@@ -180,8 +188,8 @@ export default Ember.Controller.extend({
               autoClear: true
             });
           });
-            //TODO:0 CANNOT RELOAD PROJECTS MODELS: After delete a project project data should be reloaded again.
-          }
+          //TODO:0 CANNOT RELOAD PROJECTS MODELS: After delete a project project data should be reloaded again.
         }
+      }
     },
   });
