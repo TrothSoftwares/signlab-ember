@@ -1,8 +1,3 @@
-
-projects/project(slug)/customer page
-
-
-
 <div class="row row-margin">
   <div class="col-md-2">
     <label for="" class="labels">Customer</label>
@@ -10,148 +5,148 @@ projects/project(slug)/customer page
   <div class="col-md-8">
     {{ember-select-guru value=project.customer  options=customers onSelect=(action "onSelectCustomer") }}
   </div>
-  <div class="col-md-1">
-    <button type="button" class="btn btn-default pull-right"  {{action "openCustomerComponent"}} >
-      <span class="glyphicon {{if showCustomerComponent "glyphicon-minus" "glyphicon-plus"}} "></span>
-    </button>
-  </div>
-  <div class="col-md-1">
-    <button type="button" class="btn btn-default "  {{action "saveProject"}} >
-      <span class="glyphicon glyphicon-floppy-save"></span>
-    </button>
+  <div class="col-md-2">
+    {{#paper-button primary=true   raised=true   action="openCustomerComponent"}}
+    <span class="glyphicon {{if showCustomerComponent "glyphicon-minus" "glyphicon-plus"}} "></span>
+    {{/paper-button}}
+    {{#paper-button primary=true   raised=true   action="saveProject"}}
+    {{paper-icon icon="save"}}
+    {{/paper-button}}
   </div>
 </div>
-
-
 <div class="row">
   <div id="liquid-spacer-demo">
-    {{#validatable-form action="createCustomer" }}
-
     <div class="col-md-10 pull-right " style="">
       {{#liquid-spacer growDuration=250}}
       {{#if showCustomerComponent}}
-        <!--  Customer Form CODE -->
-          <div class="col-md-11">
-
-                            <div class="row row-margin">
-
-                                    <div class="col-md-4 col-xs-12"><label for="" class="labels">Client Name</label></div>
-                                    <div class="col-md-8 col-xs-12">{{input type="text" required=true class="form-control "  placeholder="Client Name" value=custname}}</div>
-                            </div>
-
-                            <div class="row row-margin">
-                                    <div class="col-md-4 col-xs-12"><label for="" class="labels">Client Contact Name</label></div>
-                                    <div class="col-md-8 col-xs-12">{{input type="text" class="form-control "  placeholder="Client contact name" value=custcontactname}}</div>
-                            </div>
-                            <div class="row row-margin">
-                                    <div class="col-md-4 col-xs-12"><label for="" class="labels">Client Contact No.</label></div>
-                                    <div class="col-md-8 col-xs-12">{{input type="text" required=true class="form-control "  placeholder="Client contact No" value=custcontactno}}</div>
-                            </div>
-                            <div class="row row-margin">
-                                    <div class="col-md-4 col-xs-12"><label for="" class="labels">Other Contact No.</label></div>
-                                    <div class="col-md-8 col-xs-12">{{input type="text" class="form-control"  placeholder="Other Contact No" value=custothcontactno}}</div>
-                            </div>
-                            <div class="row row-margin">
-                                    <div class="col-md-4 col-xs-12"><label for="" class="labels">Other Reference Details</label></div>
-                                    <div class="col-md-8 col-xs-12">{{input type="text" class="form-control"  placeholder="Other Contact No" value=custothrefdetails}}</div>
-                            </div>
-
-                            </div>
-                            <div class="col-md-1 "style="padding-top:10px">
-                            <button type="submit" class="btn btn-default pull-right"   >
-                                    <span class="glyphicon glyphicon-floppy-save "></span>
-                            </button>
-                          </div>
-
-
-
-
+      {{#paper-card}}
+      {{#paper-card-content}}
+      <h3> Create New Customer</h3>
+      <div class="col-md-10">
+        <div class="row row-margin">
+          {{paper-input label="Customer Name" required=true value=custname icon="person"  required-errortext="Customer name is required."}}
+        </div>
+        <div class="row row-margin">
+          {{paper-input label="Customer contact Name"  value=custcontactname icon="person"}}
+        </div>
+        <div class="row row-margin">
+          {{paper-input label="Customer contact number"  value=custcontactno icon="phone"}}
+        </div>
+        <div class="row row-margin">
+          {{paper-input label="Other contact number"  value=custothcontactno icon="phone"}}
+        </div>
+        <div class="row row-margin">
+          {{paper-input label="Other reference details"  value=custothrefdetails icon="place"}}
+        </div>
+      </div>
+      <div class="col-md-2 "style="padding-top:10px">
+        {{#paper-button primary=true   raised=true disabled=isCreateCustomerButtonDisabled   action="createCustomer"}}
+        {{paper-icon icon="save"}}
+        {{/paper-button}}
+      </div>
+      {{/paper-card-content}}
+      {{/paper-card}}
       {{/if}}
       {{/liquid-spacer}}
     </div>
-    {{/validatable-form}}
-
   </div>
 </div>
 
 <div class="container-fluid">
-  {{#validatable-form action="editCustomer" }}
   <div class="row row-margin">
-
-
-    <div class="col-md-11">
+    <div class="col-md-10">
       {{#liquid-if enableEditCustomer class="customer-info"  }}
 
-
-
-      <div class="row row-margin">
-
-        <div class="col-md-4 col-xs-12"><label for="" class="labels">Client Name</label></div>
-        <div class="col-md-8 col-xs-12">{{input type="text" required=true class="form-control "  placeholder="Client Name" value=project.customer.name}}</div>
-      </div>
-
-      <div class="row row-margin">
-        <div class="col-md-4 col-xs-12"><label for="" class="labels">Client Contact Name</label></div>
-        <div class="col-md-8 col-xs-12">{{input type="text" class="form-control "  placeholder="Client contact name" value=project.customer.contactname}}</div>
-      </div>
-      <div class="row row-margin">
-        <div class="col-md-4 col-xs-12"><label for="" class="labels">Client Contact No.</label></div>
-        <div class="col-md-8 col-xs-12">{{input type="text" required=true class="form-control "  placeholder="Client contact No" value=project.customer.contactno}}</div>
-      </div>
-      <div class="row row-margin">
-        <div class="col-md-4 col-xs-12"><label for="" class="labels">Other Contact No.</label></div>
-        <div class="col-md-8 col-xs-12">{{input type="text" class="form-control"  placeholder="Other Contact No" value=project.customer.othcontactno}}</div>
-      </div>
-      <div class="row row-margin">
-        <div class="col-md-4 col-xs-12"><label for="" class="labels">Other Reference Details</label></div>
-        <div class="col-md-8 col-xs-12">{{input type="text" class="form-control"  placeholder="Other Contact No" value=project.customer.othrefdetails}}</div>
-      </div>
+      {{#paper-list}}
+      {{#paper-item class="md-3-line"}}
+        <div class="md-list-item-text">
+        {{paper-input label="Customer Name" required=true value=project.customer.name icon="person"  required-errortext="Customer name is required."}}
+        </div>
+      {{/paper-item}}
+      {{#paper-item class="md-3-line"}}
+        <div class="md-list-item-text">
+        {{paper-input label="Customer contact Name"  value=project.customer.contactname icon="person"}}
+        </div>
+      {{/paper-item}}
+      {{#paper-item class="md-3-line"}}
+        <div class="md-list-item-text">
+        {{paper-input label="Customer contact number"  value=project.customer.contactno icon="phone"}}
+        </div>
+      {{/paper-item}}
+      {{#paper-item class="md-3-line"}}
+        <div class="md-list-item-text">
+        {{paper-input label="Other Contact number"  value=project.customer.othrefdetails icon="phone"}}
+        </div>
+      {{/paper-item}}
+      {{#paper-item class="md-3-line"}}
+        <div class="md-list-item-text">
+        {{paper-input label="Other Reference Details"  value=project.customer.othrefdetails icon="place"}}
+        </div>
+      {{/paper-item}}
+      {{/paper-list}}
 
       {{else}}
 
-      <div class="row row-margin">
-        <div class="col-md-4 col-xs-12"><label for="" class=" ">Client Name</label> </div>
-        <div class="col-md-8 col-xs-12"><label for="" class="labels">{{project.customer.name}}</label></div>
-      </div>
-      <div class="row row-margin">
-        <div class="col-md-4 col-xs-12"><label for="" class="labels">Client Contact Name</label></div>
-        <div class="col-md-8 col-xs-12"><label class="" for="">{{project.customer.contactname}}</label></div>
-      </div>
-      <div class="row row-margin">
-        <div class="col-md-4 col-xs-12"><label for="" class="labels">Client Contact No.</label></div>
-        <div class="col-md-8 col-xs-12"><label class="" for="">{{project.customer.contactno}}</label></div>
+      {{#paper-list}}
 
-      </div>
-      <div class="row row-margin">
-        <div class="col-md-4 col-xs-12"><label for="" class="labels">Other Contact Number</label></div>
-        <div class="col-md-8 col-xs-12"><label class="" for=""> {{project.customer.othcontactno}}</label></div>
-      </div>
-      <div class="row row-margin">
-        <div class="col-md-4 col-xs-12"><label for="" class="labels">Other Contact No.</label></div>
-        <div class="col-md-8 col-xs-12"><label class="" for=""> {{project.customer.othrefdetails}}</label></div>
-      </div>
+           {{#paper-item class="md-3-line"}}
+             {{paper-icon icon="person"}}
+             <div class="md-list-item-text">
+              <h3>Client Name</h3><p>{{project.customer.name}}</p>
+             </div>
+           {{/paper-item}}
+
+
+           {{#paper-item class="md-3-line"}}
+             {{paper-icon icon="person"}}
+             <div class="md-list-item-text">
+              <h3>Client Contact Name</h3><p>{{project.customer.contactname}}</p>
+             </div>
+           {{/paper-item}}
+
+           {{#paper-item class="md-3-line"}}
+             {{paper-icon icon="phone"}}
+             <div class="md-list-item-text">
+               <h3>Client Contact No</h3><p>{{project.customer.contactno}}</p>
+             </div>
+           {{/paper-item}}
+
+           {{#paper-item class="md-3-line"}}
+             {{paper-icon icon="phone"}}
+             <div class="md-list-item-text">
+               <h3>Other Contact No</h3><p>{{project.customer.othcontactno}}</p>
+             </div>
+           {{/paper-item}}
+
+           {{#paper-item class="md-3-line"}}
+             {{paper-icon icon="place"}}
+             <div class="md-list-item-text">
+               <h3>Other Reference Details</h3><p>{{project.customer.othrefdetails}}</p>
+             </div>
+           {{/paper-item}}
+
+       {{/paper-list}}
 
 
       {{/liquid-if}}
     </div>
-    <div class="col-md-1 "style="padding-top:10px">
+    <div class="col-md-2">
       {{#if enableEditCustomer }}
-      <button type="submit" class="btn btn-default pull-right" >
-        <span class="glyphicon glyphicon-floppy-save "></span>
-      </button>
+      {{#paper-button primary=true   raised=true disabled=isEditCustomerButtonDisabled   action="editCustomer"}}
+      <span class="glyphicon {{if enableEditCustomer "glyphicon-floppy-save" "glyphicon-pencil"}} "></span>
+      {{/paper-button}}
       {{else}}
-      <button type="button" class="btn btn-default pull-right"  {{action "editCustomer"}} >
-        <span class="glyphicon glyphicon-pencil"></span>
-      </button>
+      {{#paper-button primary=true   raised=true   action="editCustomer"}}
+      <span class="glyphicon {{if enableEditCustomer "glyphicon-floppy-save" "glyphicon-pencil"}} "></span>
+      {{/paper-button}}
 
+      <br><br>
+      {{#paper-button primary=true   raised=true   action="deleteData"}}
+      {{paper-icon icon="delete"}}
+      {{/paper-button}}
 
       {{/if}}
-
-
     </div>
 
   </div>
-  {{/validatable-form}}
 </div>
-
-{{outlet}}

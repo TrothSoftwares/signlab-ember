@@ -10,11 +10,11 @@ export default Ember.Controller.extend({
   }),
 
   isCreateCustomerButtonDisabled: Ember.computed('custname',  function() {
-     return Ember.isEmpty(this.get('custname'));
+    return Ember.isEmpty(this.get('custname'));
   }),
 
   isCreateAgentButtonDisabled: Ember.computed('agentname',  function() {
-     return Ember.isEmpty(this.get('agentname'));
+    return Ember.isEmpty(this.get('agentname'));
   }),
 
 
@@ -45,7 +45,6 @@ export default Ember.Controller.extend({
       },
 
       deleteItem: function(item){
-        // console.log(item);
         item.deleteRecord();
         item.save();
       },
@@ -133,8 +132,6 @@ export default Ember.Controller.extend({
 
       saveProject:function(){
 
-
-
         var controller= this;
         var  project = controller.get('project');
         var customer = controller.get('project.customer');
@@ -163,8 +160,28 @@ export default Ember.Controller.extend({
         });
 
 
-      }
+      },
 
+      deleteProject: function(project){
+        var controller = this;
+        var confirm = window.confirm("Are you sure you want to delete?");
+        if (confirm) {
+          project.destroyRecord().then(function(){
+            controller.transitionToRoute('projects.home');
+            controller.notifications.addNotification({
+              message: 'Project deleted successfully' ,
+              type: 'success',
+              autoClear: true
+            });
+          }).catch(function(){
+            controller.notifications.addNotification({
+              message: 'Sorry some thing went wrong!' ,
+              type: 'error',
+              autoClear: true
+            });
+          });
+            //TODO:0 CANNOT RELOAD PROJECTS MODELS: After delete a project project data should be reloaded again.
+          }
+        }
     },
-
   });

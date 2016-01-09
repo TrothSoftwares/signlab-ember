@@ -16,7 +16,7 @@ export default Ember.Controller.extend({
         othcontactno: params.othcontactno,
         othrefdetails: params.othrefdetails,
         project_id: 1,
-        // FIXME: fix project_id relationship ; 500 error comming in rails after save
+        // TODO:70 fix project_id relationship ; 500 error comming in rails after save
         });
     customer.save().then(function(){
         // route.transitionTo('projects.home');

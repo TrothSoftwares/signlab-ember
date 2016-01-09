@@ -54,8 +54,10 @@ export default Ember.Controller.extend({
             controller.transitionToRoute('projects.project.enquiry-form',project);
           });
         }
-        // FIXME: CANNOT CREATE PROJECT
+        // DONE:20 CANNOT CREATE PROJECT
       }
+
+      //DONE:30 CANNOT DELETE PROJECT
 
 
     });

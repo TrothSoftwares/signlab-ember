@@ -27,7 +27,7 @@ export default Ember.Controller.extend({
       self.send('loading');
       newSiteImage.save().then(function(newSiteImage){
               var uploader = EmberUploader.Uploader.create({
-                // FIXME:  this url should be dymanic
+                // TODO:130 this url should be dymanic
 
                 url: ENV.APP.host + '/siteimages/'+newSiteImage.id,
                 type: 'PATCH',

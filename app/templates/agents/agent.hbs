@@ -1,5 +1,4 @@
-  
-  {{#paper-item raised=true }}
+ {{#paper-item raised=true }}
   {{#link-to 'agents.new' class="list-group-item"}} New Agent{{/link-to}}
   {{/paper-item}}
 
@@ -7,7 +6,7 @@
   <div class="container-fluid">
     <div class="row row-margin">
       <div class="col-md-10">
-          {{#liquid-if enableEditagent class="customer-info"  }}
+          {{#liquid-if enableEditAgent class="customer-info"  }}
 
           {{#paper-list}}
           {{#paper-item class="md-3-line"}}
@@ -82,9 +81,9 @@
                   {{/liquid-if}}
           </div>
           <div class="col-md-2">
-            {{#if enableEditagent }}
+            {{#if enableEditAgent }}
 
-            {{#paper-button primary=true   raised=true   action="editAgent"}}
+            {{#paper-button primary=true   disabled=isEditAgentButtonDisabled  raised=true   action="editAgent"}}
             <span class="glyphicon {{if enableEditAgent "glyphicon-floppy-save" "glyphicon-pencil"}} "></span>
             {{/paper-button}}
             {{else}}
@@ -93,10 +92,10 @@
             {{/paper-button}}
 
             <br><br>
-            {{#paper-button primary=true   raised=true   action="deleteData"}}
+            {{#paper-button primary=true   raised=true   action="deleteData" param=model}}
             {{paper-icon icon="delete"}}
             {{/paper-button}}
-
+            
             {{/if}}
           </div>
 

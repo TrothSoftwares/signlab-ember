@@ -2,17 +2,24 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 
+  isCreateAgentButtonDisabled: Ember.computed('agentname',  function() {
+     return Ember.isEmpty(this.get('agentname'));
+  }),
+
+  isEditAgentButtonDisabled : Ember.computed('project.agent.name',function(){
+    return Ember.isEmpty(this.get('project.agent.name'));
+  }),
 
   actions: {
-    onSelectagent(agent) {
+    onSelectAgent(agent) {
       this.set('project.agent', agent);
     },
 
-    openagentComponent: function() {
-      this.toggleProperty('showagentComponent');
+    openAgentComponent: function() {
+      this.toggleProperty('showAgentComponent');
     },
 
-    createagent: function() {
+    createAgent: function() {
       var controller = this;
       var agent = this.store.createRecord('agent', {
         name :this.get('agentname'),
@@ -27,8 +34,8 @@ export default Ember.Controller.extend({
         controller.set('agentcontactno','');
         controller.set('agentothcontactno','');
         controller.set('agentothrefdetails','');
-        controller.send('onSelectagent',agent);
-        controller.set('showagentComponent' ,false);
+        controller.send('onSelectAgent',agent);
+        controller.set('showAgentComponent' ,false);
         controller.notifications.addNotification({
           message: 'Agent Created successfully!' ,
           type: 'success',
@@ -38,10 +45,10 @@ export default Ember.Controller.extend({
     },
 
 
-    editagent :function(){
+    editAgent :function(){
       var controller  = this;
-      // FIXME : Data is saving even when the name field is empty.. (Should be fixed at the agent-form too.)
-      this.toggleProperty('enableEditagent');
+      // TODO:90 : Data is saving even when the name field is empty.. (Should be fixed at the agent-form too.)
+      this.toggleProperty('enableEditAgent');
       let projectagent = this.get('project.agent');
       projectagent.then(function(projectagent){
           if(projectagent.get('hasDirtyAttributes')){
@@ -69,9 +76,6 @@ export default Ember.Controller.extend({
         });
       });
     }
-
-
-
 
 
   }

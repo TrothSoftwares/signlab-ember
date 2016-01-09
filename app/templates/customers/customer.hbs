@@ -83,7 +83,7 @@
       </div>
       <div class="col-md-2">
         {{#if enableEditCustomer }}
-        {{#paper-button primary=true   raised=true   action="editCustomer"}}
+        {{#paper-button primary=true disabled=isEditCustomerButtonDisabled   raised=true   action="editCustomer"}}
         <span class="glyphicon {{if enableEditCustomer "glyphicon-floppy-save" "glyphicon-pencil"}} "></span>
         {{/paper-button}}
         {{else}}

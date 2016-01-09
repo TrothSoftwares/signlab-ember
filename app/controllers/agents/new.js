@@ -16,7 +16,7 @@ export default Ember.Controller.extend({
         contactno :this.get('model.contactno'),
         othcontactno :this.get('model.othcontactno'),
         othrefdetails:this.get('model.othrefdetails'),
-        // FIXME: fix project_id relationship ; 500 error comming in rails after save
+        // TODO:60 fix project_id relationship ; 500 error comming in rails after save
       });
       agent.save().then(function(){
          controller.set('model.name','');

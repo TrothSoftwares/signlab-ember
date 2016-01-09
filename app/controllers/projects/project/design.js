@@ -21,14 +21,14 @@ export default Ember.Controller.extend({
     },
     uploadDesignimage :function(params){
       var self = this;
-// FIXME: description IS STATIC
+// TODO:40 description IS STATIC
       let files = params.files,
           item = params.item;
       var newDesignImage = this.store.createRecord('designimage',{description: '',item :item});
       self.send('loading');
       newDesignImage.save().then(function(newDesignImage){
               var uploader = EmberUploader.Uploader.create({
-                // FIXME:  this url should be dymanic
+                // TODO:30 this url should be dymanic
                 url: ENV.APP.host + '/designimages/' + newDesignImage.id,
                 type: 'PATCH',
                 paramNamespace: 'designimage',

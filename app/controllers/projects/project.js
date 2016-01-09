@@ -5,7 +5,7 @@ export default Ember.Controller.extend({
 
   actions: {
 
-// TODO: Deleter project should be done
+// TODO:80 Deleter project should be done
     // deleteProject :function(){
     //   var controller = this;
     //   this.model.deleteRecord();

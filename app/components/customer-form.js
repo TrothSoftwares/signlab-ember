@@ -7,7 +7,7 @@ custcomp : '',
   actions: {
 
     editCustomer :function(){
-// FIXME : Data is saving even when the name field is empty.. (Should be fixed at the agent-form too.)
+// TODO:110 : Data is saving even when the name field is empty.. (Should be fixed at the agent-form too.)
       //if(this.get('customer.name') !== ''){
 
       this.toggleProperty('enableEditCustomer');

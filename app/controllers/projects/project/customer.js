@@ -3,6 +3,14 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
 
 
+isEditCustomerButtonDisabled: Ember.computed('project.customer.name', function() {
+  return Ember.isEmpty(this.get('project.customer.name'));
+}),
+
+isCreateCustomerButtonDisabled: Ember.computed('custname', function() {
+  return Ember.isEmpty(this.get('custname'));
+}),
+
   actions: {
     onSelectCustomer(customer) {
       this.set('project.customer', customer);
@@ -40,7 +48,7 @@ export default Ember.Controller.extend({
 
     editCustomer :function(){
       var controller  = this;
-      // FIXME : Data is saving even when the name field is empty.. (Should be fixed at the agent-form too.)
+      // TODO:140 : Data is saving even when the name field is empty.. (Should be fixed at the agent-form too.)
       this.toggleProperty('enableEditCustomer');
       let projectCustomer = this.get('project.customer');
       projectCustomer.then(function(projectcustomer){
