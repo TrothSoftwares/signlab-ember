@@ -16,10 +16,27 @@ actions: {
   },
 //TODO:10 CATCH ERROR: if not deleted due to relationship Data
 //TODO:20 MESSAGE ERROR: That there is a project assigned to this data
-  deleteData: function(){
-    this.model.deleteRecord();
-    this.model.save();
-    this.transitionToRoute('customers.new');
+
+
+
+  deleteData: function(customer){
+    var controller = this;
+
+    customer.destroyRecord().then(function () {
+        controller.notifications.addNotification({
+          message: 'Customer Deleted!' ,
+          type: 'success',
+          autoClear: true
+        });
+    }).catch(function () {
+      customer.rollbackAttributes();
+        controller.notifications.addNotification({
+          message: 'Customer cannot be deleted. This customer may be assigned to some project!' ,
+          type: 'error',
+          autoClear: true
+        });
+    });
   }
+
 }
 });
