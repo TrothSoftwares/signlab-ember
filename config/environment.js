@@ -38,13 +38,20 @@ module.exports = function(environment) {
      tokenAttributeName: 'token',
      identificationAttributeName: 'email',
      serverTokenEndpoint: ENV.host + '/users/sign_in',
-     authorizer: 'devise'
+     authorizer: 'devise',
+     crossOriginWhitelist: ['*'],
+
    };
 
    ENV['simple-auth'] = {
      crossOriginWhitelist: ['*'],
      authorizer: 'simple-auth-authorizer:devise'
    };
+
+   ENV['ember-simple-auth'] = {
+   authorizer: 'authorizer:devise',
+   crossOriginWhitelist: ['*']
+ },
 
 // const server = restify.createServer({ name: 'sellthru', version: "1.0.0" });
 // restify.CORS.ALLOW_HEADERS.push('authorization');

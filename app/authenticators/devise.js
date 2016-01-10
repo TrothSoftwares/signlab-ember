@@ -1,5 +1,5 @@
-import Devise from 'ember-simple-auth/authenticators/devise';
+import DeviseAuthenticator from 'ember-simple-auth/authenticators/devise';
 
-export default Devise.extend({
+export default DeviseAuthenticator.extend({
   serverTokenEndpoint: 'http://localhost:3000/users/sign_in'
 });
