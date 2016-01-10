@@ -3,12 +3,12 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
 
   isEditAgentButtonDisabled: Ember.computed('model.name',  function() {
-     return Ember.isEmpty(this.get('model.name'));
+    return Ember.isEmpty(this.get('model.name'));
   }),
 
   actions: {
 
-      editAgent: function() {
+    editAgent: function() {
       var controller = this;
       var agent = this.store.createRecord('agent', {
         name :this.get('model.name'),
@@ -19,12 +19,18 @@ export default Ember.Controller.extend({
         // TODO:60 fix project_id relationship ; 500 error comming in rails after save
       });
       agent.save().then(function(){
-         controller.set('model.name','');
-         controller.set('model.contactname','');
-         controller.set('model.contactno','');
-         controller.set('model.othcontactno','');
-         controller.set('model.othrefdetails','');
+        controller.set('model.name','');
+        controller.set('model.contactname','');
+        controller.set('model.contactno','');
+        controller.set('model.othcontactno','');
+        controller.set('model.othrefdetails','');
         controller.transitionToRoute('agents.agent' , agent);
+      }).catch(function(){
+        controller.notifications.addNotification({
+          message: 'Sorry, cant save at the moment !' ,
+          type: 'error',
+          autoClear: true
+        });
       });
     },
   }

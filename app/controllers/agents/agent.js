@@ -9,9 +9,16 @@ export default Ember.Controller.extend({
 
   actions: {
     editAgent :function(){
+      var controller = this;
       this.toggleProperty('enableEditAgent');
       if(this.model.get('hasDirtyAttributes')){
-        this.model.save();
+        this.model.save().catch(function(){
+          controller.notifications.addNotification({
+            message: 'Sorry, cant save at the moment !' ,
+            type: 'error',
+            autoClear: true
+          });
+        });
       }
     },
     //DONE:0 CATCH ERROR: if not deleted due to relationship Data
@@ -19,20 +26,19 @@ export default Ember.Controller.extend({
 
     deleteData: function(agent){
       var controller = this;
-
       agent.destroyRecord().then(function () {
-          controller.notifications.addNotification({
-            message: 'Agent Deleted!' ,
-            type: 'success',
-            autoClear: true
-          });
+        controller.notifications.addNotification({
+          message: 'Agent Deleted!' ,
+          type: 'success',
+          autoClear: true
+        });
       }).catch(function () {
         agent.rollbackAttributes();
-          controller.notifications.addNotification({
-            message: 'Agent cannot be deleted. This agent may be assigned to some project!' ,
-            type: 'error',
-            autoClear: true
-          });
+        controller.notifications.addNotification({
+          message: 'Agent cannot be deleted. This agent may be assigned to some project!' ,
+          type: 'error',
+          autoClear: true
+        });
       });
     }
 

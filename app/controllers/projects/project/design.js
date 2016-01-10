@@ -9,8 +9,15 @@ export default Ember.Controller.extend({
     saveDesigndetails :function(){
       var controller  = this;
       let items = this.get('project').get('items');
+
       items.forEach(function(item){
-        item.save();
+        item.save().catch(function(){
+          controller.notifications.addNotification({
+            message: 'Sorry, cant save at the moment !' ,
+            type: 'error',
+            autoClear: true
+          });
+        });
       }).then(function(){
         controller.notifications.addNotification({
           message: 'Design Details Saved!' ,
@@ -22,15 +29,14 @@ export default Ember.Controller.extend({
 
 
     uploadDesignimage :function(params){
-      var self = this;
-      // TODO:40 description IS STATIC
+      var controller = this;
       let files = params.files,
       item = params.item;
       var newDesignImage = this.store.createRecord('designimage',{description: '',item :item});
-      self.send('loading');
+
+      controller.send('loading');
       newDesignImage.save().then(function(newDesignImage){
         var uploader = EmberUploader.Uploader.create({
-          // TODO:30 this url should be dymanic
           url: ENV.APP.host + '/designimages/' + newDesignImage.id,
           type: 'PATCH',
           paramNamespace: 'designimage',
@@ -42,7 +48,13 @@ export default Ember.Controller.extend({
           }
         );
       }
-      self.send('finished');
+      controller.send('finished');
+    }).catch(function(){
+      controller.notifications.addNotification({
+        message: 'Sorry, cant save at the moment !' ,
+        type: 'error',
+        autoClear: true
+      });
     });
   },
 
@@ -50,6 +62,7 @@ export default Ember.Controller.extend({
 
   deleteDesignimage :function(designimage){
     var controller = this;
+
     designimage.destroyRecord().then(function () {
     }).catch(function () {
       designimage.rollbackAttributes();

@@ -41,6 +41,12 @@ export default Ember.Controller.extend({
           type: 'success',
           autoClear: true
         });
+      }).catch(function(){
+        controller.notifications.addNotification({
+          message: 'Sorry, cant save at the moment !' ,
+          type: 'error',
+          autoClear: true
+        });
       });
     },
 
@@ -58,6 +64,12 @@ export default Ember.Controller.extend({
             type: 'success',
             autoClear: true
           });
+        }).catch(function(){
+          controller.notifications.addNotification({
+            message: 'Sorry, cant save at the moment !' ,
+            type: 'error',
+            autoClear: true
+          });
         });
       }
 
@@ -72,6 +84,12 @@ export default Ember.Controller.extend({
         controller.notifications.addNotification({
           message: 'Project Updated successfully!' ,
           type: 'success',
+          autoClear: true
+        });
+      }).catch(function(){
+        controller.notifications.addNotification({
+          message: 'Sorry, cant save at the moment !' ,
+          type: 'error',
           autoClear: true
         });
       });

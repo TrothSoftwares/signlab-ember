@@ -18,46 +18,52 @@ export default Ember.Controller.extend({
     return this.get('projects').filter(function(customer) {
       return customer.get('name').toLowerCase().indexOf(searchTerm) !== -1;
     });
-    }),
+  }),
 
 
 
   actions: {
     createProject: function(){
       var controller = this;
-
-
-
-              var customer = this.get('customers').get('firstObject');
-              var agent = this.get('agents').get('firstObject');
-
-
+      var customer = this.get('customers').get('firstObject');
+      var agent = this.get('agents').get('firstObject');
       var project = this.store.createRecord('project', {
         name: this.get('name'),
         customer : customer,
         agent : agent});
 
-          project.save().then(function(){
-            var enquiry = controller.store.createRecord('enquiry', {
-              date: new Date(),
-              no: '',
-              project : project});
-
-            enquiry.save();
+        project.save().then(function(){
+          var enquiry = controller.store.createRecord('enquiry', {
+            date: new Date(),
+            no: '',
+            project : project});
+            enquiry.save().catch(function(){
+              controller.notifications.addNotification({
+                message: 'Sorry, cant save at the moment !' ,
+                type: 'error',
+                autoClear: true
+              });
+            });
 
             var quotation = controller.store.createRecord('quotation', {
               project : project});
 
-            quotation.save();
+              quotation.save().catch(function(){
+                controller.notifications.addNotification({
+                  message: 'Sorry, cant save at the moment !' ,
+                  type: 'error',
+                  autoClear: true
+                });
+              });
 
-            controller.set('name' , '');
-            controller.transitionToRoute('projects.project.enquiry-form',project);
-          });
+              controller.set('name' , '');
+              controller.transitionToRoute('projects.project.enquiry-form',project);
+            });
+          }
+          // DONE:20 CANNOT CREATE PROJECT
         }
-        // DONE:20 CANNOT CREATE PROJECT
-      }
 
-      //DONE:30 CANNOT DELETE PROJECT
+        //DONE:30 CANNOT DELETE PROJECT
 
 
-    });
+      });

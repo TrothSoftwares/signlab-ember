@@ -8,11 +8,23 @@ export default Ember.Controller.extend({
 
         var  quotations = this.get('project').get('quotation');
          quotations.then(function(quotation){
-           quotation.save();
+           quotation.save().catch(function(){
+             controller.notifications.addNotification({
+               message: 'Sorry, cant save at the moment !' ,
+               type: 'error',
+               autoClear: true
+             });
+           });
          });
         let items = this.get('project').get('items');
         items.forEach(function(item){
-          item.save();
+          item.save().catch(function(){
+            controller.notifications.addNotification({
+              message: 'Sorry, cant save at the moment !' ,
+              type: 'error',
+              autoClear: true
+            });
+          });
         }).then(function(){
           controller.notifications.addNotification({
             message: 'Quotation Saved!' ,

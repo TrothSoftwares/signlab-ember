@@ -17,20 +17,11 @@ export default Ember.Controller.extend({
     return Ember.isEmpty(this.get('agentname'));
   }),
 
-
-
-
-
-
   actions: {
-
-
-
-
 
     AddNewItem: function(){
 
-
+      var controller = this;
       let itemtype = this.get('itemtypes').get('firstObject');
       let jobtype = this.get('jobtypes').get('firstObject');
       let project = this.get('project');
@@ -40,9 +31,18 @@ export default Ember.Controller.extend({
         itemtype: itemtype ,
         jobtype: jobtype,
         project: project });
-        newitem.save();
+
+
+        newitem.save().catch(function(){
+          controller.notifications.addNotification({
+            message: 'Sorry, cant save at the moment !' ,
+            type: 'error',
+            autoClear: true
+          });
+        });
         this.get('project.items').pushObject(newitem);
       },
+
 
       deleteItem: function(item){
         var controller = this;
@@ -107,6 +107,12 @@ export default Ember.Controller.extend({
             type: 'success',
             autoClear: true
           });
+        }).catch(function(){
+          controller.notifications.addNotification({
+            message: 'Sorry, cant save at the moment !' ,
+            type: 'error',
+            autoClear: true
+          });
         });
       },
 
@@ -134,6 +140,12 @@ export default Ember.Controller.extend({
             type: 'success',
             autoClear: true
           });
+        }).catch(function(){
+          controller.notifications.addNotification({
+            message: 'Sorry, cant save at the moment !' ,
+            type: 'error',
+            autoClear: true
+          });
         });
       },
 
@@ -146,7 +158,13 @@ export default Ember.Controller.extend({
         var agent = controller.get('project.agent');
         var currentEnquiry = project.get('enquiries');
         currentEnquiry.forEach(function(curenq){
-          curenq.save();
+          curenq.save().catch(function(){
+            controller.notifications.addNotification({
+              message: 'Sorry, cant save at the moment !' ,
+              type: 'error',
+              autoClear: true
+            });
+          });
         });
 
 
@@ -155,7 +173,13 @@ export default Ember.Controller.extend({
 
         var currentItems = project.get('items');
         currentItems.forEach(function(curitem){
-          curitem.save();
+          curitem.save().catch(function(){
+            controller.notifications.addNotification({
+              message: 'Sorry, cant save at the moment !' ,
+              type: 'error',
+              autoClear: true
+            });
+          });
         });
 
 
@@ -163,6 +187,12 @@ export default Ember.Controller.extend({
           controller.notifications.addNotification({
             message: 'Project Saved!' ,
             type: 'success',
+            autoClear: true
+          });
+        }).catch(function(){
+          controller.notifications.addNotification({
+            message: 'Sorry, cant save at the moment !' ,
+            type: 'error',
             autoClear: true
           });
         });

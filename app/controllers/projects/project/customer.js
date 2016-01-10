@@ -42,6 +42,12 @@ isCreateCustomerButtonDisabled: Ember.computed('custname', function() {
           type: 'success',
           autoClear: true
         });
+      }).catch(function(){
+        controller.notifications.addNotification({
+          message: 'Sorry, cant save at the moment !' ,
+          type: 'error',
+          autoClear: true
+        });
       });
     },
 
@@ -59,6 +65,12 @@ isCreateCustomerButtonDisabled: Ember.computed('custname', function() {
             type: 'success',
             autoClear: true
           });
+        }).catch(function(){
+          controller.notifications.addNotification({
+            message: 'Sorry, cant save at the moment !' ,
+            type: 'error',
+            autoClear: true
+          });
         });
       }
 
@@ -73,6 +85,12 @@ isCreateCustomerButtonDisabled: Ember.computed('custname', function() {
         controller.notifications.addNotification({
           message: 'Project Updated successfully!' ,
           type: 'success',
+          autoClear: true
+        });
+      }).catch(function(){
+        controller.notifications.addNotification({
+          message: 'Sorry, cant save at the moment !' ,
+          type: 'error',
           autoClear: true
         });
       });

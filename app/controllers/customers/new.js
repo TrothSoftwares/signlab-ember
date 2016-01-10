@@ -3,11 +3,11 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
 
   isEditCustomerButtonDisabled: Ember.computed('model.name',  function() {
-     return Ember.isEmpty(this.get('model.name'));
+    return Ember.isEmpty(this.get('model.name'));
   }),
 
   actions: {
-      editCustomer: function() {
+    editCustomer: function() {
       var controller = this;
       var customer = this.store.createRecord('customer', {
         name :this.get('model.name'),
@@ -18,12 +18,18 @@ export default Ember.Controller.extend({
         // TODO:50 fix project_id relationship ; 500 error comming in rails after save
       });
       customer.save().then(function(){
-         controller.set('model.name','');
-         controller.set('model.contactname','');
-         controller.set('model.contactno','');
-         controller.set('model.othcontactno','');
-         controller.set('model.othrefdetails','');
+        controller.set('model.name','');
+        controller.set('model.contactname','');
+        controller.set('model.contactno','');
+        controller.set('model.othcontactno','');
+        controller.set('model.othrefdetails','');
         controller.transitionToRoute('customers.customer' , customer);
+      }).catch(function(){
+        controller.notifications.addNotification({
+          message: 'Sorry, cant save at the moment !' ,
+          type: 'error',
+          autoClear: true
+        });
       });
     },
   }
