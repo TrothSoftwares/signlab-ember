@@ -7,6 +7,7 @@ module.exports = function(environment) {
     baseURL: '/',
     locationType: 'auto',
 
+// TODO: SELF * SHOULD BE SAFE PROOFED: about the connect src and cors configs.
     contentSecurityPolicy: {
     'default-src': "'none' *",
     'script-src': "'self' *",
@@ -15,8 +16,6 @@ module.exports = function(environment) {
     'img-src': "'self' data: *  ",
     'media-src': "'self' *",
 	  'style-src': "'self' 'unsafe-inline' *",
-
-
 	},
   'ember-cli-notifications': {
     icons: 'bootstrap'
