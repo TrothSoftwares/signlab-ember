@@ -51,6 +51,7 @@ module.exports = function(environment) {
    ENV['ember-simple-auth'] = {
    authorizer: 'authorizer:devise',
    crossOriginWhitelist: ['*']
+
  },
 
 // const server = restify.createServer({ name: 'sellthru', version: "1.0.0" });
