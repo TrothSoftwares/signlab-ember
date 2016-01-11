@@ -1,25 +1,11 @@
 import DS from 'ember-data';
 import ENV from '../config/environment';
+import DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
 
-
-export default DS.JSONAPIAdapter.extend({
-  // host: 'http://localhost:3000',
+export default DS.JSONAPIAdapter.extend(DataAdapterMixin,{
   host: ENV.APP.host,
-
-  shouldReloadRecord(store, snapshot) {
-    return false;
-  },
+  authorizer: 'authorizer:devise',
   plurals: {
-      enquiry: 'enquiries'
-    }
+    enquiry: 'enquiries'
+  }
 });
-
-//
-// export default DS.JSONAPIAdapter.extend({
-//   host: 'http://localhost:3001',
-// });
-
-
-// import { ActiveModelSerializer } from 'active-model-adapter';
-//
-// export default ActiveModelSerializer.extend();

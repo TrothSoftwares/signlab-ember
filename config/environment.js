@@ -33,6 +33,53 @@ module.exports = function(environment) {
     }
   };
 
+
+  //   ENV['ember-simple-auth'] = {
+  //     authorizer: 'authorizer:devise',
+  //     crossOriginWhitelist: ['*'],
+  //     routeAfterAuthentication: 'projects.home',
+  //      routeIfAlreadyAuthenticated: 'projects.home'
+  //   };
+  //
+  //   ENV['simple-auth-devise'] = {
+  //   tokenAttributeName: 'token',
+  //   identificationAttributeName: 'email',
+  //   serverTokenEndpoint: ENV.host + '/users/sign_in',
+  //   authorizer: 'devise',
+  //   crossOriginWhitelist: ['*'],
+  // };
+  //
+  // ENV['simple-auth'] = {
+  //    crossOriginWhitelist: ['*'],
+  //    authorizer: 'simple-auth-authorizer:devise'
+  //  };
+
+
+
+   ENV['simple-auth-devise'] = {
+     tokenAttributeName: 'token',
+     identificationAttributeName: 'email',
+     serverTokenEndpoint:  ENV.APP.host  + '/users/sign_in',
+     authorizer: 'devise',
+     crossOriginWhitelist: ['*'],
+
+   };
+
+   ENV['simple-auth'] = {
+     crossOriginWhitelist: ['*'],
+     authorizer: 'simple-auth-authorizer:devise',
+     serverTokenEndpoint:  ENV.APP.host  + '/users/sign_in',
+
+   };
+
+   ENV['ember-simple-auth'] = {
+   authorizer: 'authorizer:devise',
+   crossOriginWhitelist: ['*'],
+   serverTokenEndpoint:  ENV.APP.host  + '/users/sign_in',
+
+
+ };
+
   if (environment === 'development') {
      ENV.APP.host =  'http://localhost:3000';
      ENV.APP.LOG_RESOLVER = false;
