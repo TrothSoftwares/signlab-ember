@@ -43,20 +43,23 @@ module.exports = function(environment) {
      serverTokenEndpoint:  ENV.APP.host  + '/users/sign_in',
      authorizer: 'devise',
      crossOriginWhitelist: ['*'],
-     routeAfterAuthentication: 'projects.home',
-     routeIfAlreadyAuthenticated: 'projects.home'
-
+     authenticationRoute: 'login',
+      routeAfterAuthentication: 'dashboard'
    };
+
+   ENV['simple-auth-auth'] = { authenticationRoute: 'login', routeAfterAuthentication: 'dashboard'};
+
+
 
 
 
   if (environment === 'development') {
      ENV.APP.host =  'http://localhost:3000';
-     ENV.APP.LOG_RESOLVER = false;
-     ENV.APP.LOG_ACTIVE_GENERATION = false;
-     ENV.APP.LOG_TRANSITIONS = false;
-     ENV.APP.LOG_TRANSITIONS_INTERNAL = false;
-     ENV.APP.LOG_VIEW_LOOKUPS = false;
+     ENV.APP.LOG_RESOLVER = true;
+     ENV.APP.LOG_ACTIVE_GENERATION = true;
+     ENV.APP.LOG_TRANSITIONS = true;
+     ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
+     ENV.APP.LOG_VIEW_LOOKUPS = true;
   }
 
   if (environment === 'test') {

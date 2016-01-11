@@ -1,29 +1,6 @@
 {{loading-slider isLoading=loading  color=hexColorsArray}}
 {{#link-to 'login'}}Login{{/link-to}}
 <a href="#" {{action 'logout'}}>Logout</a>
-
 <div class="col-md-12">
-
-  <div class="c-notification__container">
-    {{#each notifications as |notification|}}
-      {{notification-message notification=notification}}
-    {{/each}}
-  </div>
-
-{{#link-to  'application' }}
-<h2 id="title" class="text-center">Signlab - Home</h2>
-{{/link-to}}
-<div>
-  <!-- Nav tabs -->
-  <ul class="nav nav-tabs" >
-    <li>{{link-to 'Projects' 'projects.home' }}</li>
-    <li>{{link-to 'Customers' 'customers.new' }}</li>
-    <li>{{link-to 'Agents' 'agents.new' }}</li>
-  </ul>
-  <!-- Tab panes -->
-
-  <div class="tab-content">
-{{outlet}}
-  </div>
-</div>
+ {{outlet}}
 </div>

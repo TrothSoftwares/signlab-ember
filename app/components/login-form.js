@@ -8,7 +8,11 @@ export default Ember.Component.extend({
   actions: {
     authenticate: function() {
       let { identification, password } = this.getProperties('identification', 'password');
-      return this.get('session').authenticate('authenticator:devise', identification, password).catch((reason) => {
+      return this.get('session').authenticate('authenticator:devise', identification, password).then(function(){
+        console.log('authenticated called');
+        this._super(transition)
+        // this.transitionTo('dashboard'); // can't call on undefined
+      }).catch((reason) => {
         this.set('errorMessage', reason.error);
       });
     }

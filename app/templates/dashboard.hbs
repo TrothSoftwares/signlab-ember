@@ -1,0 +1,28 @@
+{{loading-slider isLoading=loading  color=hexColorsArray}}
+
+
+<div class="col-md-12">
+
+  <div class="c-notification__container">
+    {{#each notifications as |notification|}}
+      {{notification-message notification=notification}}
+    {{/each}}
+  </div>
+
+{{#link-to  'application' }}
+<h2 id="title" class="text-center">Signlab - Home</h2>
+{{/link-to}}
+<div>
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" >
+    <li>{{link-to 'Projects' 'dashboard.projects.home' }}</li>
+    <li>{{link-to 'Customers' 'dashboard.customers.new' }}</li>
+    <li>{{link-to 'Agents' 'dashboard.agents.new' }}</li>
+  </ul>
+  <!-- Tab panes -->
+
+  <div class="tab-content">
+{{outlet}}
+  </div>
+</div>
+</div>
