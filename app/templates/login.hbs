@@ -1,3 +1,5 @@
-<h2 id="title">Login</h2>
-
-{{login-form}}
+<form {{action 'authenticate' on="submit"}} >
+Email: {{input value=email type="text"}}
+Password: {{input value=password type="password"}}
+<button type="submit">Submit</button>
+</form>

@@ -4,11 +4,4 @@ import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mi
 
 
 export default Ember.Route.extend(LoadingSliderMixin , ApplicationRouteMixin, {
-  actions: {
-    sessionAuthenticationSucceeded: function() {
-      console.log('callling dashboard route');
-      this.transitionTo('dashboard');
-    }
-  }
-
-});
+  });
