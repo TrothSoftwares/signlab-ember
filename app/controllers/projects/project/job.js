@@ -24,6 +24,7 @@ export default Ember.Controller.extend({
           item = params.item;
       var newSiteImage = this.store.createRecord('siteimage',{description: 'test desc',item :item});
       newSiteImage.save().then(function(newSiteImage){
+        console.log('new site image created and saved')
               var uploader = EmberUploader.Uploader.create({
                 // FIXME:  this url should be dymanic
                 url: 'http://localhost:3000/siteimages/'+newSiteImage.id,
@@ -33,6 +34,7 @@ export default Ember.Controller.extend({
               });
               if (!Ember.isEmpty(files)) {
                 uploader.upload(files[0]).then(function(){
+                  console.log('siteimage patching from job.jss')
                    newSiteImage.reload();
                 }
                 );
@@ -44,7 +46,7 @@ export default Ember.Controller.extend({
       siteimage.save();
     }
 
-    
+
   },
 
 
