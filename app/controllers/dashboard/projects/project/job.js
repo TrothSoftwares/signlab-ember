@@ -33,7 +33,7 @@ export default Ember.Controller.extend({
       controller.send('loading');
       //TODO: catch all errors
       newSiteImage.save().then(function(newSiteImage){
-
+console.log('New site image created');
         var uploader = EmberUploader.Uploader.create({
           url: ENV.APP.host + '/siteimages/'+newSiteImage.id,
           type: 'PATCH',
@@ -51,7 +51,9 @@ export default Ember.Controller.extend({
 
 
               if (!Ember.isEmpty(files)) {
+                console.log('New site image going to upload');
                 uploader.upload(files[0]).then(function(){
+                  console.log('New site image uploaded');
                    newSiteImage.reload();
                 }
                 );
