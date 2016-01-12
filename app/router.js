@@ -9,7 +9,7 @@ Router.map(function() {
   //  this.route('home');
 
 
-  this.route('dashboard',function(){
+  this.route('dashboard' ,function(){
     this.route('projects',function(){
       this.route('home');
       this.route('project', { path: ':id' }, function() {
@@ -33,7 +33,7 @@ Router.map(function() {
       this.route('new');
     });
   });
-  this.route('login');
+  this.route('login', {path: '/'});
 });
 
 export default Router;

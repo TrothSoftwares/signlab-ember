@@ -1,6 +1,20 @@
-{{loading-slider isLoading=loading  color=hexColorsArray}}
-{{#link-to 'login'}}Login{{/link-to}}
-
 <div class="col-md-12">
- {{outlet}}
+  {{loading-slider isLoading=loading  color=hexColorsArray}}
+  <div class="c-notification__container">
+    {{#each notifications as |notification|}}
+      {{notification-message notification=notification}}
+    {{/each}}
+  </div>
+  <div class="center text-center">
+    {{#link-to  'application' }}
+    <img src="images/signlab_logo_200x50.png" alt="Logo">
+    {{/link-to}}
+  </div>
+  <div class="col-md-12">
+    {{#paper-card}}
+    {{#paper-card-content}}
+    {{outlet}}
+    {{/paper-card-content}}
+    {{/paper-card}}
+  </div>
 </div>
