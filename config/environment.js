@@ -9,7 +9,7 @@ module.exports = function(environment) {
 
 // TODO: SELF * SHOULD BE SAFE PROOFED: about the connect src and cors configs.
     contentSecurityPolicy: {
-    'default-src': "'none' *",
+    'default-src': "'self' *",
     'script-src': "'self' *",
     'font-src': "'self' *",
     'connect-src': "'self' *",

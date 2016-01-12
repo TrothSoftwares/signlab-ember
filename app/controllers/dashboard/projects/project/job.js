@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import EmberUploader from 'ember-uploader';
-import ENV from '../../../config/environment';
+import ENV from '../../../../config/environment';
 
 export default Ember.Controller.extend({
 
@@ -34,12 +34,22 @@ export default Ember.Controller.extend({
       //TODO: catch all errors
       newSiteImage.save().then(function(newSiteImage){
 
-              var uploader = EmberUploader.Uploader.create({
-                url: ENV.APP.host + '/siteimages/'+newSiteImage.id,
-                type: 'PATCH',
-                paramNamespace: 'siteimage',
-                paramName: 'url',
-              });
+        var uploader = EmberUploader.Uploader.create({
+          url: ENV.APP.host + '/siteimages/'+newSiteImage.id,
+          type: 'PATCH',
+          paramNamespace: 'siteimage',
+          paramName: 'url',
+          ajaxSettings: function() {
+            var settings = this._super.apply(this, arguments);
+            settings.headers = {
+              'Token': 'token'
+            };
+            return settings;
+          }
+
+          });
+
+
               if (!Ember.isEmpty(files)) {
                 uploader.upload(files[0]).then(function(){
                    newSiteImage.reload();

@@ -1,42 +1,36 @@
 
 
 <div>
-<ul class="nav nav-tabs" >
-  <li>{{#link-to 'projects.project.enquiry-form' }}
-    <button class="btn btn-success"> Enquiry Form</button>
-    {{/link-to}}
-  </li>
-  <li>{{#link-to 'projects.project.quotation-form' }}
-    <button class="btn btn-success"> Quotation Form</button>
-    {{/link-to}}
-  </li>
-  <li>{{#link-to 'projects.project.customer' }}
-    <button class="btn btn-success"> Customer Form</button>
-    {{/link-to}}
-  </li>
-  <li>{{#link-to 'projects.project.agent' }}
-    <button class="btn btn-success"> Agent Form</button>
-    {{/link-to}}
-  </li>
-  <li>{{#link-to 'projects.project.job' }}
-    <button class="btn btn-success"> Job Details</button>
-    {{/link-to}}
-  </li>
-  <li>{{#link-to 'projects.project.design' }}
-    <button class="btn btn-success"> Design Details</button>
-    {{/link-to}}
-  </li>
+  <ul class="nav nav-tabs" >
+    <li>{{#link-to 'dashboard.projects.project.enquiry-form' }}
+      <button class="btn btn-success"> Enquiry Form</button>
+      {{/link-to}}
+    </li>
+    <li>{{#link-to 'dashboard.projects.project.quotation-form' }}
+      <button class="btn btn-success"> Quotation Form</button>
+      {{/link-to}}
+    </li>
+    <li>{{#link-to 'dashboard.projects.project.customer' }}
+      <button class="btn btn-success"> Customer Form</button>
+      {{/link-to}}
+    </li>
+    <li>{{#link-to 'dashboard.projects.project.agent' }}
+      <button class="btn btn-success"> Agent Form</button>
+      {{/link-to}}
+    </li>
+    <li>{{#link-to 'dashboard.projects.project.job' }}
+      <button class="btn btn-success"> Job Details</button>
+      {{/link-to}}
+    </li>
+    <li>{{#link-to 'dashboard.projects.project.design' }}
+      <button class="btn btn-success"> Design Details</button>
+      {{/link-to}}
+    </li>
 
 
 
-</ul>
-
-  <!-- <button type="button" class="btn btn-default  pull-right"  {{action "deleteProject"}} >
-    <span class="glyphicon glyphicon-trash"></span>
-  </button> -->
-
-<!-- Tab panes -->
-<div class="tab-content">
-{{outlet}}
-</div>
+  </ul>
+  <div class="tab-content">
+    {{outlet}}
+  </div>
 </div>

@@ -57,7 +57,7 @@ export default Ember.Controller.extend({
               });
 
               controller.set('name' , '');
-              controller.transitionToRoute('projects.project.enquiry-form',project);
+              controller.transitionToRoute('dashboard.projects.project.enquiry-form',project);
             });
           }
           // DONE:20 CANNOT CREATE PROJECT

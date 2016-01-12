@@ -205,7 +205,7 @@ export default Ember.Controller.extend({
         var confirm = window.confirm("Are you sure you want to delete?");
         if (confirm) {
           project.destroyRecord().then(function(){
-            controller.transitionToRoute('projects.home');
+            controller.transitionToRoute('dashboad.projects.home');
             controller.notifications.addNotification({
               message: 'Project deleted successfully' ,
               type: 'success',
