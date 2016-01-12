@@ -39,7 +39,16 @@ export default Ember.Controller.extend({
                 type: 'PATCH',
                 paramNamespace: 'siteimage',
                 paramName: 'url',
+                ajaxSettings: function() {
+                  var settings = this._super.apply(this, arguments);
+                  settings.headers = {
+                    'Token': 'token'
+                  };
+                  return settings;
+                }
               });
+
+
               if (!Ember.isEmpty(files)) {
                 uploader.upload(files[0]).then(function(){
                    newSiteImage.reload();
