@@ -1,10 +1,14 @@
 <div class="col-md-12">
   <div>
-    <ul class="nav nav-tabs col-md-11" >
-      <li>{{link-to 'Projects' 'dashboard.projects.home' }}</li>
-      <li>{{link-to 'Customers' 'dashboard.customers.new' }}</li>
-      <li>{{link-to 'Agents' 'dashboard.agents.new' }}</li>
-    </ul>
+    <div class="tabs tabs-style-underline">
+    <nav>
+      <ul>
+        <li class="">{{link-to 'Projects' 'dashboard.projects.home' class="icon icon-home" }}</li>
+        <li class="">{{link-to 'customeres' 'dashboard.customers.new' class="icon icon-home" }}</li>
+        <li class="">{{link-to 'agents' 'dashboard.agents.new' class="icon icon-home" }}</li>
+      </ul>
+    </nav>
+  </div>
 
     <div class="col-md-1">
       {{#paper-menu position="target-right target" as |menu|}}
