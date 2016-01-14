@@ -1,0 +1,38 @@
+<div class="col-md-12">
+  <div>
+    <div class="col-md-12">
+    <div class="tabs tabs-style-underline col-md-11">
+    <nav>
+      <ul>
+        <li class="">{{link-to 'Projects' 'dashboard.projects.home' }}</li>
+        <li class="">{{link-to 'Customers' 'dashboard.customers.new' class="icon icon-user" }}</li>
+        <li class="">{{link-to 'Agents' 'dashboard.agents.new' class="icon icon-id" }}</li>
+      </ul>
+    </nav>
+  </div>
+
+
+    <div class="col-md-1">
+      {{#paper-menu position="target-right target" as |menu|}}
+      {{#paper-button target=menu action="toggleMenu" icon-button=true}}
+      {{paper-icon class="md-menu-origin" icon="account-circle"}}
+      {{/paper-button}}
+      {{else}}
+      {{#paper-menu-item  width=4}}
+      <p style="width: 190px;">Preference</p>
+      {{paper-icon icon="settings" class="md-menu-align-target"}}
+      {{/paper-menu-item}}
+      {{#paper-menu-item action="logout" width=4}}
+      <p style="width: 190px;">Logout</p>
+      {{paper-icon icon="power-settings-new" class="md-menu-align-target"}}
+      {{/paper-menu-item}}
+      {{/paper-menu}}
+    </div>
+  </div>
+
+
+    <div class="tab-content col-md-12">
+      {{outlet}}
+    </div>
+  </div>
+</div>

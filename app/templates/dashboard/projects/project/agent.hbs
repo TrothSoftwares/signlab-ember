@@ -1,0 +1,157 @@
+
+<!-- TODO : APPLY MATERIALIZE IN PROJECTS/AGENT PAGE -->
+<div class="row row-margin">
+  <div class="col-md-2">
+    <label for="" class="labels">Agent</label>
+  </div>
+  <div class="col-md-9">
+    {{ember-select-guru value=project.agent  options=agents onSelect=(action "onSelectAgent") }}
+  </div>
+  <div class="col-md-1">
+    {{#paper-button primary=true   raised=true   action="openAgentComponent"}}
+    <span class="glyphicon {{if showAgentComponent "glyphicon-minus" "glyphicon-plus"}} "></span>
+    {{/paper-button}}
+    {{#paper-button primary=true   raised=true   action="saveProject"}}
+    {{paper-icon icon="save"}}
+    {{/paper-button}}
+  </div>
+</div>
+
+
+<div class="row">
+  <div id="liquid-spacer-demo">
+    <div class="col-md-10 pull-right " style="">
+      {{#liquid-spacer growDuration=250}}
+      {{#if showAgentComponent}}
+      {{#paper-card}}
+      {{#paper-card-content}}
+      <h3> Create New Agent</h3>
+      <div class="col-md-10">
+        <div class="row row-margin">
+          {{paper-input label="Agent Name" required=true value=agentname icon="person"  required-errortext="Agent name is required."}}
+        </div>
+        <div class="row row-margin">
+          {{paper-input label="Agent contact Name"  value=agentcontactname icon="person"}}
+        </div>
+        <div class="row row-margin">
+          {{paper-input label="Agent contact number"  value=agentcontactno icon="phone"}}
+        </div>
+        <div class="row row-margin">
+          {{paper-input label="Other contact number"  value=agentothcontactno icon="phone"}}
+        </div>
+        <div class="row row-margin">
+          {{paper-input label="Other reference details"  value=agentothrefdetails icon="place"}}
+        </div>
+      </div>
+      <div class="col-md-2 "style="padding-top:10px">
+        {{#paper-button primary=true   raised=true disabled=isCreateAgentButtonDisabled   action="createAgent"}}
+        {{paper-icon icon="save"}}
+        {{/paper-button}}
+      </div>
+      {{/paper-card-content}}
+      {{/paper-card}}
+
+      {{/if}}
+      {{/liquid-spacer}}
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row row-margin">
+    <div class="col-md-10">
+        {{#liquid-if enableEditAgent class="customer-info"  }}
+
+        {{#paper-list}}
+        {{#paper-item class="md-3-line"}}
+          <div class="md-list-item-text">
+          {{paper-input label="Agent Name" required=true value=project.agent.name icon="person"  required-errortext="Agent name is required."}}
+          </div>
+        {{/paper-item}}
+        {{#paper-item class="md-3-line"}}
+          <div class="md-list-item-text">
+          {{paper-input label="Agent contact Name"  value=project.agent.contactname icon="person"}}
+          </div>
+        {{/paper-item}}
+        {{#paper-item class="md-3-line"}}
+          <div class="md-list-item-text">
+          {{paper-input label="Agent contact number"  value=project.agent.contactno icon="phone"}}
+          </div>
+        {{/paper-item}}
+        {{#paper-item class="md-3-line"}}
+          <div class="md-list-item-text">
+          {{paper-input label="Other Contact number"  value=project.agent.othrefdetails icon="phone"}}
+          </div>
+        {{/paper-item}}
+        {{#paper-item class="md-3-line"}}
+          <div class="md-list-item-text">
+          {{paper-input label="Other Reference Details"  value=project.agent.othrefdetails icon="place"}}
+          </div>
+        {{/paper-item}}
+        {{/paper-list}}
+
+  {{else}}
+
+  {{#paper-list}}
+
+       {{#paper-item class="md-3-line"}}
+         {{paper-icon icon="person"}}
+         <div class="md-list-item-text">
+          <h3>Agent Name</h3><p>{{project.agent.name}}</p>
+         </div>
+       {{/paper-item}}
+
+
+       {{#paper-item class="md-3-line"}}
+         {{paper-icon icon="person"}}
+         <div class="md-list-item-text">
+          <h3>Agent Contact Name</h3><p>{{project.agent.contactname}}</p>
+         </div>
+       {{/paper-item}}
+
+       {{#paper-item class="md-3-line"}}
+         {{paper-icon icon="phone"}}
+         <div class="md-list-item-text">
+           <h3>Agent Contact No</h3><p>{{project.agent.contactno}}</p>
+         </div>
+       {{/paper-item}}
+
+       {{#paper-item class="md-3-line"}}
+         {{paper-icon icon="phone"}}
+         <div class="md-list-item-text">
+           <h3>Other Contact No</h3><p>{{project.agent.othcontactno}}</p>
+         </div>
+       {{/paper-item}}
+
+       {{#paper-item class="md-3-line"}}
+         {{paper-icon icon="place"}}
+         <div class="md-list-item-text">
+           <h3>Other Reference Details</h3><p>{{project.agent.othrefdetails}}</p>
+         </div>
+       {{/paper-item}}
+
+   {{/paper-list}}
+
+                {{/liquid-if}}
+        </div>
+        <div class="col-md-2">
+          {{#if enableEditAgent }}
+
+          {{#paper-button primary=true disabled=isEditAgentButtonDisabled   raised=true   action="editAgent"}}
+          <span class="glyphicon {{if enableEditAgent "glyphicon-floppy-save" "glyphicon-pencil"}} "></span>
+          {{/paper-button}}
+          {{else}}
+          {{#paper-button primary=true   raised=true   action="editAgent"}}
+          <span class="glyphicon {{if enableEditAgent "glyphicon-floppy-save" "glyphicon-pencil"}} "></span>
+          {{/paper-button}}
+
+          <br><br>
+          {{#paper-button primary=true   raised=true   action="deleteData"}}
+          {{paper-icon icon="delete"}}
+          {{/paper-button}}
+
+          {{/if}}
+        </div>
+
+</div>
+</div>

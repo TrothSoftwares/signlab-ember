@@ -1,0 +1,103 @@
+ {{#paper-item raised=true }}
+  {{#link-to 'dashboard.agents.new' class="list-group-item"}} New Agent{{/link-to}}
+  {{/paper-item}}
+
+
+  <div class="container-fluid">
+    <div class="row row-margin">
+      <div class="col-md-10">
+          {{#liquid-if enableEditAgent class="customer-info"  }}
+
+          {{#paper-list}}
+          {{#paper-item class="md-3-line"}}
+            <div class="md-list-item-text">
+            {{paper-input label="Agent Name" required=true value=model.name icon="person"  required-errortext="Agent name is required."}}
+            </div>
+          {{/paper-item}}
+          {{#paper-item class="md-3-line"}}
+            <div class="md-list-item-text">
+            {{paper-input label="Agent contact Name"  value=model.contactname icon="person"}}
+            </div>
+          {{/paper-item}}
+          {{#paper-item class="md-3-line"}}
+            <div class="md-list-item-text">
+            {{paper-input label="Agent contact number"  value=model.contactno icon="phone"}}
+            </div>
+          {{/paper-item}}
+          {{#paper-item class="md-3-line"}}
+            <div class="md-list-item-text">
+            {{paper-input label="Other Contact number"  value=model.othrefdetails icon="phone"}}
+            </div>
+          {{/paper-item}}
+          {{#paper-item class="md-3-line"}}
+            <div class="md-list-item-text">
+            {{paper-input label="Other Reference Details"  value=model.othrefdetails icon="place"}}
+            </div>
+          {{/paper-item}}
+          {{/paper-list}}
+
+    {{else}}
+
+    {{#paper-list}}
+
+         {{#paper-item class="md-3-line"}}
+           {{paper-icon icon="person"}}
+           <div class="md-list-item-text">
+            <h3>Agent Name</h3><p>{{model.name}}</p>
+           </div>
+         {{/paper-item}}
+
+
+         {{#paper-item class="md-3-line"}}
+           {{paper-icon icon="person"}}
+           <div class="md-list-item-text">
+            <h3>Agent Contact Name</h3><p>{{model.contactname}}</p>
+           </div>
+         {{/paper-item}}
+
+         {{#paper-item class="md-3-line"}}
+           {{paper-icon icon="phone"}}
+           <div class="md-list-item-text">
+             <h3>Agent Contact No</h3><p>{{model.contactno}}</p>
+           </div>
+         {{/paper-item}}
+
+         {{#paper-item class="md-3-line"}}
+           {{paper-icon icon="phone"}}
+           <div class="md-list-item-text">
+             <h3>Other Contact No</h3><p>{{model.othcontactno}}</p>
+           </div>
+         {{/paper-item}}
+
+         {{#paper-item class="md-3-line"}}
+           {{paper-icon icon="place"}}
+           <div class="md-list-item-text">
+             <h3>Other Reference Details</h3><p>{{model.othrefdetails}}</p>
+           </div>
+         {{/paper-item}}
+
+     {{/paper-list}}
+
+                  {{/liquid-if}}
+          </div>
+          <div class="col-md-2">
+            {{#if enableEditAgent }}
+
+            {{#paper-button primary=true   disabled=isEditAgentButtonDisabled  raised=true   action="editAgent"}}
+            <span class="glyphicon {{if enableEditAgent "glyphicon-floppy-save" "glyphicon-pencil"}} "></span>
+            {{/paper-button}}
+            {{else}}
+            {{#paper-button primary=true   raised=true   action="editAgent"}}
+            <span class="glyphicon {{if enableEditAgent "glyphicon-floppy-save" "glyphicon-pencil"}} "></span>
+            {{/paper-button}}
+
+            <br><br>
+            {{#paper-button primary=true   raised=true   action="deleteData" param=model}}
+            {{paper-icon icon="delete"}}
+            {{/paper-button}}
+
+            {{/if}}
+          </div>
+
+  </div>
+  </div>

@@ -7,19 +7,19 @@ module.exports = function(environment) {
     baseURL: '/',
     locationType: 'auto',
 
-// TODO: SELF * SHOULD BE SAFE PROOFED: about the connect src and cors configs.
+    // TODO: SELF * SHOULD BE SAFE PROOFED: about the connect src and cors configs.
     contentSecurityPolicy: {
-    'default-src': "'none' *",
-    'script-src': "'self' *",
-    'font-src': "'self' *",
-    'connect-src': "'self' *",
-    'img-src': "'self' data: *  ",
-    'media-src': "'self' *",
-	  'style-src': "'self' 'unsafe-inline' *",
-	},
-  'ember-cli-notifications': {
-    icons: 'bootstrap'
-  },
+      'default-src': "'self' *",
+      'script-src': "'self' *",
+      'font-src': "'self' *",
+      'connect-src': "'self' *",
+      'img-src': "'self' data: *  ",
+      'media-src': "'self' *",
+      'style-src': "'self' 'unsafe-inline' *",
+    },
+    'ember-cli-notifications': {
+      icons: 'bootstrap'
+    },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -37,26 +37,33 @@ module.exports = function(environment) {
 
 
 
-   ENV['simple-auth-devise'] = {
-     tokenAttributeName: 'token',
-     identificationAttributeName: 'email',
-     serverTokenEndpoint:  ENV.APP.host  + '/users/sign_in',
-     authorizer: 'devise',
-     crossOriginWhitelist: ['*'],
-     routeAfterAuthentication: 'projects.home',
-     routeIfAlreadyAuthenticated: 'projects.home'
+  ENV['simple-auth-devise'] = {
+    tokenAttributeName: 'token',
+    identificationAttributeName: 'email',
+    serverTokenEndpoint:  ENV.APP.host  + '/users/sign_in',
+    authorizer: 'devise',
+    crossOriginWhitelist: ['*'],
+  };
 
-   };
+  ENV['ember-simple-auth'] = {
+    authenticationRoute: 'signin',
+    routeAfterAuthentication: 'dashboard.projects.home',
+    routeIfAlreadyAuthenticated: 'dashboard.projects.home'
+
+  };
+
+
+
 
 
 
   if (environment === 'development') {
-     ENV.APP.host =  'http://localhost:3000';
-     ENV.APP.LOG_RESOLVER = false;
-     ENV.APP.LOG_ACTIVE_GENERATION = false;
-     ENV.APP.LOG_TRANSITIONS = false;
-     ENV.APP.LOG_TRANSITIONS_INTERNAL = false;
-     ENV.APP.LOG_VIEW_LOOKUPS = false;
+    ENV.APP.host =  'http://localhost:3000';
+    ENV.APP.LOG_RESOLVER = false;
+    ENV.APP.LOG_ACTIVE_GENERATION = false;
+    ENV.APP.LOG_TRANSITIONS = false;
+    ENV.APP.LOG_TRANSITIONS_INTERNAL = false;
+    ENV.APP.LOG_VIEW_LOOKUPS = false;
   }
 
   if (environment === 'test') {
