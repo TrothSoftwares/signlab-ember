@@ -1,12 +1,7 @@
-
-
-projects/project(slug)/Job Details
-
-
-<div class="col-md-12 row">
-  <button type="button" class="btn btn-default pull-right"  {{action "saveJobdetails"}} >
-    <span class="glyphicon glyphicon-floppy-save"></span>
-  </button>
+<div class="col-md-12 row text-right">
+  {{#paper-button primary=true   raised=true disabled=isEditAgentButtonDisabled   action="saveJobdetails"}}
+  {{paper-icon icon="save"}}
+  {{/paper-button}}
 </div>
 
 <br><br><br><br>

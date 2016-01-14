@@ -1,18 +1,11 @@
-
-
-projects/project(slug)/Design page
-
-
-<div class="col-md-12 row">
-<button type="button" class="btn btn-default pull-right"  {{action "saveDesigndetails"}} >
-  <span class="glyphicon glyphicon-floppy-save"></span>
-</button>
+<div class="col-md-12 row text-right">
+  {{#paper-button primary=true   raised=true disabled=isEditAgentButtonDisabled   action="saveDesigndetails"}}
+  {{paper-icon icon="save"}}
+  {{/paper-button}}
 </div>
 
 <br><br><br><br>
-
 {{#each project.items as |item index|}}
-
 <div class=" well">
   <div class="row">
     <div class="col-md-6 border">
