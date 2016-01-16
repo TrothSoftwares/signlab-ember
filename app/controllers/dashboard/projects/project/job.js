@@ -40,24 +40,26 @@ export default Ember.Controller.extend({
       var authenticated = controller.get('session.data.authenticated');
       let files = params.files,
       item = params.item;
+
       var newSiteImage = this.store.createRecord('siteimage',{description: '',item :item});
       controller.send('loading');
+
       newSiteImage.save().then(function(newSiteImage){
-     var uploader = EmberUploader.Uploader.extend({
-       url: ENV.APP.host + '/siteimages/'+newSiteImage.id,
-       type: 'PATCH',
-       paramNamespace: 'siteimage',
-       paramName: 'url',
-       ajaxSettings: function() {
-         var settings = this._super.apply(this, arguments);
-         settings.headers = {
-           'Authorization':'Token token="'+ authenticated.token +'", email="'+ authenticated.email+'"'
-           };
-         return settings;
-       }
-     }).create();
+        var uploader = EmberUploader.Uploader.extend({
+          url: ENV.APP.host + '/siteimages/'+newSiteImage.id,
+          type: 'PATCH',
+          paramNamespace: 'siteimage',
+          paramName: 'url',
+          ajaxSettings: function() {
+            var settings = this._super.apply(this, arguments);
+            settings.headers = {
+              'Authorization':'Token token="'+ authenticated.token +'", email="'+ authenticated.email +'"'
+            };
+            return settings;
+          }
+        }).create();
         if (!Ember.isEmpty(files)) {
-            uploader.upload(files[0]).then(function(){
+          uploader.upload(files[0]).then(function(){
             newSiteImage.reload();
           }
         );
