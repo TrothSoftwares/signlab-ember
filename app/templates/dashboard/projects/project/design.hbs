@@ -1,64 +1,62 @@
-<div class="col-md-12 row text-right">
-  {{#paper-button primary=true   raised=true disabled=isEditAgentButtonDisabled   action="saveDesigndetails"}}
-  {{paper-icon icon="save"}}
-  {{/paper-button}}
-</div>
-
-<br><br><br><br>
-{{#each project.items as |item index|}}
-<div class=" well">
-  <div class="row">
-    <div class="col-md-6 border">
-      <h3>Item : {{incrementone index}}</h3>
-
-      <div class="row row-margin">
-        <div class="col-md-4 col-xs-12"><label for="" class="labels">Design Specifications</label></div>
-        <div class="col-md-8 col-xs-12">{{input type="text" class="form-control "  placeholder="Design Specification" value=item.designspecifications}}</div>
+<div class="container-fluid">
+  <div class="row row-margin">
+    <div class="col-md-10">
+      {{#each project.items as |item index|}}
+      <h3> Item {{ incrementone index}}</h3>
+      {{#paper-card}}
+      {{#paper-card-content}}
+      {{#paper-list}}
+      {{#paper-item class="md-3-line"}}
+      <div class="md-list-item-text">
+        {{paper-input   label="Design Specification" value=item.designspecifications icon="event-note" }}
       </div>
-
-      <div class="row row-margin">
-        <div class="col-md-4 col-xs-12"><label for="" class="labels">Design Notes</label></div>
-        <div class="col-md-8 col-xs-12">{{input type="text" class="form-control "  placeholder="Design Notes" value=item.designnotes}}
-        </div>
+      {{/paper-item}}
+      {{#paper-item class="md-3-line"}}
+      <div class="md-list-item-text">
+        {{paper-input   label="Design Notes" value=item.designnotes icon="extension" }}
       </div>
-      <div class="row row-margin">
-        <div class="col-md-4 col-xs-12"><label for="" class="labels">Upload Picture</label></div>
-        <div class="col-md-8 col-xs-12">{{file-upload item=item designimages=item.designimages    on-upload=(action "uploadDesignimage")  }}</div>
-      </div>
+      {{/paper-item}}
 
+      {{file-upload item=item designimages=item.designimages    on-upload=(action "uploadDesignimage")}}
 
-      <div class="row row-margin">
-        <div class="col-md-4 col-xs-12"><label>Uploaded Files</label></div>
-        <div class="col-md-8 col-xs-12  ">
-          {{#each item.designimages as |designimage index|}}
-          <div class="col-xs-6 col-md-4 thumbnail   ">
-            {{#light-box href=designimage.fullurl data-lightbox="cats-group" data-title=designimage.description inlineImage=false}}
-            <img src="{{designimage.thumburl}}" >
-            {{/light-box}}
-            <div class="caption">
-              <!-- TODO : ALLOW description -->
-              <!-- <p>{{designimage.description}}</p> -->
-              <p class="text-center">
-                <a href="{{designimage.fullurl}}" target="_blank">
-                <button type="button" class="btn btn-default"  >
-                  <span class="glyphicon glyphicon-download" ></span>
-                </button>
-                </a>
-                <button type="button" class="btn btn-default"   {{action "deleteDesignimage" designimage}} >
-                  <span class="glyphicon glyphicon-trash" ></span>
-                </button>
-              </p>
+      {{#paper-item class="md-3-line"}}
+      <div class="md-list-item-text">
+        <div class="row row-margin">
+          <div class="col-md-4 col-xs-12"><label>Uploaded Files</label></div>
+          <div class="col-md-8 col-xs-12  ">
+            {{#each item.designimages as |designimage index|}}
+            <div class="col-xs-6 col-md-4 thumbnail   ">
+              {{#light-box href=designimage.fullurl data-lightbox="cats-group" data-title=designimage.description inlineImage=false}}
+              <img src="{{designimage.thumburl}}" >
+              {{/light-box}}
+              <div class="caption">
+                <p class="text-center">
+                  <a href="{{designimage.fullurl}}" target="_blank">
+                    <button type="button" class="btn btn-default"  >
+                      <span class="glyphicon glyphicon-download" ></span>
+                    </button>
+                  </a>
+                  <button type="button" class="btn btn-default"   {{action "deleteDesignimage" designimage}} >
+                    <span class="glyphicon glyphicon-trash" ></span>
+                  </button>
+                </p>
+              </div>
             </div>
+            {{/each}}
           </div>
-          {{/each}}
         </div>
       </div>
+      {{/paper-item}}
+      {{/paper-list}}
+      {{/paper-card-content}}
+      {{/paper-card}}
+      {{/each}}
+    </div>
 
-
+    <div class="col-md-1">
+      {{#paper-button primary=true   raised=true disabled=isEditAgentButtonDisabled   action="saveDesigndetails"}}
+      {{paper-icon icon="save"}}
+      {{/paper-button}}
     </div>
   </div>
 </div>
-
-{{/each}}
-
-{{outlet}}

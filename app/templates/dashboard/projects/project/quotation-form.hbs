@@ -1,108 +1,68 @@
 <div class="row">
 	<div class="col-md-12">
 
-		<div class="form-group">
-
-			<label for="">
-				Dated:
-			</label>
-			{{bootstrap-datepicker value=project.quotation.date class="form-control" autoclose=true placeholder="Quotation Date" format="dd MM, yyyy"}}
+		<div class="row row-margin">
+			<md-input-container class="ember-view md-default-theme md-input-has-value md-icon-float">
+				<label>Date</label>
+				{{paper-icon icon="perm-contact-calendar"}}
+				{{bootstrap-datepicker value=project.quotation.date class="md-input" autoclose=true placeholder="Quotation Date" format="dd MM, yyyy"}}
+			</md-input-container>
 		</div>
-
-
-		<div class="form-group">
-			<label for="">
-				Addresse
-			</label> <br>
+		<div class="row row-margin">
 			<label>{{project.customer.name}}</label>
 		</div>
-
-		<div class="form-group">
-			<label for="">
-				Subject:
-			</label>
-			{{ input type="text" class="form-control"  placeholder="Subject." value=project.quotation.subject}}
+		<div class="row row-margin">
+			{{paper-input label="Subject"  value=project.quotation.subject icon="assignment"}}
 		</div>
-		<div class="form-group">
-			<label for="">
-				Body:
-			</label>
-		<p>
-{{textarea value=project.quotation.body class="form-control"}}
-		</p>
-	</div>
-		<table class="table table-bordered table-hover">
+		<div class="row row-margin">
+			{{paper-input label="Body" attr-cols="10" attr-rows="10" value=project.quotation.body icon="insert-drive-file"}}
+		</div>
+
+		<table class="table table-bordered table-striped table-condensed table-responsive">
 			<thead>
-				<tr>
-					<th>
-						Sl.No.
-					</th>
-					<th>
-						Scope of Work
-					</th>
-					<th>
-						Unit
-					</th>
-					<th>
-						Rate
-					</th>
-					<th>
-						Amount
-					</th>
-				</tr>
+				<th>No.</th><th class="text-center">Scope of Work </th><th class="text-center">Unit</th><th class="text-center">Rate</th><th class="text-center">Amount</th>
 			</thead>
 			<tbody>
-
 				{{#each project.items as |item index|}}
 				<tr>
+					<td>{{incrementone index}}</td>
 					<td>
-						{{incrementone index }}
+						<b>Dimensions:</b> {{item.dimensions}}<br>
+						<b>Description:</b> {{item.description}}
 					</td>
 					<td>
-
-
-						<strong>Dimensions:</strong> {{item.dimensions}}<br>
-						<strong>Description: </strong>{{item.description}}<br>
-
+						{{paper-input required=true value=item.unit required-errortext="Unit is required"}}
 					</td>
 					<td>
-						{{ input type="text" class="form-control"  placeholder="Subject." value=item.unit}}
-
+						{{paper-input required=true value=item.rate required-errortext="Rate is required"}}
 					</td>
 					<td>
-						{{ input type="text" class="form-control"  placeholder="Subject." value=item.rate}}
-					</td>
-					<td>
-						{{ input type="text" class="form-control"  placeholder="Subject." value=item.amount}}
+						{{paper-input required=true value=item.amount required-errortext="Amount is required"}}
 					</td>
 				</tr>
-
 				{{/each}}
-
-
 			</tbody>
 		</table>
 
 		<div class="col-md-12 well" >
-		<address>
-	 <strong>Payment:</strong>  60% Advance balance 40%  up on completion.<br />
-	  <strong>Delivery :</strong>With in 30 days from the date of confirmation and advance payment<br />
-	  <strong>Power :</strong>With in 30 days from the date of confirmation and advance payment<br />
-	  <strong>Store :</strong>With in 30 days from the date of confirmation and advance payment<br />
-		<strong>Note :</strong>With in 30 days from the date of confirmation and advance payment<br />
-	</address>
-	</div>
+			<address>
+				<strong>Payment:</strong>  60% Advance balance 40%  up on completion.<br />
+				<strong>Delivery :</strong>With in 30 days from the date of confirmation and advance payment<br />
+				<strong>Power :</strong>With in 30 days from the date of confirmation and advance payment<br />
+				<strong>Store :</strong>With in 30 days from the date of confirmation and advance payment<br />
+				<strong>Note :</strong>With in 30 days from the date of confirmation and advance payment<br />
+			</address>
+		</div>
 
+		<div class="print_buttons">
+			{{#paper-button primary=true   raised=true    action="saveQuotation"}}
+			{{paper-icon icon="save"}}
+			{{/paper-button}}
 
-
-
-	<button type="button" class="btn btn-primary "  {{action "saveQuotation"}} >
-		<span class="glyphicon glyphicon-floppy-save"> SAVE QUOTATION</span>
-	</button>
-	<button type="button" class="btn btn-primary "  {{action "printQuotation"}} >
-		<span class="glyphicon glyphicon-print"> PRINT QUOTATION</span>
-	</button>
-
+			{{#paper-button primary=true   raised=true    action="printQuotation"}}
+			{{paper-icon icon="print"}}
+			{{/paper-button}}
+		</div>
 
 	</div>
 </div>

@@ -292,13 +292,14 @@ color: #74777b;
   background: none;
   color: black;
   }
-  .home-link{
+  .home-link ,.print_buttons{
     display:none;
   }
+
+
   @page
         {
             size: auto;   /* auto is the current printer page size */
             margin: 0mm;  /* this affects the margin in the printer settings */
         }
-
 }

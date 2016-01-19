@@ -120,15 +120,15 @@
     </div>
   </div>
   <div class="row row-margin">
-    <div class="col-md-2">
-      <label for="" class="labels">Enquiry Date</label>
-    </div>
-    <div class="col-md-10">
-      {{bootstrap-datepicker value=project.enquiries.lastObject.date class="form-control" autoclose=true placeholder="Enquiry Date" format="dd MM, yyyy"}}
+    <div class="col-md-12">
+      <md-input-container class="ember-view md-default-theme md-input-has-value md-icon-float">
+        <label>Enquiry Date</label>
+        {{paper-icon icon="perm-contact-calendar"}}
+        {{bootstrap-datepicker value=project.enquiries.lastObject.date class="md-input" autoclose=true placeholder="Enquiry Date" format="dd MM, yyyy"}}
+      </md-input-container>
     </div>
   </div>
   <div class="row row-margin">
-
     <div class="col-md-12">
       {{paper-input label="Enquiry No" value=project.enquiries.lastObject.no icon="view-list"  }}
     </div>

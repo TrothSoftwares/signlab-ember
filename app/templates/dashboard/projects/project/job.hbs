@@ -1,6 +1,3 @@
-
-
-
 <div class="container-fluid">
   <div class="row row-margin">
     <div class="col-md-10">
@@ -32,6 +29,10 @@
       </div>
       {{/paper-item}}
 
+      {{file-upload item=item siteimages=item.siteimages    on-upload=(action "uploadSiteimage")  }}
+
+
+
       {{#paper-item class="md-3-line"}}
       <div class="row row-margin">
        <div class="col-md-4 col-xs-12"><label>Uploaded Files</label></div>
@@ -60,11 +61,11 @@
      </div>
      {{/paper-item}}
 
-     
+
       {{/paper-list}}
       {{/paper-card-content}}
       {{/paper-card}}
-      {{file-upload item=item siteimages=item.siteimages    on-upload=(action "uploadSiteimage")  }}
+
 
       {{/each}}
     </div>
