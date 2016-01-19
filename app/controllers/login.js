@@ -9,9 +9,13 @@ export default Ember.Controller.extend({
 
   actions: {
     authenticate(){
-      
-        this.get('session').authenticate('authenticator:devise', this.get('email'), this.get('password')).then(function(){
-
+      var controller = this;
+        this.get('session').authenticate('authenticator:devise', this.get('email'), this.get('password')).catch(function(){
+          controller.notifications.addNotification({
+            message: 'Username or password is incorrect!' ,
+            type: 'error',
+            autoClear: true
+          });
         });
     }
   }
