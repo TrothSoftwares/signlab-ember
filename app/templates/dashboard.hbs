@@ -16,13 +16,14 @@
 
 
     <div class="col-md-1">
+
       {{#paper-menu position="target-right target" as |menu|}}
       {{#paper-button target=menu action="toggleMenu" icon-button=true}}
       {{paper-icon class="md-menu-origin" icon="account-circle"}}
       {{/paper-button}}
       {{else}}
       {{#paper-menu-item  width=4}}
-      <p style="width: 190px;">Preference</p>
+      <p style="width: 190px;">Welcome {{userEmail}}</p>
       {{paper-icon icon="settings" class="md-menu-align-target"}}
       {{/paper-menu-item}}
       {{#paper-menu-item action="logout" width=4}}

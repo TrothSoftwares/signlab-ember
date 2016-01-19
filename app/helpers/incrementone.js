@@ -1,10 +1,7 @@
 import Ember from 'ember';
 
 export function incrementone(input) {
-
   input ++;
-
-
   return input;
 }
 
