@@ -137,47 +137,47 @@
 
   {{#paper-card}}
   {{#paper-card-content}}
-    {{#each project.items as |item index|}}
+  {{#each project.items as |item index|}}
 
-    {{#paper-card}}
-    <div class="md-actions" layout="row" layout-align="end center">
-      {{#paper-button  raised=true action="deleteItem" param=item }} {{paper-icon icon="delete"}}{{/paper-button}}
+  {{#paper-card}}
+  <div class="md-actions" layout="row" layout-align="end center">
+    {{#paper-button  raised=true action="deleteItem" param=item }} {{paper-icon icon="delete"}}{{/paper-button}}
+  </div>
+  {{#paper-card-content}}
+  {{#paper-list}}
+  {{#paper-item class="md-3-line"}}
+  <h3> Item {{ incrementone index}}</h3>
+  <div class="md-list-item-text">
+    {{paper-input label="Dimensions" value=item.dimensions icon="tune"  }}
+    {{paper-input label="Description" value=item.description icon="assignment"  }}
+
+    <div class="row row-margin">
+      <div class="col-md-2">
+        <label for="" class="labels">Item Type</label>
+      </div>
+      <div class="col-md-10">
+        {{ember-select-guru value=item.itemtype  options=itemtypes onSelect=(action "onSelectItemtypes" index) }}
+      </div>
     </div>
-    {{#paper-card-content}}
-        {{#paper-list}}
-             {{#paper-item class="md-3-line"}}
-             <h3> Item {{ incrementone index}}</h3>
-               <div class="md-list-item-text">
-                   {{paper-input label="Dimensions" value=item.dimensions icon="tune"  }}
-                   {{paper-input label="Description" value=item.description icon="assignment"  }}
 
-                   <div class="row row-margin">
-                     <div class="col-md-2">
-                       <label for="" class="labels">Item Type</label>
-                     </div>
-                     <div class="col-md-10">
-                       {{ember-select-guru value=item.itemtype  options=itemtypes onSelect=(action "onSelectItemtypes" index) }}
-                     </div>
-                   </div>
-
-                   <div class="row row-margin">
-                     <div class="col-md-2">
-                       <label for="" class="labels">Job Type</label>
-                     </div>
-                     <div class="col-md-10">
-                       {{ember-select-guru value=item.jobtype  options=jobtypes onSelect=(action "onSelectJobtypes" index) }}
-                     </div>
-                   </div>
-               </div>
-             {{/paper-item}}
-         {{/paper-list}}
-      {{/paper-card-content}}
-    {{/paper-card}}
-    {{/each}}
-    {{/paper-card-content}}
-    <div class="md-actions" layout="row" layout-align="end center">
-      {{#paper-button  raised=true action="AddNewItem"}}{{paper-icon icon="add"}}{{/paper-button}}
+    <div class="row row-margin">
+      <div class="col-md-2">
+        <label for="" class="labels">Job Type</label>
+      </div>
+      <div class="col-md-10">
+        {{ember-select-guru value=item.jobtype  options=jobtypes onSelect=(action "onSelectJobtypes" index) }}
+      </div>
     </div>
+  </div>
+  {{/paper-item}}
+  {{/paper-list}}
+  {{/paper-card-content}}
+  {{/paper-card}}
+  {{/each}}
+  {{/paper-card-content}}
+  <div class="md-actions" layout="row" layout-align="end center">
+    {{#paper-button  raised=true action="AddNewItem"}}{{paper-icon icon="add"}}{{/paper-button}}
+  </div>
   {{/paper-card}}
 </div>
 
