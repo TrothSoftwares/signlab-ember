@@ -1,36 +1,42 @@
 
+<div class="cell size-x200" id="cell-sidebar" style="background-color: #71b1d1; height: 100%">
+  <ul class="sidebar2 navy">
+    <li class="title">{{model.name}}</li>
 
-<div>
-  <ul class="nav nav-tabs home-link" >
-    <li>{{#link-to 'dashboard.projects.project.enquiry-form' }}
-      <button class="btn btn-success"> Enquiry Form</button>
+    <li >
+      {{#link-to 'dashboard.projects.project.enquiry-form' }}
+      <span class="mif-home icon"></span>Enquiry Form
       {{/link-to}}
     </li>
-    <li>{{#link-to 'dashboard.projects.project.quotation-form' }}
-      <button class="btn btn-success"> Quotation Form</button>
+    <li>
+      {{#link-to 'dashboard.projects.project.quotation-form' }}
+      <span class="mif-home icon"></span>Quotation Form
       {{/link-to}}
     </li>
-    <li>{{#link-to 'dashboard.projects.project.customer' }}
-      <button class="btn btn-success"> Customer Form</button>
+    <li >
+      {{#link-to 'dashboard.projects.project.customer' }}
+      <span class="mif-home icon"></span>Customer Form
       {{/link-to}}
     </li>
-    <li>{{#link-to 'dashboard.projects.project.agent' }}
-      <button class="btn btn-success"> Agent Form</button>
+    <li >
+      {{#link-to 'dashboard.projects.project.agent' }}
+      <span class="mif-home icon"></span>Agent Form
       {{/link-to}}
     </li>
-    <li>{{#link-to 'dashboard.projects.project.job' }}
-      <button class="btn btn-success"> Job Details</button>
+    <li >
+      {{#link-to 'dashboard.projects.project.job' }}
+      <span class="mif-home icon"></span>Site Details
       {{/link-to}}
     </li>
-    <li>{{#link-to 'dashboard.projects.project.design' }}
-      <button class="btn btn-success"> Design Details</button>
+    <li >
+      {{#link-to 'dashboard.projects.project.design' }}
+      <span class="mif-home icon"></span>Design Details
       {{/link-to}}
     </li>
-
 
 
   </ul>
-  <div class="tab-content">
-    {{outlet}}
-  </div>
+</div>
+<div class="cell auto-size padding20 bg-white" id="cell-content">
+  {{outlet}}
 </div>

@@ -1,43 +1,55 @@
 
-{{#if authManager.isAuthenticated}}
-  Logged in as {{authManager.currentUser.email}}
-{{/if}}
-<div class="col-md-12 ">
-  <div>
-    <div class="col-md-12  home-link">
-    <div class="tabs tabs-style-underline col-md-11">
-    <nav>
-      <ul>
-        <li class="">{{link-to 'Projects' 'dashboard.projects.home' }}</li>
-        <li class="">{{link-to 'Customers' 'dashboard.customers.new' class="icon icon-user" }}</li>
-        <li class="">{{link-to 'Agents' 'dashboard.agents.new' class="icon icon-id" }}</li>
+<div class="app-bar fixed-top " data-role="appbar">
+  <a class="app-bar-element branding">Signlab</a>
+  <span class="app-bar-divider"></span>
+  <ul class="app-bar-menu">
+    <li data-flexorderorigin="0" data-flexorder="1">
+      <a href="" class="dropdown-toggle">Projects</a>
+      <ul class="d-menu" data-role="dropdown">
+        <li>{{link-to 'All Projects' 'dashboard.projects.home' }}</li>
+        <li>{{link-to 'New Project' 'dashboard.projects.home' }}</li>
       </ul>
-    </nav>
+    </li>
+    <li data-flexorderorigin="1" data-flexorder="2">
+      <a href="" class="dropdown-toggle">Customers</a>
+      <ul class="d-menu" data-role="dropdown">
+        <li>{{link-to 'All Customers' 'dashboard.customers' }}</li>
+        <li>{{link-to 'New Customer' 'dashboard.customers.new' }}</li>
+      </ul>
+    </li>
+    <li data-flexorderorigin="2" data-flexorder="3">
+      <a href="" class="dropdown-toggle">Agents</a>
+      <ul class="d-menu" data-role="dropdown">
+        <li>{{link-to 'All Agents' 'dashboard.agents' }}</li>
+        <li>{{link-to 'New Agent' 'dashboard.agents.new' }}</li>
+      </ul>
+    </li>
+  </ul>
+
+  <div class="app-bar-element place-right">
+
+    <span class="dropdown-toggle"><span class="mif-cog"></span> {{userEmail}}</span>
+    <div class="app-bar-drop-container padding10 place-right no-margin-top block-shadow fg-dark" data-role="dropdown"  style="width: 220px">
+
+      <ul class="unstyled-list fg-dark">
+       <li>
+         {{#paper-button    action="logout"}}
+         {{paper-icon icon="power-settings-new"}} Logout
+         {{/paper-button}}
+       </li>
+         </ul>
+    </div>
   </div>
+  <div class="app-bar-pullbutton automatic" style="display: none;"></div><div class="clearfix" style="width: 0;"></div><nav class="app-bar-pullmenu hidden flexstyle-app-bar-menu" style="display: none;"><ul class="app-bar-pullmenubar hidden app-bar-menu"></ul></nav>
+</div>
 
+<div class="page-content">
+  
 
-    <div class="col-md-1">
-
-      {{#paper-menu position="target-right target" as |menu|}}
-      {{#paper-button target=menu action="toggleMenu" icon-button=true}}
-      {{paper-icon class="md-menu-origin" icon="account-circle"}}
-      {{/paper-button}}
-      {{else}}
-      {{#paper-menu-item  width=4}}
-      <p style="width: 190px;">Welcome {{userEmail}}</p>
-      {{paper-icon icon="settings" class="md-menu-align-target"}}
-      {{/paper-menu-item}}
-      {{#paper-menu-item action="logout" width=4}}
-      <p style="width: 190px;">Logout</p>
-      {{paper-icon icon="power-settings-new" class="md-menu-align-target"}}
-      {{/paper-menu-item}}
-      {{/paper-menu}}
+  <div class="flex-grid no-responsive-future" style="height: 100%;">
+    <div class="row" style="height: 100%">
+  {{outlet}}
     </div>
   </div>
 
-
-    <div class="tab-content col-md-12">
-      {{outlet}}
-    </div>
-  </div>
 </div>

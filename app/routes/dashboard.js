@@ -7,7 +7,7 @@ session: Ember.inject.service('session'),
 
   actions: {
     logout() {
-      console.log(this.get('session.data.authenticated.email'));
+
       this.get('session').invalidate();
       this.transitionTo('login');
     }
