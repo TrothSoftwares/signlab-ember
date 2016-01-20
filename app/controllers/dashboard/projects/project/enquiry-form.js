@@ -1,8 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-
-
+  
   showCustomerComponent: false,
   showAgentComponent: false,
   isSaveProjectButtonDisabled: Ember.computed('project.name', function() {

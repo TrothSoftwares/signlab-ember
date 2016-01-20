@@ -30,6 +30,18 @@ module.exports = function(defaults) {
 
 
 
+  app.import("vendor/custom.js" ); //file located in web app
+  app.import('bower_components/moment/moment.js');
+  app.import('bower_components/moment/locale/de-at.js');
+  app.import('bower_components/pikaday/pikaday.js');
+  app.import('bower_components/pikaday/css/pikaday.css');
+
+
+
+
+
+
+
 
 
 

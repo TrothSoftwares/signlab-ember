@@ -1,0 +1,7 @@
+
+      Ember.$(function(){
+        console.log('custom js loaded');
+          Ember.$("#datepicker").datepicker();
+
+      });
+  

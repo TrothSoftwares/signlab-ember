@@ -1,13 +1,15 @@
 <div class="row">
 	<div class="col-md-12">
 
-		<div class="row row-margin">
-			<md-input-container class="ember-view md-default-theme md-input-has-value md-icon-float">
-				<label>Date</label>
-				{{paper-icon icon="perm-contact-calendar"}}
-				{{bootstrap-datepicker value=project.quotation.date class="md-input" autoclose=true placeholder="Quotation Date" format="dd MM, yyyy"}}
-			</md-input-container>
+	<div class="row row-margin">
+				<div class="col-md-2">
+					<label for="" class="labels">Date</label>
+				</div>
+				<div class="col-md-10 pickaday">
+					{{pikaday-input value=project.quotation.date  format="DD-MM-YYYY" theme="form-input" }}
+				</div>
 		</div>
+
 		<div class="row row-margin">
 			<label>{{project.customer.name}}</label>
 		</div>
