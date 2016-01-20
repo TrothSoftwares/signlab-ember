@@ -19,6 +19,20 @@ module.exports = function(defaults) {
   app.import('bower_components/bootstrap/dist/js/bootstrap.js'  ,  { destDir: 'javascripts' });
 
 
+  app.import('bower_components/metro/build/css/metro.min.css');
+  app.import('bower_components/metro/build/css/metro-icons.min.css');
+  app.import('bower_components/metro/build/css/metro-schemes.min.css');
+  app.import('bower_components/metro/build/js/metro.min.js' ,  { destDir: 'javascripts' });
+  app.import('bower_components/metro/build/fonts/metro.eot', { destDir: 'fonts' });
+  app.import('bower_components/metro/build/fonts/metro.svg', { destDir: 'fonts' });
+  app.import('bower_components/metro/build/fonts/metro.ttf', { destDir: 'fonts' });
+  app.import('bower_components/metro/build/fonts/metro.woff', { destDir: 'fonts' });
+
+
+
+
+
+
 
 
 

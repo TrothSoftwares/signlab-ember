@@ -22,5 +22,8 @@
   },
   "resolutions": {
     "ember": "2.2.0"
+  },
+  "devDependencies": {
+    "metro": "~3.0.13"
   }
 }
