@@ -54,7 +54,7 @@ isCreateCustomerButtonDisabled: Ember.computed('custname', function() {
 
     editCustomer :function(){
       var controller  = this;
-      // TODO:140 : Data is saving even when the name field is empty.. (Should be fixed at the agent-form too.)
+      // TODO:130 : Data is saving even when the name field is empty.. (Should be fixed at the agent-form too.)
       this.toggleProperty('enableEditCustomer');
       let projectCustomer = this.get('project.customer');
       projectCustomer.then(function(projectcustomer){

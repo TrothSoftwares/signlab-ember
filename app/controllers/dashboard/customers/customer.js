@@ -20,8 +20,8 @@ export default Ember.Controller.extend({
         });
       }
     },
-    //TODO:10 CATCH ERROR: if not deleted due to relationship Data
-    //TODO:20 MESSAGE ERROR: That there is a project assigned to this data
+    //TODO:60 CATCH ERROR: if not deleted due to relationship Data
+    //TODO:70 MESSAGE ERROR: That there is a project assigned to this data
 
 
 

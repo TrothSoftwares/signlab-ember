@@ -31,7 +31,7 @@ export default Ember.Route.extend({
     var count = enqs.get('length');
     var currentEnquiry = enqs.objectAt(count-1);
 
-    // TODO:150 currentEnquiry is static here ^^ look above
+    // TODO:140 currentEnquiry is static here ^^ look above
     controller.set('currentEnquiry',currentEnquiry);
 
 

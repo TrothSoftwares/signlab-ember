@@ -24,6 +24,7 @@ Router.map(function() {
         this.route('job');
         this.route('design');
       });
+      this.route('new');
     });
 
     this.route('customers', function() {
@@ -41,3 +42,18 @@ Router.map(function() {
 });
 
 export default Router;
+
+
+
+
+// THIS IS A PLACE FOR LOGGING TODOS
+
+//DOING: ADD FAVICON
+
+//TODO: PROJECT STATUS ON HOME page
+
+//TODO: PRINT CSS
+
+//TODO: RESTRICT PAGE BY USER ROLE
+
+//TODO: CHANGE PRELOADER

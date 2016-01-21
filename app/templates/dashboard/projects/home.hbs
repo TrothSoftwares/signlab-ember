@@ -1,4 +1,4 @@
-<div class="col-md-4">
+<div class="col-md-12">
   {{#paper-card}}
   {{#paper-card-content class="md-whiteframe-z1 list-demo"}}
   {{paper-input  label="Search Project" value=searchTerm icon="search"}}
@@ -17,27 +17,4 @@
   {{/paper-list}}
 {{/paper-card-content}}
 {{/paper-card}}
-</div>
-
-
-<div class="col-md-8">
-  {{#paper-card}}
-  {{#paper-card-content}}
-  <div class="list-group">
-    <div class=" col-md-8 well-sm  ">
-            <h3> Create New Project </h3>
-            <table class="table">
-                    <tr>
-                            <td>{{paper-input label="Project Name" required=true value=name icon="description"  required-errortext="Project Name is required."}}</td>
-                    </tr>
-                    <tr>
-                      {{paper-button  primary=true raised=true disabled=isCreateProjectButtonDisabled  action="createProject" label="Create Project"}}
-                    </tr>
-            </table>
-    </div>
-    {{liquid-outlet}}
-  </div>
-  {{/paper-card-content}}
-  {{/paper-card}}
-
 </div>
