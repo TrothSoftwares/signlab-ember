@@ -1,0 +1,63 @@
+<div class="tile-group triple text-center" >
+
+  <div class="tile-container">
+
+    {{#if (or isAdmin isSecretary)}}
+    {{#link-to 'dashboard.projects.project.enquiry-form' }}
+    <div class="tile bg-teal fg-white" data-role="tile">
+      <div class="tile-content iconic">
+        <span class="icon mif-phone-forwarded"></span>
+      </div>
+      <span class="tile-label">Enquiry-form </span>
+    </div>
+    {{/link-to}}
+    {{#link-to 'dashboard.projects.project.quotation-form' }}
+    <div class="tile bg-darkGreen fg-white" data-role="tile">
+      <div class="tile-content iconic">
+        <span class="icon mif-dollars"></span>
+      </div>
+      <span class="tile-label">Quotation Form</span>
+    </div>
+    {{/link-to}}
+    {{#link-to 'dashboard.projects.project.customer' }}
+    <div class="tile bg-cyan fg-white" data-role="tile" >
+      <div class="tile-content iconic">
+        <span class="icon mif-user"></span>
+      </div>
+      <div class="tile-label">Customer Form</div>
+    </div>
+    {{/link-to}}
+    {{#link-to 'dashboard.projects.project.agent' }}
+    <div class="tile bg-darkBlue fg-white" data-role="tile" >
+      <div class="tile-content iconic">
+        <span class="icon mif-user"></span>
+      </div>
+      <span class="tile-label">Agent Form</span>
+    </div>
+    {{/link-to}}
+    {{/if}}
+
+
+      {{#if (or isAdmin isSiteworker)}}
+      {{#link-to 'dashboard.projects.project.job' }}
+      <div class="tile bg-cyan fg-white" data-role="tile" >
+        <div class="tile-content iconic">
+          <span class="icon mif-hammer"></span>
+        </div>
+        <div class="tile-label">Site Details</div>
+      </div>
+      {{/link-to}}
+      {{/if}}
+      {{#if (or isAdmin isDesigner)}}
+      {{#link-to 'dashboard.projects.project.design' }}
+      <div class="tile bg-orange fg-white" data-role="tile" >
+        <div class="tile-content iconic">
+          <span class="icon mif-image"></span>
+        </div>
+        <div class="tile-label">Design Details</div>
+      </div>
+      {{/link-to}}
+      {{/if}}
+
+    </div>
+  </div>

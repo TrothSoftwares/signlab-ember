@@ -18,35 +18,41 @@
       {{/paper-item}}
 
       {{file-upload item=item designimages=item.designimages    on-upload=(action "uploadDesignimage")}}
-
-      {{#paper-item class="md-3-line"}}
-      <div class="md-list-item-text">
-        <div class="row row-margin">
-          <div class="col-md-4 col-xs-12"><label>Uploaded Files</label></div>
-          <div class="col-md-8 col-xs-12  ">
-            {{#each item.designimages as |designimage index|}}
-            <div class="col-xs-6 col-md-4 thumbnail   ">
-              {{#light-box href=designimage.fullurl data-lightbox="cats-group" data-title=designimage.description inlineImage=false}}
-              <img src="{{designimage.thumburl}}" >
-              {{/light-box}}
-              <div class="caption">
-                <p class="text-center">
-                  <a href="{{designimage.fullurl}}" target="_blank">
-                    <button type="button" class="btn btn-default"  >
-                      <span class="glyphicon glyphicon-download" ></span>
-                    </button>
-                  </a>
-                  <button type="button" class="btn btn-default"   {{action "deleteDesignimage" designimage}} >
-                    <span class="glyphicon glyphicon-trash" ></span>
-                  </button>
-                </p>
-              </div>
-            </div>
-            {{/each}}
-          </div>
+      {{#if imageUploading }}
+      <div class="loading-pane">
+        <div class="loading-message">
+          Uploading Image
         </div>
+        <div class="spinner"></div>
       </div>
-      {{/paper-item}}
+      {{else}}
+      {{/if}}
+
+      <div class="tile-container ">
+        {{#each item.designimages as |designimage index|}}
+        <div class="tile">
+          <div class="tile-content slide-up">
+            <div class="slide">
+              {{#light-box href=designimage.fullurl data-lightbox="cats-group" data-title=designimage.description inlineImage=false}}
+              <img src="{{designimage.thumburl}}">
+              {{/light-box}}
+            </div>
+            <div class="slide-over op-cyan text-small padding10">
+              <p class="text-center">
+                <a href="{{designimage.fullurl}}" target="_blank">
+                  <button class="button primary">
+                    <span class="glyphicon glyphicon-download" ></span>
+                  </button>
+                </a>
+                {{async-button designimage action="deleteDesignimage" default="Delete"  pending="Deleting.." class="button success block-shadow-success text-shadow small-button"}}
+              </p>
+            </div>
+          </div>
+
+        </div>
+        {{/each}}
+      </div>
+
       {{/paper-list}}
       {{/paper-card-content}}
       {{/paper-card}}

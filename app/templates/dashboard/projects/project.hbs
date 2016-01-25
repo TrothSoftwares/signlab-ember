@@ -2,8 +2,8 @@
 <div class="cell size-x200 " id="cell-sidebar" style="background-color: #71b1d1; height: 100%">
   <ul class="sidebar2 navy">
     <li class="title">{{model.name}}</li>
-
-    <li >
+    {{#if (or isAdmin isSecretary)}}
+    <li>
       {{#link-to 'dashboard.projects.project.enquiry-form' }}
       <span class="mif-phone-forwarded icon"></span>Enquiry Form
       {{/link-to}}
@@ -13,28 +13,31 @@
       <span class="mif-dollars icon"></span>Quotation Form
       {{/link-to}}
     </li>
-    <li >
+    <li>
       {{#link-to 'dashboard.projects.project.customer' }}
       <span class="mif-user icon"></span>Customer Form
       {{/link-to}}
     </li>
-    <li >
+    <li>
       {{#link-to 'dashboard.projects.project.agent' }}
       <span class="mif-user icon"></span>Agent Form
       {{/link-to}}
     </li>
-    <li >
+    {{/if}}
+    {{#if (or isAdmin isSiteworker)}}
+    <li>
       {{#link-to 'dashboard.projects.project.job' }}
       <span class="mif-hammer icon"></span>Site Details
       {{/link-to}}
     </li>
-    <li >
+    {{/if}}
+    {{#if (or isAdmin isDesigner)}}
+    <li>
       {{#link-to 'dashboard.projects.project.design' }}
       <span class="mif-image icon"></span>Design Details
       {{/link-to}}
     </li>
-
-
+    {{/if}}
   </ul>
 </div>
 <div class="cell auto-size padding20 bg-white" id="cell-content">

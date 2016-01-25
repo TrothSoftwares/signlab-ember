@@ -1,13 +1,15 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  session: Ember.inject.service('session'),
+session: Ember.inject.service('session'),
 
-  model: function(params) {
-    return this.store.findRecord('project', params.id);
-  },
+model: function() {
 
-
+  return Ember.RSVP.hash({
+    project: this.modelFor('dashboard.projects.project'),
+  });
+},
+  
   setupController: function(controller) {
     if(Ember.isEqual('admin', this.get('session.data.authenticated.role'))){
       controller.set('isAdmin',true );

@@ -29,7 +29,7 @@
       </div>
       {{/paper-item}}
 
-      {{file-upload item=item siteimages=item.siteimages  on-upload=(action "uploadSiteimage")  }}
+      {{file-upload item=item siteimages=item.siteimages  on-upload=(action "uploadSiteimage")}}
       {{#if imageUploading }}
       <div class="loading-pane">
         <div class="loading-message">
@@ -37,7 +37,6 @@
         </div>
         <div class="spinner"></div>
       </div>
-
       {{else}}
       {{/if}}
 
@@ -59,11 +58,11 @@
                     <span class="glyphicon glyphicon-download" ></span>
                   </button>
                 </a>
-                {{async-button siteimage action="deleteSiteimage" default="Delete"  pending="Deleting.." class="button success block-shadow-success text-shadow small-button"}}
+                {{async-button siteimage action="deleteSiteimage" default="Delete"  pending="Deleting.." class="button danger block-shadow-success text-shadow small-button"}}
               </p>
             </div>
           </div>
-          
+
         </div>
         {{/each}}
       </div>

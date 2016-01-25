@@ -50,6 +50,7 @@
     "ember-select-2": "1.3.0",
     "ember-select-guru": "1.1.2",
     "ember-simple-auth": "1.0.1",
+    "ember-truth-helpers": "1.2.0",
     "ember-validations": "2.0.0-alpha.4",
     "liquid-fire": "0.21.3",
     "liquid-tether": "0.1.9"

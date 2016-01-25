@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import EmberUploader from 'ember-uploader';
 import ENV from '../../../../config/environment';
-const { inject } = Ember;
+
 
 
 
@@ -9,7 +9,6 @@ const { inject } = Ember;
 
 export default Ember.Controller.extend({
   session: Ember.inject.service('session'),
-  preloader: inject.service('preloader'),
   imageUploading: false,
 
 
@@ -64,8 +63,7 @@ export default Ember.Controller.extend({
         }).create();
 
 
-        uploader.on('progress', function(e) {
-          controller.set('uploadedPercent' , e.percent);
+        uploader.on('progress', function() {
           controller.set('imageUploading',true);
         });
 
@@ -92,7 +90,6 @@ export default Ember.Controller.extend({
         if (!Ember.isEmpty(files)) {
           uploader.upload(files[0]).then(function(){
             newSiteImage.reload();
-
           }
         );
       }
@@ -104,17 +101,12 @@ export default Ember.Controller.extend({
         autoClear: true
       });
     });
-
-
-
   },
 
 
 
 
   deleteSiteimage :function(callback , siteimage){
-
-
     var controller = this;
      siteimage.destroyRecord().catch(function () {
       siteimage.rollbackAttributes();
@@ -124,13 +116,6 @@ export default Ember.Controller.extend({
         autoClear: true
       });
     });
-
-
-
   }
-
-
 },
-
-
 });
