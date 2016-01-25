@@ -4,8 +4,8 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 
-  session: Ember.inject.service('session'),
-  
+session: Ember.inject.service('session'),
+
 
   isLoginButtonDisabled: Ember.computed('email', function() {
     return Ember.isEmpty(this.get('email'));
