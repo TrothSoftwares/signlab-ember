@@ -35,8 +35,8 @@
     <div class="app-bar-drop-container padding10 place-right no-margin-top block-shadow fg-dark" data-role="dropdown"  style="width: 220px">
 
       <ul class="unstyled-list fg-dark">
-       <li>
-         {{#paper-button    action="logout"}}
+       <li {{action "logout"}}>
+         {{#paper-button    }}
          {{paper-icon icon="power-settings-new"}} Logout
          {{/paper-button}}
        </li>

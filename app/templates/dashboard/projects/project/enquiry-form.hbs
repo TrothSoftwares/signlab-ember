@@ -136,6 +136,7 @@
 
   {{#paper-card}}
   {{#paper-card-content}}
+  {{#liquid-spacer growDuration=250}}
   {{#each project.items as |item index|}}
 
   {{#paper-card}}
@@ -145,6 +146,7 @@
   <hr class="thin bg-grayLighter">
   {{#paper-card-content}}
   {{#paper-list}}
+
   {{#paper-item class="md-3-line"}}
   <h3> Item {{ incrementone index}}</h3>
   <div class="md-list-item-text">
@@ -170,10 +172,13 @@
     </div>
   </div>
   {{/paper-item}}
+
   {{/paper-list}}
   {{/paper-card-content}}
   {{/paper-card}}
+
   {{/each}}
+  {{/liquid-spacer}}
   {{/paper-card-content}}
   <div class="md-actions" layout="row" layout-align="end center">
     {{#paper-button  raised=true action="AddNewItem"}}{{paper-icon icon="add"}}{{/paper-button}}

@@ -13,7 +13,7 @@
             {{paper-input label="E-mail" type="email" value=email icon="person" required=true}}
             {{paper-input label="Password" type="password" value=password icon="vpn-key" required=true}}
             <div class="center text-center">
-              {{#paper-button action="authenticate" primary=true raised=true disabled=isLoginButtonDisabled  clas="center text-center"}}
+              {{#paper-button action="authenticate" keypress="keyPress" keyPress="key" primary=true raised=true disabled=isLoginButtonDisabled  class="center text-center"}}
               Login
               {{/paper-button}}
             </div>
