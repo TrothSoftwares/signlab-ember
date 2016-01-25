@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  
+
   showCustomerComponent: false,
   showAgentComponent: false,
   isSaveProjectButtonDisabled: Ember.computed('project.name', function() {
@@ -44,6 +44,7 @@ export default Ember.Controller.extend({
 
 
       deleteItem: function(item){
+        console.log(item);
         var controller = this;
         item.destroyRecord().then(function () {
         }).catch(function () {
@@ -57,6 +58,7 @@ export default Ember.Controller.extend({
       },
 
       openCustomerComponent: function() {
+
 
         this.toggleProperty('showCustomerComponent');
       },

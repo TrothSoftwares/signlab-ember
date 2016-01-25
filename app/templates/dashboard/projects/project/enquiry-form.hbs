@@ -1,43 +1,34 @@
 <div class="row">
   <div class="col-md-10">
     {{paper-input label="Project Name" required=true value=project.name icon="description" required-errortext="Project Name is required."}}
-  </div>
-  <div class="col-md-2">
-    {{#paper-button primary=true raised=true disabled=isSaveProjectButtonDisabled action="saveProject" }}
-    {{paper-icon icon="save"}}
-    {{/paper-button}}
-    {{#paper-button primary=true raised=true action="deleteProject" param=project}}
-    {{paper-icon icon="delete"}}
-    {{/paper-button}}
-
-    <!-- TODO: DELETE FUNCTION -->
-  </div>
-</div>
 
 
 
+    <div class="enq-form">
 
-<div class="col-md-12">
   <div class="row row-margin">
+
     <div class="col-md-2">
       <label for="" class="labels">Customer</label>
     </div>
-    <div class="col-md-9">
+    <div class="col-md-8">
       {{ember-select-guru value=project.customer  options=customers onSelect=(action "onSelectCustomer") }}
     </div>
-    <div class="col-md-1">
-      {{#paper-button primary=true   raised=true   action="openCustomerComponent"}}
-      <span class="glyphicon {{if showCustomerComponent "glyphicon-minus" "glyphicon-plus"}} "></span>
-      {{/paper-button}}
+    <div class="col-md-2">
+
+    <button class="button ht primary"  {{action "openCustomerComponent"}}>
+    <span class="glyphicon {{if showCustomerComponent "glyphicon-minus" "glyphicon-plus"}} "></span>
+  </button>
+
+
     </div>
   </div>
   <div class="row">
 
-      <div class="col-md-10 pull-right">
+      <div class="col-md-12 pull-right">
         {{#liquid-spacer growDuration=250}}
         {{#if showCustomerComponent}}
-        {{#paper-card}}
-        {{#paper-card-content}}
+    <div class="card">
         <h3> Create New Customer</h3>
         <div class="col-md-10">
           <div class="row row-margin">
@@ -61,8 +52,7 @@
           {{paper-icon icon="save"}}
           {{/paper-button}}
         </div>
-        {{/paper-card-content}}
-        {{/paper-card}}
+      </div>
         {{/if}}
         {{/liquid-spacer}}
       </div>
@@ -72,13 +62,13 @@
     <div class="col-md-2">
       <label for="" class="labels">Agent</label>
     </div>
-    <div class="col-md-9">
+    <div class="col-md-8">
       {{ember-select-guru value=project.agent  options=agents onSelect=(action "onSelectAgent") }}
     </div>
-    <div class="col-md-1">
-      {{#paper-button primary=true   raised=true   action="openAgentComponent"}}
+    <div class="col-md-2">
+      <button class="button ht primary" {{action "openAgentComponent"}}>
       <span class="glyphicon {{if showAgentComponent "glyphicon-minus" "glyphicon-plus"}} "></span>
-      {{/paper-button}}
+    </button>
     </div>
   </div>
   <div class="row">
@@ -134,28 +124,30 @@
   </div>
   <!-- //FIXME :    Site location variable not showing value -->
 
-  {{#paper-card}}
-  {{#paper-card-content}}
+
+<div class="item-card">
+  <h2 style="float:left">Items</h2>
+
   {{#liquid-spacer growDuration=250}}
   {{#each project.items as |item index|}}
 
-  {{#paper-card}}
-  <div class="md-actions" layout="row" layout-align="end center">
-    {{#paper-button  raised=true action="deleteItem" param=item }} {{paper-icon icon="delete"}}{{/paper-button}}
-  </div>
-  <hr class="thin bg-grayLighter">
-  {{#paper-card-content}}
-  {{#paper-list}}
+  <div class="item-cards">
 
-  {{#paper-item class="md-3-line"}}
-  <h3> Item {{ incrementone index}}</h3>
-  <div class="md-list-item-text">
+  <div class="md-actions" layout="row" layout-align="end center" style="float:right">
+<button class="button delbtn primary" {{action "deleteItem" item}}>
+<span class="glyphicon glyphicon-trash"></span>
+</button>
+  </div>
+
+  <h2> Item {{ incrementone index}}</h2>
+  <div class="md-list-item-text" style="margin:15px">
+
     {{paper-input label="Dimensions" value=item.dimensions icon="tune"  }}
     {{paper-input label="Description" value=item.description icon="assignment"  }}
 
     <div class="row row-margin">
       <div class="col-md-2">
-        <label for="" class="labels">Item Type</label>
+        <label for=""style="margin-left:20px" class="labels">Item Type</label>
       </div>
       <div class="col-md-10">
         {{ember-select-guru value=item.itemtype  options=itemtypes onSelect=(action "onSelectItemtypes" index) }}
@@ -164,26 +156,41 @@
 
     <div class="row row-margin">
       <div class="col-md-2">
-        <label for="" class="labels">Job Type</label>
+        <label for=""style="margin-left:20px" class="labels">Job Type</label>
       </div>
       <div class="col-md-10">
         {{ember-select-guru value=item.jobtype  options=jobtypes onSelect=(action "onSelectJobtypes" index) }}
       </div>
     </div>
   </div>
-  {{/paper-item}}
 
-  {{/paper-list}}
-  {{/paper-card-content}}
-  {{/paper-card}}
 
-  {{/each}}
-  {{/liquid-spacer}}
-  {{/paper-card-content}}
+</div>  {{/each}}
+{{/liquid-spacer }}
+
+
+
+
   <div class="md-actions" layout="row" layout-align="end center">
-    {{#paper-button  raised=true action="AddNewItem"}}{{paper-icon icon="add"}}{{/paper-button}}
+    <button class="button primary card-button" {{action "AddNewItem"}}>Click to add items
+    <span class="glyphicon glyphicon-plus pull-right"></span>
+  </button>
   </div>
-  {{/paper-card}}
+</div>
+</div>
+</div>
+
+
+  <!-- TODO: DELETE FUNCTION -->
+
+</div>
+<div class="fixed-buttons">
+{{#paper-button primary=true raised=true class="fullwidth" disabled=isSaveProjectButtonDisabled action="saveProject" }}
+{{paper-icon icon="save"}}  Save Project
+{{/paper-button}}
+{{#paper-button primary=true raised=true class="fullwidth" action="deleteProject" param=project}}
+{{paper-icon icon="delete"}} Delete Project
+{{/paper-button}}
 </div>
 
 {{outlet}}
