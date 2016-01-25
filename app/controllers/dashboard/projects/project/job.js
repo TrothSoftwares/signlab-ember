@@ -10,6 +10,8 @@ const { inject } = Ember;
 export default Ember.Controller.extend({
   session: Ember.inject.service('session'),
   preloader: inject.service('preloader'),
+  imageUploading: false,
+
 
 
   actions: {
@@ -37,7 +39,7 @@ export default Ember.Controller.extend({
 
     uploadSiteimage :function(params){
       var controller = this;
-      
+
 
       var authenticated = controller.get('session.data.authenticated');
       let files = params.files,
@@ -60,9 +62,37 @@ export default Ember.Controller.extend({
             return settings;
           }
         }).create();
+
+
+        uploader.on('progress', function(e) {
+          controller.set('uploadedPercent' , e.percent);
+          controller.set('imageUploading',true);
+        });
+
+        uploader.on('didUpload', function() {
+          controller.notifications.addNotification({
+            message:  'File uploaded' ,
+            type: 'success',
+            autoClear: true
+          });
+          controller.set('imageUploading',false);
+        });
+
+        uploader.on('didError', function(jqXHR, textStatus, errorThrown) {
+          controller.notifications.addNotification({
+            message: 'Sorry something went wrong' ,
+            type: 'success',
+            autoClear: true
+          });
+          console.log(jqXHR + textStatus + errorThrown);
+          controller.set('imageUploading',false);
+        });
+
+
         if (!Ember.isEmpty(files)) {
           uploader.upload(files[0]).then(function(){
             newSiteImage.reload();
+
           }
         );
       }
@@ -82,10 +112,11 @@ export default Ember.Controller.extend({
 
 
 
-  deleteSiteimage :function(siteimage){
+  deleteSiteimage :function(callback , siteimage){
+
+
     var controller = this;
-    siteimage.destroyRecord().then(function () {
-    }).catch(function () {
+     siteimage.destroyRecord().catch(function () {
       siteimage.rollbackAttributes();
       controller.notifications.addNotification({
         message: 'Image cannot be deleted at this moment' ,
@@ -93,6 +124,9 @@ export default Ember.Controller.extend({
         autoClear: true
       });
     });
+
+
+
   }
 
 
