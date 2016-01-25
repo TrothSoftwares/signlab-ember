@@ -8,21 +8,23 @@ export default Ember.Controller.extend({
   }),
 
   actions: {
-    editAgent :function(){
+    editAgent :function(callback){
       var controller = this;
       this.toggleProperty('enableEditAgent');
       if(this.model.get('hasDirtyAttributes')){
-        this.model.save().catch(function(){
+        var promise = this.model.save().catch(function(){
           controller.notifications.addNotification({
             message: 'Sorry, cant save at the moment !' ,
             type: 'error',
             autoClear: true
           });
         });
+        callback(promise);
+
       }
     },
     //DONE:0 CATCH ERROR: if not deleted due to relationship Data
-    //DONE:10 MESSAGE ERROR: That there is a project assigned to this data
+    //DONE:40 MESSAGE ERROR: That there is a project assigned to this data
 
     deleteData: function(agent){
       var controller = this;

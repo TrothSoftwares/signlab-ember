@@ -6,5 +6,6 @@ export default DS.Model.extend({
   agent: DS.belongsTo('agent' , {async:true}),
   enquiries: DS.hasMany('enquiry' ,{embedded: 'always', async:true}),
   items: DS.hasMany('item' ,{embedded: 'always', async:true}),
-  quotation: DS.belongsTo('quotation' ,{async:true})
+  quotation: DS.belongsTo('quotation' ,{async:true}),
+  status :DS.attr('string')
 });

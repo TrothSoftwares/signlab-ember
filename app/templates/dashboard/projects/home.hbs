@@ -7,9 +7,13 @@
       {{#paper-item class="md-3-line"}}
       {{paper-icon primary=true raised=true icon="assignment"}}
         <div class="md-list-item-text">
-          {{#link-to "dashboard.projects.project.enquiry-form" project class="list-group-item "}}
+          <div  class="list-group-item projectstatusclass_{{project.status}}">
+          {{#link-to "dashboard.projects.project.enquiry-form" project }}
+          <div>
           {{project.name}}
+        </div>
           {{/link-to}}
+        </div>
         </div>
       {{/paper-item}}
        {{paper-divider}}

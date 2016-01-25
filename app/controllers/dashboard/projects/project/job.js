@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import EmberUploader from 'ember-uploader';
 import ENV from '../../../../config/environment';
+const { inject } = Ember;
 
 
 
@@ -8,11 +9,10 @@ import ENV from '../../../../config/environment';
 
 export default Ember.Controller.extend({
   session: Ember.inject.service('session'),
-
+  preloader: inject.service('preloader'),
 
 
   actions: {
-
 
     saveJobdetails :function(){
       var controller  = this;
@@ -37,12 +37,14 @@ export default Ember.Controller.extend({
 
     uploadSiteimage :function(params){
       var controller = this;
+      
+
       var authenticated = controller.get('session.data.authenticated');
       let files = params.files,
       item = params.item;
 
       var newSiteImage = this.store.createRecord('siteimage',{description: '',item :item});
-      controller.send('loading');
+
 
       newSiteImage.save().then(function(newSiteImage){
         var uploader = EmberUploader.Uploader.extend({
@@ -64,7 +66,7 @@ export default Ember.Controller.extend({
           }
         );
       }
-      controller.send('finished');
+
     }).catch(function(){
       controller.notifications.addNotification({
         message: 'Sorry, cant save at the moment !' ,
@@ -72,6 +74,9 @@ export default Ember.Controller.extend({
         autoClear: true
       });
     });
+
+
+
   },
 
 

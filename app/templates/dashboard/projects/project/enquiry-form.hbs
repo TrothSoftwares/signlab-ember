@@ -32,8 +32,8 @@
     </div>
   </div>
   <div class="row">
-    <div id="liquid-spacer-demo">
-      <div class="col-md-10 pull-right " style="">
+
+      <div class="col-md-10 pull-right">
         {{#liquid-spacer growDuration=250}}
         {{#if showCustomerComponent}}
         {{#paper-card}}
@@ -66,7 +66,7 @@
         {{/if}}
         {{/liquid-spacer}}
       </div>
-    </div>
+
   </div>
   <div class="row row-margin">
     <div class="col-md-2">
@@ -82,7 +82,7 @@
     </div>
   </div>
   <div class="row">
-    <div id="liquid-spacer-demo">
+
       <div class="col-md-10 pull-right " style="">
         {{#liquid-spacer growDuration=250}}
         {{#if showAgentComponent}}
@@ -117,7 +117,7 @@
         {{/if}}
         {{/liquid-spacer}}
       </div>
-    </div>
+
   </div>
   <div class="row row-margin">
       <div class="col-md-2">
@@ -142,6 +142,7 @@
   <div class="md-actions" layout="row" layout-align="end center">
     {{#paper-button  raised=true action="deleteItem" param=item }} {{paper-icon icon="delete"}}{{/paper-button}}
   </div>
+  <hr class="thin bg-grayLighter">
   {{#paper-card-content}}
   {{#paper-list}}
   {{#paper-item class="md-3-line"}}

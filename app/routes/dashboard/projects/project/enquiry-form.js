@@ -1,8 +1,5 @@
 import Ember from 'ember';
 
-
-
-
 export default Ember.Route.extend({
 
 
@@ -31,7 +28,7 @@ export default Ember.Route.extend({
     var count = enqs.get('length');
     var currentEnquiry = enqs.objectAt(count-1);
 
-    // TODO:140 currentEnquiry is static here ^^ look above
+    // TODO:110 currentEnquiry is static here ^^ look above
     controller.set('currentEnquiry',currentEnquiry);
 
 

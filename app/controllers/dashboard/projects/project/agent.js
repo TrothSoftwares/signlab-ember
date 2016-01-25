@@ -53,7 +53,7 @@ export default Ember.Controller.extend({
 
     editAgent :function(){
       var controller  = this;
-      // TODO:100 : Data is saving even when the name field is empty.. (Should be fixed at the agent-form too.)
+      // TODO:70 : Data is saving even when the name field is empty.. (Should be fixed at the agent-form too.)
       this.toggleProperty('enableEditAgent');
       let projectagent = this.get('project.agent');
       projectagent.then(function(projectagent){
