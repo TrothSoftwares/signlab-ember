@@ -4,11 +4,16 @@ export default Ember.Route.extend({
   session: Ember.inject.service('session'),
 
   model: function(params) {
-    return this.store.findRecord('project', params.id);
-  },
+    return Ember.RSVP.hash({
+    project: this.store.findRecord('project', params.id),
+  });
+},
 
 
-  setupController: function(controller) {
+  setupController: function(controller ,model) {
+
+    controller.setProperties(model);
+
     if(Ember.isEqual('admin', this.get('session.data.authenticated.role'))){
       controller.set('isAdmin',true );
     }

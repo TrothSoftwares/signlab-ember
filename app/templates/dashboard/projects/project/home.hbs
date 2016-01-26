@@ -1,4 +1,5 @@
-<div class="tile-group triple text-center" >
+<div class="col-md-12">
+  <div class="tile-group quadro col-md-12">
 
   <div class="tile-container">
 
@@ -61,3 +62,58 @@
 
     </div>
   </div>
+
+  <div class="row col-md-12">
+
+
+  </div>
+
+  <div class="tile-container col-md-12">
+
+
+    <div class="panel collapsible collapsed" data-role="panel">
+                            <div class="heading">
+                                <span class="icon mif-wrench"></span>
+                                <span class="title">Advanced Settings</span>
+                            </div>
+                            <div class="content padding10">
+                              <div class="row row-margin">
+                                  <div class="col-md-2">
+                                    <label for="" class="labels">Project Status</label>
+                                  </div>
+                                  <div class="col-md-10 pickaday">
+                                    <select onchange={{action "selectStatus" value="target.value"}} class="form-control">
+                                      {{#each statuses as |statusChoice|}}
+                                      <option value={{statusChoice}} selected={{eq project.status statusChoice}}>{{statusChoice}}</option>
+                                      {{/each}}
+                                    </select>
+                                  </div>
+                              </div>
+
+                              <div class="row row-margin">
+                                  <div class="col-md-2">
+                                    <label for="" class="labels">Due Date</label>
+                                  </div>
+                                  <div class="col-md-10 pickaday">
+                                    {{pikaday-input value=project.duedate  format="DD-MM-YYYY" theme="form-input" }}
+                                  </div>
+
+                              </div>
+                              <div class="row row-margin">
+                                <div class="col-md-2">
+                                {{async-button  action="saveProject" default="Save"  pending="Saving.." class="button success block-shadow-success text-shadow small-button"}}
+                              </div>
+                              </div>
+
+                            </div>
+
+
+
+
+                        </div>
+
+
+
+  </div>
+
+</div>

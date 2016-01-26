@@ -7,5 +7,6 @@ export default DS.Model.extend({
   enquiries: DS.hasMany('enquiry' ,{embedded: 'always', async:true}),
   items: DS.hasMany('item' ,{embedded: 'always', async:true}),
   quotation: DS.belongsTo('quotation' ,{async:true}),
-  status :DS.attr('string')
+  status :DS.attr('string'),
+  duedate: DS.attr('date')
 });

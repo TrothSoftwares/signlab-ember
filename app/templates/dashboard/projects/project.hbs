@@ -1,6 +1,10 @@
 <div class="cell size-x200 " id="cell-sidebar" style="background-color: #71b1d1; height: 100%;margin: 0px 0 0 1.01765%;">
   <ul class="sidebar2 navy">
-    <li class="title">{{model.name}}</li>
+    <li class="title">
+      {{#link-to 'dashboard.projects.project.home' }}
+      {{project.name}}
+      {{/link-to}}
+    </li>
     {{#if (or isAdmin isSecretary)}}
     <li>
       {{#link-to 'dashboard.projects.project.enquiry-form' }}

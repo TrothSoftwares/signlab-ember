@@ -1,16 +1,21 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-session: Ember.inject.service('session'),
+  session: Ember.inject.service('session'),
 
-model: function() {
 
-  return Ember.RSVP.hash({
-    project: this.modelFor('dashboard.projects.project'),
-  });
-},
-  
-  setupController: function(controller) {
+
+
+  model: function() {
+    return Ember.RSVP.hash({
+      project: this.modelFor('dashboard.projects.project'),
+    });
+  },
+
+  setupController: function(controller , model) {
+
+    controller.setProperties(model);
+
     if(Ember.isEqual('admin', this.get('session.data.authenticated.role'))){
       controller.set('isAdmin',true );
     }
@@ -24,4 +29,6 @@ model: function() {
       controller.set('isSecretary',true );
     }
   }
+
+
 });

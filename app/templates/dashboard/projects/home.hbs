@@ -1,24 +1,73 @@
 <div class="col-md-12">
-  {{#paper-card}}
-  {{#paper-card-content class="md-whiteframe-z1 list-demo"}}
-  {{paper-input  label="Search Project" value=searchTerm icon="search"}}
-  {{#paper-list}}
-    {{#each matchingProjects as |project|}}
-      {{#paper-item class="md-3-line"}}
-      {{paper-icon primary=true raised=true icon="assignment"}}
-        <div class="md-list-item-text">
-          <div  class="list-group-item projectstatusclass_{{project.status}}">
-          {{#link-to "dashboard.projects.project.home" project }}
-          <div>
-          {{project.name}}
-        </div>
-          {{/link-to}}
-        </div>
-        </div>
-      {{/paper-item}}
-       {{paper-divider}}
-    {{/each}}
-  {{/paper-list}}
-{{/paper-card-content}}
-{{/paper-card}}
+
+
+
+  <div class="panel col-md-6">
+    <div class="heading">
+        <span class="icon mif-home"></span>
+        <span class="title">Registerd Projects</span>
+    </div>
+    <div class="content">
+      {{#paper-card}}
+      {{#paper-card-content class="md-whiteframe-z1 list-demo"}}
+      {{paper-input  label="Search Project" value=searchStartedTerm icon="search"}}
+
+
+      {{#paper-list}}
+        {{#each matchingStartedProjects as |project|}}
+          {{#paper-item class="md-3-line"}}
+          {{paper-icon primary=true raised=true icon="assignment"}}
+            <div class="md-list-item-text">
+              <div  class="list-group-item projectstatusclass_{{project.status}}">
+              {{#link-to "dashboard.projects.project.home" project }}
+              <div>
+              {{project.name}}
+            </div>
+              {{/link-to}}
+            </div>
+            </div>
+          {{/paper-item}}
+           {{paper-divider}}
+        {{/each}}
+      {{/paper-list}}
+
+    {{/paper-card-content}}
+    {{/paper-card}}
+    </div>
+</div>
+
+
+<div class="panel col-md-6" >
+  <div class="heading">
+      <span class="icon mif-home"></span>
+      <span class="title">Unregistered Projects</span>
+  </div>
+  <div class="content" >
+    {{#paper-card}}
+    {{#paper-card-content class="md-whiteframe-z1 list-demo"}}
+    {{paper-input  label="Search Project" value=searchTerm icon="search"}}
+
+    {{#paper-list}}
+      {{#each matchingProjects as |project|}}
+        {{#paper-item class="md-3-line"}}
+        {{paper-icon primary=true raised=true icon="assignment"}}
+          <div class="md-list-item-text">
+            <div  class="list-group-item projectstatusclass_{{project.status}}">
+            {{#link-to "dashboard.projects.project.home" project }}
+            <div>
+            {{project.name}}
+          </div>
+            {{/link-to}}
+          </div>
+          </div>
+        {{/paper-item}}
+         {{paper-divider}}
+      {{/each}}
+    {{/paper-list}}
+
+  {{/paper-card-content}}
+  {{/paper-card}}
+  </div>
+</div>
+
 </div>

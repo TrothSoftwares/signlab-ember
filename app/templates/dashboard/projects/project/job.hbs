@@ -58,7 +58,7 @@
                     <span class="glyphicon glyphicon-download" ></span>
                   </button>
                 </a>
-                {{async-button siteimage action="deleteSiteimage" default="Delete"  pending="Deleting.." class="button danger block-shadow-success text-shadow small-button"}}
+                {{async-button siteimage action="deleteSiteimage" default="Delete"  fulfilled="Saved" rejected="Cannot Save"pending="Deleting.." class="button danger block-shadow-success text-shadow small-button"}}
               </p>
             </div>
           </div>

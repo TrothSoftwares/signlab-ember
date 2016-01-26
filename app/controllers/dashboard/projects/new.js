@@ -13,7 +13,9 @@ export default Ember.Controller.extend({
       var project = this.store.createRecord('project', {
         name: this.get('name'),
         customer : customer,
-        agent : agent});
+        agent : agent,
+        status :'added'
+      });
 
         project.save().then(function(){
           var enquiry = controller.store.createRecord('enquiry', {

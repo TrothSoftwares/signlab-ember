@@ -6,11 +6,20 @@ export default Ember.Controller.extend({
     searchTerm: 's',
   },
   searchTerm: '',
+  searchStartedTerm: '',
 
-  matchingProjects: Ember.computed('model.@each.name','searchTerm', function() {
+  matchingProjects: Ember.computed( 'model.@each.status', 'model.@each.name','searchTerm', function() {
     var searchTerm = this.get('searchTerm').toLowerCase();
-    return this.get('projects').filter(function(customer) {
-      return customer.get('name').toLowerCase().indexOf(searchTerm) !== -1;
+    return this.get('projects').filter(function(project) {
+      return (project.get('status') === 'added') && project.get('name').toLowerCase().indexOf(searchTerm) !== -1;
+    });
+  }),
+
+
+  matchingStartedProjects: Ember.computed('model.@each.status', 'model.@each.name','searchStartedTerm', function() {
+    var searchStartedTerm = this.get('searchStartedTerm').toLowerCase();
+    return this.get('projects').filter(function(project) {
+      return (project.get('status') === 'started') && project.get('name').toLowerCase().indexOf(searchStartedTerm) !== -1;
     });
   }),
 
