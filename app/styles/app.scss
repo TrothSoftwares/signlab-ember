@@ -96,11 +96,8 @@ td {
   color: #e22626;
   line-height: 100px;
 }
-.spinner {
-  background: url('/images/ajax-loader.gif') no-repeat;
-  height: 31px;
-  width: 31px;
-  margin: 0 auto;
+.preloader-ring{
+  margin: 3.425rem;
 }
 
 .input-error{
