@@ -45,6 +45,7 @@
     "ember-cp-validations": "2.1.4",
     "ember-data": "2.1.0",
     "ember-disable-proxy-controllers": "^1.0.1",
+    "ember-electron": "0.3.4",
     "ember-export-application-global": "^1.0.4",
     "ember-paper": "0.2.10",
     "ember-pikaday": "0.14.0",
@@ -58,5 +59,37 @@
   },
   "dependencies": {
     "ember-cli-lightbox": "0.0.3"
+  },
+  "main": "electron.js",
+  "ember-electron": {
+    "WHAT IS THIS?": "Please see the README.md",
+    "name": null,
+    "platform": null,
+    "arch": null,
+    "version": null,
+    "app-bundle-id": null,
+    "app-category-type": null,
+    "app-version": null,
+    "asar": null,
+    "asar-unpack": null,
+    "asar-unpack-dir": null,
+    "build-version": null,
+    "cache": null,
+    "helper-bundle-id": null,
+    "icon": null,
+    "ignore": null,
+    "out": null,
+    "overwrite": null,
+    "prune": null,
+    "sign": null,
+    "strict-ssl": null,
+    "version-string": {
+      "CompanyName": null,
+      "LegalCopyright": null,
+      "FileDescription": null,
+      "OriginalFilename": null,
+      "ProductName": null,
+      "InternalName": null
+    }
   }
 }

@@ -5,7 +5,10 @@ module.exports = function(environment) {
     modulePrefix: 'signlab-ember',
     environment: environment,
     baseURL: '/',
-    locationType: 'auto',
+    // locationType: 'auto',
+    locationType: process.env.EMBER_CLI_ELECTRON ? 'hash' : 'auto',
+
+
 
     // TODO: SELF * SHOULD BE SAFE PROOFED: about the connect src and cors configs.
     contentSecurityPolicy: {
