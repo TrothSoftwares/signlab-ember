@@ -5,7 +5,7 @@ export default Ember.Route.extend({
 
   model: function(params) {
     return Ember.RSVP.hash({
-    project: this.store.findRecord('project', params.id),
+    project: this.store.findRecord('project', params.id , {reload: true}),
   });
 },
 
