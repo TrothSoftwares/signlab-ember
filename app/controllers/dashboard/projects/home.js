@@ -19,7 +19,8 @@ export default Ember.Controller.extend({
   matchingStartedProjects: Ember.computed('model.@each.status', 'model.@each.name','searchStartedTerm', function() {
     var searchStartedTerm = this.get('searchStartedTerm').toLowerCase();
     return this.get('projects').filter(function(project) {
-      return (project.get('status') === 'started') && project.get('name').toLowerCase().indexOf(searchStartedTerm) !== -1;
+      let status =  project.get('status');
+      return (status === 'started'  || status === 'finished'  || status === 'delayed') && project.get('name').toLowerCase().indexOf(searchStartedTerm) !== -1;
     });
   }),
 
