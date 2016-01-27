@@ -45,7 +45,6 @@
     "ember-cp-validations": "2.1.4",
     "ember-data": "2.1.0",
     "ember-disable-proxy-controllers": "^1.0.1",
-    "ember-electron": "0.3.4",
     "ember-export-application-global": "^1.0.4",
     "ember-paper": "0.2.10",
     "ember-pikaday": "0.14.0",
