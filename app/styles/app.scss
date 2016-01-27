@@ -107,14 +107,17 @@ td {
   display:none;
 }
 
+.only-print
 
+{
+  display: none;
+}
 
 
 /* CSS FOR PRINT FUNCION */
 
 @media print
-{
-   .navbar{
+{ .navbar{
   border:0;
   overflow:hidden;
   display:none
@@ -127,8 +130,7 @@ title{
   display:none;
   border:0;
 }
-table td:last-child {display:none}
-table th:last-child {display:none}
+
 
 a[href]:after {
   content: none !important;
@@ -145,15 +147,42 @@ body {
   display:none;
 }
 
-
+.sidebar2
+{
+  display: none;
+}
+.app-bar
+{
+  display: none;
+}
+.to-print
+{
+    margin-left: -130px;
+    width: 120%;
+}
+.only-print
+{
+    display: block;
+}
+.no-print
+{
+  display: none;
+}
+.print-input
+{
+  border: none;
+  box-shadow: none;
+}
+.tac{
+  text-align: center;
+}
 @page
 {
   size: auto;   /* auto is the current printer page size */
   margin: 0mm;  /* this affects the margin in the printer settings */
 }
-}
 
-/***** END OF CSS FOR PRINT *****/
+}
 
 
 /* talha css for picka day */
@@ -185,13 +214,6 @@ body {
   line-height: 1;
   min-height: 0;
   height: auto;
-}
-
-.slide-up .slide img{
-  height:100%;
-}
-.project_home_panel{
-  padding-top:40px;
 }
 
 @media screen and (max-width: 800px){
@@ -508,8 +530,7 @@ body {
 }
 .card
 {
-  border: 1px solid #d9d9d9;
-  height: 500px;
+    margin-top: 15px;
 }
 
 .fixed-buttons
@@ -541,7 +562,19 @@ body {
   border: 1px solid #787878;
   padding: 10px;
 margin: 50px 10px 10px;}
+
 .delbtn{
   float: right;
   width: 75px;
+}
+
+/*anvar   */
+
+.menu-wrap
+{
+  margin-top: 50px;
+}
+.qtn-form
+{
+  margin: 20px 35px;
 }

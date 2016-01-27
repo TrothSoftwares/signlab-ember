@@ -1,50 +1,80 @@
+<div class="qtn-form">
+
 <div class="row">
 	<div class="col-md-12">
-	<div class="row row-margin">
-				<div class="col-md-2">
-					<label for="" class="labels">Date</label>
-				</div>
-				<div class="col-md-10 pickaday">
-					{{pikaday-input value=project.quotation.date  format="DD-MM-YYYY" theme="form-input" }}
-				</div>
-		</div>
 
-		<div class="row row-margin">
+		<div class="no-print">
+		<div class="row row-margin ">
 			<label>{{project.customer.name}}</label>
 		</div>
 		<div class="row row-margin">
 			{{paper-input label="Subject"  value=project.quotation.subject icon="assignment"}}
 		</div>
 		<div class="row row-margin">
-			{{paper-input label="Body" attr-cols="10" attr-rows="10" value=project.quotation.body icon="insert-drive-file"}}
+			{{paper-input label="Body" attr-cols="10" attr-rows="10" value=project.quotation.body class="fullwidth" icon="insert-drive-file"}}
 		</div>
+		<div class="row row-margin">
+					<div class="col-md-1">
+						<label for="" class="labels">Date</label>
+					</div>
+					<div class="col-md-5 pickaday">
+						{{pikaday-input value=project.quotation.date  format="DD-MM-YYYY" theme="form-input" }}
+					</div>
+			</div>
+		</div>
+			<div class="to-print">
+				<div class="only-print">
+					<img src="images/signlab_logo_200x50.png" alt="Logo">
+					<div class="row row-margin">
+								<div class="col-md-1">
+									<label for="" class="labels">Date :</label>
 
-		<table class="table table-bordered table-striped table-condensed table-responsive">
+									{{pikaday-input value=project.quotation.date  class="print-input" format="DD-MM-YYYY" theme="form-input" }}
+								</div>
+						</div>
+						<div class="row row-margin">
+									<div class="col-md-1">
+										<label for="" class="labels">Name : </label>
+									</div>
+									<div class="col-md-5">
+										<label class="labels"> {{project.customer.name}}</label>
+									</div>
+
+							</div>
+							<h3 style="text-align:center "><u>{{project.quotation.subject}}</u></h3>
+							<p>Sir,</p>
+							<p>{{project.quotation.body}}</p>
+							<br>
+				</div>
+		<table class="table table-bordered table-striped table-condensed table-responsive ">
 			<thead>
 				<th>No.</th><th class="text-center">Scope of Work </th><th class="text-center">Unit</th><th class="text-center">Rate</th><th class="text-center">Amount</th>
 			</thead>
 			<tbody>
 				{{#each project.items as |item index|}}
 				<tr>
-					<td>{{incrementone index}}</td>
+					<td class="tac">{{incrementone index}}</td>
 					<td>
 						<b>Dimensions:</b> {{item.dimensions}}<br>
 						<b>Description:</b> {{item.description}}
 					</td>
-					<td>
-						{{paper-input required=true value=item.unit required-errortext="Unit is required"}}
+					<td class="tac">
+							<b class="only-print ">{{item.unit}}</b>
+						{{paper-input required=true value=item.unit class="no-print" required-errortext="Unit is required"}}
 					</td>
-					<td>
-						{{paper-input required=true value=item.rate required-errortext="Rate is required"}}
+					<td class="tac">
+						<b class="only-print ">{{item.rate}}</b>
+						{{paper-input required=true value=item.rate class="no-print" required-errortext="Rate is required"}}
 					</td>
-					<td>
-						{{paper-input required=true value=item.amount required-errortext="Amount is required"}}
+					<td class="tac">
+						<b class="only-print ">{{item.amount}}</b>
+						{{paper-input required=true value=item.amount class="no-print" required-errortext="Amount is required"}}
 					</td>
 				</tr>
 				{{/each}}
 			</tbody>
 		</table>
-
+		<br>
 		<div class="col-md-12 well" >
 			<address>
 				<strong>Payment:</strong>  60% Advance balance 40%  up on completion.<br />
@@ -54,6 +84,7 @@
 				<strong>Note :</strong>With in 30 days from the date of confirmation and advance payment<br />
 			</address>
 		</div>
+	</div>
 
 		<div class="print_buttons">
 			{{#paper-button primary=true   raised=true    action="saveQuotation"}}
@@ -66,6 +97,7 @@
 		</div>
 
 	</div>
+</div>
 </div>
 
 
