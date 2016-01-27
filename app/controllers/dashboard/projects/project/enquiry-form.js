@@ -157,9 +157,9 @@ export default Ember.Controller.extend({
         var  project = controller.get('project');
         var customer = controller.get('project.customer');
         var agent = controller.get('project.agent');
-        var currentEnquiry = project.get('enquiries');
-        currentEnquiry.forEach(function(curenq){
-          curenq.save().catch(function(){
+        var  getEnquiry = this.get('project').get('enquiry');
+        getEnquiry.then(function(enquiry){
+          enquiry.save().catch(function(){
             controller.notifications.addNotification({
               message: 'Sorry, cant save at the moment !' ,
               type: 'error',
