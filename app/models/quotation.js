@@ -5,8 +5,4 @@ export default DS.Model.extend({
   subject: DS.attr('string'),
   body: DS.attr('string'),
   project: DS.belongsTo('project' ,{ async:true})
-
-
-
-
 });
