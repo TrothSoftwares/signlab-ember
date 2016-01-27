@@ -238,14 +238,18 @@ body {
     transition: all .3s ease;
   }
 
-.container {
-    display: table;
-    vertical-align: middle;
-}
-.vertical-center-row {
-    display: table-cell;
-    vertical-align: middle;
-}
+
+/* for center login page */
+  html, body, .container-table {
+      height: 100%;
+  }
+  .container-table {
+      display: table;
+  }
+  .vertical-center-row {
+      display: table-cell;
+      vertical-align: middle;
+  }
 
 
 
