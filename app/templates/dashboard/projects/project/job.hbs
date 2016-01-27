@@ -31,12 +31,19 @@
 
       {{file-upload item=item siteimages=item.siteimages  on-upload=(action "uploadSiteimage")}}
       {{#if imageUploading }}
-      <div class="loading-pane">
-        <div class="loading-message">
-          Uploading Image
+
+      <div class="loading-pane text-center">
+        <div class="loading-message text-center" >
+          Uploading image
+          <br><br><br>
+          <div style="margin-left:40%">
+          <div data-role="preloader" data-type="ring" data-style="dark"></div>
         </div>
-        <div data-role="preloader" data-type="ring" data-style="dark"></div>
-      </div>
+        </div>
+        </div>
+
+
+
       {{else}}
       {{/if}}
 

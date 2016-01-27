@@ -1,6 +1,6 @@
 /* jshint node: true */
 
-var electron = require('electron');
+var electron = require('remote');
 
 var app = electron.app;
 var mainWindow = null;
