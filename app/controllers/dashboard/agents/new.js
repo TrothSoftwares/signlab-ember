@@ -24,7 +24,7 @@ export default Ember.Controller.extend({
         controller.set('model.contactno','');
         controller.set('model.othcontactno','');
         controller.set('model.othrefdetails','');
-        controller.transitionToRoute('agents.agent' , agent);
+        controller.transitionToRoute('dashboard.agents.agent' , agent);
       }).catch(function(){
         controller.notifications.addNotification({
           message: 'Sorry, cant save at the moment !' ,

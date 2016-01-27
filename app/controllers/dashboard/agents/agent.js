@@ -8,18 +8,17 @@ export default Ember.Controller.extend({
   }),
 
   actions: {
-    editAgent :function(callback){
+    editAgent :function(){
       var controller = this;
       this.toggleProperty('enableEditAgent');
       if(this.model.get('hasDirtyAttributes')){
-        var promise = this.model.save().catch(function(){
+         this.model.save().catch(function(){
           controller.notifications.addNotification({
             message: 'Sorry, cant save at the moment !' ,
             type: 'error',
             autoClear: true
           });
         });
-        callback(promise);
 
       }
     },
