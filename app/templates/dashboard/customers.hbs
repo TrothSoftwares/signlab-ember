@@ -1,28 +1,28 @@
-<div class="col-md-4">
-
-  {{#paper-card}}
-  {{#paper-card-content }}
-  {{paper-input  label="Search Customer" value=searchTerm icon="search"}}
-  {{#paper-list}}
+<div class="col-md-3">
+<div class="side-panel">
+  <div class="search-box">
+  {{paper-input  label="Search Customer" value=searchTerm icon="search" class="wd90"}}
+  </div>
     {{#each matchingCustomers as |customer|}}
-      {{#paper-item class="md-3-line"}}
-      {{paper-icon primary=true raised=true icon="person"}}
-        <div class="md-list-item-text">
-          {{#link-to "dashboard.customers.customer" customer class="list-group-item"}}
-          {{customer.name}}
+        <div class=  "">
+          {{#link-to "dashboard.customers.customer" customer class="list-group-item agent-label no-border"}}
+            <span class="mif-user mr10" style="color: #FFF;"></span>{{customer.name}}
           {{/link-to}}
         </div>
-      {{/paper-item}}
        {{paper-divider}}
     {{/each}}
-  {{/paper-list}}
-{{/paper-card-content}}
-{{/paper-card}}
 </div>
-<div class="col-md-8">
-  {{#paper-card}}
-    {{#paper-card-content}}
+</div>
+
+<div class="col-md-9">
+  <div class="right-panel">
+    <div class="new-btn-row">
+     {{#link-to 'dashboard.customers.new' class="list-group-item new-btn"}}
+     <span class="mif-user-plus mr10" style="color: #fff;"></span>Add New Customer
+     {{/link-to}}
+   </div>
+
       {{outlet}}
-    {{/paper-card-content}}
-  {{/paper-card}}
+
+    </div>
 </div>

@@ -4,6 +4,7 @@
 
 
 
+
     <div class="enq-form">
 
   <div class="row row-margin">
@@ -24,27 +25,31 @@
     </div>
   </div>
   <div class="row">
+    <div class="col-md-2">
+    </div>
 
-      <div class="col-md-12 pull-right">
+      <div class="col-md-10 pull-right">
         {{#liquid-spacer growDuration=250}}
         {{#if showCustomerComponent}}
-    <div class="card">
+        {{#paper-card}}
+        {{#paper-card-content}}
+
         <h3> Create New Customer</h3>
         <div class="col-md-10">
           <div class="row row-margin">
-            {{paper-input label="Customer Name" required=true value=custname icon="person"  required-errortext="Customer name is required."}}
+            {{paper-input label="Customer Name"  class="fullwidth" required=true value=custname icon="person"  required-errortext="Customer name is required."}}
           </div>
           <div class="row row-margin">
-            {{paper-input label="Customer contact Name"  value=custcontactname icon="person"}}
+            {{paper-input label="Customer contact Name"  class="fullwidth"  value=custcontactname icon="person"}}
           </div>
           <div class="row row-margin">
-            {{paper-input label="Customer contact number"  value=custcontactno icon="phone"}}
+            {{paper-input label="Customer contact number"  class="fullwidth" value=custcontactno icon="phone"}}
           </div>
           <div class="row row-margin">
-            {{paper-input label="Other contact number"  value=custothcontactno icon="phone"}}
+            {{paper-input label="Other contact number" class="fullwidth"  value=custothcontactno icon="phone"}}
           </div>
           <div class="row row-margin">
-            {{paper-input label="Other reference details"  value=custothrefdetails icon="place"}}
+            {{paper-input label="Other reference details"  class="fullwidth" value=custothrefdetails icon="place"}}
           </div>
         </div>
         <div class="col-md-2 "style="padding-top:10px">
@@ -52,7 +57,8 @@
           {{paper-icon icon="save"}}
           {{/paper-button}}
         </div>
-      </div>
+        {{/paper-card-content}}
+        {{/paper-card}}
         {{/if}}
         {{/liquid-spacer}}
       </div>
@@ -72,7 +78,8 @@
     </div>
   </div>
   <div class="row">
-
+    <div class="col-md-2">
+    </div>
       <div class="col-md-10 pull-right " style="">
         {{#liquid-spacer growDuration=250}}
         {{#if showAgentComponent}}
@@ -81,19 +88,19 @@
         <h3> Create New Agent</h3>
         <div class="col-md-10">
           <div class="row row-margin">
-            {{paper-input label="Agent Name" required=true value=agentname icon="person"  required-errortext="Agent name is required."}}
+            {{paper-input label="Agent Name" required=true value=agentname icon="person" class="fullwidth" required-errortext="Agent name is required."}}
           </div>
           <div class="row row-margin">
-            {{paper-input label="Agent contact Name"  value=agentcontactname icon="person"}}
+            {{paper-input label="Agent contact Name"  class="fullwidth" value=agentcontactname icon="person"}}
           </div>
           <div class="row row-margin">
-            {{paper-input label="Agent contact number"  value=agentcontactno icon="phone"}}
+            {{paper-input label="Agent contact number"  class="fullwidth" value=agentcontactno icon="phone"}}
           </div>
           <div class="row row-margin">
-            {{paper-input label="Other contact number"  value=agentothcontactno icon="phone"}}
+            {{paper-input label="Other contact number"  class="fullwidth" value=agentothcontactno icon="phone"}}
           </div>
           <div class="row row-margin">
-            {{paper-input label="Other reference details"  value=agentothrefdetails icon="place"}}
+            {{paper-input label="Other reference details"  class="fullwidth" value=agentothrefdetails icon="place"}}
           </div>
         </div>
         <div class="col-md-2 "style="padding-top:10px">
@@ -128,7 +135,6 @@
 <div class="item-card">
   <h2 style="float:left">Items</h2>
 
-  {{#liquid-spacer growDuration=250}}
   {{#each project.items as |item index|}}
 
   <div class="item-cards">
@@ -141,7 +147,6 @@
 
   <h2> Item {{ incrementone index}}</h2>
   <div class="md-list-item-text" style="margin:15px">
-
     {{paper-input label="Dimensions" value=item.dimensions icon="tune"  }}
     {{paper-input label="Description" value=item.description icon="assignment"  }}
 
@@ -149,7 +154,7 @@
       <div class="col-md-2">
         <label for=""style="margin-left:20px" class="labels">Item Type</label>
       </div>
-      <div class="col-md-10">
+      <div class="col-md-10" >
         {{ember-select-guru value=item.itemtype  options=itemtypes onSelect=(action "onSelectItemtypes" index) }}
       </div>
     </div>
@@ -166,7 +171,6 @@
 
 
 </div>  {{/each}}
-{{/liquid-spacer }}
 
 
 
@@ -192,5 +196,6 @@
 {{paper-icon icon="delete"}} Delete Project
 {{/paper-button}}
 </div>
+
 
 {{outlet}}
