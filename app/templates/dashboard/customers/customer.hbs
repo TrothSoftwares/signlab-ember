@@ -2,10 +2,11 @@
 
 <div class=" panel-in">
   <div class="container-fluid">
+
     <div class="row row-margin">
       <div class="col-md-10">
         {{#liquid-if enableEditCustomer class="customer-info"  }}
-
+        <h2> Edit Customer Info</h2>
         {{#paper-list}}
         {{#paper-item class="md-3-line"}}
           <div class="md-list-item-text">
@@ -35,6 +36,7 @@
         {{/paper-list}}
 
         {{else}}
+        <h2> Customer Info</h2>
 
         {{#paper-list}}
 
