@@ -1,12 +1,11 @@
- {{#paper-item raised=true }}
-  {{#link-to 'dashboard.agents.new' class="list-group-item"}} New Agent{{/link-to}}
-  {{/paper-item}}
 
 
+ <div class=" panel-in">
   <div class="container-fluid">
     <div class="row row-margin">
       <div class="col-md-10">
           {{#liquid-if enableEditAgent class="customer-info"  }}
+          <h2> Edit Agent Info</h2>
 
           {{#paper-list}}
           {{#paper-item class="md-3-line"}}
@@ -37,6 +36,7 @@
           {{/paper-list}}
 
     {{else}}
+    <h2> Agent Info</h2>
 
     {{#paper-list}}
 
@@ -86,7 +86,7 @@
             {{#paper-button primary=true   disabled=isEditAgentButtonDisabled  raised=true   action="editAgent"}}
             <span class="glyphicon {{if enableEditAgent "glyphicon-floppy-save" "glyphicon-pencil"}} "></span>
             {{/paper-button}}
-            
+
 
             {{else}}
             {{#paper-button primary=true   raised=true   action="editAgent"}}
@@ -101,5 +101,6 @@
             {{/if}}
           </div>
 
+  </div>
   </div>
   </div>

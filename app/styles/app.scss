@@ -206,6 +206,7 @@ body {
   min-height: 100%;
   height: 100%;
   width: 97%;
+  margin: auto;
 }
 .table .input-control.checkbox {
   line-height: 1;
@@ -561,7 +562,7 @@ body {
 {
   border: 1px solid #787878;
   padding: 10px;
-margin: 50px 10px 10px;}
+  margin: 50px 10px 10px;}
 
 .delbtn{
   float: right;
@@ -577,4 +578,72 @@ margin: 50px 10px 10px;}
 .qtn-form
 {
   margin: 20px 35px;
+}
+
+
+.no-border
+{
+  border: none;
+
+}
+.side-panel
+{
+  border: 1px solid #ccc;
+  margin: 10px 0px 10px 10px;
+  padding: 10px;
+}
+.search-box
+{
+  border: 1px solid #aaa;
+  padding-top: 15px;
+  background: #f4f7f9;
+  margin-bottom: 10px;
+}
+.wd90
+{
+  width: 90%;
+}
+.agent-label {
+
+    margin-bottom: 0!important;
+    border-bottom-right-radius: 0!important;
+    border-bottom-left-radius: 0!important;
+    border-top-left-radius: 0!important;
+    border-top-right-radius: 0!important;
+    height: 50px;
+    padding: 20px;
+    font-size: 15px;
+
+}
+.right-panel
+{
+  border: 1px solid #ccc;
+  margin: 10px 10px 10px 0px;
+  padding: 10px;
+}
+.new-btn
+{
+  border-radius: 0 !important;
+  background: #2086bf !important;
+  color: #fff !important;
+  float: right !important;
+}
+.mr10
+{
+  margin-right: 10px;
+}
+.new-btn-row
+{
+  width: 100%;
+  height: 50px;
+}
+.panel-in
+{
+  border: 1px solid #aaa;
+  background: #f4f7f9;
+
+}
+.pdl10
+{
+  padding-left: 10px;
 }

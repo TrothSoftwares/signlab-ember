@@ -1,23 +1,24 @@
-
+<div class="panel-in pdl10">
 <div class="container-fluid">
+  <h2>Add New Agent</h2>
   <div class="row row-margin">
 
 
     <div class="col-md-10">
       <div class="row row-margin">
-        {{paper-input label="Agent Name" required=true value=model.name icon="person"  required-errortext="Agent name is required."}}
+        {{paper-input label="Agent Name" required=true class="fullwidth" value=model.name icon="person"  required-errortext="Agent name is required."}}
       </div>
       <div class="row row-margin">
-        {{paper-input label="Agent contact Name"  value=model.contactname icon="person"}}
+        {{paper-input label="Agent contact Name" class="fullwidth" value=model.contactname icon="person"}}
       </div>
       <div class="row row-margin">
-        {{paper-input label="Agent contact number"  value=model.contactno icon="phone"}}
+        {{paper-input label="Agent contact number" class="fullwidth" value=model.contactno icon="phone"}}
       </div>
       <div class="row row-margin">
-        {{paper-input label="Other contact number"  value=model.othcontactno icon="phone"}}
+        {{paper-input label="Other contact number" class="fullwidth" value=model.othcontactno icon="phone"}}
       </div>
       <div class="row row-margin">
-        {{paper-input label="Other reference details"  value=model.othrefdetails icon="place"}}
+        {{paper-input label="Other reference details" class="fullwidth" value=model.othrefdetails icon="place"}}
       </div>
     </div>
     <div class="col-md-2" >
@@ -28,6 +29,7 @@
 
 
   </div>
+</div>
 </div>
 {{yield}}
 
