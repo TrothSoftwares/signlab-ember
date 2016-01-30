@@ -65,7 +65,6 @@
   </div>
 </div>
 
-<<<<<<< HEAD
   <div class="row col-md-12">
 ----- Project Changes--------
 {{#each project.versions as |version|}}
@@ -107,22 +106,7 @@
 {{moment-from-now version.created_at}}<br><br>
 {{/each}}
 
------------------------------<br>
-Item Changes
 
-{{#each project.items as |item|}}
-{{#each item.versions as |version|}}
-{{version.whodunnit}}
-{{#each-in version.changeset as |key changesetscontents|}}
-{{#if (not-eq key "updated_at")}}
-  Updated {{key}}
-  From {{changesetscontents.firstObject}} To {{changesetscontents.lastObject}}<br>
-      {{/if}}
-
-{{/each-in}}
-{{moment-from-now version.created_at}}<br><br>
-{{/each}}
-{{/each}}
 
 
 
@@ -132,9 +116,8 @@ Item Changes
   <div class="tile-container col-md-12">
 
 
-=======
+
   <div class="col-md-6">
->>>>>>> 02250ef10eeef51d3bfb62aec06ef7477f07ed82
     <div class="panel collapsible collapsed" data-role="panel">
                             <div class="heading">
                                 <span class="icon mif-wrench"></span>
@@ -194,7 +177,7 @@ Item Changes
                                   {{#each project.versions as |version|}}
                                     <li class="log-items">
                                         <div class="log-body">
-                                            
+
                                             {{#each-in version.changeset as |key changesetscontents|}}
 
                                               {{#if (not-eq key "updated_at")}}
@@ -224,3 +207,4 @@ Item Changes
 
 
   </div>
+</div>

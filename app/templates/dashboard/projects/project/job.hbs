@@ -1,6 +1,27 @@
 <div class="container-fluid">
   <div class="row row-margin">
     <div class="col-md-10">
+      -----------------------------<br>
+      Item Changes
+
+      {{#each project.items as |item|}}
+      {{#each item.versions as |version|}}
+      {{version.whodunnit}}
+      {{#each-in version.changeset as |key changesetscontents|}}
+      {{#if (not-eq key "updated_at")}}
+        Updated {{key}}
+        From {{changesetscontents.firstObject}} To {{changesetscontents.lastObject}}<br>
+            {{/if}}
+
+      {{/each-in}}
+      {{moment-from-now version.created_at}}<br><br>
+      {{/each}}
+      {{/each}}
+
+=======================================
+
+
+
 
       {{#each project.items as |item index|}}
       <h3> Item {{ incrementone index}}</h3>
