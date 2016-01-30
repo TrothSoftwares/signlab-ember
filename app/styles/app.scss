@@ -588,16 +588,12 @@ body {
 }
 .side-panel
 {
-  border: 1px solid #ccc;
-  margin: 10px 0px 10px 10px;
-  padding: 10px;
+  border: 5px solid #e8f1f4;
 }
 .search-box
 {
-  border: 1px solid #aaa;
   padding-top: 15px;
-  background: #f4f7f9;
-  margin-bottom: 10px;
+  background:#e8f1f4;
 }
 .wd90
 {
@@ -617,9 +613,11 @@ body {
 }
 .right-panel
 {
-  border: 1px solid #ccc;
+  border: 1px solid #ddd;
   margin: 10px 10px 10px 0px;
   padding: 10px;
+  background: #f4f7f9;
+
 }
 .new-btn
 {
@@ -639,11 +637,81 @@ body {
 }
 .panel-in
 {
-  border: 1px solid #aaa;
-  background: #f4f7f9;
+  border: 1px solid #ddd;
+  background: #FFE;
 
 }
 .pdl10
 {
   padding-left: 10px;
+}
+.label-list-box
+{
+  padding: 10px;
+  border: 1px solid #ddd;
+
+}
+.bodrddd
+{
+  border: 1px solid #ddd;
+  margin: 10px 0px 10px 10px;
+
+}
+.tile-group.quadro
+{
+  width: auto !important ;
+}
+.tile-group
+{
+  margin-left: 0 !important;
+  padding-top: 0 !important;
+}
+.panel
+{
+  margin-top: 10px  !important;
+}
+.chat
+{
+  margin-left: 0;
+    padding: 0;
+}
+.log-items
+{
+  display: block;
+}
+.log-items label
+{
+  color: #f0e6c8;
+  padding: 4px 0px;
+}
+.log-body
+{
+  border-bottom: 1px solid #ccc;
+}
+.log-ago
+{
+  float: right;
+}
+.log-date
+{
+  float: left;
+  color: #1ba1e2 !important ;
+}
+.panel-body
+{
+  background: #002147;
+  max-height: 300px;
+  overflow: auto;
+}
+.lbl-grn
+{
+  color: #82b541 !important;
+}
+.lbl-red
+{
+color:  #e12828 !important;
+}
+.chat-panel
+{
+  margin: 0px 35px 0px;
 }

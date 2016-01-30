@@ -1,8 +1,10 @@
 <div class="col-md-3">
+<div class="bodrddd">
 <div class="side-panel">
   <div class="search-box">
   {{paper-input  label="Search Customer" value=searchTerm icon="search" class="wd90"}}
   </div>
+  <div class="label-list-box">
     {{#each matchingCustomers as |customer|}}
         <div class=  "">
           {{#link-to "dashboard.customers.customer" customer class="list-group-item agent-label no-border"}}
@@ -11,6 +13,8 @@
         </div>
        {{paper-divider}}
     {{/each}}
+  </div>
+</div>
 </div>
 </div>
 
