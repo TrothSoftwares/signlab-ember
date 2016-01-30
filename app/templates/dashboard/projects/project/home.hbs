@@ -1,5 +1,6 @@
 <div class="col-md-12">
-  <div class="tile-group quadro col-md-12">
+  <div class="col-md-6">
+  <div class="tile-group quadro ">
 
   <div class="tile-container">
 
@@ -62,50 +63,9 @@
 
     </div>
   </div>
+</div>
 
-  <div class="row col-md-12">
-
-
-  </div>
-                    <div class="chat-panel panel panel-default col-md-4">
-                                            <div class="panel-heading">
-                                                <i class="fa fa-comments fa-fw"></i>
-                                        Recent Changes
-
-                                            </div>
-                                            <!-- /.panel-heading -->
-                                            <div class="panel-body">
-                                                <ul class="chat">
-                                                  {{#each project.versions as |version|}}
-                                                    <li class="left clearfix">
-                                                        <span class="chat-img pull-left">
-                                                            <img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar" class="img-circle">
-                                                        </span>
-                                                        <div class="chat-body clearfix">
-                                                            <div class="header">
-                                                                <strong class="primary-font">{{version.whodunnit}}</strong>
-                                                                <small class="pull-right text-muted">
-                                                                    <i class="fa fa-clock-o fa-fw"></i>  {{moment-from-now version.created_at}}
-                                                                </small>
-                                                            </div>
-                                                            {{#each-in version.changeset as |key changesetscontents|}}
-                                                            <p>{{#if (not-eq key "updated_at")}}
-                                                              Updated {{key}}
-                                                              From {{changesetscontents.firstObject}} To {{changesetscontents.lastObject}}<br>
-                                                                  {{/if}}
-                                                                  </p>
-                                                            {{/each-in}}
-                                                        </div>
-                                                    </li>
-                                                    {{/each}}
-                                                </ul>
-                                            </div>
-                                        </div>
-
-
-  <div class="tile-container col-md-12">
-
-
+  <div class="col-md-6">
     <div class="panel collapsible collapsed" data-role="panel">
                             <div class="heading">
                                 <span class="icon mif-wrench"></span>
@@ -148,7 +108,50 @@
                         </div>
 
 
-
   </div>
 
 </div>
+
+
+  <div class="tile-container col-md-12">
+    <div class="chat-panel panel panel-default ">
+      <div class="heading">
+          <span class="icon mif-history"></span>
+          <span class="title">Recent Changes </span>
+      </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <ul class="chat">
+                                  {{#each project.versions as |version|}}
+                                    <li class="log-items">
+                                        <div class="log-body">
+                                            
+                                            {{#each-in version.changeset as |key changesetscontents|}}
+
+                                              {{#if (not-eq key "updated_at")}}
+                                              <label class="log-date" >{{version.created_at }} </label>
+                                            <label class="log-label" style="float:left"> ::  {{version.whodunnit}} &nbsp;</label>
+
+                                              <label> Updated {{key}} From </label>
+                                              <label class="lbl-red">{{changesetscontents.firstObject}}</label>
+                                               <label>To</label>
+                                              <label class="lbl-grn">{{changesetscontents.lastObject}}</label>
+                                              <label class="log-ago">-{{moment-from-now version.created_at}}<br></label>
+
+                                                  {{/if}}
+                                                  <br>
+                                            {{/each-in}}
+
+
+                                        </div>
+                                    </li>
+                                    {{/each}}
+                                </ul>
+                            </div>
+                        </div>
+
+
+
+
+
+  </div>
