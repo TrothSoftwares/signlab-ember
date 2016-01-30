@@ -16,7 +16,8 @@ export default DS.Model.extend({
   designimages: DS.hasMany('designimage' ,{embedded: 'always', async:true}),
   itemtype: DS.belongsTo('itemtype' , {async:true }),
   jobtype: DS.belongsTo('jobtype' ,{ async:true } ),
-  project: DS.belongsTo('project' ,{ async:true})
+  project: DS.belongsTo('project' ,{ async:true}),
+  versions:DS.attr()
 
 
 

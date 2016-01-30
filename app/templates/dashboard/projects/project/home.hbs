@@ -64,43 +64,66 @@
   </div>
 
   <div class="row col-md-12">
+----- Project Changes--------
+{{#each project.versions as |version|}}
+{{version.whodunnit}}
+{{#each-in version.changeset as |key changesetscontents|}}
+{{#if (not-eq key "updated_at")}}
+  Updated {{key}}
+  From {{changesetscontents.firstObject}} To {{changesetscontents.lastObject}}
+      {{/if}}
+
+{{/each-in}}
+ {{moment-from-now version.created_at}}<br>
+{{/each}}
+----------------------------<br>
+--------quotation Changes-------
+{{#each project.quotation.versions as |version|}}
+{{version.whodunnit}}
+{{#each-in version.changeset as |key changesetscontents|}}
+{{#if (not-eq key "updated_at")}}
+  Updated {{key}}
+  From {{changesetscontents.firstObject}} To {{changesetscontents.lastObject}}<br>
+      {{/if}}
+
+{{/each-in}}
+{{moment-from-now version.created_at}}<br><br>
+{{/each}}
+-----------------------------<br>
+------Enquiry Changes---------
+
+{{#each project.enquiry.versions as |version|}}
+{{version.whodunnit}}
+{{#each-in version.changeset as |key changesetscontents|}}
+{{#if (not-eq key "updated_at")}}
+  Updated {{key}}
+  From {{changesetscontents.firstObject}} To {{changesetscontents.lastObject}}<br>
+      {{/if}}
+
+{{/each-in}}
+{{moment-from-now version.created_at}}<br><br>
+{{/each}}
+
+-----------------------------<br>
+Item Changes
+
+{{#each project.items as |item|}}
+{{#each item.versions as |version|}}
+{{version.whodunnit}}
+{{#each-in version.changeset as |key changesetscontents|}}
+{{#if (not-eq key "updated_at")}}
+  Updated {{key}}
+  From {{changesetscontents.firstObject}} To {{changesetscontents.lastObject}}<br>
+      {{/if}}
+
+{{/each-in}}
+{{moment-from-now version.created_at}}<br><br>
+{{/each}}
+{{/each}}
+
 
 
   </div>
-                    <div class="chat-panel panel panel-default col-md-4">
-                                            <div class="panel-heading">
-                                                <i class="fa fa-comments fa-fw"></i>
-                                        Recent Changes
-
-                                            </div>
-                                            <!-- /.panel-heading -->
-                                            <div class="panel-body">
-                                                <ul class="chat">
-                                                  {{#each project.versions as |version|}}
-                                                    <li class="left clearfix">
-                                                        <span class="chat-img pull-left">
-                                                            <img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar" class="img-circle">
-                                                        </span>
-                                                        <div class="chat-body clearfix">
-                                                            <div class="header">
-                                                                <strong class="primary-font">{{version.whodunnit}}</strong>
-                                                                <small class="pull-right text-muted">
-                                                                    <i class="fa fa-clock-o fa-fw"></i>  {{moment-from-now version.created_at}}
-                                                                </small>
-                                                            </div>
-                                                            {{#each-in version.changeset as |key changesetscontents|}}
-                                                            <p>{{#if (not-eq key "updated_at")}}
-                                                              Updated {{key}}
-                                                              From {{changesetscontents.firstObject}} To {{changesetscontents.lastObject}}<br>
-                                                                  {{/if}}
-                                                                  </p>
-                                                            {{/each-in}}
-                                                        </div>
-                                                    </li>
-                                                    {{/each}}
-                                                </ul>
-                                            </div>
-                                        </div>
 
 
   <div class="tile-container col-md-12">

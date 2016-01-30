@@ -1,7 +1,20 @@
 <div class="row">
   <div class="col-md-10">
     {{paper-input label="Project Name" required=true value=project.name icon="description" required-errortext="Project Name is required."}}
-{{project.nameChanges}}
+
+
+
+      <!-- {{#each project.nameChanges as |nameChanges|}}
+        {{nameChanges.whodunnit}} Changed
+        {{nameChanges.changeset.name}}  {{moment-from-now nameChanges.created_at}}
+        <br>
+      {{/each}}
+      {{#each project.customerChanges as |customerChanges|}}
+        {{nameChanges.whodunnit}} Changed
+        {{customerChanges.changeset.customer_id}}  {{moment-from-now customerChanges.created_at}}
+        br>
+      {{/each}} -->
+
 
 
 

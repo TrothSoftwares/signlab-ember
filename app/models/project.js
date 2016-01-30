@@ -1,5 +1,5 @@
 
-import Ember from 'ember';
+
 import DS from 'ember-data';
 
 export default DS.Model.extend({
@@ -13,6 +13,21 @@ export default DS.Model.extend({
   duedate: DS.attr('date'),
   versions:DS.attr(),
 
+  // nameChanges: Ember.computed('versions', function() {
+  //   return this.get('versions').filter(function(version) {
+  //     var changesets = version.changeset;
+  //     return (changesets.hasOwnProperty("name") );
+  //
+  //   });
+  // }),
+  //
+  // customerChanges: Ember.computed('versions', function() {
+  //   return this.get('versions').filter(function(version) {
+  //     var changesets = version.changeset;
+  //     return (changesets.hasOwnProperty("customer_id") );
+  //
+  //   });
+  // }),
 
 
 
@@ -20,26 +35,4 @@ export default DS.Model.extend({
 
 
 
-
-
-
-
-
-
-//   nameChangesq: Ember.computed('name', function() {
-//     console.log(JSON.stringify(this.get('versions')));
-//     var versions = this.get('versions');
-//     return this.get('versions');
-//   }),
-//
-//
-//
-//   nameChanges: Ember.computed( 'versions.@each.changeset', function() {
-//
-//      this.get('versions.@each.changeset').filter(function(changeset) {
-//
-//
-//       return ( changeset.get('name').toLowerCase().indexOf(searchTerm) !== -1;
-//     });
-//   }),
- });
+});

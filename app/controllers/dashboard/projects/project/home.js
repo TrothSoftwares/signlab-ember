@@ -7,7 +7,7 @@ export default Ember.Controller.extend({
   actions: {
     selectStatus(status) {
       this.get('project').set('status', status);
-      this.get('project').save();
+      
     },
 
 
