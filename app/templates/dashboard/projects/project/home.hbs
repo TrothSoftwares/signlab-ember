@@ -1,5 +1,6 @@
 <div class="col-md-12">
-  <div class="tile-group quadro col-md-12">
+  <div class="col-md-6">
+  <div class="tile-group quadro ">
 
   <div class="tile-container">
 
@@ -62,7 +63,9 @@
 
     </div>
   </div>
+</div>
 
+<<<<<<< HEAD
   <div class="row col-md-12">
 ----- Project Changes--------
 {{#each project.versions as |version|}}
@@ -129,6 +132,9 @@ Item Changes
   <div class="tile-container col-md-12">
 
 
+=======
+  <div class="col-md-6">
+>>>>>>> 02250ef10eeef51d3bfb62aec06ef7477f07ed82
     <div class="panel collapsible collapsed" data-role="panel">
                             <div class="heading">
                                 <span class="icon mif-wrench"></span>
@@ -171,7 +177,50 @@ Item Changes
                         </div>
 
 
-
   </div>
 
 </div>
+
+
+  <div class="tile-container col-md-12">
+    <div class="chat-panel panel panel-default ">
+      <div class="heading">
+          <span class="icon mif-history"></span>
+          <span class="title">Recent Changes </span>
+      </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <ul class="chat">
+                                  {{#each project.versions as |version|}}
+                                    <li class="log-items">
+                                        <div class="log-body">
+                                            
+                                            {{#each-in version.changeset as |key changesetscontents|}}
+
+                                              {{#if (not-eq key "updated_at")}}
+                                              <label class="log-date" >{{version.created_at }} </label>
+                                            <label class="log-label" style="float:left"> ::  {{version.whodunnit}} &nbsp;</label>
+
+                                              <label> Updated {{key}} From </label>
+                                              <label class="lbl-red">{{changesetscontents.firstObject}}</label>
+                                               <label>To</label>
+                                              <label class="lbl-grn">{{changesetscontents.lastObject}}</label>
+                                              <label class="log-ago">-{{moment-from-now version.created_at}}<br></label>
+
+                                                  {{/if}}
+                                                  <br>
+                                            {{/each-in}}
+
+
+                                        </div>
+                                    </li>
+                                    {{/each}}
+                                </ul>
+                            </div>
+                        </div>
+
+
+
+
+
+  </div>
