@@ -2,6 +2,11 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 
+
+  
+
+
+
   actions: {
     saveQuotation :function(){
       var controller  = this;
@@ -34,7 +39,7 @@ export default Ember.Controller.extend({
       });
     },
     printQuotation :function(){
-      window.print();  
+      window.print();
     }
   }
 

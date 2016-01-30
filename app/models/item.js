@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import DS from 'ember-data';
 
 export default DS.Model.extend({
@@ -5,7 +6,6 @@ export default DS.Model.extend({
   description: DS.attr('string'),
   unit: DS.attr('string'),
   rate: DS.attr('string'),
-  amount: DS.attr('string'),
   surveydetails: DS.attr('string'),
   technique: DS.attr('string'),
   material: DS.attr('string'),
@@ -17,7 +17,19 @@ export default DS.Model.extend({
   itemtype: DS.belongsTo('itemtype' , {async:true }),
   jobtype: DS.belongsTo('jobtype' ,{ async:true } ),
   project: DS.belongsTo('project' ,{ async:true}),
-  versions:DS.attr()
+  versions:DS.attr(),
+  amount: Ember.computed('unit','rate',function(){
+    return (this.get('unit') * this.get('rate'));
+  })
+
+  // nameChanges: Ember.computed('versions', function() {
+  //   return this.get('versions').filter(function(version) {
+  //     var changesets = version.changeset;
+  //     return (changesets.hasOwnProperty("name") );
+  //
+  //   });
+  // }),
+  //
 
 
 
