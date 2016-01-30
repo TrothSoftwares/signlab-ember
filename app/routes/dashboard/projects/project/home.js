@@ -3,10 +3,8 @@ import Ember from 'ember';
 export default Ember.Route.extend({
   session: Ember.inject.service('session'),
 
-
-
-
   model: function() {
+    console.log(this.paramsFor('project'));
     return Ember.RSVP.hash({
       project: this.modelFor('dashboard.projects.project'),
     });
