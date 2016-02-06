@@ -31,7 +31,15 @@ export default Ember.Controller.extend({
             });
 
             var quotation = controller.store.createRecord('quotation', {
-              project : project});
+              body :'We are pleased to quote out lowest rate for the sign required as per the detailed discussion with us. We have also taken into consideration, as you are one of our esteemed customer. We are quoting this competitive rate.',
+              payment :'60% Advance balance and 40% up on completion',
+              delivery : 'With 30 days from the date of confirmation and advance payment',
+              power : '220V power supply should be provided near the sign for fixing.',
+              storetext :'Store facility of working materials should be provided',
+              note :'All legal and official permit should be provided. External network, electrical and civil work should be done from customer side',
+              project : project,
+
+            });
 
               quotation.save().catch(function(){
                 controller.notifications.addNotification({

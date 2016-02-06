@@ -19,7 +19,7 @@
               <div  class="list-group-item projectstatusclass_{{project.status}}">
               {{#link-to "dashboard.projects.project.home" project }}
               <div>
-              {{project.name}}
+              {{project.name}} <div class="right">{{project.duedate}}</div>
             </div>
               {{/link-to}}
             </div>
@@ -54,7 +54,7 @@
               <div  class="list-group-item projectstatusclass_{{project.status}}">
               {{#link-to "dashboard.projects.project.home" project }}
               <div>
-              {{project.name}}
+              {{project.name}} <div class="text-right">Last Date: {{moment-format project.duedate outputFormat=MM/DD/YYYY}}<br> {{moment-to-now project.duedate}}</div>
             </div>
               {{/link-to}}
             </div>

@@ -5,5 +5,10 @@ export default DS.Model.extend({
   subject: DS.attr('string'),
   body: DS.attr('string'),
   project: DS.belongsTo('project' ,{ async:true}),
-  versions:DS.attr()
+  versions:DS.attr(),
+  payment: DS.attr('string'),
+  delivery: DS.attr('string'),
+  power: DS.attr('string'),
+  storetext: DS.attr('string'),
+  note: DS.attr('string')
 });
