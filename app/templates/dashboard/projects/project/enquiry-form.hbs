@@ -1,19 +1,19 @@
 <div class="row">
+  <div class="col-md-2 row-margin">
+<label>Enquiry No</label> <b>  {{project.enquiry.id}}</b>
+  </div>
+  </div>
+  <br><br>
+
+
+<div class="row">
   <div class="col-md-10">
+
+
     {{paper-input label="Project Name" required=true value=project.name icon="description" required-errortext="Project Name is required."}}
 
 
 
-      <!-- {{#each project.nameChanges as |nameChanges|}}
-        {{nameChanges.whodunnit}} Changed
-        {{nameChanges.changeset.name}}  {{moment-from-now nameChanges.created_at}}
-        <br>
-      {{/each}}
-      {{#each project.customerChanges as |customerChanges|}}
-        {{nameChanges.whodunnit}} Changed
-        {{customerChanges.changeset.customer_id}}  {{moment-from-now customerChanges.created_at}}
-        br>
-      {{/each}} -->
 
 
 
@@ -137,11 +137,7 @@
         {{pikaday-input value=project.enquiry.date  format="DD-MM-YYYY" theme="form-input" }}
       </div>
   </div>
-  <div class="row row-margin">
-    <div class="col-md-12">
-      {{paper-input label="Enquiry No" value=project.enquiry.id icon="view-list"  }}
-    </div>
-  </div>
+
   <!-- //FIXME :    Site location variable not showing value -->
 
 

@@ -49,6 +49,7 @@
     "ember-moment": "6.0.0",
     "ember-paper": "0.2.10",
     "ember-pikaday": "0.14.0",
+    "ember-plupload": "1.13.12",
     "ember-select-2": "1.3.0",
     "ember-select-guru": "1.1.2",
     "ember-simple-auth": "1.0.1",

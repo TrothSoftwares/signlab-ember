@@ -21,7 +21,8 @@
     "matchMedia": "0.2.0",
     "pikaday": "~1.4.0",
     "moment": "~2.11.1",
-    "moment-timezone": "^0.5.0"
+    "moment-timezone": "^0.5.0",
+    "dinosheets": "0.1.1"
   },
   "resolutions": {
     "ember": "2.2.0"
